@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+*.log
+
+# Lokale Bild-Backups (Wikimedia 1600px-Variante vor sips-Crop)
+_originals/
+extracted/

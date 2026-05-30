@@ -1,0 +1,320 @@
+---
+import type { Locale } from "../data/site";
+import { t, tr } from "../data/i18n";
+import { districts } from "../data/districts";
+import { categories } from "../data/categories";
+import { attractions } from "../data/attractions";
+import { hotels, getFeaturedHotels } from "../data/hotels";
+import DistrictCard from "./DistrictCard.astro";
+import CategoryCard from "./CategoryCard.astro";
+import HotelCard from "./HotelCard.astro";
+import AttractionCard from "./AttractionCard.astro";
+import GetYourGuideWidget from "./GetYourGuideWidget.astro";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const base = locale === "de" ? "" : "/en";
+
+// Top districts: central/inner first by hotelCount
+const topDistricts = [...districts]
+  .filter((d) => d.position !== "outer")
+  .sort((a, b) => b.hotelCount - a.hotelCount)
+  .slice(0, 8);
+
+const topCategories = categories.slice(0, 6);
+const featuredHotels = getFeaturedHotels();
+const topAttractions = attractions.slice(0, 8);
+
+const totalHotels = hotels.reduce((sum, h) => sum + 1, 0);
+const totalDistricts = districts.length;
+const totalCategories = categories.length;
+const totalAttractions = attractions.length;
+---
+
+<!-- HERO -->
+<section class="relative overflow-hidden gradient-spree text-white">
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <svg class="absolute -right-20 -top-20 h-96 w-96" viewBox="0 0 200 200">
+      <defs>
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="200" height="200" fill="url(#grid)"/>
+    </svg>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold text-white uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200 animate-pulse"></span>
+        {tr(t.ui.hero.eyebrow, locale)}
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05]">
+        {tr(t.ui.hero.title, locale)}
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-2xl mb-8 text-balance">
+        {tr(t.ui.hero.subtitle, locale)}
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={`${base}/stadtteile/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-700 shadow-lg hover:shadow-xl hover:bg-brand-50 transition-all"
+        >
+          {tr(t.ui.hero.ctaPrimary, locale)}
+          <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+        <a
+          href={`${base}/kategorien/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-all"
+        >
+          {tr(t.ui.hero.ctaSecondary, locale)}
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl">
+      {[
+        { value: totalHotels + "+", label: tr(t.ui.hotelsCount, locale) },
+        { value: totalDistricts, label: tr(t.ui.districtsCount, locale) },
+        { value: totalCategories, label: tr(t.ui.categoriesCount, locale) },
+        { value: totalAttractions + "+", label: tr(t.ui.attractionsCount, locale) },
+      ].map((s) => (
+        <div class="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-4 sm:p-5">
+          <div class="text-2xl sm:text-3xl font-bold text-white">{s.value}</div>
+          <div class="text-xs sm:text-sm text-brand-100 mt-1">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="py-16 sm:py-20 surface-soft">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Berliner Bezirke" : "Berlin Districts"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          {tr(t.ui.exploreDistricts, locale)}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3 max-w-xl">
+          {locale === "de"
+            ? "Jeder Bezirk hat seinen eigenen Charakter — vom historischen Mitte über das kreative Friedrichshain-Kreuzberg bis zum familienfreundlichen Pankow."
+            : "Every district has its own character — from historic Mitte through creative Friedrichshain-Kreuzberg to family-friendly Pankow."}
+        </p>
+      </div>
+      <a
+        href={`${base}/stadtteile/`}
+        class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+      >
+        {locale === "de" ? "Alle 12 Bezirke" : "All 12 districts"}
+        <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {topDistricts.map((d) => <DistrictCard district={d} locale={locale} />)}
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Nach Hotel-Stil" : "By hotel style"}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+        {tr(t.ui.popularCategories, locale)}
+      </h2>
+      <p class="text-ink-600 leading-relaxed mt-3">
+        {locale === "de"
+          ? "Vom Luxushotel am Brandenburger Tor bis zum Budget-Hostel in Neukölln — finde den passenden Hotelstil für deine Berlin-Reise."
+          : "From a luxury hotel at Brandenburg Gate to a budget hostel in Neukölln — find the right hotel style for your Berlin trip."}
+      </p>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {topCategories.map((c) => <CategoryCard category={c} locale={locale} />)}
+    </div>
+
+    <div class="text-center mt-10">
+      <a
+        href={`${base}/kategorien/`}
+        class="inline-flex items-center gap-1 rounded-xl bg-brand-600 hover:bg-brand-700 px-6 py-3 text-sm font-bold text-white shadow-sm transition-colors"
+      >
+        {locale === "de" ? "Alle Kategorien anzeigen" : "View all categories"}
+        <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED HOTELS -->
+<section class="py-16 sm:py-20 bg-ink-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Redaktions-Empfehlung" : "Editor's pick"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          {tr(t.ui.featuredHotels, locale)}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3 max-w-xl">
+          {locale === "de"
+            ? "Eine handverlesene Auswahl der besten Hotels in Berlin — quer durch alle Bezirke und Stile."
+            : "A handpicked selection of Berlin's best hotels — across all districts and styles."}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredHotels.map((h) => <HotelCard hotel={h} locale={locale} />)}
+    </div>
+  </div>
+</section>
+
+<!-- ATTRACTIONS -->
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Was sehen?" : "What to see?"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          {tr(t.ui.topAttractions, locale)}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3 max-w-xl">
+          {locale === "de"
+            ? "Plane deine Berlin-Reise rund um die wichtigsten Sehenswürdigkeiten — und finde Hotels in ihrer direkten Umgebung."
+            : "Plan your Berlin trip around the key sights — and find hotels right next to them."}
+        </p>
+      </div>
+      <a
+        href={`${base}/sehenswuerdigkeiten/`}
+        class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+      >
+        {locale === "de" ? "Alle ansehen" : "View all"}
+        <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {topAttractions.map((a) => <AttractionCard attraction={a} locale={locale} />)}
+    </div>
+  </div>
+</section>
+
+<!-- TIPS / EDITORIAL -->
+<section class="py-16 sm:py-20 surface-soft">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="rounded-3xl border border-brand-100 bg-white p-8 sm:p-12 shadow-sm">
+      <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] items-center">
+        <div>
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Insider-Wissen" : "Insider knowledge"}
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 text-balance mb-4">
+            {locale === "de"
+              ? "Wir kennen Berlin — Bezirk für Bezirk"
+              : "We know Berlin — district by district"}
+          </h2>
+          <p class="text-ink-700 leading-relaxed mb-4">
+            {locale === "de"
+              ? "About Berlin Hotels ist kein Buchungsportal. Wir sind ein redaktioneller Hotelguide für die Hauptstadt: 12 Bezirke, 10 Kategorien, hunderte ehrliche Hotelbeschreibungen — und für jede Empfehlung der Klick zur Buchung beim besten Anbieter."
+              : "About Berlin Hotels is not a booking portal. We're an editorial hotel guide for the capital: 12 districts, 10 categories, hundreds of honest hotel descriptions — and for every recommendation a click through to the best provider."}
+          </p>
+          <p class="text-ink-600 text-sm leading-relaxed">
+            {locale === "de"
+              ? "Egal ob du zum ersten Mal nach Berlin kommst, einen Hochzeitstag feierst, geschäftlich reist oder mit der Familie verreist — wir helfen dir, den richtigen Bezirk und das passende Hotel zu finden."
+              : "Whether it's your first time in Berlin, an anniversary, a business trip or a family holiday — we help you find the right district and hotel."}
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            { icon: "✓", de: "12 Berliner Bezirke kuratiert", en: "12 Berlin districts curated" },
+            { icon: "✓", de: "Interaktive Hotel-Karten je Bezirk", en: "Interactive hotel maps per district" },
+            { icon: "✓", de: "10 Hotel-Stile von Luxus bis Budget", en: "10 hotel styles from luxury to budget" },
+            { icon: "✓", de: "Bilingual: Deutsch & Englisch", en: "Bilingual: German & English" },
+          ].map((b) => (
+            <div class="flex items-start gap-3 rounded-xl bg-brand-50 border border-brand-100 p-4">
+              <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-sm font-bold">
+                {b.icon}
+              </span>
+              <span class="text-sm font-semibold text-ink-900">
+                {locale === "de" ? b.de : b.en}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GETYOURGUIDE — Top-Touren Berlin -->
+<section class="py-14 sm:py-16 surface-soft">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <GetYourGuideWidget
+      mode="city"
+      cityQuery="Berlin"
+      numberOfItems={4}
+      cmp="homepage-city"
+      locale={locale}
+      title={locale === "de" ? "Touren & Tickets in Berlin" : "Tours & tickets in Berlin"}
+      lead={locale === "de"
+        ? "Geführte Touren, Museums-Tickets und Erlebnisse — direkt buchbar."
+        : "Guided tours, museum tickets and experiences — bookable directly."}
+      framed={false}
+    />
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="rounded-3xl gradient-spree p-10 sm:p-14 text-center text-white shadow-xl">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-balance mb-4">
+        {tr(t.ui.cta.title, locale)}
+      </h2>
+      <p class="text-lg text-brand-50/95 max-w-2xl mx-auto leading-relaxed mb-8 text-balance">
+        {tr(t.ui.cta.body, locale)}
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href={`${base}/stadtteile/mitte/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-700 hover:bg-brand-50 transition-colors"
+        >
+          {locale === "de" ? "Hotels in Mitte" : "Hotels in Mitte"}
+        </a>
+        <a
+          href={`${base}/stadtteile/friedrichshain-kreuzberg/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-colors"
+        >
+          {locale === "de" ? "Boutique in Friedrichshain" : "Boutique in Friedrichshain"}
+        </a>
+        <a
+          href={`${base}/stadtteile/charlottenburg-wilmersdorf/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-colors"
+        >
+          {locale === "de" ? "Elegant in Charlottenburg" : "Elegant in Charlottenburg"}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

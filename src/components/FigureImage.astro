@@ -1,0 +1,148 @@
+---
+/**
+ * Bild mit Wikimedia-Lizenz-Caption.
+ * Bevorzugt `image.localSrc` (astro:assets → WebP + srcset).
+ * Fallback: Wikimedia-Thumb-URL bei externem Bild ohne lokales Asset.
+ */
+import { Image } from "astro:assets";
+import type { WikimediaImage } from "../data/images";
+import { wikimediaThumb, plainAuthor } from "../utils/wikimedia";
+
+type Props = {
+  image: WikimediaImage;
+  alt: string;
+  width?: number;
+  /** Render style: 'hero' large w/ overlay, 'card' compact, 'inline' centered */
+  variant?: "hero" | "card" | "inline";
+  /** Optional caption text above attribution */
+  caption?: string;
+  loading?: "lazy" | "eager";
+};
+
+const { image, alt, width = 1280, variant = "inline", caption, loading = "lazy" } = Astro.props;
+
+const author = plainAuthor(image.artist) || "Unknown";
+const attribLine = `© ${author} · ${image.license || "Public Domain"}`;
+
+// Remote-Fallback wenn kein localSrc
+const remoteSrc = wikimediaThumb(image.url, width);
+const remoteSmall = wikimediaThumb(image.url, 640);
+const remoteLarge = wikimediaThumb(image.url, 1920);
+
+const local = image.localSrc;
+
+const sizesHero = "100vw";
+const sizesCard = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+const sizesInline = "(min-width: 768px) 768px, 100vw";
+---
+
+{variant === "hero" && (
+  <div class="absolute inset-0">
+    {local ? (
+      <Image
+        src={local}
+        alt={alt}
+        widths={[640, 1024, 1600, 1920]}
+        sizes={sizesHero}
+        loading={loading}
+        decoding="async"
+        format="webp"
+        quality={78}
+        class="block w-full h-full object-cover"
+      />
+    ) : (
+      <img
+        src={remoteSrc}
+        srcset={`${remoteSmall} 640w, ${remoteSrc} 1280w, ${remoteLarge} 1920w`}
+        sizes={sizesHero}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        class="block w-full h-full object-cover"
+      />
+    )}
+    <span class="absolute inset-0 bg-gradient-to-b from-brand-900/40 via-brand-900/30 to-brand-900/70 pointer-events-none"></span>
+    <div class="absolute bottom-0 right-0 left-0 px-3 py-2 text-[10px] text-white/80 text-right pointer-events-none">
+      <a
+        href={image.commonsPage}
+        target="_blank"
+        rel="noopener nofollow"
+        class="hover:text-white pointer-events-auto"
+      >
+        📷 {attribLine} · via Wikimedia Commons
+      </a>
+    </div>
+  </div>
+)}
+
+{variant === "card" && (
+  <div class="relative block">
+    {local ? (
+      <Image
+        src={local}
+        alt={alt}
+        widths={[400, 640, 800]}
+        sizes={sizesCard}
+        loading={loading}
+        decoding="async"
+        format="webp"
+        quality={75}
+        class="block w-full h-48 object-cover bg-ink-100"
+      />
+    ) : (
+      <img
+        src={remoteSmall}
+        srcset={`${remoteSmall} 640w, ${remoteSrc} 1280w`}
+        sizes={sizesCard}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        width="640"
+        height="480"
+        class="block w-full h-48 object-cover bg-ink-100"
+      />
+    )}
+    <span class="absolute bottom-1 right-1 px-1.5 py-0.5 text-[9px] text-white/90 bg-black/55 rounded pointer-events-none">
+      {author} · {image.license || "PD"}
+    </span>
+  </div>
+)}
+
+{variant === "inline" && (
+  <figure class="my-6 block">
+    {local ? (
+      <Image
+        src={local}
+        alt={alt}
+        widths={[400, 800, 1200, 1600]}
+        sizes={sizesInline}
+        loading={loading}
+        decoding="async"
+        format="webp"
+        quality={78}
+        class="block w-full rounded-2xl border border-ink-100"
+      />
+    ) : (
+      <img
+        src={remoteSrc}
+        srcset={`${remoteSmall} 640w, ${remoteSrc} 1280w, ${remoteLarge} 1920w`}
+        sizes={sizesInline}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        class="block w-full rounded-2xl border border-ink-100"
+      />
+    )}
+    <figcaption class="mt-2 text-xs text-ink-500 text-center">
+      {caption && <span class="block text-ink-700 font-medium mb-1">{caption}</span>}
+      <a
+        href={image.commonsPage}
+        target="_blank"
+        rel="noopener nofollow"
+        class="hover:text-brand-700"
+      >
+        📷 {attribLine} · via Wikimedia Commons
+      </a>
+    </figcaption>
+  </figure>
+)}

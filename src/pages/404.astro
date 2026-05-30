@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Seite nicht gefunden — About Berlin Hotels"
+  description="Diese Seite gibt es nicht (mehr). Zurück zur Startseite oder zur Stadtteil-Übersicht."
+  locale="de"
+  noindex
+>
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 text-center">
+      <span class="inline-flex items-center justify-center h-20 w-20 rounded-2xl gradient-spree text-white text-4xl font-bold mb-6">
+        404
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900 mb-4">
+        Diese Seite gibt es nicht (mehr)
+      </h1>
+      <p class="text-lg text-ink-700 leading-relaxed mb-8 text-balance">
+        Vielleicht hat sich die URL geändert oder die Seite wurde verschoben.
+        Hier sind ein paar Startpunkte:
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 px-5 py-3 text-sm font-bold text-white transition-colors">
+          Zur Startseite
+        </a>
+        <a href="/stadtteile/" class="inline-flex items-center gap-2 rounded-xl border border-ink-200 hover:border-brand-300 px-5 py-3 text-sm font-bold text-ink-700 hover:text-brand-700 transition-colors">
+          Berliner Bezirke
+        </a>
+        <a href="/kategorien/" class="inline-flex items-center gap-2 rounded-xl border border-ink-200 hover:border-brand-300 px-5 py-3 text-sm font-bold text-ink-700 hover:text-brand-700 transition-colors">
+          Hotel-Kategorien
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

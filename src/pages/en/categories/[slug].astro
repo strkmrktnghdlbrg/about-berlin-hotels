@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import CategoryPage from "../../../components/CategoryPage.astro";
+import { categories } from "../../../data/categories";
+
+export async function getStaticPaths() {
+  return categories.map((c) => ({ params: { slug: c.slugEn }, props: { category: c } }));
+}
+
+const { category } = Astro.props;
+const title = `${category.name.en} in Berlin — About Berlin Hotels`;
+const description = category.intro.en.slice(0, 155);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale="en"
+  alternatePath={`/kategorien/${category.slug}/`}
+>
+  <CategoryPage category={category} locale="en" />
+</BaseLayout>

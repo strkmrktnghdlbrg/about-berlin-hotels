@@ -1,0 +1,105 @@
+---
+import type { Locale } from "../data/site";
+import OverviewHero from "./OverviewHero.astro";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+
+const tips = [
+  {
+    icon: "✈",
+    title: { de: "Anreise nach Berlin", en: "Getting to Berlin" },
+    body: {
+      de: "Mit dem BER ist Berlin in 2–3 Stunden Flug aus halb Europa erreichbar. Vom Flughafen fährt der Airport Express (FEX, RE7/RB14) in 30 Minuten zum Hauptbahnhof — günstiger und schneller als ein Taxi. Mit dem ICE ist Berlin Hbf in 4 Stunden ab München, 4 Stunden ab Köln und 90 Minuten ab Hamburg erreichbar.",
+      en: "Berlin is 2–3 flight hours from half of Europe via BER airport. The Airport Express (FEX, RE7/RB14) takes 30 minutes to Hauptbahnhof — cheaper and faster than a taxi. By ICE, Berlin Hbf is 4 hours from Munich, 4 hours from Cologne and 90 minutes from Hamburg.",
+    },
+  },
+  {
+    icon: "🚇",
+    title: { de: "Öffentliche Verkehrsmittel", en: "Public transport" },
+    body: {
+      de: "Berlin hat eines der dichtesten Nahverkehrsnetze Europas: U-Bahn, S-Bahn, Tram, Bus, Fähren — alles in einem Tarif. Eine Tageskarte (AB) kostet ca. 10 € und gilt für 24 Stunden. Die BVG-App zeigt alle Verbindungen in Echtzeit. Tipp: Die Berlin WelcomeCard kombiniert ÖV mit Rabatten bei vielen Sehenswürdigkeiten.",
+      en: "Berlin has one of Europe's densest transit networks: U-Bahn, S-Bahn, tram, bus, ferries — all on one fare. A day ticket (AB zone) costs around €10 and is valid for 24 hours. The BVG app shows all connections in real-time. Tip: the Berlin WelcomeCard combines transit with discounts on many sights.",
+    },
+  },
+  {
+    icon: "💶",
+    title: { de: "Hotel-Buchungstipps", en: "Hotel booking tips" },
+    body: {
+      de: "Bestpreise gibt es meist 6–8 Wochen vor Anreise — bei Messen (ITB, Berlinale, IFA) und Konzerten (Mercedes-Benz Arena) deutlich früher buchen. Sonntag bis Dienstag sind in Berlin meist 30–40 % günstiger als Donnerstag bis Samstag. Frühstück oft separat buchen — Berliner Cafés sind besser und günstiger als die Hotel-Buffets.",
+      en: "Best rates are usually 6–8 weeks before arrival — for trade fairs (ITB, Berlinale, IFA) and concerts (Mercedes-Benz Arena) book much earlier. Sunday–Tuesday is typically 30–40 % cheaper than Thursday–Saturday in Berlin. Often skip the hotel breakfast — Berlin cafés are better and cheaper.",
+    },
+  },
+  {
+    icon: "🌷",
+    title: { de: "Beste Reisezeit", en: "Best time to visit" },
+    body: {
+      de: "Mai bis September ist Hochsaison mit den meisten Open-Air-Events. Juli/August kann heiß werden — viele Berliner sind dann im Urlaub, was die Stadt entspannter macht. Oktober bietet warmes Licht, gefüllte Cafés und faire Preise. November–Februar ist günstig, aber kalt — perfekt für Museen, Theater und Hotel-Spa.",
+      en: "May through September is high season with the most open-air events. July/August can get hot — many Berliners are away then, making the city more relaxed. October offers warm light, busy cafés and fair prices. November–February is affordable but cold — perfect for museums, theatre and hotel spas.",
+    },
+  },
+  {
+    icon: "👨‍👩‍👧",
+    title: { de: "Reisen mit Familie", en: "Travelling with family" },
+    body: {
+      de: "Berlin ist sehr kinderfreundlich: viele Hotels bieten Familienzimmer, Tiergarten und Tierpark sind weltklasse-Zoos, Spielplätze gibt es in jedem Kiez. Die meisten Sehenswürdigkeiten sind bis 6 Jahre kostenlos. Für längere Aufenthalte: Apartment-Hotels mit Küche sparen Restaurant-Kosten — siehe unsere Apartment-Hotel-Kategorie.",
+      en: "Berlin is very child-friendly: many hotels offer family rooms, Tiergarten and Tierpark are world-class zoos, playgrounds in every neighbourhood. Most attractions are free under 6. For longer stays: apartment hotels with kitchens save restaurant costs — see our apartment hotel category.",
+    },
+  },
+  {
+    icon: "💼",
+    title: { de: "Geschäftsreise & Messen", en: "Business & trade fairs" },
+    body: {
+      de: "Die Messe Berlin (ExpoCenter City) liegt in Charlottenburg — die Hotels dort sind tagungsstark, aber während ITB, IFA oder Fruit Logistica oft doppelt so teuer. Tipp: Hotels in Spandau, Tempelhof oder Mitte (mit U-Bahn-Anschluss zur Messe) buchen — bis zu 60 % günstiger.",
+      en: "Messe Berlin (ExpoCenter City) sits in Charlottenburg — hotels there are conference-ready but often double-priced during ITB, IFA or Fruit Logistica. Tip: book hotels in Spandau, Tempelhof or Mitte (with U-Bahn connection to the fair) — up to 60 % cheaper.",
+    },
+  },
+  {
+    icon: "🥨",
+    title: { de: "Essen & Trinken", en: "Food & drink" },
+    body: {
+      de: "Berlin ist eine der spannendsten Food-Städte Europas — Currywurst, Döner, Schnitzel, aber auch über 20 Michelin-Sterne. Kreuzberg/Neukölln für Street-Food und Bars, Mitte für Sterne-Küche, Prenzlauer Berg für gemütliche Restaurants. Trinkgeld: 5–10 % sind üblich, gerundet auf den nächsten Euro.",
+      en: "Berlin is one of Europe's most exciting food cities — currywurst, döner, schnitzel, but also 20+ Michelin stars. Kreuzberg/Neukölln for street food and bars, Mitte for star kitchens, Prenzlauer Berg for cosy restaurants. Tipping: 5–10 % is standard, rounded to the next Euro.",
+    },
+  },
+  {
+    icon: "🌃",
+    title: { de: "Nachtleben", en: "Nightlife" },
+    body: {
+      de: "Berlin ist legendär für sein Nachtleben — Berghain, Sisyphos, KitKat, RSO. Clubs öffnen meist erst nach 23 Uhr und gehen bis Sonntagmittag. Türsteher entscheiden — angemessen kleiden, ruhig sein, nicht in großen Gruppen kommen. Für Boutique-Erlebnisse: Roof-Bars wie Klunkerkranich (Neukölln), Monkey Bar (City West) oder Buck and Breck.",
+      en: "Berlin is legendary for nightlife — Berghain, Sisyphos, KitKat, RSO. Clubs typically open after 11pm and run until Sunday lunch. Door selectors decide — dress appropriately, stay calm, avoid large groups. For boutique experiences: roof bars like Klunkerkranich (Neukölln), Monkey Bar (City West) or Buck and Breck.",
+    },
+  },
+];
+---
+
+<OverviewHero
+  locale={locale}
+  eyebrow={{ de: "Insider-Tipps", en: "Insider tips" }}
+  title={{
+    de: "Berlin-Reisetipps — alles, was du vor der Buchung wissen solltest",
+    en: "Berlin travel tips — what to know before booking",
+  }}
+  subtitle={{
+    de: "Anreise, ÖPNV, beste Reisezeit, Hotel-Buchungstricks, Familien-Tipps — die wichtigsten Insights für deinen Berlin-Aufenthalt.",
+    en: "Arrival, transit, best time to visit, hotel booking tricks, family tips — the most important insights for your Berlin stay.",
+  }}
+/>
+
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {tips.map((tip) => (
+        <article class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-7 hover:border-brand-200 hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 border border-brand-100 text-xl">
+              {tip.icon}
+            </span>
+            <h2 class="text-lg font-bold text-ink-900">{tip.title[locale]}</h2>
+          </div>
+          <p class="text-sm text-ink-700 leading-relaxed">{tip.body[locale]}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

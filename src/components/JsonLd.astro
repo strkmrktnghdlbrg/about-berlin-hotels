@@ -1,0 +1,16 @@
+---
+/**
+ * Schema.org JSON-LD-Renderer.
+ * Beliebige Schema.org-Daten serialisieren — wird im <head>-Slot oder
+ * irgendwo im Body als <script type="application/ld+json"> ausgegeben.
+ *
+ * Best Practice: einen Schema-Block pro semantischer Entity (Hotel,
+ * TouristAttraction, BreadcrumbList, ItemList). Google parst mehrere
+ * Blöcke pro Page korrekt.
+ */
+type Props = { data: unknown };
+const { data } = Astro.props;
+const json = JSON.stringify(data);
+---
+
+<script type="application/ld+json" is:inline set:html={json} />

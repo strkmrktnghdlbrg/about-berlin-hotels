@@ -1,0 +1,288 @@
+---
+import type { Attraction } from "../data/attractions";
+import type { Locale } from "../data/site";
+import { attractions } from "../data/attractions";
+import { getDistrict } from "../data/districts";
+import { getHotelsByDistrict } from "../data/hotels";
+import { attractionImages } from "../data/images";
+import FigureImage from "./FigureImage.astro";
+import HotelCard from "./HotelCard.astro";
+import AttractionCard from "./AttractionCard.astro";
+import JsonLd from "./JsonLd.astro";
+import GetYourGuideWidget from "./GetYourGuideWidget.astro";
+import Stay22NearbyHotels from "./Stay22NearbyHotels.astro";
+import { site } from "../data/site";
+
+type Props = { attraction: Attraction; locale: Locale };
+const { attraction, locale } = Astro.props;
+const base = locale === "de" ? "" : "/en";
+const districtsBase = locale === "de" ? "/stadtteile" : "/en/districts";
+const attractionsBase = locale === "de" ? "/sehenswuerdigkeiten" : "/en/attractions";
+const attractionUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+
+const heroImage = attractionImages[attraction.slug];
+const district = getDistrict(attraction.district);
+const hotelsNearby = district ? getHotelsByDistrict(district.slug).slice(0, 3) : [];
+const otherInDistrict = attractions
+  .filter((a) => a.district === attraction.district && a.slug !== attraction.slug)
+  .slice(0, 4);
+const otherAttractions = attractions
+  .filter((a) => a.district !== attraction.district)
+  .slice(0, 4);
+
+const typeLabel: Record<Attraction["type"], { de: string; en: string }> = {
+  landmark: { de: "Wahrzeichen", en: "Landmark" },
+  museum: { de: "Museum", en: "Museum" },
+  park: { de: "Park", en: "Park" },
+  viewpoint: { de: "Aussicht", en: "Viewpoint" },
+  shopping: { de: "Shopping", en: "Shopping" },
+  nightlife: { de: "Nightlife", en: "Nightlife" },
+  history: { de: "Geschichte", en: "History" },
+};
+
+const schemaType: Record<Attraction["type"], string> = {
+  landmark: "LandmarksOrHistoricalBuildings",
+  museum: "Museum",
+  park: "Park",
+  viewpoint: "TouristAttraction",
+  shopping: "ShoppingCenter",
+  nightlife: "NightClub",
+  history: "LandmarksOrHistoricalBuildings",
+};
+
+const attractionSchema = {
+  "@context": "https://schema.org",
+  "@type": ["TouristAttraction", schemaType[attraction.type]],
+  name: attraction.name[locale],
+  description: attraction.intro[locale],
+  url: attractionUrl,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: attraction.geo.lat,
+    longitude: attraction.geo.lng,
+  },
+  ...(district
+    ? {
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: district.name,
+          addressRegion: "Berlin",
+          addressCountry: "DE",
+        },
+      }
+    : {}),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: locale === "de" ? "Sehenswürdigkeiten" : "Attractions", item: new URL(`${attractionsBase}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 3, name: attraction.name[locale], item: attractionUrl },
+  ],
+};
+---
+
+<JsonLd data={attractionSchema} />
+<JsonLd data={breadcrumbSchema} />
+
+<!-- HERO -->
+<section class="relative overflow-hidden text-white min-h-[420px] sm:min-h-[520px]">
+  {heroImage ? (
+    <FigureImage image={heroImage} alt={attraction.name[locale]} variant="hero" loading="eager" />
+  ) : (
+    <div class="absolute inset-0 gradient-spree"></div>
+  )}
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+    <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+      <a href={`${base}/`} class="hover:text-white">{locale === "de" ? "Start" : "Home"}</a>
+      <span>›</span>
+      <a href={attractionsBase + "/"} class="hover:text-white">
+        {locale === "de" ? "Sehenswürdigkeiten" : "Attractions"}
+      </a>
+      <span>›</span>
+      <span class="text-white">{attraction.name[locale]}</span>
+    </nav>
+
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+        {typeLabel[attraction.type][locale]}
+      </span>
+      {district && (
+        <a
+          href={`${districtsBase}/${district.slug}/`}
+          class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest hover:bg-white/25 transition-colors"
+        >
+          📍 {district.name}
+        </a>
+      )}
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05] drop-shadow-md">
+      {attraction.name[locale]}
+    </h1>
+    <p class="text-lg sm:text-xl text-white leading-relaxed max-w-3xl text-balance drop-shadow">
+      {attraction.intro[locale]}
+    </p>
+  </div>
+</section>
+
+<!-- GETYOURGUIDE — Touren & Tickets zu dieser Sehenswürdigkeit -->
+<section class="py-14 sm:py-16 surface-soft">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    {attraction.gygActivityId ? (
+      <GetYourGuideWidget
+        mode="availability"
+        activityId={attraction.gygActivityId}
+        cmp={`sight-${attraction.slug}`}
+        locale={locale}
+        title={locale === "de"
+          ? `Tickets & Touren — ${attraction.name.de}`
+          : `Tickets & tours — ${attraction.name.en}`}
+        lead={locale === "de"
+          ? "Direkt buchbar über GetYourGuide. Skip-the-Line wenn verfügbar."
+          : "Bookable directly via GetYourGuide. Skip-the-line where available."}
+        framed={false}
+      />
+    ) : (
+      <GetYourGuideWidget
+        mode="activities"
+        q={`${attraction.name[locale]} Berlin`}
+        numberOfItems={3}
+        cmp={`sight-${attraction.slug}`}
+        locale={locale}
+        title={locale === "de"
+          ? `Touren & Tickets rund um ${attraction.name.de}`
+          : `Tours & tickets around ${attraction.name.en}`}
+        lead={locale === "de"
+          ? "Geführte Touren, Eintritt und Erlebnisse — passend zu dieser Sehenswürdigkeit."
+          : "Guided tours, tickets and experiences — matched to this attraction."}
+        framed={false}
+      />
+    )}
+  </div>
+</section>
+
+<!-- DISTRICT CONTEXT -->
+{district && (
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <div class="grid gap-8 md:grid-cols-[1.6fr_1fr] items-start">
+        <div>
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Bezirk" : "District"}
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-4">
+            {attraction.name[locale]} {locale === "de" ? "liegt in " : "is in "}{district.name}
+          </h2>
+          <p class="text-ink-700 leading-relaxed mb-4">{district.vibe[locale]}</p>
+          <a
+            href={`${districtsBase}/${district.slug}/`}
+            class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:text-brand-800"
+          >
+            {locale === "de" ? "Mehr über " : "More about "}{district.name}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+        <aside class="rounded-2xl border border-brand-100 bg-brand-50 p-6">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Koordinaten" : "Coordinates"}
+          </span>
+          <p class="text-sm text-ink-700 mb-4 font-mono">
+            {attraction.geo.lat.toFixed(4)}, {attraction.geo.lng.toFixed(4)}
+          </p>
+          <a
+            href={`https://www.openstreetmap.org/?mlat=${attraction.geo.lat}&mlon=${attraction.geo.lng}&zoom=15`}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:text-brand-800"
+          >
+            {locale === "de" ? "Auf OpenStreetMap" : "On OpenStreetMap"}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+            </svg>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- HOTELS NEARBY -->
+{hotelsNearby.length > 0 && district && (
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Übernachten in der Nähe" : "Stay nearby"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de"
+            ? `Hotels in der Nähe von ${attraction.name.de}`
+            : `Hotels near ${attraction.name.en}`}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          {locale === "de"
+            ? `Unsere Empfehlungen in ${district.name} — direkt um die Ecke.`
+            : `Our picks in ${district.name} — just around the corner.`}
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {hotelsNearby.map((h) => <HotelCard hotel={h} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- LIVE HOTELS via Stay22 — Hotels im 1500m-Radius mit echten Bildern + Preisen -->
+<Stay22NearbyHotels
+  lat={attraction.geo.lat}
+  lng={attraction.geo.lng}
+  near={attraction.name[locale]}
+  radius={1500}
+  limit={4}
+  campaignSuffix={`sight-${attraction.slug}`}
+  locale={locale}
+/>
+
+<!-- OTHER IN DISTRICT -->
+{otherInDistrict.length > 0 && district && (
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-8">
+        {locale === "de"
+          ? `Weitere Sehenswürdigkeiten in ${district.name}`
+          : `More attractions in ${district.name}`}
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {otherInDistrict.map((a) => <AttractionCard attraction={a} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- OTHER ATTRACTIONS -->
+<section class="py-14 sm:py-16 bg-ink-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+        {locale === "de" ? "Weitere Highlights in Berlin" : "More Berlin highlights"}
+      </h2>
+      <a
+        href={attractionsBase + "/"}
+        class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700"
+      >
+        {locale === "de" ? "Alle Sehenswürdigkeiten" : "All attractions"}
+      </a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {otherAttractions.map((a) => <AttractionCard attraction={a} locale={locale} />)}
+    </div>
+  </div>
+</section>

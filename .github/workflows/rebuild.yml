@@ -1,0 +1,43 @@
+# Live-Rebuild alle 6h, damit Stay22-API-Daten (Preise/Verfügbarkeiten)
+# frisch bleiben. Stay22-ToS erlaubt 60 Min HTTP-Cache → 6h Rebuild ist
+# defensiv. Voraussetzung: GitHub Secret STAY22_API_KEY gepflegt.
+#
+# Setup (einmalig):
+#   gh secret set STAY22_API_KEY --body "stay22_..."   --repo <owner>/<repo>
+#
+# Dieser Workflow läuft auf dem Default-Branch (main). Wenn das Deployment
+# über Cloudflare Pages Git-Integration läuft, reicht der `git push` aus
+# diesem Workflow, um den Pages-Build zu triggern. Sonst:
+#   - All-Inkl: rsync-over-SSH Step ergänzen (siehe Playbook 3c)
+#   - Cloudflare direkt: `wrangler pages deploy dist`
+name: Rebuild with fresh Stay22 data
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # 02/08/14/20 UTC → 04/10/16/22 Berlin (MESZ) bzw. 03/09/15/21 (MEZ)
+    - cron: "0 2,8,14,20 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Build Astro with Stay22 live data
+        env:
+          STAY22_API_KEY: ${{ secrets.STAY22_API_KEY }}
+        run: npm run build
+      # Beispiel: Deploy nach Cloudflare Pages (auskommentiert).
+      # - name: Publish to Cloudflare Pages
+      #   uses: cloudflare/wrangler-action@v3
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      #     command: pages deploy dist --project-name=about-berlin-hotels

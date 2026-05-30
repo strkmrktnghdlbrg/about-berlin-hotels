@@ -1,0 +1,104 @@
+---
+/**
+ * GetYourGuide-Widget — drei Modi.
+ * ---------------------------------
+ *  - "city"          : Top-Touren der Stadt (Homepage, Reiseplaner-Tag).
+ *                      Pflicht: cityQuery ("Berlin") ODER locationId.
+ *  - "activities"    : Touren passend zu einer Suchanfrage. Sight-Detail-Default.
+ *                      Pflicht: q (Suchbegriff, z.B. "Brandenburger Tor Berlin").
+ *  - "availability"  : Verfügbarkeit + Buchung für EINE konkrete GYG-Activity.
+ *                      Pflicht: activityId.
+ *
+ * Das Loader-Script lädt einmalig sitewide via BaseLayout — diese Komponente
+ * rendert nur den data-gyg-*-Placeholder, den GYG zur Laufzeit ersetzt.
+ *
+ * Tracking-Tipp: `cmp` als sprechende ID setzen (z.B. "sight-brandenburger-tor"),
+ * dann lässt sich im GYG-Dashboard pro Platzierung auswerten.
+ */
+import type { Locale } from "../data/site";
+import { affiliate, gygEnabled } from "../data/affiliate";
+
+interface Props {
+  mode: "city" | "activities" | "availability";
+  /** Für mode=city: Stadt-Name als Query (z.B. "Berlin") */
+  cityQuery?: string;
+  /** Für mode=city: konkrete GYG-Location-ID (Alternative zu cityQuery) */
+  locationId?: string;
+  /** Für mode=activities: Suchbegriff */
+  q?: string;
+  /** Für mode=availability: konkrete Activity-ID */
+  activityId?: string;
+  /** Anzahl Items im Widget (Default 3) */
+  numberOfItems?: number;
+  /** Tracking-Kampagnen-ID, sprechend (z.B. "homepage", "sight-fernsehturm") */
+  cmp?: string;
+  /** Optionaler Titel über dem Widget */
+  title?: string;
+  /** Lead-Text unter dem Titel */
+  lead?: string;
+  /** Sprache der Captions / Disclosure */
+  locale?: Locale;
+  /** Containerised: Mit Surface + Padding-Section (default true). false = nur Widget. */
+  framed?: boolean;
+}
+
+const {
+  mode,
+  cityQuery,
+  locationId,
+  q,
+  activityId,
+  numberOfItems = 3,
+  cmp,
+  title,
+  lead,
+  locale = "de",
+  framed = true,
+} = Astro.props;
+
+const widgetType = mode === "availability" ? "availability" : mode;
+const frameType =
+  mode === "availability" ? "availability" : mode === "city" ? "city" : "activities";
+const frameUrl = `https://widget.getyourguide.com/default/${frameType}.frame`;
+---
+
+{gygEnabled && (
+  <section class={framed ? "my-12" : ""}>
+    {title && (
+      <div class="mb-6 max-w-3xl">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Touren & Tickets" : "Tours & tickets"}
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-2">
+          {title}
+        </h2>
+        {lead && (
+          <p class="text-base text-ink-600 leading-relaxed">
+            {lead}
+          </p>
+        )}
+      </div>
+    )}
+
+    <div
+      data-gyg-href={frameUrl}
+      data-gyg-locale-code={affiliate.getYourGuide.locale}
+      data-gyg-currency="EUR"
+      data-gyg-widget={widgetType}
+      data-gyg-partner-id={affiliate.getYourGuide.partnerId}
+      data-gyg-number-of-items={mode === "availability" ? undefined : String(numberOfItems)}
+      data-gyg-cmp={cmp ?? "default"}
+      data-gyg-q={mode === "activities" ? q : mode === "city" ? cityQuery : undefined}
+      data-gyg-location-id={mode === "city" ? locationId : undefined}
+      data-gyg-tour-id={mode === "availability" ? activityId : undefined}
+      data-gyg-variant={mode === "availability" ? "horizontal" : undefined}
+      class="gyg-widget-host rounded-2xl overflow-hidden"
+    ></div>
+
+    <p class="mt-3 text-[11px] text-ink-500 leading-relaxed">
+      {locale === "de"
+        ? "* Touren & Tickets von GetYourGuide. Beim Buchen über die Marker erhalten wir eine Provision. Du zahlst keinen Cent extra."
+        : "* Tours & tickets by GetYourGuide. We earn a commission on bookings made through the markers. No extra cost for you."}
+    </p>
+  </section>
+)}

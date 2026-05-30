@@ -1,0 +1,139 @@
+---
+/**
+ * Stay22 Top-Hotels Live-Block
+ * -----------------------------
+ * Build-Time-Fetch der aktuell bestbewerteten Hotels einer Stadt via
+ * Stay22 Direct Travel API. Hotels kommen mit fertig affiliate-getaggten
+ * Deep-Links direkt aus der API — kein Client-Rewrite nötig.
+ *
+ * Aktualisierung: GitHub Action alle 6h (siehe .github/workflows/rebuild.yml).
+ * Stay22 ToS: 60min Cache OK, kein DB-Storage. CDN-Cache-Control auf
+ * s-maxage=3600 + stale-while-revalidate=86400.
+ *
+ * Graceful Degradation: Wenn STAY22_API_KEY env-Var fehlt oder die API
+ * leer zurückkommt, rendert die Komponente nichts.
+ */
+import type { Locale } from "../data/site";
+import { getTopHotels, type Stay22Accommodation } from "../lib/stay22";
+import { affiliate } from "../data/affiliate";
+
+interface Props {
+  /** Volltext-Adresse für Stay22-Geo-Suche. Default: "Berlin, Germany". */
+  address?: string;
+  /** Anzahl Hotels (max 12 sinnvoll für Grid). */
+  limit?: number;
+  title?: string;
+  lead?: string;
+  locale?: Locale;
+}
+
+const {
+  address = "Berlin, Germany",
+  limit = 8,
+  locale = "de",
+  title = locale === "de"
+    ? "Aktuell bestbewertete Hotels in Berlin"
+    : "Currently top-rated hotels in Berlin",
+  lead = locale === "de"
+    ? "Live von Booking.com — aktuelle Bewertungen, Preise und Verfügbarkeiten."
+    : "Live from Booking.com — current ratings, prices and availability.",
+} = Astro.props;
+
+let hotels: Stay22Accommodation[] | null = null;
+try {
+  hotels = await getTopHotels(address, affiliate.stay22.lmaId, { limit });
+} catch (err) {
+  console.error("[Stay22TopHotels] Fetch fehlgeschlagen:", err);
+  hotels = null;
+}
+
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
+const buildTime = new Date().toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+if (visible.length > 0 && Astro.response) {
+  Astro.response.headers.set(
+    "Cache-Control",
+    "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
+  );
+}
+---
+
+{visible.length > 0 && (
+  <section class="my-12">
+    <div class="mb-8 max-w-3xl">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Live von Stay22" : "Live from Stay22"}
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-2">
+        {title}
+      </h2>
+      <p class="text-base text-ink-600 leading-relaxed">{lead}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {visible.map((h) => (
+        <a
+          href={h.link || "#"}
+          target="_blank"
+          rel="sponsored noopener nofollow"
+          class="group block overflow-hidden rounded-2xl border border-ink-100 bg-white hover:border-brand-300 hover:shadow-md transition-all"
+        >
+          {h.image && (
+            <div class="aspect-[4/3] overflow-hidden bg-ink-100">
+              <img
+                src={h.image}
+                alt={h.name}
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          )}
+          <div class="p-4">
+            <div class="flex items-center gap-2 mb-1.5">
+              {h.starRating && (
+                <span class="text-xs font-bold text-amber-500">
+                  {"★".repeat(Math.round(h.starRating))}
+                </span>
+              )}
+              {h.rating?.score && (
+                <span class="inline-flex items-center rounded-full bg-brand-50 border border-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-700">
+                  {h.rating.score.toFixed(1)} / 10
+                </span>
+              )}
+            </div>
+            <h3 class="font-bold text-sm leading-tight mb-1.5 text-ink-900 group-hover:text-brand-700 transition-colors line-clamp-2">
+              {h.name}
+            </h3>
+            {h.address?.areaName && (
+              <p class="text-[11px] text-ink-500 mb-2">{h.address.areaName}</p>
+            )}
+            {(h.price?.formattedPerNight || h.price?.formattedTotal) && (
+              <p class="text-sm font-semibold text-ink-900">
+                {h.price?.formattedPerNight ?? h.price?.formattedTotal}
+                <span class="text-xs font-normal text-ink-500">
+                  {h.price?.formattedPerNight ? (locale === "de" ? " / Nacht" : " / night") : ""}
+                </span>
+              </p>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-[11px] mt-4 text-ink-500 leading-relaxed">
+      {locale === "de"
+        ? "* Sponsored — Buchung läuft über Booking.com via Stay22-Affiliate. Stand: "
+        : "* Sponsored — booking via Booking.com through Stay22 affiliate. As of "}
+      {buildTime}.{" "}
+      {locale === "de"
+        ? "Preise und Verfügbarkeit ändern sich täglich."
+        : "Prices and availability change daily."}
+    </p>
+  </section>
+)}

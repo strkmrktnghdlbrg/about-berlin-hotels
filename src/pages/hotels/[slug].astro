@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HotelPage from "../../components/HotelPage.astro";
+import { hotels } from "../../data/hotels";
+
+export async function getStaticPaths() {
+  return hotels.map((h) => ({ params: { slug: h.slug }, props: { hotel: h } }));
+}
+
+const { hotel } = Astro.props;
+const title = `${hotel.name} — Hotel in Berlin · About Berlin Hotels`;
+const description = hotel.shortDesc.de;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale="de"
+  alternatePath={`/en/hotels/${hotel.slug}/`}
+>
+  <HotelPage hotel={hotel} locale="de" />
+</BaseLayout>

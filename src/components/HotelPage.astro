@@ -1,0 +1,330 @@
+---
+import type { Hotel } from "../data/hotels";
+import type { Locale } from "../data/site";
+import { hotels, getHotelsByDistrict } from "../data/hotels";
+import { getDistrict, districts } from "../data/districts";
+import { getCategory, categories } from "../data/categories";
+import HotelCard from "./HotelCard.astro";
+import Stay22Map from "./Stay22Map.astro";
+import BookingCTA from "./BookingCTA.astro";
+import FigureImage from "./FigureImage.astro";
+import JsonLd from "./JsonLd.astro";
+import { districtImages } from "../data/images";
+import { site } from "../data/site";
+
+type Props = { hotel: Hotel; locale: Locale };
+const { hotel, locale } = Astro.props;
+const base = locale === "de" ? "" : "/en";
+
+const hotelUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+
+const district = getDistrict(hotel.district);
+const hotelCategories = hotel.categories
+  .map((s) => getCategory(s))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const similar = hotels
+  .filter(
+    (h) =>
+      h.slug !== hotel.slug &&
+      (h.district === hotel.district ||
+        h.categories.some((c) => hotel.categories.includes(c))),
+  )
+  .slice(0, 3);
+
+const stars = "★".repeat(hotel.stars);
+const districtBase = locale === "de" ? "/stadtteile" : "/en/districts";
+const districtImage = district ? districtImages[district.slug] : undefined;
+
+// ───── Schema.org JSON-LD ─────────────────────────────────────────────────
+const hotelSchema = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  name: hotel.name,
+  description: hotel.description[locale],
+  url: hotelUrl,
+  starRating: {
+    "@type": "Rating",
+    ratingValue: hotel.stars,
+    bestRating: 5,
+  },
+  priceRange: `from EUR ${hotel.priceFrom}`,
+  ...(hotel.website ? { sameAs: [hotel.website] } : {}),
+  ...(hotel.coordinates || district
+    ? {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: hotel.coordinates?.[0] ?? district?.geo.lat,
+          longitude: hotel.coordinates?.[1] ?? district?.geo.lng,
+        },
+      }
+    : {}),
+  ...(district
+    ? {
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: district.name,
+          addressRegion: "Berlin",
+          addressCountry: "DE",
+        },
+      }
+    : {}),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: "Hotels", item: new URL(`${base}/hotels/`, site.baseUrl).toString() },
+    ...(district
+      ? [{ "@type": "ListItem", position: 3, name: district.name, item: new URL(`${districtBase}/${district.slug}/`, site.baseUrl).toString() }]
+      : []),
+    { "@type": "ListItem", position: district ? 4 : 3, name: hotel.name, item: hotelUrl },
+  ],
+};
+---
+
+<JsonLd data={hotelSchema} />
+<JsonLd data={breadcrumbSchema} />
+
+<!-- HERO (Bezirk-Stimmungsbild, kein erfundenes Hotel-Bild) -->
+<section class="relative overflow-hidden text-white min-h-[460px]">
+  {districtImage ? (
+    <FigureImage image={districtImage} alt={district?.name ?? ""} variant="hero" loading="eager" />
+  ) : (
+    <div class="absolute inset-0 gradient-spree"></div>
+  )}
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-18">
+    <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+      <a href={`${base}/`} class="hover:text-white">{locale === "de" ? "Start" : "Home"}</a>
+      <span>›</span>
+      <a href={`${base}/hotels/`} class="hover:text-white">Hotels</a>
+      <span>›</span>
+      {district && (
+        <>
+          <a href={`${districtBase}/${district.slug}/`} class="hover:text-white">{district.name}</a>
+          <span>›</span>
+        </>
+      )}
+      <span class="text-white">{hotel.name}</span>
+    </nav>
+
+    <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] items-end">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+            {stars}
+          </span>
+          {district && (
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+              {district.name}
+            </span>
+          )}
+          {hotelCategories.slice(0, 2).map((c) => (
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+              {c.shortName[locale]}
+            </span>
+          ))}
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-balance mb-5 leading-[1.05] drop-shadow-md">
+          {hotel.name}
+        </h1>
+        <p class="text-lg sm:text-xl text-white leading-relaxed max-w-2xl drop-shadow">
+          {hotel.shortDesc[locale]}
+        </p>
+      </div>
+
+      <div class="rounded-2xl bg-brand-900/70 backdrop-blur-md border border-white/25 p-6 shadow-xl">
+        <div class="text-xs uppercase tracking-widest text-brand-100 mb-1">
+          {locale === "de" ? "Preise ab" : "Prices from"}
+        </div>
+        <div class="text-4xl font-bold mb-1">
+          €{hotel.priceFrom}<span class="text-lg font-medium text-brand-100">/{locale === "de" ? "Nacht" : "night"}</span>
+        </div>
+        <div class="text-xs text-brand-100 mb-5">
+          {locale === "de"
+            ? "Preise variieren nach Saison und Verfügbarkeit"
+            : "Prices vary by season and availability"}
+        </div>
+
+        {(hotel.bookingUrl || hotel.website) && (
+          <div class="mb-3">
+            <BookingCTA
+              hotelName={hotel.name}
+              bookingUrl={hotel.bookingUrl}
+              website={hotel.website}
+              locale={locale}
+              size="lg"
+              disclosure={false}
+            />
+          </div>
+        )}
+
+        {district && (
+          <a
+            href={`#booking-map`}
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 px-5 py-3 text-sm font-bold text-white hover:bg-white/25 transition-colors"
+          >
+            {locale === "de" ? "Verfügbarkeit auf der Karte" : "Check availability on map"}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        )}
+
+        {hotel.bookingUrl && (
+          <p class="mt-3 text-[11px] text-brand-100/90 leading-relaxed">
+            {locale === "de"
+              ? "* Affiliate-Link: Bei Buchung über Stay22/Booking.com erhalten wir eine Provision. Du zahlst keinen Cent extra."
+              : "* Affiliate link: we earn a commission via Stay22/Booking.com. No extra cost for you."}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION + HIGHLIGHTS -->
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-4">
+        {locale === "de" ? "Über das Hotel" : "About this hotel"}
+      </h2>
+      <p class="text-lg text-ink-700 leading-relaxed mb-6 text-balance">
+        {hotel.description[locale]}
+      </p>
+
+      {hotel.website && (
+        <div class="mb-6 rounded-xl bg-ink-50 border border-ink-100 px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+          <span class="text-xs text-ink-600">
+            {locale === "de" ? "Offizielle Hotel-Website" : "Official hotel website"}
+          </span>
+          <a
+            href={hotel.website}
+            target="_blank"
+            rel="noopener nofollow"
+            class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:text-brand-800"
+          >
+            {new URL(hotel.website).hostname.replace(/^www\./, "")}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+            </svg>
+          </a>
+        </div>
+      )}
+
+      {district && (
+        <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Lage" : "Location"}
+          </span>
+          <h3 class="text-lg font-bold text-ink-900 mb-2">{district.name}</h3>
+          <p class="text-sm text-ink-700 leading-relaxed mb-3">{district.vibe[locale]}</p>
+          <a
+            href={`${districtBase}/${district.slug}/`}
+            class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:text-brand-800"
+          >
+            {locale === "de" ? "Mehr über " : "More about "}{district.name}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+
+    <aside class="space-y-4">
+      <div class="rounded-2xl border border-ink-100 bg-white p-6">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-3 block">
+          {locale === "de" ? "Highlights" : "Highlights"}
+        </span>
+        <ul class="space-y-2">
+          {hotel.highlights[locale].map((h) => (
+            <li class="flex items-start gap-2 text-sm text-ink-700">
+              <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span>
+              <span class="font-medium">{h}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {hotelCategories.length > 0 && (
+        <div class="rounded-2xl border border-ink-100 bg-white p-6">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-3 block">
+            {locale === "de" ? "Hotel-Stil" : "Hotel style"}
+          </span>
+          <div class="flex flex-wrap gap-2">
+            {hotelCategories.map((c) => {
+              const cBase = locale === "de" ? "/kategorien" : "/en/categories";
+              const cSlug = locale === "de" ? c.slug : c.slugEn;
+              return (
+                <a
+                  href={`${cBase}/${cSlug}/`}
+                  class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-100 px-3 py-1 text-xs font-bold text-brand-700 hover:bg-brand-100 transition-colors"
+                >
+                  <span>{c.icon}</span>
+                  <span>{c.name[locale]}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </aside>
+  </div>
+</section>
+
+<!-- STAY22 MAP -->
+{district && (
+  <section id="booking-map" class="py-14 sm:py-16 surface-soft scroll-mt-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Verfügbarkeit & Buchung" : "Availability & booking"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de"
+            ? `${hotel.name} & andere Hotels in ${district.name}`
+            : `${hotel.name} & other hotels in ${district.name}`}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3 max-w-2xl mx-auto">
+          {locale === "de"
+            ? "Vergleiche Preise und Verfügbarkeit direkt auf der Karte."
+            : "Compare prices and availability directly on the map."}
+        </p>
+      </div>
+      <Stay22Map
+        embedId={district.stay22Id}
+        lat={hotel.coordinates?.[0] ?? district.geo.lat}
+        lng={hotel.coordinates?.[1] ?? district.geo.lng}
+        zoom={hotel.coordinates ? 15 : district.geo.zoom}
+        height="620px"
+        title={locale === "de" ? `Hotels rund um ${hotel.name}` : `Hotels around ${hotel.name}`}
+      />
+    </div>
+  </section>
+)}
+
+<!-- SIMILAR HOTELS -->
+{similar.length > 0 && (
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Vergleichbare Häuser" : "Similar properties"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de" ? "Hotels mit ähnlichem Stil" : "Hotels with similar style"}
+        </h2>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {similar.map((h) => <HotelCard hotel={h} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}

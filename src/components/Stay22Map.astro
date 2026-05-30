@@ -1,0 +1,93 @@
+---
+/**
+ * Stay22 Hotel-Map.
+ * -----------------
+ * Vier-stufige Fallback-Kette für maximale Resilienz:
+ *
+ *   1. props.embedId vorhanden     → Legacy-Dashboard-Embed (https://stay22.com/embed/<id>)
+ *   2. Stay22 enabled + lmaId      → Parameter-URL mit lmaId + lat/lng/zoom/maincolor
+ *   3. nur lat/lng (no lmaId)      → Parameter-URL OHNE aid (Widget sichtbar, kein Tracking)
+ *   4. Fallback                    → OSM-Static-Map-Bild
+ *
+ * Maincolor aus affiliate.ts (Brand-Hex ohne #).
+ */
+import { affiliate, stay22Enabled } from "../data/affiliate";
+
+type Props = {
+  /** Optional: vorkonfiguriertes Embed aus dem Stay22-Dashboard. Vorrang vor Parameter-URL. */
+  embedId?: string;
+  /** Karten-Zentrum lat. Default: Berlin-Mitte 52.52. */
+  lat?: number;
+  /** Karten-Zentrum lng. Default: Berlin-Mitte 13.405. */
+  lng?: number;
+  /** Zoom-Level (13 = Stadt, 14 = Bezirk, 15 = Hotel-Detail). */
+  zoom?: number;
+  /** Container-Höhe (CSS-String, z.B. "560px"). */
+  height?: string;
+  /** iframe-Title für a11y. */
+  title?: string;
+  /** Affiliate-Disclosure unter der Karte rendern. */
+  disclosure?: boolean;
+};
+
+const {
+  embedId,
+  lat = 52.52,
+  lng = 13.405,
+  zoom = 13,
+  height = "560px",
+  title = "Hotels auf der Karte",
+  disclosure = true,
+} = Astro.props;
+
+let embedUrl: string | undefined;
+if (embedId) {
+  embedUrl = `https://stay22.com/embed/${embedId}`;
+} else if (stay22Enabled) {
+  const params = new URLSearchParams({
+    aid: affiliate.stay22.lmaId,
+    lat: String(lat),
+    lng: String(lng),
+    zoom: String(zoom),
+    maincolor: affiliate.stay22.mainColor,
+  });
+  embedUrl = `https://www.stay22.com/embed/widget?${params.toString()}`;
+}
+
+const osmStaticUrl = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=${zoom}&size=1200x600&maptype=mapnik&markers=${lat},${lng},red-pushpin`;
+---
+
+<div class="rounded-2xl overflow-hidden border border-ink-100 shadow-sm bg-white">
+  {embedUrl ? (
+    <iframe
+      src={embedUrl}
+      title={title}
+      loading="lazy"
+      width="100%"
+      height={height}
+      style={`border:0; display:block; width:100%; height:${height};`}
+      allowfullscreen
+      allow="geolocation"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  ) : (
+    <div class="relative" style={`height:${height}`}>
+      <img
+        src={osmStaticUrl}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white text-xs">
+        Statische Übersichtskarte. Live-Hotelpreise erscheinen, sobald Stay22 konfiguriert ist.
+      </div>
+    </div>
+  )}
+</div>
+
+{disclosure && (
+  <p class="mt-3 text-xs text-ink-500 leading-relaxed">
+    * Sponsored — Buchung läuft über Booking.com via Stay22-Affiliate. Du zahlst keinen Cent extra.
+  </p>
+)}

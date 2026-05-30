@@ -1,0 +1,61 @@
+---
+import type { District } from "../data/districts";
+import type { Locale } from "../data/site";
+import { localePrefix } from "../data/site";
+import { getHotelsByDistrict } from "../data/hotels";
+import { districtImages } from "../data/images";
+import FigureImage from "./FigureImage.astro";
+
+type Props = { district: District; locale: Locale };
+const { district, locale } = Astro.props;
+const base = locale === "de" ? "/stadtteile" : "/en/districts";
+const href = `${base}/${district.slug}/`;
+const hotelCount = getHotelsByDistrict(district.slug).length;
+const image = districtImages[district.slug];
+
+const regionLabel = {
+  mitte: locale === "de" ? "Zentrum" : "Centre",
+  west: locale === "de" ? "West" : "West",
+  ost: locale === "de" ? "Ost" : "East",
+  nord: locale === "de" ? "Nord" : "North",
+  süd: locale === "de" ? "Süd" : "South",
+}[district.region];
+---
+
+<a
+  href={href}
+  class="group block rounded-2xl border border-ink-100 bg-white overflow-hidden transition-all hover:border-brand-200 hover:shadow-lg hover:-translate-y-0.5"
+>
+  {image && (
+    <FigureImage image={image} alt={district.name} variant="card" />
+  )}
+  <div class="p-5">
+    <div class="flex items-start justify-between gap-2 mb-3">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-100 px-2.5 py-0.5 text-[10px] font-bold text-brand-700 uppercase tracking-wider">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+        {regionLabel}
+      </span>
+      {hotelCount > 0 && (
+        <span class="text-xs text-ink-500 font-medium">
+          {hotelCount} {locale === "de" ? "Hotels" : "hotels"}
+        </span>
+      )}
+    </div>
+
+    <h3 class="text-lg font-bold text-ink-900 mb-1 group-hover:text-brand-700 transition-colors">
+      {district.name}
+    </h3>
+
+    <p class="text-sm text-ink-600 leading-relaxed mb-4 line-clamp-3">
+      {district.vibe[locale]}
+    </p>
+
+    <div class="flex flex-wrap gap-1.5">
+      {district.highlights[locale].slice(0, 3).map((h) => (
+        <span class="inline-block rounded-md bg-ink-50 px-2 py-0.5 text-[11px] font-medium text-ink-600">
+          {h}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>

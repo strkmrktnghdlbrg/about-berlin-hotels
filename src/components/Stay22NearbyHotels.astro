@@ -1,0 +1,144 @@
+---
+/**
+ * Stay22 Hotels in der Nähe (lat/lng-basiert).
+ * --------------------------------------------
+ * Build-Time-Fetch von Hotels im Umkreis eines Standorts — typisch auf
+ * Sehenswürdigkeiten-Detail-Pages. Hochkonvertierende Position, weil der
+ * User schon im Trip-Planning-Mode liest.
+ *
+ * Graceful Degradation: ohne STAY22_API_KEY rendert nichts; die statische
+ * Hotels-Nearby-Section auf der Page bleibt sichtbar.
+ */
+import type { Locale } from "../data/site";
+import { getNearbyHotels, type Stay22Accommodation } from "../lib/stay22";
+import { affiliate } from "../data/affiliate";
+
+interface Props {
+  lat: number;
+  lng: number;
+  /** Name des Ortes für Headline und Abstand-Label. */
+  near: string;
+  /** Suchradius in Metern. Default 1500. */
+  radius?: number;
+  /** Anzahl Hotels (max 6 sinnvoll). */
+  limit?: number;
+  /** Tracking-Sub-ID, damit im Dashboard nach Platzierung auswertbar. */
+  campaignSuffix?: string;
+  title?: string;
+  lead?: string;
+  locale?: Locale;
+}
+
+const {
+  lat,
+  lng,
+  near,
+  radius = 1500,
+  limit = 4,
+  campaignSuffix,
+  locale = "de",
+  title = locale === "de"
+    ? `Hotels in der Nähe von ${near}`
+    : `Hotels near ${near}`,
+  lead = locale === "de"
+    ? `Im ${Math.round(radius / 100) / 10} km Umkreis — Live-Preise und Bewertungen von Booking.com.`
+    : `Within ${Math.round(radius / 100) / 10} km — live prices and ratings from Booking.com.`,
+} = Astro.props;
+
+const campaign = campaignSuffix
+  ? `${affiliate.stay22.lmaId}-${campaignSuffix}`
+  : affiliate.stay22.lmaId;
+
+let hotels: Stay22Accommodation[] | null = null;
+try {
+  hotels = await getNearbyHotels(lat, lng, affiliate.stay22.lmaId, {
+    radius,
+    limit,
+    campaign,
+  });
+} catch (err) {
+  console.error("[Stay22NearbyHotels] Fetch fehlgeschlagen:", err);
+  hotels = null;
+}
+
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
+---
+
+{visible.length > 0 && (
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mb-8 text-center max-w-2xl mx-auto">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Live von Stay22" : "Live from Stay22"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {title}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">{lead}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {visible.map((h) => (
+          <a
+            href={h.link || "#"}
+            target="_blank"
+            rel="sponsored noopener nofollow"
+            class="group block overflow-hidden rounded-2xl border border-ink-100 bg-white hover:border-brand-300 hover:shadow-md transition-all"
+          >
+            {h.image && (
+              <div class="aspect-[4/3] overflow-hidden bg-ink-100">
+                <img
+                  src={h.image}
+                  alt={h.name}
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            )}
+            <div class="p-4">
+              <div class="flex items-center gap-2 mb-1.5">
+                {h.starRating && (
+                  <span class="text-xs font-bold text-amber-500">
+                    {"★".repeat(Math.round(h.starRating))}
+                  </span>
+                )}
+                {h.rating?.score && (
+                  <span class="inline-flex items-center rounded-full bg-brand-50 border border-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-700">
+                    {h.rating.score.toFixed(1)} / 10
+                  </span>
+                )}
+              </div>
+              <h3 class="font-bold text-sm leading-tight mb-1.5 text-ink-900 group-hover:text-brand-700 transition-colors line-clamp-2">
+                {h.name}
+              </h3>
+              {typeof h.distance === "number" && (
+                <p class="text-[11px] text-ink-500 mb-2">
+                  {locale === "de" ? "Entfernung " : "Distance "}
+                  {h.distance < 1000
+                    ? `${h.distance} m`
+                    : `${(h.distance / 1000).toFixed(1)} km`}
+                </p>
+              )}
+              {(h.price?.formattedPerNight || h.price?.formattedTotal) && (
+                <p class="text-sm font-semibold text-ink-900">
+                  {h.price?.formattedPerNight ?? h.price?.formattedTotal}
+                  <span class="text-xs font-normal text-ink-500">
+                    {h.price?.formattedPerNight ? (locale === "de" ? " / Nacht" : " / night") : ""}
+                  </span>
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p class="text-[11px] mt-6 text-ink-500 leading-relaxed text-center">
+        {locale === "de"
+          ? "* Sponsored — Buchung läuft über Booking.com via Stay22-Affiliate."
+          : "* Sponsored — booking via Booking.com through Stay22 affiliate."}
+      </p>
+    </div>
+  </section>
+)}

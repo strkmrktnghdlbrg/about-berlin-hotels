@@ -1,0 +1,80 @@
+---
+/**
+ * BookingCTA — affiliate-konformer Booking-Button.
+ *
+ * Pflicht-Attribute laut Playbook 7.1:
+ *   - rel="sponsored noopener nofollow"
+ *   - target="_blank"
+ *   - Sichtbare Affiliate-Disclosure direkt unter dem CTA
+ *
+ * Stay22 `letmeallez.js` rewritet die booking.com-URL zur Laufzeit zu
+ * einem Stay22-Affiliate-Link (siehe BaseLayout). Wenn das Snippet
+ * blockiert ist (Adblocker), folgt der User dem nativen booking.com-Link
+ * ohne Provision — gewollter Fallback.
+ *
+ * Wenn KEINE `bookingUrl` gepflegt ist, fällt der CTA auf `website` (offizielle
+ * Hotelseite) zurück und zeigt ein passendes Label.
+ */
+import type { Locale } from "../data/site";
+
+type Props = {
+  hotelName: string;
+  /** Native booking.com URL — wird vom Stay22-Snippet rewritet. */
+  bookingUrl?: string;
+  /** Fallback wenn keine bookingUrl gepflegt. */
+  website?: string;
+  locale: Locale;
+  /** Visual size: 'sm' für Cards, 'lg' für Hotel-Detail-Hero. */
+  size?: "sm" | "lg";
+  /** Disclosure-Mikrotext unten anzeigen. */
+  disclosure?: boolean;
+};
+
+const { hotelName, bookingUrl, website, locale, size = "lg", disclosure = true } = Astro.props;
+
+const targetUrl = bookingUrl ?? website;
+if (!targetUrl) {
+  // Ohne URL kein CTA — die Komponente rendert dann nichts.
+}
+
+const useBooking = Boolean(bookingUrl);
+
+const label = useBooking
+  ? locale === "de"
+    ? "Auf Booking.com prüfen"
+    : "Check on Booking.com"
+  : locale === "de"
+    ? "Offizielle Website besuchen"
+    : "Visit official website";
+
+const cls =
+  size === "lg"
+    ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 px-5 py-3 text-sm font-bold text-white transition-colors"
+    : "inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 px-3.5 py-2 text-xs font-bold text-white transition-colors";
+---
+
+{targetUrl && (
+  <div>
+    <a
+      href={targetUrl}
+      target="_blank"
+      rel="sponsored noopener nofollow"
+      class={cls}
+      aria-label={`${label}: ${hotelName}`}
+    >
+      {label}
+      <svg viewBox="0 0 20 20" fill="currentColor" class={size === "lg" ? "h-4 w-4" : "h-3.5 w-3.5"}>
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+      </svg>
+    </a>
+
+    {disclosure && useBooking && (
+      <p class="mt-2 text-[11px] text-ink-500 leading-relaxed">
+        {locale === "de"
+          ? "* Affiliate-Link: Beim Buchen über diesen Link erhalten wir eine kleine Provision. Du zahlst keinen Cent extra."
+          : "* Affiliate link: we receive a small commission when you book through this link. You don't pay a cent extra."}
+      </p>
+    )}
+  </div>
+)}

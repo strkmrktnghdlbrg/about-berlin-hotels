@@ -1,0 +1,116 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+import { site, type Locale, otherLocale, localePrefix } from "../data/site";
+import { analytics, gtmEnabled } from "../data/analytics";
+import { adsense, adsenseEnabled } from "../data/adsense";
+import { affiliate, stay22Enabled, gygEnabled } from "../data/affiliate";
+
+type Props = {
+  title: string;
+  description: string;
+  locale: Locale;
+  /** Alternativ-URL für hreflang in der anderen Sprache (Pfad ohne Domain) */
+  alternatePath?: string;
+  noindex?: boolean;
+  ogImage?: string;
+};
+
+const { title, description, locale, alternatePath, noindex = false, ogImage } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.baseUrl).toString();
+const ogUrl = canonical;
+const ogImageUrl = ogImage ? new URL(ogImage, site.baseUrl).toString() : undefined;
+
+// hreflang
+const altLocale = otherLocale(locale);
+const altUrl = alternatePath
+  ? new URL(alternatePath, site.baseUrl).toString()
+  : null;
+---
+
+<!doctype html>
+<html lang={locale === "de" ? "de-DE" : "en-US"}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    {altUrl && (
+      <>
+        <link rel="alternate" hreflang={altLocale} href={altUrl} />
+        <link rel="alternate" hreflang={locale} href={canonical} />
+        <link rel="alternate" hreflang="x-default" href={canonical} />
+      </>
+    )}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:locale" content={locale === "de" ? "de_DE" : "en_US"} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {gtmEnabled && (
+      <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${analytics.gtmId}');`} />
+    )}
+
+    {/* Stay22 letmeallez.js — rewritet booking.com-Links sitewide.
+        Nur laden wenn lmaID gepflegt; sonst rendern Hotel-CTAs den nicht-affiliate-getrackten Booking-Link. */}
+    {stay22Enabled && (
+      <script is:inline set:html={`(function(s,t,a,y,twenty,two){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'${affiliate.stay22.lmaId}'};twenty=t.createElement(a);two=t.getElementsByTagName(a)[0];twenty.async=1;twenty.src=y;two.parentNode.insertBefore(twenty,two);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');`} />
+    )}
+
+    {/* GetYourGuide Loader — sitewide, ersetzt <div data-gyg-*> Platzhalter zur Laufzeit. */}
+    {gygEnabled && (
+      <script
+        async
+        defer
+        src="https://widget.getyourguide.com/dist/pa.umd.production.min.js"
+        data-gyg-partner-id={affiliate.getYourGuide.partnerId}
+      ></script>
+    )}
+
+    {/* Google AdSense — sitewide, aber NICHT auf noindex-Pages (Impressum/Datenschutz/404). */}
+    {adsenseEnabled && !noindex && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsense.publisherId}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
+  </head>
+  <body class="bg-white text-ink-800 font-sans antialiased">
+    {gtmEnabled && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${analytics.gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe>
+      </noscript>
+    )}
+
+    <Header locale={locale} alternatePath={alternatePath} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <CookieBanner locale={locale} />
+  </body>
+</html>

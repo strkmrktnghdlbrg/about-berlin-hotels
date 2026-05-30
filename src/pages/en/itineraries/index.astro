@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { guides, guideHrefEn } from "../../../data/guides";
+import { attractionImages, districtImages } from "../../../data/images";
+import FigureImage from "../../../components/FigureImage.astro";
+import GetYourGuideWidget from "../../../components/GetYourGuideWidget.astro";
+
+const locale = "en" as const;
+---
+
+<BaseLayout
+  title="Berlin Itineraries — curated 1-3 day plans"
+  description="Concrete daily plans for Berlin: the 3-day classic, Berlin with kids and a rainy-day plan. Linked to real attractions, districts and hotel picks."
+  locale={locale}
+  alternatePath="/reiseplaner/"
+>
+  <section class="relative overflow-hidden gradient-spree text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200 animate-pulse"></span>
+        Itineraries
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05]">
+        Curated Berlin plans, ready to follow
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-3xl text-balance">
+        Time slots, concrete sights, transit and restaurant tips — and at the
+        end of every plan a hotel suggestion that fits the neighborhood.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {guides.map((g) => {
+          const image =
+            g.imageKey?.folder === "sights"
+              ? attractionImages[g.imageKey.slug]
+              : g.imageKey?.folder === "districts"
+                ? districtImages[g.imageKey.slug]
+                : undefined;
+          return (
+            <a
+              href={guideHrefEn(g)}
+              class="group block overflow-hidden rounded-2xl border border-ink-100 bg-white hover:border-brand-300 hover:shadow-md transition-all"
+            >
+              <div class="relative h-48">
+                {image ? (
+                  <FigureImage image={image} alt={g.title.en} variant="card" />
+                ) : (
+                  <div class="absolute inset-0 gradient-spree"></div>
+                )}
+              </div>
+              <div class="p-5">
+                <div class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2">
+                  {g.duration} {g.duration === 1 ? "Day" : "Days"} · {g.audience.en}
+                </div>
+                <h2 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-brand-700">
+                  {g.title.en}
+                </h2>
+                <p class="text-sm text-ink-600 leading-relaxed line-clamp-3">
+                  {g.description.en}
+                </p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <GetYourGuideWidget
+        mode="city"
+        cityQuery="Berlin"
+        numberOfItems={4}
+        cmp="itineraries-city"
+        locale={locale}
+        title="Tours & tickets that fit every plan"
+        lead="Guided city walks, museum entry and experiences — perfect add-ons for any day plan."
+        framed={false}
+      />
+    </div>
+  </section>
+</BaseLayout>

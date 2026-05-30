@@ -1,0 +1,269 @@
+---
+/**
+ * Reiseplaner-Detail-Template.
+ * Rendert einen Guide mit Tagen, Slots und Cross-Refs zu Sehenswürdigkeiten,
+ * Bezirken und Hotels. Schema.org Article + ItemList pro Tag.
+ */
+import type { Guide, GuideSlot } from "../data/guides";
+import type { Locale } from "../data/site";
+import { site } from "../data/site";
+import { guides, guideHrefDe, guideHrefEn } from "../data/guides";
+import { attractions, getAttraction } from "../data/attractions";
+import { districts, getDistrict } from "../data/districts";
+import { hotels as allHotels } from "../data/hotels";
+import { attractionImages, districtImages } from "../data/images";
+import FigureImage from "./FigureImage.astro";
+import AttractionCard from "./AttractionCard.astro";
+import HotelCard from "./HotelCard.astro";
+import JsonLd from "./JsonLd.astro";
+
+type Props = { guide: Guide; locale: Locale };
+const { guide, locale } = Astro.props;
+const base = locale === "de" ? "" : "/en";
+const planBase = locale === "de" ? "/reiseplaner" : "/en/itineraries";
+const guideUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+
+// Hero-Bild: aus imageKey, sonst gradient
+const heroImage =
+  guide.imageKey?.folder === "sights"
+    ? attractionImages[guide.imageKey.slug]
+    : guide.imageKey?.folder === "districts"
+      ? districtImages[guide.imageKey.slug]
+      : undefined;
+
+// Slot-Typ → Icon + Label
+const slotMeta: Record<GuideSlot["type"], { icon: string; de: string; en: string }> = {
+  morgens: { icon: "☀️", de: "Vormittag", en: "Morning" },
+  mittagessen: { icon: "🍽️", de: "Mittagessen", en: "Lunch" },
+  nachmittag: { icon: "🚶", de: "Nachmittag", en: "Afternoon" },
+  abendessen: { icon: "🍷", de: "Abendessen", en: "Dinner" },
+  abends: { icon: "🌆", de: "Abend", en: "Evening" },
+  uebernachten: { icon: "🛏️", de: "Übernachten", en: "Stay" },
+};
+
+// Cross-Referenced attractions + hotels über alle Tage
+const referencedAttractions = Array.from(
+  new Set(
+    guide.days.flatMap((d) => d.slots.flatMap((s) => (s.attractionSlug ? [s.attractionSlug] : []))),
+  ),
+)
+  .map((slug) => getAttraction(slug, "de"))
+  .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+const referencedDistrictSlugs = Array.from(
+  new Set(
+    guide.days.flatMap((d) => d.slots.flatMap((s) => (s.districtSlug ? [s.districtSlug] : []))),
+  ),
+);
+const referencedDistricts = referencedDistrictSlugs
+  .map((slug) => getDistrict(slug))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
+const hotelSuggestions = referencedDistrictSlugs.length
+  ? allHotels.filter((h) => referencedDistrictSlugs.includes(h.district)).slice(0, 3)
+  : allHotels.filter((h) => h.featured).slice(0, 3);
+
+const districtBase = locale === "de" ? "/stadtteile" : "/en/districts";
+const attractionsBase = locale === "de" ? "/sehenswuerdigkeiten" : "/en/attractions";
+
+// ───── Schema.org ─────
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: guide.title[locale],
+  description: guide.description[locale],
+  url: guideUrl,
+  mainEntityOfPage: guideUrl,
+  about: { "@type": "City", name: "Berlin", sameAs: "https://www.wikidata.org/wiki/Q64" },
+};
+
+const itineraryItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListOrder: "https://schema.org/ItemListOrderAscending",
+  name: guide.title[locale],
+  numberOfItems: guide.days.length,
+  itemListElement: guide.days.map((d) => ({
+    "@type": "ListItem",
+    position: d.number,
+    name: `${locale === "de" ? "Tag" : "Day"} ${d.number}: ${d.title[locale]}`,
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: locale === "de" ? "Reiseplaner" : "Itineraries", item: new URL(`${planBase}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 3, name: guide.title[locale], item: guideUrl },
+  ],
+};
+---
+
+<JsonLd data={articleSchema} />
+<JsonLd data={itineraryItemList} />
+<JsonLd data={breadcrumbSchema} />
+
+<!-- HERO -->
+<section class="relative overflow-hidden text-white min-h-[420px] sm:min-h-[480px]">
+  {heroImage ? (
+    <FigureImage image={heroImage} alt={guide.title[locale]} variant="hero" loading="eager" />
+  ) : (
+    <div class="absolute inset-0 gradient-spree"></div>
+  )}
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+    <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+      <a href={`${base}/`} class="hover:text-white">{locale === "de" ? "Start" : "Home"}</a>
+      <span>›</span>
+      <a href={`${planBase}/`} class="hover:text-white">{locale === "de" ? "Reiseplaner" : "Itineraries"}</a>
+      <span>›</span>
+      <span class="text-white">{guide.title[locale]}</span>
+    </nav>
+
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+        {guide.duration} {locale === "de" ? (guide.duration === 1 ? "Tag" : "Tage") : guide.duration === 1 ? "Day" : "Days"}
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+        {guide.audience[locale]}
+      </span>
+      {guide.bestSeason && (
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+          {guide.bestSeason[locale]}
+        </span>
+      )}
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05] drop-shadow-md">
+      {guide.title[locale]}
+    </h1>
+    <p class="text-lg sm:text-xl text-white leading-relaxed max-w-3xl text-balance drop-shadow">
+      {guide.description[locale]}
+    </p>
+  </div>
+</section>
+
+<!-- DAYS -->
+{guide.days.map((day) => (
+  <section class="py-14 sm:py-16" id={`tag-${day.number}`}>
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? `Tag ${day.number}` : `Day ${day.number}`}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 mb-3">
+          {day.title[locale]}
+        </h2>
+        <p class="text-ink-600 leading-relaxed max-w-3xl">
+          {day.intro[locale]}
+        </p>
+      </div>
+
+      <ol class="space-y-6">
+        {day.slots.map((slot) => {
+          const att = slot.attractionSlug ? getAttraction(slot.attractionSlug, "de") : undefined;
+          const dist = slot.districtSlug ? getDistrict(slot.districtSlug) : undefined;
+          const meta = slotMeta[slot.type];
+          return (
+            <li class="grid gap-4 sm:grid-cols-[160px_1fr] rounded-2xl border border-ink-100 bg-white p-5 sm:p-6">
+              <div>
+                <div class="text-3xl mb-1" aria-hidden="true">{meta.icon}</div>
+                <div class="text-xs font-bold text-brand-700 uppercase tracking-widest">
+                  {meta[locale]}
+                </div>
+                <div class="text-sm font-semibold text-ink-900 mt-1">{slot.time}</div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-ink-900 mb-2">{slot.title[locale]}</h3>
+                <p class="text-ink-700 leading-relaxed mb-3">{slot.description[locale]}</p>
+
+                <div class="flex flex-wrap gap-2 mb-2">
+                  {att && (
+                    <a
+                      href={`${attractionsBase}/${att.slug}/`}
+                      class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-100 px-3 py-1 text-xs font-bold text-brand-700 hover:bg-brand-100"
+                    >
+                      📍 {att.name[locale]}
+                    </a>
+                  )}
+                  {dist && (
+                    <a
+                      href={`${districtBase}/${dist.slug}/`}
+                      class="inline-flex items-center gap-1.5 rounded-full bg-ink-50 border border-ink-100 px-3 py-1 text-xs font-bold text-ink-700 hover:bg-ink-100"
+                    >
+                      🏙️ {dist.name}
+                    </a>
+                  )}
+                </div>
+
+                {slot.tip && (
+                  <div class="mt-3 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-sm text-amber-900">
+                    <strong class="font-bold">💡 {locale === "de" ? "Tipp:" : "Tip:"}</strong>{" "}
+                    {slot.tip[locale]}
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+))}
+
+<!-- HOTEL SUGGESTIONS -->
+{hotelSuggestions.length > 0 && (
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Passend übernachten" : "Where to stay"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de"
+            ? "Hotels in den richtigen Bezirken"
+            : "Hotels in the right neighborhoods"}
+        </h2>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {hotelSuggestions.map((h) => <HotelCard hotel={h} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- OTHER GUIDES -->
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="mb-8">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Weitere Pläne" : "More itineraries"}
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+        {locale === "de" ? "Andere Reiseplaner" : "Other itineraries"}
+      </h2>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {guides
+        .filter((g) => g.slug !== guide.slug)
+        .map((g) => {
+          const href = locale === "de" ? guideHrefDe(g) : guideHrefEn(g);
+          return (
+            <a
+              href={href}
+              class="block rounded-2xl border border-ink-100 bg-white p-5 hover:border-brand-300 hover:shadow-md transition-all"
+            >
+              <div class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2">
+                {g.duration} {locale === "de" ? (g.duration === 1 ? "Tag" : "Tage") : g.duration === 1 ? "Day" : "Days"} · {g.audience[locale]}
+              </div>
+              <h3 class="text-lg font-bold text-ink-900 mb-2">{g.title[locale]}</h3>
+              <p class="text-sm text-ink-600 leading-relaxed">{g.description[locale]}</p>
+            </a>
+          );
+        })}
+    </div>
+  </div>
+</section>

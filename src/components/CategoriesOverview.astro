@@ -1,0 +1,30 @@
+---
+import type { Locale } from "../data/site";
+import { categories } from "../data/categories";
+import OverviewHero from "./OverviewHero.astro";
+import CategoryCard from "./CategoryCard.astro";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+---
+
+<OverviewHero
+  locale={locale}
+  eyebrow={{ de: "Hotels nach Stil", en: "Hotels by style" }}
+  title={{
+    de: "10 Hotel-Stile in Berlin — vom Luxus bis zum Budget",
+    en: "10 Berlin hotel styles — from luxury to budget",
+  }}
+  subtitle={{
+    de: "Welcher Hotel-Stil passt zu deiner Reise? Wir haben 10 Kategorien kuratiert, von 5-Sterne-Luxus über Designhotels bis zu sehr günstigen Budget-Häusern.",
+    en: "Which hotel style suits your trip? We've curated 10 categories, from 5-star luxury through design hotels to very affordable budget houses.",
+  }}
+/>
+
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {categories.map((c) => <CategoryCard category={c} locale={locale} />)}
+    </div>
+  </div>
+</section>

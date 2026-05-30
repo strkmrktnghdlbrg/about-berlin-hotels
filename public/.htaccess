@@ -1,0 +1,76 @@
+# ============================================================
+# About Berlin Hotels — Apache .htaccess
+# ============================================================
+
+# --- Force HTTPS + non-www → www (Live-Domain) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force www
+  RewriteCond %{HTTP_HOST} ^about-berlin-hotels\.de$ [NC]
+  RewriteRule ^(.*)$ https://www.about-berlin-hotels.de/$1 [L,R=301]
+
+  # --- Legacy WordPress URL redirects (from old WP site) ---
+  # /thema/billige-hotels/  → /kategorien/billige-hotels/
+  RewriteRule ^thema/billige-hotels/?$ /kategorien/billige-hotels/ [R=301,L]
+  RewriteRule ^thema/charmante-hotels/?$ /kategorien/charmante-hotels/ [R=301,L]
+  RewriteRule ^thema/shuttle/?$ /kategorien/hotels-mit-shuttle/ [R=301,L]
+  RewriteRule ^thema/stadtteile/?$ /stadtteile/ [R=301,L]
+  RewriteRule ^thema/tipps/?$ /tipps/ [R=301,L]
+  RewriteRule ^thema/veranstaltungen/?$ /tipps/ [R=301,L]
+
+  # /charlottenburg/  → /stadtteile/charlottenburg-wilmersdorf/
+  RewriteRule ^charlottenburg/?$ /stadtteile/charlottenburg-wilmersdorf/ [R=301,L]
+  RewriteRule ^friedrichshain/?$ /stadtteile/friedrichshain-kreuzberg/ [R=301,L]
+  RewriteRule ^mitte/?$ /stadtteile/mitte/ [R=301,L]
+  RewriteRule ^pankow/?$ /stadtteile/pankow/ [R=301,L]
+
+  # WP feed URLs → 410 Gone
+  RewriteRule ^feed/?$ - [R=410,L]
+  RewriteRule ^comments/feed/?$ - [R=410,L]
+  RewriteRule ^wp-json(.*)$ - [R=410,L]
+  RewriteRule ^xmlrpc\.php$ - [R=410,L]
+</IfModule>
+
+# --- GZIP / Deflate ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/xml application/xml+rss
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+# --- Browser caching ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                              "access plus 1 month"
+  ExpiresByType text/html                     "access plus 5 minutes"
+  ExpiresByType text/css                      "access plus 1 month"
+  ExpiresByType text/javascript               "access plus 1 month"
+  ExpiresByType application/javascript        "access plus 1 month"
+  ExpiresByType image/svg+xml                 "access plus 6 months"
+  ExpiresByType image/png                     "access plus 6 months"
+  ExpiresByType image/jpeg                    "access plus 6 months"
+  ExpiresByType image/webp                    "access plus 6 months"
+  ExpiresByType image/avif                    "access plus 6 months"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType application/font-woff2        "access plus 1 year"
+</IfModule>
+
+# --- Security headers ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# --- Custom 404 ---
+ErrorDocument 404 /404.html
+
+# --- Prevent directory listing ---
+Options -Indexes

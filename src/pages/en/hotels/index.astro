@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { hotels, getFeaturedHotels } from "../../../data/hotels";
+import { districts } from "../../../data/districts";
+import HotelCard from "../../../components/HotelCard.astro";
+import Stay22TopHotels from "../../../components/Stay22TopHotels.astro";
+import Stay22Map from "../../../components/Stay22Map.astro";
+
+const locale = "en" as const;
+
+const featured = getFeaturedHotels();
+const byDistrict = districts
+  .map((d) => ({
+    district: d,
+    items: hotels.filter((h) => h.district === d.slug),
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  title="Hotels in Berlin — curated picks across 12 districts"
+  description="Over 35 editorially curated hotels in Berlin: luxury in Mitte, boutique in Friedrichshain-Kreuzberg, design hotels in Charlottenburg. With live prices and maps per district."
+  locale={locale}
+  alternatePath="/hotels/"
+>
+  <section class="relative overflow-hidden gradient-spree text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+      <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+        <a href="/en/" class="hover:text-white">Home</a>
+        <span>›</span>
+        <span class="text-white">Hotels</span>
+      </nav>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200 animate-pulse"></span>
+        {hotels.length} hotels · 12 districts
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05]">
+        Hotels in Berlin — by district and style
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-3xl text-balance">
+        From the Adlon at Brandenburg Gate to boutique houses in
+        Friedrichshain — editorially curated, with maps, ratings and
+        honest descriptions per district.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <Stay22TopHotels limit={8} locale={locale} />
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center mb-8 max-w-2xl mx-auto">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Interactive map
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          All Berlin hotels on the map
+        </h2>
+      </div>
+      <Stay22Map lat={52.52} lng={13.405} zoom={12} height="620px" title="Hotels in Berlin" />
+    </div>
+  </section>
+
+  {featured.length > 0 && (
+    <section class="py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mb-10">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            Editor's picks
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+            Featured hotels
+          </h2>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((h) => <HotelCard hotel={h} locale={locale} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          By district
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          All hotels by Berlin district
+        </h2>
+      </div>
+
+      <div class="space-y-14">
+        {byDistrict.map(({ district, items }) => (
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-6">
+              <h3 class="text-2xl font-bold tracking-tight text-ink-900">
+                {district.name}
+                <span class="text-sm font-normal text-ink-500 ml-2">
+                  ({items.length} {items.length === 1 ? "hotel" : "hotels"})
+                </span>
+              </h3>
+              <a
+                href={`/en/districts/${district.slug}/`}
+                class="text-sm font-bold text-brand-700 hover:text-brand-800"
+              >
+                More about {district.name} →
+              </a>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((h) => <HotelCard hotel={h} locale={locale} />)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

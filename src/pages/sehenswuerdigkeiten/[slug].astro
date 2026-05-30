@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AttractionPage from "../../components/AttractionPage.astro";
+import { attractions } from "../../data/attractions";
+
+export async function getStaticPaths() {
+  return attractions.map((a) => ({ params: { slug: a.slug }, props: { attraction: a } }));
+}
+
+const { attraction } = Astro.props;
+const title = `${attraction.name.de} — Sehenswürdigkeit & Hotels in der Nähe`;
+const description = attraction.intro.de.slice(0, 155);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale="de"
+  alternatePath={`/en/attractions/${attraction.slug}/`}
+>
+  <AttractionPage attraction={attraction} locale="de" />
+</BaseLayout>

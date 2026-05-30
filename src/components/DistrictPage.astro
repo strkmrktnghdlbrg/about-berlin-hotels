@@ -1,0 +1,253 @@
+---
+import type { District } from "../data/districts";
+import type { Locale } from "../data/site";
+import { districts } from "../data/districts";
+import { getHotelsByDistrict, hotels as allHotels } from "../data/hotels";
+import { getAttractionsByDistrict } from "../data/attractions";
+import { categories, type Category } from "../data/categories";
+import Stay22Map from "./Stay22Map.astro";
+import HotelCard from "./HotelCard.astro";
+import AttractionCard from "./AttractionCard.astro";
+import CategoryCard from "./CategoryCard.astro";
+import DistrictCard from "./DistrictCard.astro";
+import FigureImage from "./FigureImage.astro";
+import { districtImages } from "../data/images";
+
+type Props = { district: District; locale: Locale };
+const { district, locale } = Astro.props;
+const base = locale === "de" ? "" : "/en";
+
+const hotelsHere = getHotelsByDistrict(district.slug);
+const attractionsHere = getAttractionsByDistrict(district.slug);
+const otherDistricts = districts.filter((d) => d.slug !== district.slug).slice(0, 4);
+const heroImage = districtImages[district.slug];
+
+// Top categories represented in this district
+const categoriesHere: Category[] = categories.filter(
+  (c) => c.bestDistricts.includes(district.slug),
+);
+
+const regionLabel = {
+  mitte: locale === "de" ? "Zentrum" : "Centre",
+  west: locale === "de" ? "West" : "West",
+  ost: locale === "de" ? "Ost" : "East",
+  nord: locale === "de" ? "Nord" : "North",
+  süd: locale === "de" ? "Süd" : "South",
+}[district.region];
+
+const positionLabel = {
+  central: locale === "de" ? "Zentral" : "Central",
+  inner: locale === "de" ? "Innenstadt" : "Inner city",
+  outer: locale === "de" ? "Stadtrand" : "Outer city",
+}[district.position];
+---
+
+<!-- HERO with Wikimedia image background -->
+<section class="relative overflow-hidden text-white min-h-[420px] sm:min-h-[520px]">
+  {heroImage ? (
+    <FigureImage image={heroImage} alt={district.name} variant="hero" loading="eager" />
+  ) : (
+    <div class="absolute inset-0 gradient-spree"></div>
+  )}
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+    <nav class="flex items-center gap-2 text-xs text-white/80 mb-6">
+      <a href={`${base}/`} class="hover:text-white">{locale === "de" ? "Start" : "Home"}</a>
+      <span>›</span>
+      <a href={`${base}/stadtteile/`} class="hover:text-white">{locale === "de" ? "Stadtteile" : "Districts"}</a>
+      <span>›</span>
+      <span class="text-white">{district.name}</span>
+    </nav>
+
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200"></span>
+        {regionLabel} · {positionLabel}
+      </span>
+      {hotelsHere.length > 0 && (
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+          {hotelsHere.length} {locale === "de" ? "Hotels redaktionell empfohlen" : "editor's picks"}
+        </span>
+      )}
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05] drop-shadow-md">
+      {locale === "de" ? "Hotels in " : "Hotels in "}{district.name}
+    </h1>
+    <p class="text-lg sm:text-xl text-white leading-relaxed max-w-3xl text-balance drop-shadow">
+      {district.intro[locale]}
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-2">
+      {district.highlights[locale].slice(0, 6).map((h) => (
+        <span class="inline-block rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-xs font-medium">
+          {h}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- VIBE + BEST FOR -->
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid gap-8 md:grid-cols-2">
+    <div class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Wie der Bezirk tickt" : "How the district feels"}
+      </span>
+      <h2 class="text-xl font-bold text-ink-900 mb-3">
+        {locale === "de" ? "Atmosphäre" : "Atmosphere"}
+      </h2>
+      <p class="text-ink-700 leading-relaxed">{district.vibe[locale]}</p>
+    </div>
+
+    <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Ideal für" : "Ideal for"}
+      </span>
+      <h2 class="text-xl font-bold text-ink-900 mb-3">
+        {locale === "de" ? "Wer hier richtig wohnt" : "Who stays here right"}
+      </h2>
+      <ul class="space-y-2">
+        {district.bestFor[locale].map((b) => (
+          <li class="flex items-start gap-2 text-ink-700">
+            <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span>
+            <span class="font-medium">{b}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STAY22 MAP -->
+<section class="py-14 sm:py-16 surface-soft">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="text-center mb-8">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+        {locale === "de" ? "Interaktive Karte" : "Interactive map"}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+        {locale === "de" ? `Hotels in ${district.name} auf der Karte` : `Hotels in ${district.name} on the map`}
+      </h2>
+      <p class="text-ink-600 leading-relaxed mt-3 max-w-2xl mx-auto">
+        {locale === "de"
+          ? "Erkunde verfügbare Hotels in diesem Bezirk auf der Karte — Verfügbarkeit und Preise live von Booking.com."
+          : "Browse available hotels in this district on the map — live availability and pricing from Booking.com."}
+      </p>
+    </div>
+    <Stay22Map
+      embedId={district.stay22Id}
+      lat={district.geo.lat}
+      lng={district.geo.lng}
+      zoom={district.geo.zoom}
+      height="620px"
+      title={locale === "de" ? `Hotels in ${district.name}` : `Hotels in ${district.name}`}
+    />
+  </div>
+</section>
+
+<!-- HOTELS -->
+{hotelsHere.length > 0 && (
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div class="max-w-2xl">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Unsere Empfehlungen" : "Our recommendations"}
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+            {locale === "de" ? `Hotels in ${district.name}` : `Hotels in ${district.name}`}
+          </h2>
+          <p class="text-ink-600 leading-relaxed mt-3">
+            {locale === "de"
+              ? `Handverlesene Auswahl der besten Hotels in ${district.name} — quer durch Preisklassen und Stile.`
+              : `Handpicked selection of the best hotels in ${district.name} — across price points and styles.`}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {hotelsHere.map((h) => <HotelCard hotel={h} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- CATEGORIES -->
+{categoriesHere.length > 0 && (
+  <section class="py-14 sm:py-16 bg-ink-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Stark vertreten" : "Strong presence"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de"
+            ? `Beliebte Hotel-Stile in ${district.name}`
+            : `Popular hotel styles in ${district.name}`}
+        </h2>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {categoriesHere.map((c) => <CategoryCard category={c} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ATTRACTIONS -->
+{attractionsHere.length > 0 && (
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "In der Nähe" : "Nearby"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          {locale === "de"
+            ? `Sehenswürdigkeiten in ${district.name}`
+            : `Attractions in ${district.name}`}
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          {locale === "de"
+            ? `Die wichtigsten Wahrzeichen, Museen und Parks, die du von deinem Hotel in ${district.name} schnell erreichst.`
+            : `The key landmarks, museums and parks easily reached from your hotel in ${district.name}.`}
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {attractionsHere.map((a) => <AttractionCard attraction={a} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- OTHER DISTRICTS -->
+<section class="py-14 sm:py-16 surface-soft">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div>
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          {locale === "de" ? "Weiterstöbern" : "Keep exploring"}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          {locale === "de" ? "Andere Berliner Bezirke" : "Other Berlin districts"}
+        </h2>
+      </div>
+      <a
+        href={`${base}/stadtteile/`}
+        class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700"
+      >
+        {locale === "de" ? "Alle 12 Bezirke" : "All 12 districts"}
+        <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {otherDistricts.map((d) => <DistrictCard district={d} locale={locale} />)}
+    </div>
+  </div>
+</section>

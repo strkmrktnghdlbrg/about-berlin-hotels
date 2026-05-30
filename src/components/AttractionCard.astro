@@ -1,0 +1,47 @@
+---
+import type { Attraction } from "../data/attractions";
+import type { Locale } from "../data/site";
+import { getDistrict } from "../data/districts";
+import { attractionImages } from "../data/images";
+import FigureImage from "./FigureImage.astro";
+
+type Props = { attraction: Attraction; locale: Locale };
+const { attraction, locale } = Astro.props;
+const district = getDistrict(attraction.district);
+const image = attractionImages[attraction.slug];
+const base = locale === "de" ? "/sehenswuerdigkeiten" : "/en/attractions";
+const href = `${base}/${attraction.slug}/`;
+
+const typeLabel: Record<Attraction["type"], { de: string; en: string }> = {
+  landmark: { de: "Wahrzeichen", en: "Landmark" },
+  museum: { de: "Museum", en: "Museum" },
+  park: { de: "Park", en: "Park" },
+  viewpoint: { de: "Aussicht", en: "Viewpoint" },
+  shopping: { de: "Shopping", en: "Shopping" },
+  nightlife: { de: "Nightlife", en: "Nightlife" },
+  history: { de: "Geschichte", en: "History" },
+};
+---
+
+<a
+  href={href}
+  class="group block rounded-2xl border border-ink-100 bg-white overflow-hidden transition-all hover:border-brand-200 hover:shadow-md hover:-translate-y-0.5"
+>
+  {image && <FigureImage image={image} alt={attraction.name[locale]} variant="card" />}
+  <div class="p-5">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold text-brand-700 uppercase tracking-wider">
+        {typeLabel[attraction.type][locale]}
+      </span>
+      {district && (
+        <span class="text-xs text-ink-500">· {district.name}</span>
+      )}
+    </div>
+    <h3 class="text-base font-bold text-ink-900 mb-2 group-hover:text-brand-700 transition-colors">
+      {attraction.name[locale]}
+    </h3>
+    <p class="text-sm text-ink-600 leading-relaxed line-clamp-3">
+      {attraction.intro[locale]}
+    </p>
+  </div>
+</a>

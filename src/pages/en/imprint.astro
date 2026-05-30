@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalPage from "../../components/LegalPage.astro";
+---
+
+<BaseLayout
+  title="Imprint — About Berlin Hotels"
+  description="Imprint and legal information for About Berlin Hotels per § 5 DDG."
+  locale="en"
+  alternatePath="/impressum/"
+  noindex
+>
+  <LegalPage title="Imprint" locale="en">
+    <h2>Information per § 5 DDG (German Digital Services Act)</h2>
+    <p>
+      <strong>[Full name / company]</strong><br />
+      [Street + number]<br />
+      [Postcode + city]<br />
+      Germany
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Phone: [phone number]<br />
+      Email: <a href="mailto:info@about-berlin-hotels.de">info@about-berlin-hotels.de</a>
+    </p>
+
+    <h2>VAT ID</h2>
+    <p>
+      VAT identification number per § 27 a UStG:<br />
+      [VAT-ID or „small business per § 19 UStG"]
+    </p>
+
+    <h2>Responsible for content per § 18 Abs. 2 MStV</h2>
+    <p>
+      [Full name]<br />
+      [Address]
+    </p>
+
+    <h2>EU dispute resolution</h2>
+    <p>
+      The European Commission provides an online dispute resolution (ODR) platform:
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br />
+      Our email address is provided above.
+    </p>
+
+    <h2>Affiliate disclosure</h2>
+    <p>
+      About Berlin Hotels is an editorial hotel guide. We link to booking platforms such as Booking.com
+      (via Stay22) and may earn a commission when you book through our links. There is no extra cost for you.
+    </p>
+  </LegalPage>
+</BaseLayout>

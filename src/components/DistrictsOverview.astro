@@ -1,0 +1,56 @@
+---
+import type { Locale } from "../data/site";
+import { districts } from "../data/districts";
+import OverviewHero from "./OverviewHero.astro";
+import DistrictCard from "./DistrictCard.astro";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+
+const regions = ["mitte", "west", "ost", "nord", "süd"] as const;
+const regionLabel = {
+  mitte: { de: "Zentrum (Mitte)", en: "Centre (Mitte)" },
+  west: { de: "Berliner Westen", en: "West Berlin" },
+  ost: { de: "Berliner Osten", en: "East Berlin" },
+  nord: { de: "Berliner Norden", en: "North Berlin" },
+  süd: { de: "Berliner Süden", en: "South Berlin" },
+};
+---
+
+<OverviewHero
+  locale={locale}
+  eyebrow={{ de: "12 Bezirke Berlins", en: "12 Berlin districts" }}
+  title={{
+    de: "Berlin nach Bezirk — wo du am besten übernachtest",
+    en: "Berlin by district — where to stay best",
+  }}
+  subtitle={{
+    de: "Jeder Bezirk hat seine eigene Persönlichkeit. Wir führen dich durch alle 12 — von Mitte mit den Wahrzeichen bis Treptow-Köpenick mit den Seen.",
+    en: "Each district has its own personality. We guide you through all 12 — from Mitte with the landmarks to Treptow-Köpenick with the lakes.",
+  }}
+/>
+
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">
+    {regions.map((r) => {
+      const dr = districts.filter((d) => d.region === r);
+      if (dr.length === 0) return null;
+      return (
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+              {regionLabel[r][locale]}
+            </h2>
+            <span class="text-sm text-ink-500">·</span>
+            <span class="text-sm text-ink-500">
+              {dr.length} {locale === "de" ? "Bezirke" : "districts"}
+            </span>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {dr.map((d) => <DistrictCard district={d} locale={locale} />)}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

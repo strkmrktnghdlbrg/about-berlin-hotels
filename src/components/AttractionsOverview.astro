@@ -1,0 +1,54 @@
+---
+import type { Locale } from "../data/site";
+import { attractions } from "../data/attractions";
+import { districts } from "../data/districts";
+import OverviewHero from "./OverviewHero.astro";
+import AttractionCard from "./AttractionCard.astro";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+
+// Group by type
+const types = ["landmark", "history", "museum", "park", "shopping", "viewpoint"] as const;
+const typeLabel = {
+  landmark: { de: "Wahrzeichen", en: "Landmarks" },
+  history: { de: "Geschichte & Mauer", en: "History & wall" },
+  museum: { de: "Museen", en: "Museums" },
+  park: { de: "Parks & Natur", en: "Parks & nature" },
+  shopping: { de: "Shopping", en: "Shopping" },
+  viewpoint: { de: "Aussichtspunkte", en: "Viewpoints" },
+  nightlife: { de: "Nightlife", en: "Nightlife" },
+};
+---
+
+<OverviewHero
+  locale={locale}
+  eyebrow={{ de: "Was sehen in Berlin?", en: "What to see in Berlin?" }}
+  title={{
+    de: "Die wichtigsten Berliner Sehenswürdigkeiten",
+    en: "Berlin's most important attractions",
+  }}
+  subtitle={{
+    de: "Plane deine Berlin-Reise rund um die Top-Sehenswürdigkeiten — und finde Hotels in direkter Nähe.",
+    en: "Plan your Berlin trip around the top sights — and find hotels right nearby.",
+  }}
+/>
+
+<section class="py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">
+    {types.map((tt) => {
+      const items = attractions.filter((a) => a.type === tt);
+      if (items.length === 0) return null;
+      return (
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-6">
+            {typeLabel[tt][locale]}
+          </h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {items.map((a) => <AttractionCard attraction={a} locale={locale} />)}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

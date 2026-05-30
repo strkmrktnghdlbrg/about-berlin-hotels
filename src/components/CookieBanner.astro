@@ -1,0 +1,210 @@
+---
+import type { Locale } from "../data/site";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+
+const txt = {
+  title: { de: "Cookies & Tracking", en: "Cookies & tracking" },
+  body: {
+    de: "Wir verwenden Cookies und Tools (Google Analytics, Stay22-Hotelkarten), um diese Seite zu verbessern. Technisch notwendige Cookies sind immer aktiv. Statistik & Marketing sind optional.",
+    en: "We use cookies and tools (Google Analytics, Stay22 hotel maps) to improve this site. Technically necessary cookies are always active. Statistics & marketing are optional.",
+  },
+  acceptAll: { de: "Alle akzeptieren", en: "Accept all" },
+  acceptNecessary: { de: "Nur notwendige", en: "Necessary only" },
+  customize: { de: "Anpassen", en: "Customize" },
+  privacy: { de: "Datenschutz", en: "Privacy" },
+  imprint: { de: "Impressum", en: "Imprint" },
+  necessary: { de: "Notwendig", en: "Necessary" },
+  necessaryDesc: {
+    de: "Technisch erforderlich. Können nicht abgewählt werden.",
+    en: "Technically required. Cannot be deselected.",
+  },
+  statistics: { de: "Statistik (Google Analytics)", en: "Statistics (Google Analytics)" },
+  statisticsDesc: {
+    de: "Anonyme Nutzungsstatistik via Google Analytics 4.",
+    en: "Anonymous usage statistics via Google Analytics 4.",
+  },
+  marketing: { de: "Marketing (Stay22)", en: "Marketing (Stay22)" },
+  marketingDesc: {
+    de: "Interaktive Hotel-Karten mit Live-Preisen.",
+    en: "Interactive hotel maps with live pricing.",
+  },
+  save: { de: "Auswahl speichern", en: "Save selection" },
+};
+
+const privacyHref = locale === "de" ? "/datenschutz/" : "/en/privacy/";
+const imprintHref = locale === "de" ? "/impressum/" : "/en/imprint/";
+---
+
+<!-- Consent Mode v2: default = denied — must run BEFORE any GTM script -->
+<script is:inline>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+
+    // Read stored consent (if any) BEFORE setting defaults
+    var stored = null;
+    try {
+      stored = JSON.parse(localStorage.getItem("abh_consent") || "null");
+    } catch (e) {}
+
+    var defaults = {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      functionality_storage: "granted",
+      security_storage: "granted",
+      wait_for_update: 500,
+    };
+
+    if (stored && stored.timestamp) {
+      defaults.analytics_storage = stored.statistics ? "granted" : "denied";
+      defaults.ad_storage = stored.marketing ? "granted" : "denied";
+      defaults.ad_user_data = stored.marketing ? "granted" : "denied";
+      defaults.ad_personalization = stored.marketing ? "granted" : "denied";
+    }
+
+    gtag("consent", "default", defaults);
+    gtag("set", "ads_data_redaction", true);
+  })();
+</script>
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-labelledby="cb-title"
+  class="hidden fixed bottom-0 inset-x-0 z-[100] bg-white border-t border-ink-200 shadow-2xl"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-5 sm:py-6">
+    <div class="grid gap-5 lg:grid-cols-[1.6fr_1fr] items-start">
+      <div>
+        <h2 id="cb-title" class="text-lg font-bold text-ink-900 mb-2">{txt.title[locale]}</h2>
+        <p class="text-sm text-ink-700 leading-relaxed">{txt.body[locale]}</p>
+        <p class="text-xs text-ink-500 mt-2">
+          <a href={privacyHref} class="underline hover:text-brand-700">{txt.privacy[locale]}</a>
+          <span class="mx-1">·</span>
+          <a href={imprintHref} class="underline hover:text-brand-700">{txt.imprint[locale]}</a>
+        </p>
+
+        <details id="cb-details" class="mt-4">
+          <summary class="text-sm font-semibold text-brand-700 cursor-pointer">
+            {txt.customize[locale]}
+          </summary>
+          <div class="mt-3 space-y-2">
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-ink-50 cursor-not-allowed">
+              <input type="checkbox" checked disabled class="mt-1 accent-brand-600" />
+              <span>
+                <span class="block text-sm font-bold text-ink-900">{txt.necessary[locale]}</span>
+                <span class="block text-xs text-ink-600">{txt.necessaryDesc[locale]}</span>
+              </span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-ink-50 cursor-pointer hover:bg-brand-50">
+              <input type="checkbox" id="cb-statistics" class="mt-1 accent-brand-600" />
+              <span>
+                <span class="block text-sm font-bold text-ink-900">{txt.statistics[locale]}</span>
+                <span class="block text-xs text-ink-600">{txt.statisticsDesc[locale]}</span>
+              </span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-ink-50 cursor-pointer hover:bg-brand-50">
+              <input type="checkbox" id="cb-marketing" class="mt-1 accent-brand-600" />
+              <span>
+                <span class="block text-sm font-bold text-ink-900">{txt.marketing[locale]}</span>
+                <span class="block text-xs text-ink-600">{txt.marketingDesc[locale]}</span>
+              </span>
+            </label>
+          </div>
+        </details>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <button
+          type="button"
+          data-cb-action="accept-all"
+          class="rounded-xl bg-brand-600 hover:bg-brand-700 px-5 py-3 text-sm font-bold text-white transition-colors"
+        >
+          {txt.acceptAll[locale]}
+        </button>
+        <button
+          type="button"
+          data-cb-action="save"
+          class="rounded-xl bg-ink-100 hover:bg-ink-200 px-5 py-3 text-sm font-bold text-ink-800 transition-colors"
+        >
+          {txt.save[locale]}
+        </button>
+        <button
+          type="button"
+          data-cb-action="reject"
+          class="rounded-xl border border-ink-200 hover:bg-ink-50 px-5 py-3 text-sm font-semibold text-ink-700 transition-colors"
+        >
+          {txt.acceptNecessary[locale]}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = "abh_consent";
+    var banner = document.getElementById("cookie-banner");
+    var statistics = document.getElementById("cb-statistics");
+    var marketing = document.getElementById("cb-marketing");
+    if (!banner) return;
+
+    function loadStored() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); }
+      catch (e) { return null; }
+    }
+    function save(s) {
+      var consent = {
+        statistics: !!s.statistics,
+        marketing: !!s.marketing,
+        timestamp: Date.now(),
+      };
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(consent)); } catch (e) {}
+      if (window.gtag) {
+        window.gtag("consent", "update", {
+          analytics_storage: consent.statistics ? "granted" : "denied",
+          ad_storage: consent.marketing ? "granted" : "denied",
+          ad_user_data: consent.marketing ? "granted" : "denied",
+          ad_personalization: consent.marketing ? "granted" : "denied",
+        });
+      }
+      banner.classList.add("hidden");
+    }
+
+    var stored = loadStored();
+    if (!stored || !stored.timestamp) {
+      banner.classList.remove("hidden");
+    } else {
+      if (statistics) statistics.checked = !!stored.statistics;
+      if (marketing) marketing.checked = !!stored.marketing;
+    }
+
+    banner.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest("[data-cb-action]");
+      if (!btn) return;
+      var action = btn.getAttribute("data-cb-action");
+      if (action === "accept-all") save({ statistics: true, marketing: true });
+      else if (action === "reject") save({ statistics: false, marketing: false });
+      else if (action === "save") {
+        save({
+          statistics: statistics ? statistics.checked : false,
+          marketing: marketing ? marketing.checked : false,
+        });
+      }
+    });
+
+    // Public API: open from anywhere
+    window.openCookieSettings = function () {
+      banner.classList.remove("hidden");
+      var details = document.getElementById("cb-details");
+      if (details) details.open = true;
+    };
+  })();
+</script>

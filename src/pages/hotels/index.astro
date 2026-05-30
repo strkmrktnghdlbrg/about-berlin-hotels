@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { hotels, getFeaturedHotels } from "../../data/hotels";
+import { districts, getDistrict } from "../../data/districts";
+import HotelCard from "../../components/HotelCard.astro";
+import Stay22TopHotels from "../../components/Stay22TopHotels.astro";
+import Stay22Map from "../../components/Stay22Map.astro";
+
+const locale = "de" as const;
+
+const featured = getFeaturedHotels();
+const byDistrict = districts
+  .map((d) => ({
+    district: d,
+    items: hotels.filter((h) => h.district === d.slug),
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  title="Hotels in Berlin — kuratierte Auswahl in 12 Bezirken"
+  description="Über 35 redaktionell ausgewählte Hotels in Berlin: Luxus in Mitte, Boutique in Friedrichshain-Kreuzberg, Designhotels in Charlottenburg. Mit Live-Preisen und Karten je Bezirk."
+  locale={locale}
+  alternatePath="/en/hotels/"
+>
+  <section class="relative overflow-hidden gradient-spree text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+      <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+        <a href="/" class="hover:text-white">Start</a>
+        <span>›</span>
+        <span class="text-white">Hotels</span>
+      </nav>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200 animate-pulse"></span>
+        {hotels.length} Hotels · 12 Bezirke
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05]">
+        Hotels in Berlin — nach Bezirk und Stil
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-3xl text-balance">
+        Vom Adlon am Brandenburger Tor bis zum Boutiquehotel in
+        Friedrichshain — redaktionell kuratiert, mit Karten, Bewertungen
+        und ehrlichen Beschreibungen je Bezirk.
+      </p>
+    </div>
+  </section>
+
+  <!-- LIVE TOP-HOTELS via Stay22 -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <Stay22TopHotels limit={8} locale={locale} />
+    </div>
+  </section>
+
+  <!-- Berlin-weite Stay22-Karte -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center mb-8 max-w-2xl mx-auto">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Interaktive Karte
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          Alle Berliner Hotels auf der Karte
+        </h2>
+      </div>
+      <Stay22Map lat={52.52} lng={13.405} zoom={12} height="620px" title="Hotels in Berlin" />
+    </div>
+  </section>
+
+  <!-- Featured -->
+  {featured.length > 0 && (
+    <section class="py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mb-10">
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            Redaktion
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+            Hervorgehobene Hotels
+          </h2>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((h) => <HotelCard hotel={h} locale={locale} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Pro Bezirk -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Nach Bezirk
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          Alle Hotels nach Berliner Bezirk
+        </h2>
+      </div>
+
+      <div class="space-y-14">
+        {byDistrict.map(({ district, items }) => (
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-6">
+              <h3 class="text-2xl font-bold tracking-tight text-ink-900">
+                {district.name}
+                <span class="text-sm font-normal text-ink-500 ml-2">
+                  ({items.length} {items.length === 1 ? "Hotel" : "Hotels"})
+                </span>
+              </h3>
+              <a
+                href={`/stadtteile/${district.slug}/`}
+                class="text-sm font-bold text-brand-700 hover:text-brand-800"
+              >
+                Mehr über {district.name} →
+              </a>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((h) => <HotelCard hotel={h} locale={locale} />)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

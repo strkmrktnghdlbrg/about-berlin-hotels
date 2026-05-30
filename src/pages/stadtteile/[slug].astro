@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DistrictPage from "../../components/DistrictPage.astro";
+import { districts } from "../../data/districts";
+
+export async function getStaticPaths() {
+  return districts.map((d) => ({ params: { slug: d.slug }, props: { district: d } }));
+}
+
+const { district } = Astro.props;
+const title = `Hotels in ${district.name} — About Berlin Hotels`;
+const description = district.intro.de.slice(0, 155);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale="de"
+  alternatePath={`/en/districts/${district.slug}/`}
+>
+  <DistrictPage district={district} locale="de" />
+</BaseLayout>
