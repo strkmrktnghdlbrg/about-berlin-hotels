@@ -34,10 +34,23 @@ jobs:
         env:
           STAY22_API_KEY: ${{ secrets.STAY22_API_KEY }}
         run: npm run build
-      # Beispiel: Deploy nach Cloudflare Pages (auskommentiert).
-      # - name: Publish to Cloudflare Pages
-      #   uses: cloudflare/wrangler-action@v3
-      #   with:
-      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      #     command: pages deploy dist --project-name=about-berlin-hotels
+
+      # Deploy nach MyTrueHost (Shared Apache) per FTP.
+      # Lädt nur geänderte Dateien hoch (inkl. versteckter .htaccess).
+      # Benötigte GitHub-Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+      #   gh secret set FTP_SERVER   --repo strkmrktnghdlbrg/about-berlin-hotels
+      #   gh secret set FTP_USERNAME --repo strkmrktnghdlbrg/about-berlin-hotels
+      #   gh secret set FTP_PASSWORD --repo strkmrktnghdlbrg/about-berlin-hotels
+      - name: Deploy to MyTrueHost via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          # Zielverzeichnis: bei MyTrueHost i.d.R. der Webroot der Domain.
+          # Anpassen falls die Domain in einem Unterordner liegt
+          # (z.B. /public_html/ oder /domains/about-berlin-hotels.de/public_html/).
+          server-dir: ./public_html/
+          dangerous-clean-slate: false
