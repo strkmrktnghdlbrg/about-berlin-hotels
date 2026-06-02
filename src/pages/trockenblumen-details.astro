@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GuestPostPage from "../components/GuestPostPage.astro";
+import { getGuestPost } from "../data/guest-posts";
+
+const post = getGuestPost("trockenblumen-details")!;
+---
+
+<BaseLayout title={`${post.title} | About Berlin Hotels`} description={post.description} locale="de">
+  <GuestPostPage post={post} />
+</BaseLayout>

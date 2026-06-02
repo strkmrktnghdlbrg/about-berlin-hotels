@@ -14,8 +14,7 @@
   RewriteCond %{HTTP_HOST} ^about-berlin-hotels\.de$ [NC]
   RewriteRule ^(.*)$ https://www.about-berlin-hotels.de/$1 [L,R=301]
 
-  # --- Legacy WordPress URL redirects (from old WP site) ---
-  # /thema/billige-hotels/  → /kategorien/billige-hotels/
+  # --- Legacy WP /thema/-Taxonomie → neue Kategorien/Übersichten ---
   RewriteRule ^thema/billige-hotels/?$ /kategorien/billige-hotels/ [R=301,L]
   RewriteRule ^thema/charmante-hotels/?$ /kategorien/charmante-hotels/ [R=301,L]
   RewriteRule ^thema/shuttle/?$ /kategorien/hotels-mit-shuttle/ [R=301,L]
@@ -23,11 +22,48 @@
   RewriteRule ^thema/tipps/?$ /tipps/ [R=301,L]
   RewriteRule ^thema/veranstaltungen/?$ /tipps/ [R=301,L]
 
-  # /charlottenburg/  → /stadtteile/charlottenburg-wilmersdorf/
-  RewriteRule ^charlottenburg/?$ /stadtteile/charlottenburg-wilmersdorf/ [R=301,L]
-  RewriteRule ^friedrichshain/?$ /stadtteile/friedrichshain-kreuzberg/ [R=301,L]
-  RewriteRule ^mitte/?$ /stadtteile/mitte/ [R=301,L]
-  RewriteRule ^pankow/?$ /stadtteile/pankow/ [R=301,L]
+  # WICHTIG: /charlottenburg/, /friedrichshain/, /mitte/, /pankow/ NICHT umleiten —
+  # diese indexierten WP-Artikel bleiben als eigene Seiten unter ihrer exakten URL
+  # erhalten (Ranking-Schutz). Siehe src/data/articles/districts.ts.
+
+  # --- Spin-Duplikat-Artikel (alte WP-Posts) → kanonischer Artikel (echte 301) ---
+  RewriteRule ^billige-hotels/?$ /budget-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-luxus-hotels-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-friendly-luxury-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-friendly-luxury-berlin-2/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxus-boutique-hotels-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxus-spa-hotels-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^historische-luxushotels-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^historische-charme-hotels-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotel-mit-geschichte-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^wellness-retreats-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^wellness-retreats-berlin-2/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^boutique-spa-hotels-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^charming-hotels-einzigartige-unterkuenfte/?$ /boutique-hotels-berlin-charme/ [R=301,L]
+  RewriteRule ^innovative-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^high-tech-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^architektur-wunder-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^trendy-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^kuenstlerische-hotels-berlin/?$ /kultur-hotels-berlin/ [R=301,L]
+  RewriteRule ^kulturelle-hideaways-berlin/?$ /kultur-hotels-berlin/ [R=301,L]
+  RewriteRule ^hidden-gems-hotels-berlin/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^hidden-gems-hotels-berlin-2/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^ungewoehnliche-hotels-berlin/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^authentische-berliner-hotels/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^pet-friendly-hotels-berlin/?$ /tierfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^pet-friendly-hotels-berlin-2/?$ /tierfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^familien-spass-hotels-berlin/?$ /familienfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^oeko-freundliche-hotels-berlin/?$ /nachhaltige-hotels-berlin/ [R=301,L]
+  RewriteRule ^beste-lage-hotels-berlin/?$ /zentrale-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-near-major-attractions-berlin/?$ /zentrale-hotels-berlin/ [R=301,L]
+  RewriteRule ^ruhige-ecken-hotels-berlin/?$ /steglitz/ [R=301,L]
+  RewriteRule ^bester-ausblick-hotels-berlin/?$ /rooftop-bars-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxuriose-dachterrassen-hotels-berlin/?$ /rooftop-bars-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-mit-bestem-service-berlin/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-mit-bestem-service-berlin-2/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotelveranstaltungen-verbessern-gaesteerlebnis/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotel-shuttleservice/?$ /kategorien/hotels-mit-shuttle/ [R=301,L]
+  RewriteRule ^stadtteile-einblicke-vielfalt-leben/?$ /stadtteile/ [R=301,L]
 
   # WP feed URLs → 410 Gone
   RewriteRule ^feed/?$ - [R=410,L]

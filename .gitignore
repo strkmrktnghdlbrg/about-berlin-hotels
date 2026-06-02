@@ -9,3 +9,4 @@ dist/
 # Lokale Bild-Backups (Wikimedia 1600px-Variante vor sips-Crop)
 _originals/
 extracted/
+releases/
