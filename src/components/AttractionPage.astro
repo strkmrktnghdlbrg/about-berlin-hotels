@@ -12,9 +12,11 @@ import JsonLd from "./JsonLd.astro";
 import GetYourGuideWidget from "./GetYourGuideWidget.astro";
 import Stay22NearbyHotels from "./Stay22NearbyHotels.astro";
 import { site } from "../data/site";
+import { attractionEditorial } from "../data/attraction-editorial";
 
 type Props = { attraction: Attraction; locale: Locale };
 const { attraction, locale } = Astro.props;
+const editorial = attractionEditorial[attraction.slug];
 const base = locale === "de" ? "" : "/en";
 const districtsBase = locale === "de" ? "/stadtteile" : "/en/districts";
 const attractionsBase = locale === "de" ? "/sehenswuerdigkeiten" : "/en/attractions";
@@ -128,6 +130,17 @@ const breadcrumbSchema = {
     </p>
   </div>
 </section>
+
+<!-- EDITORIAL — redaktionelle Vertiefung -->
+{editorial && (
+  <section class="py-12 sm:py-14">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="space-y-4 text-lg text-ink-700 leading-relaxed">
+        {editorial[locale].map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+  </section>
+)}
 
 <!-- GETYOURGUIDE — Touren & Tickets zu dieser Sehenswürdigkeit -->
 <section class="py-14 sm:py-16 surface-soft">
