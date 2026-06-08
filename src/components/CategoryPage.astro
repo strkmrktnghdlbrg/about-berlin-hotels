@@ -7,6 +7,8 @@ import { getDistrict, districts } from "../data/districts";
 import HotelCard from "./HotelCard.astro";
 import DistrictCard from "./DistrictCard.astro";
 import CategoryCard from "./CategoryCard.astro";
+import JsonLd from "./JsonLd.astro";
+import { site } from "../data/site";
 
 type Props = { category: Category; locale: Locale };
 const { category, locale } = Astro.props;
@@ -27,7 +29,40 @@ const colorMap: Record<Category["color"], string> = {
   sky: "from-brand-500 to-brand-300",
   amber: "from-accent-amber to-brand-400",
 };
+
+// --- Structured data (CollectionPage + ItemList + BreadcrumbList) ---
+const categoryUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: locale === "de" ? `${category.name.de} in Berlin` : `${category.name.en} in Berlin`,
+  description: category.intro[locale],
+  url: categoryUrl,
+  inLanguage: locale === "de" ? "de-DE" : "en-US",
+  about: { "@type": "Thing", name: category.name[locale] },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: hotelsInCategory.map((h, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: h.name,
+      url: new URL(`${base}/hotels/${h.slug}/`, site.baseUrl).toString(),
+    })),
+  },
+};
+const categoryBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: locale === "de" ? "Kategorien" : "Categories", item: new URL(`${base}/kategorien/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 3, name: category.name[locale], item: categoryUrl },
+  ],
+};
 ---
+
+<JsonLd data={collectionSchema} />
+<JsonLd data={categoryBreadcrumb} />
 
 <!-- HERO -->
 <section class={`relative overflow-hidden bg-gradient-to-br ${colorMap[category.color]} text-white`}>
