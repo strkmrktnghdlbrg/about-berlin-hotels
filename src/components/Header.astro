@@ -57,6 +57,18 @@ const navItems = [
       </nav>
 
       <div class="flex items-center gap-2">
+        <button
+          id="search-toggle"
+          type="button"
+          aria-label={locale === "de" ? "Suche öffnen" : "Open search"}
+          data-ph={locale === "de" ? "Hotels, Bezirke, Sehenswürdigkeiten suchen…" : "Search hotels, districts, attractions…"}
+          class="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-ink-200 text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+            <circle cx="9" cy="9" r="6" />
+            <path d="M14 14l4 4" stroke-linecap="round" />
+          </svg>
+        </button>
         <a
           href={altHref}
           class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
@@ -77,4 +89,92 @@ const navItems = [
       ))}
     </nav>
   </div>
+
+  <!-- SEARCH MODAL (Pagefind) -->
+  <div id="search-modal" class="search-modal" aria-hidden="true">
+    <div class="search-backdrop" id="search-backdrop"></div>
+    <div class="search-panel" role="dialog" aria-modal="true" aria-label={locale === "de" ? "Suche" : "Search"}>
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-semibold text-ink-900">{locale === "de" ? "Suche" : "Search"}</span>
+        <button id="search-close" type="button" aria-label={locale === "de" ? "Schließen" : "Close"} class="inline-flex items-center justify-center h-8 w-8 rounded-lg border border-ink-200 text-ink-500 hover:text-ink-900">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 5l10 10M15 5L5 15" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div id="search"></div>
+    </div>
+  </div>
 </header>
+
+<style>
+  .search-modal { position: fixed; inset: 0; z-index: 80; display: none; }
+  .search-modal.is-open { display: block; }
+  .search-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(2px); }
+  .search-panel {
+    position: relative;
+    max-width: 640px;
+    margin: 8vh auto 0;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .search-panel { --pagefind-ui-primary: var(--color-brand-700, #1c4f9e); --pagefind-ui-font: inherit; }
+  body.search-open { overflow: hidden; }
+</style>
+
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById("search-toggle");
+    var modal = document.getElementById("search-modal");
+    var backdrop = document.getElementById("search-backdrop");
+    var closeBtn = document.getElementById("search-close");
+    if (!toggle || !modal) return;
+    var loaded = false;
+    function loadPagefind() {
+      if (loaded) return;
+      loaded = true;
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "/pagefind/pagefind-ui.css";
+      document.head.appendChild(css);
+      var s = document.createElement("script");
+      s.src = "/pagefind/pagefind-ui.js";
+      s.onload = function () {
+        if (window.PagefindUI) {
+          new window.PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            showImages: false,
+            translations: { placeholder: toggle.getAttribute("data-ph") || "Search" },
+          });
+        }
+      };
+      document.body.appendChild(s);
+    }
+    function openModal() {
+      modal.classList.add("is-open");
+      document.body.classList.add("search-open");
+      loadPagefind();
+      setTimeout(function () {
+        var inp = modal.querySelector("input");
+        if (inp) inp.focus();
+      }, 120);
+    }
+    function closeModal() {
+      modal.classList.remove("is-open");
+      document.body.classList.remove("search-open");
+    }
+    toggle.addEventListener("click", openModal);
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+      if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        openModal();
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Über uns — About Berlin Hotels"
+  description="Wer hinter About Berlin Hotels steht, wie wir Hotels und Bezirke empfehlen und wie wir mit Affiliate-Links transparent umgehen."
+  locale="de"
+  alternatePath="/en/about/"
+>
+  <section class="surface-soft border-b border-ink-100">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-3 block">Über uns</span>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-5">
+        Dein unabhängiger Berlin-Guide für Hotels in jedem Bezirk
+      </h1>
+      <p class="text-lg text-ink-700 leading-relaxed">
+        About Berlin Hotels ist ein redaktionell gepflegter Reise- und Hotel-Guide für Berlin.
+        Wir bündeln Hotels, Bezirke, Sehenswürdigkeiten und Reisepläne an einem Ort — damit du
+        schneller die richtige Unterkunft für deinen Aufenthalt findest.
+      </p>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16 space-y-10">
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">Wie wir Hotels auswählen</h2>
+      <p class="text-ink-700 leading-relaxed">
+        Unsere Hotel-Empfehlungen sind handverlesen und decken bewusst alle Preisklassen und Stile
+        ab — vom Grandhotel am Brandenburger Tor bis zum Budget-Haus mit guter ÖPNV-Anbindung.
+        Jedes Haus prüfen wir auf nachvollziehbare, öffentlich belegbare Fakten (Lage, Ausstattung,
+        Geschichte). Wir erfinden keine Details. Live-Preise und Verfügbarkeiten ziehen wir über
+        eingebettete Karten direkt von Booking.com, damit du immer aktuelle Daten siehst.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">Unser Anspruch</h2>
+      <ul class="space-y-2.5">
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Faktentreue:</strong> Angaben basieren auf öffentlichen Quellen und werden regelmäßig geprüft.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Lokaler Fokus:</strong> Empfehlungen nach Bezirk und Reise-Anlass statt anonymer Listen.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Aktualität:</strong> Preise und Verfügbarkeiten kommen live, nicht aus veralteten Tabellen.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Transparenz:</strong> Affiliate-Links sind als solche gekennzeichnet.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">Wie wir uns finanzieren</h2>
+      <p class="text-ink-700 leading-relaxed">
+        Damit dieser Guide kostenlos bleibt, arbeiten wir mit Affiliate-Partnern wie Booking.com
+        (über Stay22) und GetYourGuide. Buchst du über einen unserer Links, erhalten wir eine kleine
+        Provision — für dich entsteht dadurch <strong>kein Cent Mehrkosten</strong>. Diese Provisionen
+        beeinflussen nicht, welche Häuser wir empfehlen; unsere Auswahl bleibt redaktionell.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">Kontakt &amp; Feedback</h2>
+      <p class="text-ink-700 leading-relaxed">
+        Fehlt ein Hotel, ist eine Angabe veraltet oder hast du einen Tipp? Schreib uns an
+        <a href="mailto:info@about-berlin-hotels.de" class="text-brand-700 font-medium hover:underline">info@about-berlin-hotels.de</a>.
+        Die vollständigen Anbieterangaben findest du im
+        <a href="/impressum/" class="text-brand-700 font-medium hover:underline">Impressum</a>.
+      </p>
+    </section>
+
+    <div class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8">
+      <h2 class="text-lg font-bold text-ink-900 mb-4">Direkt loslegen</h2>
+      <ul class="grid sm:grid-cols-2 gap-2.5">
+        <li><a href="/stadtteile/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Hotels nach Bezirk</a></li>
+        <li><a href="/kategorien/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Hotels nach Kategorie</a></li>
+        <li><a href="/sehenswuerdigkeiten/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Sehenswürdigkeiten</a></li>
+        <li><a href="/reiseplaner/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Reisepläne</a></li>
+      </ul>
+    </div>
+  </article>
+</BaseLayout>

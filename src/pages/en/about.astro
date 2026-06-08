@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About — About Berlin Hotels"
+  description="Who is behind About Berlin Hotels, how we recommend hotels and districts, and how we stay transparent about affiliate links."
+  locale="en"
+  alternatePath="/ueber-uns/"
+>
+  <section class="surface-soft border-b border-ink-100">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-3 block">About</span>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-5">
+        Your independent Berlin guide to hotels in every district
+      </h1>
+      <p class="text-lg text-ink-700 leading-relaxed">
+        About Berlin Hotels is an editorially curated travel and hotel guide for Berlin. We bring
+        hotels, districts, attractions and itineraries together in one place — so you can find the
+        right place to stay faster.
+      </p>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16 space-y-10">
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">How we pick hotels</h2>
+      <p class="text-ink-700 leading-relaxed">
+        Our hotel picks are handpicked and deliberately span every price point and style — from grand
+        hotels by the Brandenburg Gate to budget houses with great transit links. We vet every property
+        against verifiable, publicly documented facts (location, amenities, history). We don't invent
+        details. Live prices and availability come straight from Booking.com via embedded maps, so you
+        always see current data.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">What we stand for</h2>
+      <ul class="space-y-2.5">
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Factual accuracy:</strong> based on public sources, checked regularly.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Local focus:</strong> recommendations by district and trip type, not anonymous lists.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Freshness:</strong> prices and availability are live, not stale tables.</span></li>
+        <li class="flex items-start gap-2.5 text-ink-700"><span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-bold">✓</span><span><strong>Transparency:</strong> affiliate links are clearly labelled.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">How we're funded</h2>
+      <p class="text-ink-700 leading-relaxed">
+        To keep this guide free, we work with affiliate partners such as Booking.com (via Stay22) and
+        GetYourGuide. If you book through one of our links we earn a small commission — at
+        <strong>no extra cost to you</strong>. These commissions don't influence which properties we
+        recommend; our selection stays editorial.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight text-ink-900 mb-3">Contact &amp; feedback</h2>
+      <p class="text-ink-700 leading-relaxed">
+        Missing a hotel, spotted outdated info, or have a tip? Email us at
+        <a href="mailto:info@about-berlin-hotels.de" class="text-brand-700 font-medium hover:underline">info@about-berlin-hotels.de</a>.
+        Full provider details are in the
+        <a href="/en/imprint/" class="text-brand-700 font-medium hover:underline">imprint</a>.
+      </p>
+    </section>
+
+    <div class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8">
+      <h2 class="text-lg font-bold text-ink-900 mb-4">Jump right in</h2>
+      <ul class="grid sm:grid-cols-2 gap-2.5">
+        <li><a href="/en/districts/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Hotels by district</a></li>
+        <li><a href="/en/categories/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Hotels by category</a></li>
+        <li><a href="/en/attractions/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Attractions</a></li>
+        <li><a href="/en/itineraries/" class="inline-flex items-center gap-1.5 text-brand-700 font-medium hover:underline"><span class="text-brand-400">→</span>Itineraries</a></li>
+      </ul>
+    </div>
+  </article>
+</BaseLayout>
