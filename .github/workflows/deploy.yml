@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # 02/08/14/20 UTC → alle 6h neu bauen für frische Stay22-Preise/Verfügbarkeiten
+    - cron: "0 2,8,14,20 * * *"
 
 concurrency:
   group: deploy-production
@@ -35,6 +38,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          STAY22_API_KEY: ${{ secrets.STAY22_API_KEY }}
 
       - name: Build report
         run: |
