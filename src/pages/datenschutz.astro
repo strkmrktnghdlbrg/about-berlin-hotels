@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LegalPage from "../components/LegalPage.astro";
+
+const stand = new Intl.DateTimeFormat("de-DE", { month: "long", year: "numeric" }).format(new Date());
 ---
 
 <BaseLayout
@@ -20,8 +22,8 @@ import LegalPage from "../components/LegalPage.astro";
     <h2>1. Verantwortlicher</h2>
     <p>
       Verantwortlicher im Sinne der DSGVO ist:<br />
-      <strong>[Name / Firma]</strong><br />
-      [Anschrift]<br />
+      <strong>Webmagics Ltd.</strong><br />
+      Gladstonos 14-18, 8046 Paphos, Zypern<br />
       E-Mail: <a href="mailto:info@about-berlin-hotels.de">info@about-berlin-hotels.de</a>
     </p>
 
@@ -87,7 +89,7 @@ import LegalPage from "../components/LegalPage.astro";
     <h2>10. Aktualität dieser Erklärung</h2>
     <p>
       Diese Datenschutzerklärung ist aktuell gültig und hat den Stand
-      [Monat Jahr]. Wir behalten uns vor, die Erklärung anzupassen,
+      {stand}. Wir behalten uns vor, die Erklärung anzupassen,
       sofern dies durch geänderte Rechtslage oder Funktionen der Website notwendig wird.
     </p>
   </LegalPage>
