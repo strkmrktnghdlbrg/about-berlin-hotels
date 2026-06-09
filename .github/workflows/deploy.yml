@@ -55,14 +55,14 @@ jobs:
         run: |
           BASE="https://king.truehostdns.com:2083"
           AUTH="${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_PASS }}"
+          REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
+          ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
           echo "--- Pulling from GitHub ---"
-          curl -sk -u "$AUTH" \
-            "$BASE/execute/VersionControl/update?repository_root=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("/home/scdunumd/public_html/about-berlin-hotels.de"))')" \
-            | python3 -m json.tool || true
+          curl -v -sk -u "$AUTH" \
+            "$BASE/execute/VersionControl/update?repository_root=$ENCODED" 2>&1 || true
 
           echo "--- Deploying HEAD commit ---"
-          curl -sk -u "$AUTH" \
+          curl -v -sk -u "$AUTH" \
             -X POST "$BASE/execute/VersionControlDeployment/create" \
-            -d "repository_root=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("/home/scdunumd/public_html/about-berlin-hotels.de"))')" \
-            | python3 -m json.tool || true
+            -d "repository_root=$ENCODED" 2>&1 || true
