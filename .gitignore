@@ -1,5 +1,5 @@
 node_modules/
-dist/
+# dist/ committed by CI via git add -f
 .astro/
 .DS_Store
 .env

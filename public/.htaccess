@@ -22,6 +22,12 @@
   RewriteRule ^thema/tipps/?$ /tipps/ [R=301,L]
   RewriteRule ^thema/veranstaltungen/?$ /tipps/ [R=301,L]
 
+  # Serve pre-built Astro HTML files directly
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L,QSA]
+
   # WICHTIG: /charlottenburg/, /friedrichshain/, /mitte/, /pankow/ NICHT umleiten —
   # diese indexierten WP-Artikel bleiben als eigene Seiten unter ihrer exakten URL
   # erhalten (Ranking-Schutz). Siehe src/data/articles/districts.ts.
