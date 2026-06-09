@@ -58,14 +58,12 @@ jobs:
           REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
           ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
+          ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
+
           echo "--- Pulling from GitHub ---"
           curl -sk -u "$AUTH" \
-            -H "Content-Type: application/json" \
-            -X POST "$BASE/execute/VersionControl/update" \
-            -d "{\"repository_root\": \"$REPO_ROOT\"}" 2>&1 || true
+            "$BASE/json-api/cpanel?cpanel_jsonapi_version=2&cpanel_jsonapi_module=VersionControl&cpanel_jsonapi_func=update&repository_root=$ENCODED" 2>&1 || true
 
           echo "--- Deploying HEAD commit ---"
           curl -sk -u "$AUTH" \
-            -H "Content-Type: application/json" \
-            -X POST "$BASE/execute/VersionControlDeployment/create" \
-            -d "{\"repository_root\": \"$REPO_ROOT\"}" 2>&1 || true
+            "$BASE/json-api/cpanel?cpanel_jsonapi_version=2&cpanel_jsonapi_module=VersionControlDeployment&cpanel_jsonapi_func=create&repository_root=$ENCODED" 2>&1 || true
