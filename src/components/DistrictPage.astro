@@ -11,7 +11,9 @@ import AttractionCard from "./AttractionCard.astro";
 import CategoryCard from "./CategoryCard.astro";
 import DistrictCard from "./DistrictCard.astro";
 import FigureImage from "./FigureImage.astro";
+import JsonLd from "./JsonLd.astro";
 import { districtImages } from "../data/images";
+import { site } from "../data/site";
 
 type Props = { district: District; locale: Locale };
 const { district, locale } = Astro.props;
@@ -40,7 +42,56 @@ const positionLabel = {
   inner: locale === "de" ? "Innenstadt" : "Inner city",
   outer: locale === "de" ? "Stadtrand" : "Outer city",
 }[district.position];
+
+// --- Structured data (TouristDestination + ItemList + BreadcrumbList) ---
+const districtUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+const inLang = locale === "de" ? "de-DE" : "en-US";
+const destinationSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  name: locale === "de" ? `Hotels in ${district.name}` : `Hotels in ${district.name}`,
+  description: district.intro[locale],
+  url: districtUrl,
+  inLanguage: inLang,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: district.geo.lat,
+    longitude: district.geo.lng,
+  },
+  containedInPlace: {
+    "@type": "City",
+    name: "Berlin",
+    address: { "@type": "PostalAddress", addressLocality: "Berlin", addressCountry: "DE" },
+  },
+};
+const hotelListSchema =
+  hotelsHere.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: locale === "de" ? `Hotels in ${district.name}` : `Hotels in ${district.name}`,
+        itemListElement: hotelsHere.map((h, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: h.name,
+          url: new URL(`${base}/hotels/${h.slug}/`, site.baseUrl).toString(),
+        })),
+      }
+    : null;
+const districtBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: locale === "de" ? "Stadtteile" : "Districts", item: new URL(`${base}/stadtteile/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 3, name: district.name, item: districtUrl },
+  ],
+};
 ---
+
+<JsonLd data={destinationSchema} />
+{hotelListSchema && <JsonLd data={hotelListSchema} />}
+<JsonLd data={districtBreadcrumb} />
 
 <!-- HERO with Wikimedia image background -->
 <section class="relative overflow-hidden text-white min-h-[420px] sm:min-h-[520px]">

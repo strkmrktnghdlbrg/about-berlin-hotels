@@ -42,6 +42,7 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-white text-sm font-semibold mb-3">{tr(t.nav.legal, locale)}</h3>
         <ul class="space-y-2 text-sm">
+          <li><a href={locale === "de" ? "/ueber-uns/" : "/en/about/"} class="hover:text-white">{locale === "de" ? "Über uns" : "About"}</a></li>
           <li><a href={locale === "de" ? "/impressum/" : "/en/imprint/"} class="hover:text-white">{tr(t.footer.imprint, locale)}</a></li>
           <li><a href={locale === "de" ? "/datenschutz/" : "/en/privacy/"} class="hover:text-white">{tr(t.footer.privacy, locale)}</a></li>
         </ul>

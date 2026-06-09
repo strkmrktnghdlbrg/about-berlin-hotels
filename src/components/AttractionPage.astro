@@ -12,9 +12,11 @@ import JsonLd from "./JsonLd.astro";
 import GetYourGuideWidget from "./GetYourGuideWidget.astro";
 import Stay22NearbyHotels from "./Stay22NearbyHotels.astro";
 import { site } from "../data/site";
+import { attractionEditorial } from "../data/attraction-editorial";
 
 type Props = { attraction: Attraction; locale: Locale };
 const { attraction, locale } = Astro.props;
+const editorial = attractionEditorial[attraction.slug];
 const base = locale === "de" ? "" : "/en";
 const districtsBase = locale === "de" ? "/stadtteile" : "/en/districts";
 const attractionsBase = locale === "de" ? "/sehenswuerdigkeiten" : "/en/attractions";
@@ -129,6 +131,17 @@ const breadcrumbSchema = {
   </div>
 </section>
 
+<!-- EDITORIAL — redaktionelle Vertiefung -->
+{editorial && (
+  <section class="py-12 sm:py-14">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="space-y-4 text-lg text-ink-700 leading-relaxed">
+        {editorial[locale].map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+  </section>
+)}
+
 <!-- GETYOURGUIDE — Touren & Tickets zu dieser Sehenswürdigkeit -->
 <section class="py-14 sm:py-16 surface-soft">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
@@ -208,6 +221,20 @@ const breadcrumbSchema = {
             </svg>
           </a>
         </aside>
+      </div>
+
+      <!-- INTERACTIVE MAP (Google Maps embed, kein API-Key nötig) -->
+      <div class="mt-8 rounded-2xl overflow-hidden border border-ink-100 shadow-sm bg-white">
+        <iframe
+          title={locale === "de" ? `Karte: ${attraction.name.de}` : `Map: ${attraction.name.en}`}
+          src={`https://www.google.com/maps?q=${attraction.geo.lat},${attraction.geo.lng}&z=15&hl=${locale}&output=embed`}
+          width="100%"
+          height="360"
+          loading="lazy"
+          style="border:0; display:block; width:100%;"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </section>

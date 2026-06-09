@@ -10,6 +10,8 @@ import CategoryCard from "./CategoryCard.astro";
 import HotelCard from "./HotelCard.astro";
 import AttractionCard from "./AttractionCard.astro";
 import GetYourGuideWidget from "./GetYourGuideWidget.astro";
+import JsonLd from "./JsonLd.astro";
+import { site } from "../data/site";
 
 type Props = { locale: Locale };
 const { locale } = Astro.props;
@@ -29,7 +31,30 @@ const totalHotels = hotels.reduce((sum, h) => sum + 1, 0);
 const totalDistricts = districts.length;
 const totalCategories = categories.length;
 const totalAttractions = attractions.length;
+
+// --- Structured data (WebSite + Organization) ---
+const homeUrl = new URL(`${base}/`, site.baseUrl).toString();
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.brand.name,
+  url: homeUrl,
+  inLanguage: locale === "de" ? "de-DE" : "en-US",
+  description: site.brand.tagline[locale],
+  publisher: { "@type": "Organization", name: site.brand.name, url: site.baseUrl + "/" },
+};
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.brand.name,
+  url: site.baseUrl + "/",
+  description: site.brand.tagline[locale],
+  email: site.contact.email,
+};
 ---
+
+<JsonLd data={websiteSchema} />
+<JsonLd data={organizationSchema} />
 
 <!-- HERO -->
 <section class="relative overflow-hidden gradient-spree text-white">

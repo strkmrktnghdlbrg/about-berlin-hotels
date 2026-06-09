@@ -11,9 +11,11 @@ import FigureImage from "./FigureImage.astro";
 import JsonLd from "./JsonLd.astro";
 import { districtImages } from "../data/images";
 import { site } from "../data/site";
+import { hotelEditorial } from "../data/hotel-editorial";
 
 type Props = { hotel: Hotel; locale: Locale };
 const { hotel, locale } = Astro.props;
+const editorial = hotelEditorial[hotel.slug];
 const base = locale === "de" ? "" : "/en";
 
 const hotelUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
@@ -196,6 +198,12 @@ const breadcrumbSchema = {
       <p class="text-lg text-ink-700 leading-relaxed mb-6 text-balance">
         {hotel.description[locale]}
       </p>
+
+      {editorial && (
+        <div class="space-y-4 text-ink-700 leading-relaxed mb-6">
+          {editorial[locale].map((p) => <p set:html={p} />)}
+        </div>
+      )}
 
       {hotel.website && (
         <div class="mb-6 rounded-xl bg-ink-50 border border-ink-100 px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
