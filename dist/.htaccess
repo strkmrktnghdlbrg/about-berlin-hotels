@@ -1,0 +1,118 @@
+# ============================================================
+# About Berlin Hotels — Apache .htaccess
+# ============================================================
+
+# --- Force HTTPS + non-www → www (Live-Domain) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force www
+  RewriteCond %{HTTP_HOST} ^about-berlin-hotels\.de$ [NC]
+  RewriteRule ^(.*)$ https://www.about-berlin-hotels.de/$1 [L,R=301]
+
+  # --- Legacy WP /thema/-Taxonomie → neue Kategorien/Übersichten ---
+  RewriteRule ^thema/billige-hotels/?$ /kategorien/billige-hotels/ [R=301,L]
+  RewriteRule ^thema/charmante-hotels/?$ /kategorien/charmante-hotels/ [R=301,L]
+  RewriteRule ^thema/shuttle/?$ /kategorien/hotels-mit-shuttle/ [R=301,L]
+  RewriteRule ^thema/stadtteile/?$ /stadtteile/ [R=301,L]
+  RewriteRule ^thema/tipps/?$ /tipps/ [R=301,L]
+  RewriteRule ^thema/veranstaltungen/?$ /tipps/ [R=301,L]
+
+  # Serve pre-built Astro HTML files directly
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L,QSA]
+
+  # WICHTIG: /charlottenburg/, /friedrichshain/, /mitte/, /pankow/ NICHT umleiten —
+  # diese indexierten WP-Artikel bleiben als eigene Seiten unter ihrer exakten URL
+  # erhalten (Ranking-Schutz). Siehe src/data/articles/districts.ts.
+
+  # --- Spin-Duplikat-Artikel (alte WP-Posts) → kanonischer Artikel (echte 301) ---
+  RewriteRule ^billige-hotels/?$ /budget-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-luxus-hotels-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-friendly-luxury-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^budget-friendly-luxury-berlin-2/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxus-boutique-hotels-berlin/?$ /luxus-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxus-spa-hotels-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^historische-luxushotels-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^historische-charme-hotels-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotel-mit-geschichte-berlin/?$ /historische-hotels-berlin/ [R=301,L]
+  RewriteRule ^wellness-retreats-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^wellness-retreats-berlin-2/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^boutique-spa-hotels-berlin/?$ /wellness-spa-hotels-berlin/ [R=301,L]
+  RewriteRule ^charming-hotels-einzigartige-unterkuenfte/?$ /boutique-hotels-berlin-charme/ [R=301,L]
+  RewriteRule ^innovative-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^high-tech-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^architektur-wunder-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^trendy-hotels-berlin/?$ /design-hotels-berlin/ [R=301,L]
+  RewriteRule ^kuenstlerische-hotels-berlin/?$ /kultur-hotels-berlin/ [R=301,L]
+  RewriteRule ^kulturelle-hideaways-berlin/?$ /kultur-hotels-berlin/ [R=301,L]
+  RewriteRule ^hidden-gems-hotels-berlin/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^hidden-gems-hotels-berlin-2/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^ungewoehnliche-hotels-berlin/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^authentische-berliner-hotels/?$ /geheimtipp-hotels-berlin/ [R=301,L]
+  RewriteRule ^pet-friendly-hotels-berlin/?$ /tierfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^pet-friendly-hotels-berlin-2/?$ /tierfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^familien-spass-hotels-berlin/?$ /familienfreundliche-hotels-berlin/ [R=301,L]
+  RewriteRule ^oeko-freundliche-hotels-berlin/?$ /nachhaltige-hotels-berlin/ [R=301,L]
+  RewriteRule ^beste-lage-hotels-berlin/?$ /zentrale-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-near-major-attractions-berlin/?$ /zentrale-hotels-berlin/ [R=301,L]
+  RewriteRule ^ruhige-ecken-hotels-berlin/?$ /steglitz/ [R=301,L]
+  RewriteRule ^bester-ausblick-hotels-berlin/?$ /rooftop-bars-hotels-berlin/ [R=301,L]
+  RewriteRule ^luxuriose-dachterrassen-hotels-berlin/?$ /rooftop-bars-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-mit-bestem-service-berlin/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotels-mit-bestem-service-berlin-2/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotelveranstaltungen-verbessern-gaesteerlebnis/?$ /geschaeftsreisen-hotels-berlin/ [R=301,L]
+  RewriteRule ^hotel-shuttleservice/?$ /kategorien/hotels-mit-shuttle/ [R=301,L]
+  RewriteRule ^stadtteile-einblicke-vielfalt-leben/?$ /stadtteile/ [R=301,L]
+
+  # WP feed URLs → 410 Gone
+  RewriteRule ^feed/?$ - [R=410,L]
+  RewriteRule ^comments/feed/?$ - [R=410,L]
+  RewriteRule ^wp-json(.*)$ - [R=410,L]
+  RewriteRule ^xmlrpc\.php$ - [R=410,L]
+</IfModule>
+
+# --- GZIP / Deflate ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/xml application/xml+rss
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+# --- Browser caching ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                              "access plus 1 month"
+  ExpiresByType text/html                     "access plus 5 minutes"
+  ExpiresByType text/css                      "access plus 1 month"
+  ExpiresByType text/javascript               "access plus 1 month"
+  ExpiresByType application/javascript        "access plus 1 month"
+  ExpiresByType image/svg+xml                 "access plus 6 months"
+  ExpiresByType image/png                     "access plus 6 months"
+  ExpiresByType image/jpeg                    "access plus 6 months"
+  ExpiresByType image/webp                    "access plus 6 months"
+  ExpiresByType image/avif                    "access plus 6 months"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType application/font-woff2        "access plus 1 year"
+</IfModule>
+
+# --- Security headers ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# --- Custom 404 ---
+ErrorDocument 404 /404.html
+
+# --- Prevent directory listing ---
+Options -Indexes

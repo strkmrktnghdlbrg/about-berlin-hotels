@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /impressum/
+Disallow: /datenschutz/
+Disallow: /en/imprint/
+Disallow: /en/privacy/
+Disallow: /404
+
+Sitemap: https://www.about-berlin-hotels.de/sitemap-index.xml
