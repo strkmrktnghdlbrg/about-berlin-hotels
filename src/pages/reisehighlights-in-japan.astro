@@ -6,6 +6,6 @@ import { getGuestPost } from "../data/guest-posts";
 const post = getGuestPost("reisehighlights-in-japan")!;
 ---
 
-<BaseLayout title={`${post.title} | About Berlin Hotels`} description={post.description} locale="de">
+<BaseLayout title={`${post.title} | About Berlin Hotels`} description={post.description} locale="de" ogImage={post.image?.src}>
   <GuestPostPage post={post} />
 </BaseLayout>

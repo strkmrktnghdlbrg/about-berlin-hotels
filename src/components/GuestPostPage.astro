@@ -28,6 +28,7 @@ const articleSchema = {
   description: post.description,
   inLanguage: "de-DE",
   mainEntityOfPage: url,
+  ...(post.image ? { image: new URL(post.image.src, site.baseUrl).toString() } : {}),
   datePublished: post.datePublished,
   dateModified: post.dateModified,
   author: { "@type": "Organization", name: site.brand.name, url: site.baseUrl },
@@ -45,9 +46,26 @@ const articleSchema = {
     <span class="text-ink-700">{post.title}</span>
   </nav>
 
-  <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-8 leading-[1.15]">
+  <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-6 leading-[1.15]">
     {post.title}
   </h1>
+
+  {post.image && (
+    <figure class="mb-8">
+      <div class="aspect-[16/9] w-full overflow-hidden rounded-2xl border border-ink-100 bg-ink-50">
+        <img
+          src={post.image.src}
+          alt={post.image.alt}
+          loading="eager"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      {post.image.credit && (
+        <figcaption class="mt-2 text-xs text-ink-400">{post.image.credit}</figcaption>
+      )}
+    </figure>
+  )}
 
   <div class="space-y-5 text-ink-700 leading-relaxed text-lg [&_a]:text-brand-700 [&_a]:font-medium [&_a:hover]:underline">
     {post.blocks.map((b) =>

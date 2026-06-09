@@ -16,12 +16,16 @@
 
 export type GuestBlock = { type: "h2" | "h3" | "p"; html: string };
 
+export type GuestPostImage = { src: string; alt: string; credit?: string };
+
 export type GuestPost = {
   slug: string;
   title: string;
   description: string;
   datePublished: string;
   dateModified: string;
+  /** Optionales Titelbild (Hero). */
+  image?: GuestPostImage;
   blocks: GuestBlock[];
 };
 
@@ -33,6 +37,11 @@ export const guestPosts: GuestPost[] = [
       "Reisehighlights in Japan: Tokio und Kyoto, japanische Küche, Tempel, Gärten und der effiziente Nahverkehr — ein Überblick für die Reiseplanung.",
     datePublished: "2024-11-01",
     dateModified: "2024-11-01",
+    image: {
+      src: "/images/reisehighlights-in-japan.jpg",
+      alt: "Das schwimmende Torii des Itsukushima-Schreins bei Miyajima, Japan, im Wasser stehend",
+      credit: "Foto: Balon Greyjoy / Wikimedia Commons (CC0)",
+    },
     blocks: [
       { type: "p", html: "Im Osten Asiens befindet sich Japan, ein Land, das für seine Mischung aus alten Traditionen und moderner Innovation bekannt ist und dessen Kultur sowohl Handwerkskunst als auch lebendiges urbanes Leben schätzt. Japan bietet viele Orte und Aktivitäten, die für Reisende attraktiv sind und einen Einblick in die faszinierende Kultur, Geschichte und das tägliche Leben des Landes gewähren. Neben den bekannten Städten wie Tokio und Kyoto gibt es kulinarische Erlebnisse, spirituelle Stätten und sorgfältig gestaltete Gärten, die das Bild des Landes vervollständigen. Dieser Überblick stellt internationale Reisehighlights vor, die Besucher während eines Aufenthalts in Japan erleben können." },
       { type: "h2", html: "Die Hauptstadt Tokio entdecken" },
