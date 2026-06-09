@@ -59,10 +59,13 @@ jobs:
           ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
           echo "--- Pulling from GitHub ---"
-          curl -v -sk -u "$AUTH" \
-            "$BASE/execute/VersionControl/update?repository_root=$ENCODED" 2>&1 || true
+          curl -sk -u "$AUTH" \
+            -H "Content-Type: application/json" \
+            -X POST "$BASE/execute/VersionControl/update" \
+            -d "{\"repository_root\": \"$REPO_ROOT\"}" 2>&1 || true
 
           echo "--- Deploying HEAD commit ---"
-          curl -v -sk -u "$AUTH" \
+          curl -sk -u "$AUTH" \
+            -H "Content-Type: application/json" \
             -X POST "$BASE/execute/VersionControlDeployment/create" \
-            -d "repository_root=$ENCODED" 2>&1 || true
+            -d "{\"repository_root\": \"$REPO_ROOT\"}" 2>&1 || true
