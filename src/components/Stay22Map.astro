@@ -42,7 +42,7 @@ const {
 
 let embedUrl: string | undefined;
 if (embedId) {
-  embedUrl = `https://stay22.com/embed/${embedId}`;
+  embedUrl = `https://www.stay22.com/embed/${embedId}`;
 } else if (stay22Enabled) {
   const params = new URLSearchParams({
     aid: affiliate.stay22.lmaId,
@@ -51,7 +51,7 @@ if (embedId) {
     zoom: String(zoom),
     maincolor: affiliate.stay22.mainColor,
   });
-  embedUrl = `https://www.stay22.com/embed/widget?${params.toString()}`;
+  embedUrl = `https://www.stay22.com/embed/gm?${params.toString()}`;
 }
 
 const osmStaticUrl = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=${zoom}&size=1200x600&maptype=mapnik&markers=${lat},${lng},red-pushpin`;
