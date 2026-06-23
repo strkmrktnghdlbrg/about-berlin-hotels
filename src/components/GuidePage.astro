@@ -235,6 +235,40 @@ const breadcrumbSchema = {
   </section>
 )}
 
+<!-- REFERENCED ATTRACTIONS HUB LINKS -->
+{referencedAttractions.length > 0 && (
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            {locale === "de" ? "Sehenswürdigkeiten im Plan" : "Attractions in this itinerary"}
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+            {locale === "de" ? "Alle Berliner Sehenswürdigkeiten entdecken" : "Discover all Berlin attractions"}
+          </h2>
+        </div>
+        <a
+          href={`${attractionsBase}/`}
+          class="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors"
+        >
+          {locale === "de" ? "Alle Sehenswürdigkeiten" : "All attractions"} →
+        </a>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        {referencedAttractions.map((a) => (
+          <a
+            href={`${attractionsBase}/${a.slug}/`}
+            class="inline-flex items-center gap-1.5 rounded-full border border-ink-100 bg-white px-4 py-2 text-sm font-medium text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+          >
+            📍 {a.name[locale]}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 <!-- OTHER GUIDES -->
 <section class="py-14 sm:py-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
