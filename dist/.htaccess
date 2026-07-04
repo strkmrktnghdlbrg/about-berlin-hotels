@@ -6,6 +6,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # ---- Affiliate: Parken & Fliegen (Awin mid 14793, clickref www.about-berlin-hotels.de) ----
+  RewriteRule ^r/parken-fliegen/?$ https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=www.about-berlin-hotels.de [R=302,L,NE]
+
   # Force HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
