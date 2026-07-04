@@ -36,6 +36,9 @@ const year = new Date().getFullYear();
           <li><a href={locale === "de" ? "/kategorien/" : "/en/categories/"} class="hover:text-white">{tr(t.nav.categories, locale)}</a></li>
           <li><a href={locale === "de" ? "/sehenswuerdigkeiten/" : "/en/attractions/"} class="hover:text-white">{tr(t.nav.attractions, locale)}</a></li>
           <li><a href={locale === "de" ? "/tipps/" : "/en/tips/"} class="hover:text-white">{tr(t.nav.tips, locale)}</a></li>
+          {locale === "de" && (
+            <li><a href="/parken-flughafen-berlin/" class="hover:text-white">Parken am Flughafen BER</a></li>
+          )}
         </ul>
       </div>
 
