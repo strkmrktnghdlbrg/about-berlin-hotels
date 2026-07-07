@@ -64,14 +64,36 @@ jobs:
 
           PROXY="https://cpanel.about-berlin-hotels.de"
 
-          echo "--- Server-Version von dist/.htaccess (Fileman) ---"
-          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -G \
+          echo "--- Server-HEAD ermitteln ---"
+          HEAD_SHA=$(curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -G \
+            "$PROXY/execute/VersionControl/retrieve" 2>/dev/null \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data'][0]['last_update']['identifier'])" 2>/dev/null || true)
+          [ -z "$HEAD_SHA" ] && HEAD_SHA=6449781
+          echo "Server-HEAD: $HEAD_SHA"
+
+          echo "--- dist/.htaccess auf Git-Stand des Server-HEAD zurücksetzen ---"
+          git show "$HEAD_SHA:dist/.htaccess" > /tmp/htaccess-clean
+          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -X POST \
             --data-urlencode "dir=$REPO_ROOT/dist" \
             --data-urlencode "file=.htaccess" \
-            "$PROXY/execute/Fileman/get_file_content" 2>&1 | head -c 6000; echo
+            --data-urlencode "content@/tmp/htaccess-clean" \
+            "$PROXY/execute/Fileman/save_file_content" | head -c 800; echo
 
-          echo "--- Git-Version (Server-HEAD 6449781) von dist/.htaccess ---"
-          git show 6449781:dist/.htaccess | head -60
+          echo "--- git pull (VersionControl update) ---"
+          curl -sS -k --connect-timeout 15 --max-time 120 -u "$AUTH" -G \
+            --data-urlencode "repository_root=$REPO_ROOT" \
+            --data-urlencode "branch=main" \
+            "$PROXY/execute/VersionControl/update" | head -c 1500; echo
+
+          echo "--- Deployment anstoßen ---"
+          curl -sS -k --connect-timeout 15 --max-time 120 -u "$AUTH" -G \
+            --data-urlencode "repository_root=$REPO_ROOT" \
+            "$PROXY/execute/VersionControlDeployment/create" | head -c 800; echo
+
+          echo "--- Live-Check ---"
+          sleep 10
+          curl -s -o /dev/null -w "parken-Seite: %{http_code}\n" "https://www.about-berlin-hotels.de/parken-flughafen-berlin/"
+          curl -s -o /dev/null -w "r-Redirect: %{http_code} -> %{redirect_url}\n" "https://www.about-berlin-hotels.de/r/parken-fliegen/"
 
       - name: Deploy note
         run: |
