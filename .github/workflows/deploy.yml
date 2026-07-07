@@ -102,12 +102,10 @@ jobs:
             --data-urlencode "repository_root=$REPO_ROOT" \
             "$PROXY/execute/VersionControlDeployment/create" | head -c 400; echo
 
-      - name: TEMP Repo-Liste des Accounts
+      - name: Deploy-Check
         run: |
-          curl -sS -k --connect-timeout 15 --max-time 60 \
-            -u "${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_PASS }}" \
-            "https://cpanel.about-berlin-hotels.de/execute/VersionControl/retrieve" 2>/dev/null \
-            | python3 -c "import sys,json; [print(r['name'], r['repository_root']) for r in json.load(sys.stdin)['data']]"
+          sleep 10
+          curl -s -o /dev/null -w "Startseite: %{http_code}\n" "https://www.about-berlin-hotels.de/"
 
       - name: Deploy note
         run: |
