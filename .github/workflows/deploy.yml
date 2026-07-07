@@ -62,18 +62,20 @@ jobs:
           REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
           ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
-          echo "--- UAPI: VersionControl retrieve (Repo-Status) ---"
-          curl -sk -u "$AUTH" -H "Accept: application/json" \
-            "$BASE/execute/VersionControl/retrieve" | head -c 2000; echo
+          echo "--- FTPS explizit (Port 21, AUTH TLS): Root-Listing ---"
+          curl -sS -k --ssl-reqd --connect-timeout 15 --max-time 60 -u "$AUTH" \
+            "ftp://king.truehostdns.com/" --list-only 2>&1 | head -20 || true
 
-          echo "--- UAPI: VersionControl update (git pull) ---"
-          curl -sk -u "$AUTH" -H "Accept: application/json" -G \
-            --data-urlencode "repository_root=$REPO_ROOT" \
-            --data-urlencode "branch=main" \
-            "$BASE/execute/VersionControl/update" | head -c 2000; echo
+          echo "--- FTPS implizit (Port 990): Root-Listing ---"
+          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" \
+            "ftps://king.truehostdns.com/" --list-only 2>&1 | head -20 || true
 
-          echo "--- FTPS-Test: Listing Webroot ---"
-          curl -sk --ssl-reqd -u "$AUTH" "ftp://king.truehostdns.com/public_html/about-berlin-hotels.de/" --list-only 2>&1 | head -20 || true
+          echo "--- FTP plain (Port 21): Root-Listing ---"
+          curl -sS --connect-timeout 15 --max-time 60 -u "$AUTH" \
+            "ftp://king.truehostdns.com/" --list-only 2>&1 | head -20 || true
+
+          echo "--- SSH-Test (Port 22) ---"
+          (timeout 10 bash -c 'cat < /dev/null > /dev/tcp/king.truehostdns.com/22' && echo "Port 22 offen") 2>&1 || echo "Port 22 zu"
 
       - name: Deploy note
         run: |
