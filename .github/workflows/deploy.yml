@@ -62,19 +62,16 @@ jobs:
           REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
           ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+          PROXY="https://cpanel.about-berlin-hotels.de"
 
-          echo "--- UAPI via 443-Proxy cpanel.about-berlin-hotels.de: update ---"
-          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -A "$UA" -G \
-            --data-urlencode "repository_root=$REPO_ROOT" \
-            --data-urlencode "branch=main" \
-            "https://cpanel.about-berlin-hotels.de/execute/VersionControl/update" 2>&1 | head -c 2000; echo
+          echo "--- Server-Version von dist/.htaccess (Fileman) ---"
+          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -G \
+            --data-urlencode "dir=$REPO_ROOT/dist" \
+            --data-urlencode "file=.htaccess" \
+            "$PROXY/execute/Fileman/get_file_content" 2>&1 | head -c 6000; echo
 
-          echo "--- UAPI via king:2083 mit Browser-UA: update ---"
-          curl -sS -k --connect-timeout 15 --max-time 60 -u "$AUTH" -A "$UA" -G \
-            --data-urlencode "repository_root=$REPO_ROOT" \
-            --data-urlencode "branch=main" \
-            "$BASE/execute/VersionControl/update" 2>&1 | head -c 2000; echo
+          echo "--- Git-Version (Server-HEAD 6449781) von dist/.htaccess ---"
+          git show 6449781:dist/.htaccess | head -60
 
       - name: Deploy note
         run: |
