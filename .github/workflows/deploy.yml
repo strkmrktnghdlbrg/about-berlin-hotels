@@ -62,13 +62,18 @@ jobs:
           REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
           ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
 
-          echo "--- Pulling from GitHub ---"
-          curl -sk -u "$AUTH" \
-            "$BASE/json-api/cpanel?cpanel_jsonapi_version=2&cpanel_jsonapi_module=VersionControl&cpanel_jsonapi_func=update&repository_root=$ENCODED" 2>&1 || true
+          echo "--- UAPI: VersionControl retrieve (Repo-Status) ---"
+          curl -sk -u "$AUTH" -H "Accept: application/json" \
+            "$BASE/execute/VersionControl/retrieve" | head -c 2000; echo
 
-          echo "--- Deploying HEAD commit ---"
-          curl -sk -u "$AUTH" \
-            "$BASE/json-api/cpanel?cpanel_jsonapi_version=2&cpanel_jsonapi_module=VersionControlDeployment&cpanel_jsonapi_func=create&repository_root=$ENCODED" 2>&1 || true
+          echo "--- UAPI: VersionControl update (git pull) ---"
+          curl -sk -u "$AUTH" -H "Accept: application/json" -G \
+            --data-urlencode "repository_root=$REPO_ROOT" \
+            --data-urlencode "branch=main" \
+            "$BASE/execute/VersionControl/update" | head -c 2000; echo
+
+          echo "--- FTPS-Test: Listing Webroot ---"
+          curl -sk --ssl-reqd -u "$AUTH" "ftp://king.truehostdns.com/public_html/about-berlin-hotels.de/" --list-only 2>&1 | head -20 || true
 
       - name: Deploy note
         run: |
