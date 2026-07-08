@@ -57,12 +57,9 @@ jobs:
 
       - name: Trigger cPanel pull & deploy
         run: |
-          BASE="https://king.truehostdns.com:2083"
+          PROXY="https://cpanel.about-berlin-hotels.de"
           AUTH="${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_PASS }}"
           REPO_ROOT="/home/scdunumd/public_html/about-berlin-hotels.de"
-          ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$REPO_ROOT'))")
-
-          PROXY="https://cpanel.about-berlin-hotels.de"
 
           # WICHTIG: Ports 21/22/990/2083 sind firewalled, king:2083 direkt blockt
           # GitHub-Runner via Imunify360. Einziger funktionierender Weg ist die
@@ -106,8 +103,3 @@ jobs:
         run: |
           sleep 10
           curl -s -o /dev/null -w "Startseite: %{http_code}\n" "https://www.about-berlin-hotels.de/"
-
-      - name: Deploy note
-        run: |
-          echo "✅ dist/ committed to main — cPanel cron will pull within 5 minutes"
-          echo "Commit: $(git rev-parse --short HEAD)"
