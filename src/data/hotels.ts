@@ -135,8 +135,8 @@ export const hotels: Hotel[] = [
       en: "Members club with hotel in a Bauhaus-era building on Torstraße.",
     },
     description: {
-      de: "Im 1928 erbauten ehemaligen Kaufhaus Jonass — Roof-Pool, mehrere Restaurants und ein hauseigenes Kino. Hotelgäste haben Zugang zu allen Members-Bereichen.",
-      en: "In the 1928 former Jonass department store — roof pool, multiple restaurants and an in-house cinema. Hotel guests get access to all members' areas.",
+      de: "Im 1928 erbauten ehemaligen Kaufhaus Jonass - Roof-Pool, mehrere Restaurants und ein hauseigenes Kino. Hotelgäste haben Zugang zu allen Members-Bereichen.",
+      en: "In the 1928 former Jonass department store - roof pool, multiple restaurants and an in-house cinema. Hotel guests get access to all members' areas.",
     },
     highlights: {
       de: ["Roof-Pool", "Kino", "Mehrere Restaurants"],
@@ -175,8 +175,8 @@ export const hotels: Hotel[] = [
     website: "https://www.circus-berlin.de/",
     bookingUrl: "https://www.booking.com/hotel/de/the-circus.de.html",
     shortDesc: {
-      de: "Inhabergeführtes Boutique-Hotel am Rosenthaler Platz — günstig und sehr berlinerisch.",
-      en: "Owner-run boutique hotel on Rosenthaler Platz — affordable and very Berlin.",
+      de: "Inhabergeführtes Boutique-Hotel am Rosenthaler Platz - günstig und sehr berlinerisch.",
+      en: "Owner-run boutique hotel on Rosenthaler Platz - affordable and very Berlin.",
     },
     description: {
       de: "Seit über 20 Jahren inhabergeführt. Bietet Hotel, Apartments und seit 2018 eine eigene Brauerei (Circus Brewing) im selben Block. Hauseigene Stadttouren auf Englisch und Deutsch.",
@@ -223,8 +223,8 @@ export const hotels: Hotel[] = [
       en: "Apartment hotel at Hackescher Markt with pool and sauna.",
     },
     description: {
-      de: "Voll ausgestattete Studios und Apartments mit Küchenzeile, dazu Innenpool und Sauna. Ideal ab 3 Nächten — für Familien, Business-Reisende mit Langzeit-Bedarf.",
-      en: "Fully equipped studios and apartments with kitchenette, plus indoor pool and sauna. Ideal from 3 nights — for families and business with longer stays.",
+      de: "Voll ausgestattete Studios und Apartments mit Küchenzeile, dazu Innenpool und Sauna. Ideal ab 3 Nächten - für Familien, Business-Reisende mit Langzeit-Bedarf.",
+      en: "Fully equipped studios and apartments with kitchenette, plus indoor pool and sauna. Ideal from 3 nights - for families and business with longer stays.",
     },
     highlights: {
       de: ["Pool & Sauna", "Voll ausgestattete Apartments", "Am Hackeschen Markt"],
@@ -245,8 +245,8 @@ export const hotels: Hotel[] = [
       en: 'High-rise hotel right on Alexanderplatz with rooftop „Base Flying".',
     },
     description: {
-      de: '1.012 Zimmer auf 41 Etagen — eines der größten Hotels Berlins. Auf dem Dach befindet sich eine Aussichtsplattform mit dem „Base Flying"-Erlebnis. Direkter U-/S-/Tram-Anschluss.',
-      en: "1,012 rooms on 41 floors — one of Berlin's largest hotels. The rooftop hosts an observation deck and the Base Flying experience. Direct U-/S-Bahn/tram access.",
+      de: '1.012 Zimmer auf 41 Etagen - eines der größten Hotels Berlins. Auf dem Dach befindet sich eine Aussichtsplattform mit dem „Base Flying"-Erlebnis. Direkter U-/S-/Tram-Anschluss.',
+      en: "1,012 rooms on 41 floors - one of Berlin's largest hotels. The rooftop hosts an observation deck and the Base Flying experience. Direct U-/S-Bahn/tram access.",
     },
     highlights: {
       de: ["41 Etagen", "Dachterrasse", "Direkt am Alex"],
@@ -287,8 +287,8 @@ export const hotels: Hotel[] = [
     website: "https://hotelbristolberlin.com/",
     bookingUrl: "https://www.booking.com/hotel/de/bristolberlin.de.html",
     shortDesc: {
-      de: "Klassisches Grandhotel am Kurfürstendamm — empfängt seit 1952 Gäste.",
-      en: "Classic grand hotel on Kurfürstendamm — welcoming guests since 1952.",
+      de: "Klassisches Grandhotel am Kurfürstendamm - empfängt seit 1952 Gäste.",
+      en: "Classic grand hotel on Kurfürstendamm - welcoming guests since 1952.",
     },
     description: {
       de: "Eines der traditionsreichsten West-Berliner Grandhotels, bis 2017 als Kempinski Hotel Bristol Berlin geführt. Großzügige Zimmer, Pool, Spa, die Bristol Bar als Klassiker. Direkt am Ku'damm.",
@@ -333,8 +333,8 @@ export const hotels: Hotel[] = [
     website: "https://www.hilton.com/de/hotels/berwawa-waldorf-astoria-berlin/",
     bookingUrl: "https://www.booking.com/hotel/de/waldorf-astoria-berlin.de.html",
     shortDesc: {
-      de: "32-stöckiger Glasturm direkt an der Gedächtniskirche — Luxus mit Panoramablick.",
-      en: "32-storey glass tower at the Memorial Church — luxury with panoramic views.",
+      de: "32-stöckiger Glasturm direkt an der Gedächtniskirche - Luxus mit Panoramablick.",
+      en: "32-storey glass tower at the Memorial Church - luxury with panoramic views.",
     },
     description: {
       de: "Berlins höchstes Hotel mit Blick über City West, dem Spa Guerlain auf zwei Etagen, der Bar Lang im 31. Stock und dem Restaurant ROCA. 2013 eröffnet, direkt am Bahnhof Zoo.",
@@ -381,8 +381,8 @@ export const hotels: Hotel[] = [
       en: "Architectural design hotel with flowing transitions between furniture and room.",
     },
     description: {
-      de: "Vom Berliner Architekturbüro GRAFT entworfen — geschwungene Wände, Bett und Wanne als bauliche Einheit, viel Eiche. Eines der originellsten Designhotels Berlins.",
-      en: "Designed by Berlin architecture firm GRAFT — curved walls, bed and bath as a built unit, lots of oak. One of Berlin's most original design hotels.",
+      de: "Vom Berliner Architekturbüro GRAFT entworfen - geschwungene Wände, Bett und Wanne als bauliche Einheit, viel Eiche. Eines der originellsten Designhotels Berlins.",
+      en: "Designed by Berlin architecture firm GRAFT - curved walls, bed and bath as a built unit, lots of oak. One of Berlin's most original design hotels.",
     },
     highlights: {
       de: ["GRAFT-Architektur", "Spa", "Nahe Ku'damm"],
@@ -399,8 +399,8 @@ export const hotels: Hotel[] = [
     website: "https://www.hilton.com/de/hotels/berkwhx-hampton-berlin-city-west/",
     bookingUrl: "https://www.booking.com/hotel/de/hampton-by-hilton-berlin-city-west.de.html",
     shortDesc: {
-      de: "Solider 3-Sterne-Bau in City West — Frühstück inklusive, gute Anbindung.",
-      en: "Solid 3-star property in City West — breakfast included, good transit links.",
+      de: "Solider 3-Sterne-Bau in City West - Frühstück inklusive, gute Anbindung.",
+      en: "Solid 3-star property in City West - breakfast included, good transit links.",
     },
     description: {
       de: "Frische, helle Zimmer, kostenloses warmes Frühstücksbuffet, 24/7-Fitness. Ideal als Business-Hotel zu fairem Preis.",
@@ -512,8 +512,8 @@ export const hotels: Hotel[] = [
     website: "https://www.nh-hotels.de/hotel/nhow-berlin",
     bookingUrl: "https://www.booking.com/hotel/de/nhow-berlin.de.html",
     shortDesc: {
-      de: "Musikhotel direkt an der Spree — mit hauseigenen Tonstudios.",
-      en: "Music hotel right on the Spree — with in-house recording studios.",
+      de: "Musikhotel direkt an der Spree - mit hauseigenen Tonstudios.",
+      en: "Music hotel right on the Spree - with in-house recording studios.",
     },
     description: {
       de: "Innenarchitektur von Karim Rashid. Zwei hauseigene Aufnahme-Studios, von Gästen mietbar. Knallpink-Lounge, Glasfassade zur Spree mit Blick auf die Oberbaumbrücke und Mercedes-Benz Arena.",
@@ -677,7 +677,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "1.125 Zimmer, das Estrel ist nach eigenen Angaben das größte Convention-, Entertainment- und Hotelzentrum Deutschlands. Eigene Show-Bühne (Stars in Concert), direkter Spreezugang, 15 Tagungsräume.",
-      en: "1,125 rooms — by its own account Germany's largest convention, entertainment and hotel centre. Own show stage (Stars in Concert), direct Spree access, 15 conference rooms.",
+      en: "1,125 rooms - by its own account Germany's largest convention, entertainment and hotel centre. Own show stage (Stars in Concert), direct Spree access, 15 conference rooms.",
     },
     highlights: {
       de: ["Stars in Concert", "1.125 Zimmer", "An der Spree"],
@@ -694,8 +694,8 @@ export const hotels: Hotel[] = [
     website: "https://www.huettenpalast.de/",
     bookingUrl: "https://www.booking.com/hotel/de/huttenpalast.de.html",
     shortDesc: {
-      de: "Übernachten im Wohnwagen — in einer alten Fabrikhalle in Neukölln.",
-      en: "Sleep in a vintage caravan — inside a former Neukölln factory.",
+      de: "Übernachten im Wohnwagen - in einer alten Fabrikhalle in Neukölln.",
+      en: "Sleep in a vintage caravan - inside a former Neukölln factory.",
     },
     description: {
       de: "In einer ehemaligen Staubsauger-Fabrik in der Hobrechtstraße. Alte Wohnwagen und selbstgebaute Hütten dienen als Zimmer in einer überdachten Halle. Klassische Hotelzimmer ebenfalls vorhanden, Café im Hof.",
@@ -765,8 +765,8 @@ export const hotels: Hotel[] = [
     website: "https://www.schlosshotelberlin.com/",
     bookingUrl: "https://www.booking.com/hotel/de/schlosshotel-berlin-by-patrick-hellmann.de.html",
     shortDesc: {
-      de: "Historisches Schlosshotel in Grunewald — von Karl Lagerfeld umgestaltet.",
-      en: "Historic palace hotel in Grunewald — redesigned by Karl Lagerfeld.",
+      de: "Historisches Schlosshotel in Grunewald - von Karl Lagerfeld umgestaltet.",
+      en: "Historic palace hotel in Grunewald - redesigned by Karl Lagerfeld.",
     },
     description: {
       de: "Im 1914 erbauten Schloss Pannwitz. Innenausstattung 1996 von Karl Lagerfeld neu gestaltet, später vom Modedesigner Patrick Hellmann übernommen. Park-Lage am Grunewald, eigenes Restaurant.",

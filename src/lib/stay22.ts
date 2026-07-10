@@ -165,7 +165,7 @@ export async function searchAccommodations(
   const apiKey = getApiKey();
   if (!apiKey) {
     console.warn(
-      "[stay22] STAY22_API_KEY env var fehlt — Live-Hotels werden übersprungen.",
+      "[stay22] STAY22_API_KEY env var fehlt - Live-Hotels werden übersprungen.",
     );
     return null;
   }

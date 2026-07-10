@@ -68,8 +68,8 @@ export const guides: Guide[] = [
         number: 1,
         title: { de: "Mitte: Wahrzeichen am Stück", en: "Mitte: landmarks back-to-back" },
         intro: {
-          de: "Brandenburger Tor, Reichstag, Museumsinsel — die Berliner Pflichtbesichtigungen kompakt zu Fuß.",
-          en: "Brandenburg Gate, Reichstag, Museum Island — Berlin's must-sees within walking distance.",
+          de: "Brandenburger Tor, Reichstag, Museumsinsel - die Berliner Pflichtbesichtigungen kompakt zu Fuß.",
+          en: "Brandenburg Gate, Reichstag, Museum Island - Berlin's must-sees within walking distance.",
         },
         slots: [
           {
@@ -92,8 +92,8 @@ export const guides: Guide[] = [
             type: "morgens",
             title: { de: "Reichstag mit Kuppel-Anmeldung", en: "Reichstag with dome registration" },
             description: {
-              de: "Glaskuppel von Foster, kostenlos zugänglich — aber Voranmeldung ein paar Tage vorher Pflicht.",
-              en: "Foster's glass dome, free entry — but pre-registration a few days ahead is mandatory.",
+              de: "Glaskuppel von Foster, kostenlos zugänglich - aber Voranmeldung ein paar Tage vorher Pflicht.",
+              en: "Foster's glass dome, free entry - but pre-registration a few days ahead is mandatory.",
             },
             attractionSlug: "reichstag",
             tip: {
@@ -147,8 +147,8 @@ export const guides: Guide[] = [
         number: 2,
         title: { de: "Mauer-Geschichte & Kreuzberger Vibes", en: "Wall history & Kreuzberg vibes" },
         intro: {
-          de: "East Side Gallery, Checkpoint Charlie, Görli — Berlins Geschichte zwischen 1961 und heute, durchwandert.",
-          en: "East Side Gallery, Checkpoint Charlie, Görli — Berlin's history from 1961 to today, on foot.",
+          de: "East Side Gallery, Checkpoint Charlie, Görli - Berlins Geschichte zwischen 1961 und heute, durchwandert.",
+          en: "East Side Gallery, Checkpoint Charlie, Görli - Berlin's history from 1961 to today, on foot.",
         },
         slots: [
           {
@@ -167,8 +167,8 @@ export const guides: Guide[] = [
             type: "mittagessen",
             title: { de: "Markthalle Neun", en: "Markthalle Neun" },
             description: {
-              de: "Donnerstags Street Food Thursday — Berliner Klassiker & internationale Stände.",
-              en: "Thursdays: Street Food Thursday — Berlin classics & international stalls.",
+              de: "Donnerstags Street Food Thursday - Berliner Klassiker & internationale Stände.",
+              en: "Thursdays: Street Food Thursday - Berlin classics & international stalls.",
             },
             districtSlug: "friedrichshain-kreuzberg",
           },
@@ -197,8 +197,8 @@ export const guides: Guide[] = [
             type: "abendessen",
             title: { de: "Abendessen in Kreuzberg", en: "Dinner in Kreuzberg" },
             description: {
-              de: "Von Berliner Currywurst bis zu Sterneküche — Kreuzberg liefert in jeder Preisklasse.",
-              en: "From Berlin currywurst to Michelin-starred — Kreuzberg delivers in every price bracket.",
+              de: "Von Berliner Currywurst bis zu Sterneküche - Kreuzberg liefert in jeder Preisklasse.",
+              en: "From Berlin currywurst to Michelin-starred - Kreuzberg delivers in every price bracket.",
             },
           },
         ],
@@ -207,8 +207,8 @@ export const guides: Guide[] = [
         number: 3,
         title: { de: "West-Berlin & Tiergarten", en: "West Berlin & Tiergarten" },
         intro: {
-          de: "Schloss Charlottenburg, Kurfürstendamm, KaDeWe — die Westseite mit Kaiser-Wilhelm-Gedächtniskirche und Tiergarten-Spaziergang.",
-          en: "Charlottenburg Palace, Kurfürstendamm, KaDeWe — the west side with the memorial church and Tiergarten walk.",
+          de: "Schloss Charlottenburg, Kurfürstendamm, KaDeWe - die Westseite mit Kaiser-Wilhelm-Gedächtniskirche und Tiergarten-Spaziergang.",
+          en: "Charlottenburg Palace, Kurfürstendamm, KaDeWe - the west side with the memorial church and Tiergarten walk.",
         },
         slots: [
           {
@@ -227,8 +227,8 @@ export const guides: Guide[] = [
             type: "mittagessen",
             title: { de: "KaDeWe Feinschmecker-Etage", en: "KaDeWe gourmet floor" },
             description: {
-              de: "6. Etage des KaDeWe — Sushi-Bars, Austern, Pasta, Berliner Bouletten. Großstadt-Schaufenster.",
-              en: "6th floor of KaDeWe — sushi bars, oysters, pasta, Berlin meatballs. Big-city window.",
+              de: "6. Etage des KaDeWe - Sushi-Bars, Austern, Pasta, Berliner Bouletten. Großstadt-Schaufenster.",
+              en: "6th floor of KaDeWe - sushi bars, oysters, pasta, Berlin meatballs. Big-city window.",
             },
             attractionSlug: "kadewe",
           },
@@ -247,8 +247,8 @@ export const guides: Guide[] = [
             type: "nachmittag",
             title: { de: "Tiergarten-Spaziergang", en: "Tiergarten walk" },
             description: {
-              de: "Berlins grüne Mitte, vom Zoologischen Garten Richtung Brandenburger Tor — 4 km, ungefähr 50 Min.",
-              en: "Berlin's green centre, from Zoo Station towards Brandenburg Gate — 4km, around 50 min.",
+              de: "Berlins grüne Mitte, vom Zoologischen Garten Richtung Brandenburger Tor - 4 km, ungefähr 50 Min.",
+              en: "Berlin's green centre, from Zoo Station towards Brandenburg Gate - 4km, around 50 min.",
             },
             attractionSlug: "tiergarten",
           },
@@ -257,8 +257,8 @@ export const guides: Guide[] = [
             type: "abendessen",
             title: { de: "Abschiedsessen in Mitte oder am Ku'damm", en: "Farewell dinner in Mitte or Ku'damm" },
             description: {
-              de: "Je nachdem wo das Hotel liegt — beide Ecken bieten Optionen für den letzten Abend.",
-              en: "Depending on where the hotel is — both areas have options for the last night.",
+              de: "Je nachdem wo das Hotel liegt - beide Ecken bieten Optionen für den letzten Abend.",
+              en: "Depending on where the hotel is - both areas have options for the last night.",
             },
           },
         ],
@@ -275,8 +275,8 @@ export const guides: Guide[] = [
       en: "Berlin with kids",
     },
     description: {
-      de: "Familien-Wochenende in Berlin: Zoo, Tempelhofer Feld, Mauerpark-Flohmarkt und das Naturkundemuseum — kindgerecht, mit Pausen.",
-      en: "Family weekend in Berlin: Zoo, Tempelhof Field, Mauerpark flea market and the Natural History Museum — kid-friendly, with breaks.",
+      de: "Familien-Wochenende in Berlin: Zoo, Tempelhofer Feld, Mauerpark-Flohmarkt und das Naturkundemuseum - kindgerecht, mit Pausen.",
+      en: "Family weekend in Berlin: Zoo, Tempelhof Field, Mauerpark flea market and the Natural History Museum - kid-friendly, with breaks.",
     },
     duration: 2,
     audience: { de: "Familien mit Kindern (4-12 Jahre)", en: "Families with kids (ages 4-12)" },
@@ -286,8 +286,8 @@ export const guides: Guide[] = [
         number: 1,
         title: { de: "Tiergarten, Zoo & Aussicht", en: "Tiergarten, Zoo & viewpoint" },
         intro: {
-          de: "Großer Tag im Park — Zoo am Morgen, Tiergarten-Picknick, Fernsehturm zur Belohnung.",
-          en: "Big day in the park — Zoo in the morning, Tiergarten picnic, TV Tower as reward.",
+          de: "Großer Tag im Park - Zoo am Morgen, Tiergarten-Picknick, Fernsehturm zur Belohnung.",
+          en: "Big day in the park - Zoo in the morning, Tiergarten picnic, TV Tower as reward.",
         },
         slots: [
           {
@@ -309,8 +309,8 @@ export const guides: Guide[] = [
             type: "mittagessen",
             title: { de: "Picknick im Tiergarten", en: "Picnic in Tiergarten" },
             description: {
-              de: "Park ist riesig — perfekt zum Toben nach 3 Stunden Zoo. Spielplätze über den ganzen Park verteilt.",
-              en: "Huge park — perfect to run around after 3 hours of zoo. Playgrounds across the whole park.",
+              de: "Park ist riesig - perfekt zum Toben nach 3 Stunden Zoo. Spielplätze über den ganzen Park verteilt.",
+              en: "Huge park - perfect to run around after 3 hours of zoo. Playgrounds across the whole park.",
             },
             attractionSlug: "tiergarten",
           },
@@ -339,8 +339,8 @@ export const guides: Guide[] = [
             type: "morgens",
             title: { de: "Tempelhofer Feld", en: "Tempelhof Field" },
             description: {
-              de: "Stillgelegter Flughafen — heute die größte innerstädtische Freifläche Europas. Fahrräder/Skates mitbringen oder leihen.",
-              en: "Decommissioned airport — now Europe's largest inner-city open space. Bring or rent bikes/skates.",
+              de: "Stillgelegter Flughafen - heute die größte innerstädtische Freifläche Europas. Fahrräder/Skates mitbringen oder leihen.",
+              en: "Decommissioned airport - now Europe's largest inner-city open space. Bring or rent bikes/skates.",
             },
             attractionSlug: "tempelhofer-feld",
           },
@@ -380,14 +380,14 @@ export const guides: Guide[] = [
         number: 1,
         title: { de: "Drinnen-Tour", en: "Indoor tour" },
         intro: {
-          de: "Bei Berliner Schauerwetter funktioniert dieser Plan ohne nasse Füße — alles per ÖPNV oder Taxi vernetzt.",
-          en: "When Berlin's weather turns nasty, this plan stays dry — everything connects via public transit or taxi.",
+          de: "Bei Berliner Schauerwetter funktioniert dieser Plan ohne nasse Füße - alles per ÖPNV oder Taxi vernetzt.",
+          en: "When Berlin's weather turns nasty, this plan stays dry - everything connects via public transit or taxi.",
         },
         slots: [
           {
             time: "10:00 – 13:00",
             type: "morgens",
-            title: { de: "Museumsinsel — drei Häuser", en: "Museum Island — three houses" },
+            title: { de: "Museumsinsel - drei Häuser", en: "Museum Island - three houses" },
             description: {
               de: "Mit der Bereichskarte alle Häuser. Plan: Neues Museum (Nofretete), Alte Nationalgalerie, Bode-Museum.",
               en: "All houses on one area ticket. Plan: Neues Museum (Nefertiti), Alte Nationalgalerie, Bode Museum.",
@@ -409,15 +409,15 @@ export const guides: Guide[] = [
             type: "nachmittag",
             title: { de: "KaDeWe", en: "KaDeWe" },
             description: {
-              de: "Größtes Kaufhaus Kontinentaleuropas, 7 Etagen — Schaufenster-Bummel ohne nass zu werden.",
-              en: "Largest department store in continental Europe, 7 floors — window-shopping without getting wet.",
+              de: "Größtes Kaufhaus Kontinentaleuropas, 7 Etagen - Schaufenster-Bummel ohne nass zu werden.",
+              en: "Largest department store in continental Europe, 7 floors - window-shopping without getting wet.",
             },
             attractionSlug: "kadewe",
           },
           {
             time: "19:30",
             type: "abendessen",
-            title: { de: "Abendessen — Konzerthaus oder Bar", en: "Dinner — concert hall or bar" },
+            title: { de: "Abendessen - Konzerthaus oder Bar", en: "Dinner - concert hall or bar" },
             description: {
               de: "Je nach Mood: Konzerthaus am Gendarmenmarkt (vorab buchen) oder eine warme Bar in Mitte.",
               en: "Mood-dependent: Konzerthaus on Gendarmenmarkt (book ahead) or a warm bar in Mitte.",

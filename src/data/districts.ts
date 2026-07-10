@@ -26,8 +26,8 @@ export const districts: District[] = [
     region: "mitte",
     position: "central",
     intro: {
-      de: "Mitte ist Berlins historisches und geografisches Herz — Brandenburger Tor, Museumsinsel, Reichstag und Unter den Linden auf wenigen Quadratkilometern. Hier wohnst du in unmittelbarer Nähe der ikonischen Berliner Sehenswürdigkeiten und im Zentrum des kulturellen Geschehens.",
-      en: "Mitte is Berlin's historic and geographic heart — Brandenburg Gate, Museum Island, Reichstag and Unter den Linden all within a few square kilometers. Stay here to be right next to Berlin's iconic landmarks and at the center of cultural life.",
+      de: "Mitte ist Berlins historisches und geografisches Herz - Brandenburger Tor, Museumsinsel, Reichstag und Unter den Linden auf wenigen Quadratkilometern. Hier wohnst du in unmittelbarer Nähe der ikonischen Berliner Sehenswürdigkeiten und im Zentrum des kulturellen Geschehens.",
+      en: "Mitte is Berlin's historic and geographic heart - Brandenburg Gate, Museum Island, Reichstag and Unter den Linden all within a few square kilometers. Stay here to be right next to Berlin's iconic landmarks and at the center of cultural life.",
     },
     vibe: {
       de: "Repräsentativ, geschichtsträchtig, urban-elegant. Tagsüber Touristen, abends Theater und gehobene Gastronomie.",
@@ -51,8 +51,8 @@ export const districts: District[] = [
     region: "ost",
     position: "inner",
     intro: {
-      de: "Friedrichshain-Kreuzberg ist Berlins kreatives Epizentrum — East Side Gallery, Mercedes-Benz Arena, RAW-Gelände und Markthalle Neun bilden den Kern. Hier dominieren Boutique-Hotels, Designhostels und urbanes Lebensgefühl statt Hotelketten.",
-      en: "Friedrichshain-Kreuzberg is Berlin's creative epicenter — East Side Gallery, Mercedes-Benz Arena, RAW grounds and Markthalle Neun form the core. Boutique hotels, design hostels and urban culture dominate here over chain hotels.",
+      de: "Friedrichshain-Kreuzberg ist Berlins kreatives Epizentrum - East Side Gallery, Mercedes-Benz Arena, RAW-Gelände und Markthalle Neun bilden den Kern. Hier dominieren Boutique-Hotels, Designhostels und urbanes Lebensgefühl statt Hotelketten.",
+      en: "Friedrichshain-Kreuzberg is Berlin's creative epicenter - East Side Gallery, Mercedes-Benz Arena, RAW grounds and Markthalle Neun form the core. Boutique hotels, design hostels and urban culture dominate here over chain hotels.",
     },
     vibe: {
       de: "Alternativ, kreativ, lebendig. Nachtleben am Limit, Streetart an jeder Ecke, Cafés bis spät in den Abend.",
@@ -76,8 +76,8 @@ export const districts: District[] = [
     region: "west",
     position: "inner",
     intro: {
-      de: "Charlottenburg ist das elegante West-Berlin — Kurfürstendamm, Schloss Charlottenburg, KaDeWe und Savignyplatz prägen den Bezirk. Hier findest du Berlins traditionsreichste 4- und 5-Sterne-Hotels in Gründerzeit-Bauten und ruhigen Nebenstraßen.",
-      en: "Charlottenburg is Berlin's elegant West — Kurfürstendamm, Charlottenburg Palace, KaDeWe and Savignyplatz define the district. This is where you find Berlin's most traditional 4- and 5-star hotels in late-19th-century buildings and quiet side streets.",
+      de: "Charlottenburg ist das elegante West-Berlin - Kurfürstendamm, Schloss Charlottenburg, KaDeWe und Savignyplatz prägen den Bezirk. Hier findest du Berlins traditionsreichste 4- und 5-Sterne-Hotels in Gründerzeit-Bauten und ruhigen Nebenstraßen.",
+      en: "Charlottenburg is Berlin's elegant West - Kurfürstendamm, Charlottenburg Palace, KaDeWe and Savignyplatz define the district. This is where you find Berlin's most traditional 4- and 5-star hotels in late-19th-century buildings and quiet side streets.",
     },
     vibe: {
       de: "Elegant, gediegen, ruhig. Shopping am Ku'damm, Kaffee am Savignyplatz, Klassikkonzerte in der Philharmonie.",
@@ -101,8 +101,8 @@ export const districts: District[] = [
     region: "nord",
     position: "inner",
     intro: {
-      de: "Pankow ist Berlins größter Bezirk — vom hippen Prenzlauer Berg mit Mauerpark und Kollwitzplatz über das ruhige Weißensee bis zum grünen Buch im Norden. Familienfreundliche Hotels, charmante Pensionen und entspannte Boutique-Häuser prägen das Bild.",
-      en: "Pankow is Berlin's largest district — from hip Prenzlauer Berg with Mauerpark and Kollwitzplatz, through quiet Weißensee to green Buch in the north. Family-friendly hotels, charming pensions and relaxed boutique houses define the area.",
+      de: "Pankow ist Berlins größter Bezirk - vom hippen Prenzlauer Berg mit Mauerpark und Kollwitzplatz über das ruhige Weißensee bis zum grünen Buch im Norden. Familienfreundliche Hotels, charmante Pensionen und entspannte Boutique-Häuser prägen das Bild.",
+      en: "Pankow is Berlin's largest district - from hip Prenzlauer Berg with Mauerpark and Kollwitzplatz, through quiet Weißensee to green Buch in the north. Family-friendly hotels, charming pensions and relaxed boutique houses define the area.",
     },
     vibe: {
       de: "Familienfreundlich, grün, entspannt. Cafés mit Spielecke, Sonntage im Mauerpark, Altbauten mit Stuck.",
@@ -126,8 +126,8 @@ export const districts: District[] = [
     region: "süd",
     position: "inner",
     intro: {
-      de: "Neukölln ist der wohl spannendste Bezirk im aktuellen Berlin — die Mischung aus arabischer Hauptstraße, hippen Galerien, Tempelhofer Feld und Kreativ-Cafés am Maybachufer ist einzigartig. Budget-freundliche Hotels und Designhostels überwiegen.",
-      en: "Neukölln is arguably the most exciting district in today's Berlin — the mix of Arab high street, hip galleries, Tempelhofer Feld and creative cafés along the Maybachufer is unique. Budget-friendly hotels and design hostels dominate.",
+      de: "Neukölln ist der wohl spannendste Bezirk im aktuellen Berlin - die Mischung aus arabischer Hauptstraße, hippen Galerien, Tempelhofer Feld und Kreativ-Cafés am Maybachufer ist einzigartig. Budget-freundliche Hotels und Designhostels überwiegen.",
+      en: "Neukölln is arguably the most exciting district in today's Berlin - the mix of Arab high street, hip galleries, Tempelhofer Feld and creative cafés along the Maybachufer is unique. Budget-friendly hotels and design hostels dominate.",
     },
     vibe: {
       de: "Hip, divers, kreativ, jung. Brunch-Spots, Spätis, Drittelpreis-Märkte, Galerie-Eröffnungen.",
@@ -174,8 +174,8 @@ export const districts: District[] = [
     region: "süd",
     position: "outer",
     intro: {
-      de: "Steglitz-Zehlendorf ist Berlins grünster und ruhigster Bezirk — Grunewald, Wannsee und Krumme Lanke prägen das Landschaftsbild. Hotels im südwestlichen Berlin sind oft kleiner, persönlicher und liegen mitten im Wald oder am See.",
-      en: "Steglitz-Zehlendorf is Berlin's greenest and quietest district — Grunewald, Wannsee and Krumme Lanke shape the landscape. Hotels in southwest Berlin tend to be smaller, more personal, set in woods or at the lake.",
+      de: "Steglitz-Zehlendorf ist Berlins grünster und ruhigster Bezirk - Grunewald, Wannsee und Krumme Lanke prägen das Landschaftsbild. Hotels im südwestlichen Berlin sind oft kleiner, persönlicher und liegen mitten im Wald oder am See.",
+      en: "Steglitz-Zehlendorf is Berlin's greenest and quietest district - Grunewald, Wannsee and Krumme Lanke shape the landscape. Hotels in southwest Berlin tend to be smaller, more personal, set in woods or at the lake.",
     },
     vibe: {
       de: "Ruhig, grün, gediegen. Spaziergänge im Grunewald, Strandbad Wannsee, Villenkolonie Dahlem.",
@@ -198,8 +198,8 @@ export const districts: District[] = [
     region: "west",
     position: "outer",
     intro: {
-      de: "Spandau hat einen ganz eigenen Charakter — historische Altstadt, Zitadelle, Havelufer. Der Bezirk ist günstig, gut mit der S- und U-Bahn ans Zentrum angebunden und ideal für Budget-Reisende oder Messebesucher.",
-      en: "Spandau has its own distinct character — historic old town, citadel, Havel waterfront. The district is affordable, well-connected to the centre by S- and U-Bahn, and ideal for budget travellers or trade-fair visitors.",
+      de: "Spandau hat einen ganz eigenen Charakter - historische Altstadt, Zitadelle, Havelufer. Der Bezirk ist günstig, gut mit der S- und U-Bahn ans Zentrum angebunden und ideal für Budget-Reisende oder Messebesucher.",
+      en: "Spandau has its own distinct character - historic old town, citadel, Havel waterfront. The district is affordable, well-connected to the centre by S- and U-Bahn, and ideal for budget travellers or trade-fair visitors.",
     },
     vibe: {
       de: "Kleinstädtisch, historisch, wassernah. Altstadt-Charme, Festivals an der Zitadelle, Havelfähren.",
@@ -222,8 +222,8 @@ export const districts: District[] = [
     region: "ost",
     position: "outer",
     intro: {
-      de: "Treptow-Köpenick ist Berlins Wasser-Bezirk — Müggelsee, Dahme und Spreeufer. Hier liegen Seehotels, Wellness-Resorts und die Hauptstadt der Berliner Schifffahrt. Treptower Park und Plänterwald runden das Naturangebot ab.",
-      en: "Treptow-Köpenick is Berlin's water district — Lake Müggelsee, the Dahme and Spree banks. Lakeside hotels, wellness resorts and the capital of Berlin's boat traffic are here. Treptower Park and Plänterwald round out the natural offer.",
+      de: "Treptow-Köpenick ist Berlins Wasser-Bezirk - Müggelsee, Dahme und Spreeufer. Hier liegen Seehotels, Wellness-Resorts und die Hauptstadt der Berliner Schifffahrt. Treptower Park und Plänterwald runden das Naturangebot ab.",
+      en: "Treptow-Köpenick is Berlin's water district - Lake Müggelsee, the Dahme and Spree banks. Lakeside hotels, wellness resorts and the capital of Berlin's boat traffic are here. Treptower Park and Plänterwald round out the natural offer.",
     },
     vibe: {
       de: "Wasser, Wald, Erholung. Schiffstouren, Strandbäder, Boots-Verleih, Spreepark-Erinnerungen.",
@@ -270,8 +270,8 @@ export const districts: District[] = [
     region: "ost",
     position: "outer",
     intro: {
-      de: 'Marzahn-Hellersdorf ist Berlins Ost-Plattenbau-Bezirk — aber auch Heimat der „Gärten der Welt", einem der schönsten Parks der Stadt. Hotels hier sind sehr preiswert, die Anbindung zur Innenstadt mit S-/U-Bahn solide.',
-      en: 'Marzahn-Hellersdorf is Berlin\'s eastern Plattenbau district — but also home to the „Gardens of the World", one of the city\'s most beautiful parks. Hotels here are very affordable, with solid S-/U-Bahn links to the centre.',
+      de: 'Marzahn-Hellersdorf ist Berlins Ost-Plattenbau-Bezirk - aber auch Heimat der „Gärten der Welt", einem der schönsten Parks der Stadt. Hotels hier sind sehr preiswert, die Anbindung zur Innenstadt mit S-/U-Bahn solide.',
+      en: 'Marzahn-Hellersdorf is Berlin\'s eastern Plattenbau district - but also home to the „Gardens of the World", one of the city\'s most beautiful parks. Hotels here are very affordable, with solid S-/U-Bahn links to the centre.',
     },
     vibe: {
       de: "Großstädtisch-funktional, mit grünen Oasen. Plattenbau-Romantik, Internationale Gärten, weite Spielplätze.",
@@ -294,8 +294,8 @@ export const districts: District[] = [
     region: "nord",
     position: "outer",
     intro: {
-      de: "Reinickendorf liegt im Berliner Norden — Tegeler See, Tegeler Forst, Französisch Buchholz. Hier wohnt man ruhig im Grünen und ist trotzdem in 20 Minuten mit der U6 in Mitte. Mittelklasse- und Familienhotels prägen den Bezirk.",
-      en: "Reinickendorf sits in Berlin's north — Tegeler See, Tegeler Forst, Französisch Buchholz. You stay quietly in greenery yet reach Mitte in 20 minutes via U6. Mid-range and family hotels dominate.",
+      de: "Reinickendorf liegt im Berliner Norden - Tegeler See, Tegeler Forst, Französisch Buchholz. Hier wohnt man ruhig im Grünen und ist trotzdem in 20 Minuten mit der U6 in Mitte. Mittelklasse- und Familienhotels prägen den Bezirk.",
+      en: "Reinickendorf sits in Berlin's north - Tegeler See, Tegeler Forst, Französisch Buchholz. You stay quietly in greenery yet reach Mitte in 20 minutes via U6. Mid-range and family hotels dominate.",
     },
     vibe: {
       de: "Ruhig, grün, wassernah. Spaziergänge am Tegeler See, Tegeler Forst, Schloss Tegel.",

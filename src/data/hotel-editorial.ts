@@ -13,21 +13,21 @@ export const hotelEditorial: HotelEditorial = {
   // ===== MITTE =====
   "hotel-adlon-kempinski": {
     de: [
-      "Kaum eine Adresse steht so sehr für Berlin wie das Adlon am Pariser Platz. Direkt vor der Tür liegen das Brandenburger Tor, der Reichstag und Unter den Linden — Sightseeing beginnt hier buchstäblich an der Hotellobby. Wer zum ersten Mal in die Hauptstadt kommt und maximale Zentralität mit Grandhotel-Service verbinden will, ist hier richtig.",
+      "Kaum eine Adresse steht so sehr für Berlin wie das Adlon am Pariser Platz. Direkt vor der Tür liegen das Brandenburger Tor, der Reichstag und Unter den Linden - Sightseeing beginnt hier buchstäblich an der Hotellobby. Wer zum ersten Mal in die Hauptstadt kommt und maximale Zentralität mit Grandhotel-Service verbinden will, ist hier richtig.",
       "Zum Haus gehören ein Spa mit Pool und das Lorenz Adlon Esszimmer, eines der höchstdekorierten Restaurants der Stadt. Die Anbindung ist exzellent: Der S-Bahnhof Brandenburger Tor und der Bahnhof Friedrichstraße sind wenige Gehminuten entfernt, der Flughafen BER per S-Bahn direkt erreichbar.",
     ],
     en: [
-      "Few addresses embody Berlin like the Adlon on Pariser Platz. The Brandenburg Gate, the Reichstag and Unter den Linden are right outside — sightseeing literally starts at the lobby door. If it is your first time in the capital and you want maximum centrality paired with grand-hotel service, this is the place.",
+      "Few addresses embody Berlin like the Adlon on Pariser Platz. The Brandenburg Gate, the Reichstag and Unter den Linden are right outside - sightseeing literally starts at the lobby door. If it is your first time in the capital and you want maximum centrality paired with grand-hotel service, this is the place.",
       "The house has a spa with pool and the Lorenz Adlon Esszimmer, one of the city's most decorated restaurants. Transport is excellent: Brandenburger Tor S-Bahn station and Friedrichstraße station are a few minutes' walk, and BER airport is a direct S-Bahn ride away.",
     ],
   },
   "hotel-de-rome": {
     de: [
-      "Das Hotel de Rome am Bebelplatz verbindet Bankhaus-Geschichte mit ruhiger Eleganz. Museumsinsel, Staatsoper und Humboldt Forum liegen fußläufig — eine ideale Basis für Kultur- und Architektur-Reisende, die zentral, aber abseits des größten Trubels wohnen wollen.",
+      "Das Hotel de Rome am Bebelplatz verbindet Bankhaus-Geschichte mit ruhiger Eleganz. Museumsinsel, Staatsoper und Humboldt Forum liegen fußläufig - eine ideale Basis für Kultur- und Architektur-Reisende, die zentral, aber abseits des größten Trubels wohnen wollen.",
       "Der frühere Tresorraum dient heute als Pool, die Dachterrasse bietet Blick auf den Berliner Dom. Über die U-Bahnhöfe Hausvogteiplatz und Französische Straße sowie die nahe Friedrichstraße ist das ganze Stadtgebiet schnell erreichbar.",
     ],
     en: [
-      "Hotel de Rome on Bebelplatz blends banking-house history with quiet elegance. Museum Island, the State Opera and the Humboldt Forum are within walking distance — an ideal base for culture and architecture travellers who want to be central yet away from the biggest crowds.",
+      "Hotel de Rome on Bebelplatz blends banking-house history with quiet elegance. Museum Island, the State Opera and the Humboldt Forum are within walking distance - an ideal base for culture and architecture travellers who want to be central yet away from the biggest crowds.",
       "The former bank vault now serves as the pool, and the rooftop terrace overlooks Berlin Cathedral. The U-Bahn stations Hausvogteiplatz and Französische Straße, plus nearby Friedrichstraße, put the whole city within easy reach.",
     ],
   },
@@ -44,11 +44,11 @@ export const hotelEditorial: HotelEditorial = {
   "hotel-amano-grand-central": {
     de: [
       "Das AMANO Grand Central direkt am Hauptbahnhof ist die praktische Design-Adresse für alle, die viel mit der Bahn unterwegs sind. Klare Linien, faire Preise und eine lebhafte Dachbar mit Blick über die Gleise machen es zum unkomplizierten City-Quartier.",
-      "Vom Hauptbahnhof aus erreichst du jede Ecke Berlins und den Flughafen BER ohne Umsteigen. Regierungsviertel, Reichstag und der Tiergarten liegen in Gehweite — ideal für kurze, effiziente Aufenthalte.",
+      "Vom Hauptbahnhof aus erreichst du jede Ecke Berlins und den Flughafen BER ohne Umsteigen. Regierungsviertel, Reichstag und der Tiergarten liegen in Gehweite - ideal für kurze, effiziente Aufenthalte.",
     ],
     en: [
       "The AMANO Grand Central right by Hauptbahnhof is the practical design choice for anyone travelling a lot by train. Clean lines, fair prices and a lively rooftop bar overlooking the tracks make it an easy-going city base.",
-      "From Hauptbahnhof you can reach every corner of Berlin and BER airport without changing trains. The government quarter, the Reichstag and the Tiergarten are within walking distance — ideal for short, efficient stays.",
+      "From Hauptbahnhof you can reach every corner of Berlin and BER airport without changing trains. The government quarter, the Reichstag and the Tiergarten are within walking distance - ideal for short, efficient stays.",
     ],
   },
   "soho-house-berlin": {
@@ -74,30 +74,30 @@ export const hotelEditorial: HotelEditorial = {
   "circus-hotel": {
     de: [
       "Das inhabergeführte Circus Hotel am Rosenthaler Platz beweist, dass zentral und günstig kein Widerspruch sein muss. Seit über zwanzig Jahren mit viel Berliner Eigensinn geführt, gehört seit 2018 sogar eine eigene Brauerei zum Block.",
-      "Vom Rosenthaler Platz (U8) erreichst du Hackescher Markt, Mitte und das Nachtleben der Torstraße zu Fuß. Hauseigene Stadttouren auf Deutsch und Englisch machen den Einstieg leicht — ideal für junge und neugierige Reisende.",
+      "Vom Rosenthaler Platz (U8) erreichst du Hackescher Markt, Mitte und das Nachtleben der Torstraße zu Fuß. Hauseigene Stadttouren auf Deutsch und Englisch machen den Einstieg leicht - ideal für junge und neugierige Reisende.",
     ],
     en: [
       "The owner-run Circus Hotel on Rosenthaler Platz proves that central and affordable need not be a contradiction. Run with plenty of Berlin character for over twenty years, it even gained its own brewery on the block in 2018.",
-      "From Rosenthaler Platz (U8) you can walk to Hackescher Markt, Mitte and the Torstraße nightlife. In-house city tours in German and English make getting started easy — ideal for young and curious travellers.",
+      "From Rosenthaler Platz (U8) you can walk to Hackescher Markt, Mitte and the Torstraße nightlife. In-house city tours in German and English make getting started easy - ideal for young and curious travellers.",
     ],
   },
   "h2-hotel-alexanderplatz": {
     de: [
-      "Das H2 Hotel direkt am Alexanderplatz ist die unkomplizierte Budget-Basis im Zentrum. Frische, schlichte Zimmer und ein gutes Frühstücksbuffet reichen vielen Städtereisenden völlig — gespart wird beim Zimmer, nicht bei der Lage.",
+      "Das H2 Hotel direkt am Alexanderplatz ist die unkomplizierte Budget-Basis im Zentrum. Frische, schlichte Zimmer und ein gutes Frühstücksbuffet reichen vielen Städtereisenden völlig - gespart wird beim Zimmer, nicht bei der Lage.",
       "Am Alex laufen sämtliche U- und S-Bahn-Linien sowie Trams zusammen; Fernsehturm, Museumsinsel und Hackescher Markt sind fußläufig. Wer zentral wohnen, aber das Budget schonen will, ist hier goldrichtig.",
     ],
     en: [
-      "The H2 Hotel right on Alexanderplatz is the no-fuss budget base in the centre. Fresh, simple rooms and a good breakfast buffet are plenty for many city travellers — you save on the room, not the location.",
+      "The H2 Hotel right on Alexanderplatz is the no-fuss budget base in the centre. Fresh, simple rooms and a good breakfast buffet are plenty for many city travellers - you save on the room, not the location.",
       "Every U- and S-Bahn line and several trams meet at the Alex; the TV Tower, Museum Island and Hackescher Markt are within walking distance. For staying central while sparing the budget, this is spot on.",
     ],
   },
   "adina-apartment-hotel-mitte": {
     de: [
-      "Das Adina am Hackeschen Markt verbindet Hotelservice mit voll ausgestatteten Apartments inklusive Küchenzeile — ideal ab drei Nächten, für Familien und für alle, die nicht jeden Abend auswärts essen wollen. Innenpool und Sauna runden das Angebot ab.",
+      "Das Adina am Hackeschen Markt verbindet Hotelservice mit voll ausgestatteten Apartments inklusive Küchenzeile - ideal ab drei Nächten, für Familien und für alle, die nicht jeden Abend auswärts essen wollen. Innenpool und Sauna runden das Angebot ab.",
       "Der Hackesche Markt mit S-Bahn und Tram liegt direkt vor der Tür; Museumsinsel, Hackesche Höfe und das Nachtleben der Spandauer Vorstadt sind fußläufig. Eine flexible, familientaugliche Mitte-Basis.",
     ],
     en: [
-      "The Adina at Hackescher Markt combines hotel service with fully equipped apartments including a kitchenette — ideal from three nights, for families and for anyone who would rather not eat out every evening. An indoor pool and sauna round things off.",
+      "The Adina at Hackescher Markt combines hotel service with fully equipped apartments including a kitchenette - ideal from three nights, for families and for anyone who would rather not eat out every evening. An indoor pool and sauna round things off.",
       "Hackescher Markt, with its S-Bahn and tram, is right outside; Museum Island, the Hackesche Höfe and the nightlife of the Spandauer Vorstadt are all walkable. A flexible, family-friendly Mitte base.",
     ],
   },
@@ -113,11 +113,11 @@ export const hotelEditorial: HotelEditorial = {
   },
   "hotel-indigo-alexanderplatz": {
     de: [
-      "Das Hotel Indigo am Alexanderplatz ist ein Boutique-Designhotel der IHG-Gruppe mit lokal inspirierter Innenarchitektur — Mauer-Referenzen und Berliner Künstler ziehen sich durch das Haus. Eine gute Wahl für City-Wochenenden mit Stil.",
+      "Das Hotel Indigo am Alexanderplatz ist ein Boutique-Designhotel der IHG-Gruppe mit lokal inspirierter Innenarchitektur - Mauer-Referenzen und Berliner Künstler ziehen sich durch das Haus. Eine gute Wahl für City-Wochenenden mit Stil.",
       "Vom Quartier am Alex erreichst du alle großen Sehenswürdigkeiten in Mitte zu Fuß oder in wenigen ÖPNV-Minuten. Restaurants und Nachtleben rund um den Hackeschen Markt sind nah.",
     ],
     en: [
-      "Hotel Indigo at Alexanderplatz is a boutique design hotel by IHG with locally inspired interiors — wall references and Berlin artists run through the house. A good pick for stylish city weekends.",
+      "Hotel Indigo at Alexanderplatz is a boutique design hotel by IHG with locally inspired interiors - wall references and Berlin artists run through the house. A good pick for stylish city weekends.",
       "From the quarter around the Alex you can reach all the major Mitte sights on foot or within a few minutes by public transport. Restaurants and nightlife around Hackescher Markt are close by.",
     ],
   },
@@ -125,21 +125,21 @@ export const hotelEditorial: HotelEditorial = {
   // ===== CHARLOTTENBURG-WILMERSDORF =====
   "hotel-bristol-berlin": {
     de: [
-      "Das Hotel Bristol am Kurfürstendamm ist eines der traditionsreichsten Grandhotels West-Berlins und empfängt seit 1952 Gäste. Wer die elegante, etwas ruhigere Seite Berlins sucht — mit Shopping am Ku'damm und klassischer Kultur — wohnt hier klassisch und zentral zugleich.",
+      "Das Hotel Bristol am Kurfürstendamm ist eines der traditionsreichsten Grandhotels West-Berlins und empfängt seit 1952 Gäste. Wer die elegante, etwas ruhigere Seite Berlins sucht - mit Shopping am Ku'damm und klassischer Kultur - wohnt hier klassisch und zentral zugleich.",
       "Pool, Spa und die Bristol Bar gehören zum Haus. Über den nahen Bahnhof Zoo und mehrere U-Bahn-Linien ist die ganze Stadt schnell erreichbar; KaDeWe und die Gedächtniskirche liegen in Gehweite.",
     ],
     en: [
-      "The Hotel Bristol on Kurfürstendamm is one of West Berlin's most tradition-rich grand hotels, welcoming guests since 1952. If you want Berlin's elegant, slightly quieter side — with Ku'damm shopping and classical culture — this is classic and central at once.",
+      "The Hotel Bristol on Kurfürstendamm is one of West Berlin's most tradition-rich grand hotels, welcoming guests since 1952. If you want Berlin's elegant, slightly quieter side - with Ku'damm shopping and classical culture - this is classic and central at once.",
       "A pool, spa and the Bristol Bar are part of the house. Nearby Zoo station and several U-Bahn lines connect the whole city quickly; KaDeWe and the Memorial Church are within walking distance.",
     ],
   },
   "hotel-zoo-berlin": {
     de: [
-      "Das Hotel Zoo am Kurfürstendamm verbindet einen restaurierten Gründerzeitbau von 1891 mit modernem Design und der stilvollen Grace Roof-Bar. Es ist die designorientierte, fotogene Adresse der City West — beliebt bei Paaren und Stilbewussten.",
+      "Das Hotel Zoo am Kurfürstendamm verbindet einen restaurierten Gründerzeitbau von 1891 mit modernem Design und der stilvollen Grace Roof-Bar. Es ist die designorientierte, fotogene Adresse der City West - beliebt bei Paaren und Stilbewussten.",
       "Die Lage zwischen Olivaer und Adenauerplatz legt dir Boutiquen, Cafés und den Ku'damm vor die Tür; Bahnhof Zoo und mehrere U-Bahnhöfe sind nah. Ein Haus mit Charakter statt Kettenstandard.",
     ],
     en: [
-      "Hotel Zoo on Kurfürstendamm pairs a restored 1891 period building with modern design and the stylish Grace rooftop bar. It is the design-led, photogenic address of City West — popular with couples and the style-conscious.",
+      "Hotel Zoo on Kurfürstendamm pairs a restored 1891 period building with modern design and the stylish Grace rooftop bar. It is the design-led, photogenic address of City West - popular with couples and the style-conscious.",
       "Its location between Olivaer and Adenauerplatz puts boutiques, cafés and the Ku'damm at your doorstep; Zoo station and several U-Bahn stops are close. A house with character rather than chain standard.",
     ],
   },
@@ -166,11 +166,11 @@ export const hotelEditorial: HotelEditorial = {
   "hotel-q-berlin": {
     de: [
       "Das vom Berliner Büro GRAFT entworfene Hotel Q! ist eines der originellsten Designhotels der Stadt: geschwungene Wände, Bett und Wanne als bauliche Einheit, viel Eiche. Wer Architektur als Teil des Erlebnisses sucht, ist hier genau richtig.",
-      "Die Lage nahe dem Ku'damm verbindet Shopping und Gastronomie mit guter ÖPNV-Anbindung. Ein Spa gehört zum Haus — eine kleine, designstarke Auszeit mitten in der City West.",
+      "Die Lage nahe dem Ku'damm verbindet Shopping und Gastronomie mit guter ÖPNV-Anbindung. Ein Spa gehört zum Haus - eine kleine, designstarke Auszeit mitten in der City West.",
     ],
     en: [
       "Designed by Berlin firm GRAFT, Hotel Q! is one of the city's most original design hotels: curved walls, bed and bath as a built unit, lots of oak. If you want architecture as part of the experience, this is exactly right.",
-      "Its location near the Ku'damm combines shopping and dining with good transit links. A spa is part of the house — a small, design-strong retreat in the heart of City West.",
+      "Its location near the Ku'damm combines shopping and dining with good transit links. A spa is part of the house - a small, design-strong retreat in the heart of City West.",
     ],
   },
   "hampton-by-hilton-city-west": {
@@ -195,21 +195,21 @@ export const hotelEditorial: HotelEditorial = {
   },
   "intercontinental-berlin": {
     de: [
-      "Das InterContinental an der Budapester Straße ist ein großes 5-Sterne-Haus mit umfangreichen Kongresskapazitäten — eine erste Adresse für Tagungen und größere Veranstaltungen. Spa, Pool und das Zwei-Sterne-Restaurant Hugos im 14. Stock gehören dazu.",
+      "Das InterContinental an der Budapester Straße ist ein großes 5-Sterne-Haus mit umfangreichen Kongresskapazitäten - eine erste Adresse für Tagungen und größere Veranstaltungen. Spa, Pool und das Zwei-Sterne-Restaurant Hugos im 14. Stock gehören dazu.",
       "Zwischen Tiergarten und KaDeWe gelegen, verbindet es Geschäftsreise-Infrastruktur mit Innenstadtnähe. Bahnhof Zoo und mehrere U-Bahn-Linien sind in Gehweite.",
     ],
     en: [
-      "The InterContinental on Budapester Straße is a large five-star hotel with extensive conference capacity — a leading address for meetings and bigger events. A spa, pool and the two-Michelin-star Hugos on the 14th floor are part of it.",
+      "The InterContinental on Budapester Straße is a large five-star hotel with extensive conference capacity - a leading address for meetings and bigger events. A spa, pool and the two-Michelin-star Hugos on the 14th floor are part of it.",
       "Set between the Tiergarten and KaDeWe, it combines business-travel infrastructure with proximity to the centre. Zoo station and several U-Bahn lines are within walking distance.",
     ],
   },
   "henri-hotel-kurfuerstendamm": {
     de: [
-      "Das Henri Hotel am Olivaer Platz steckt in einem Apartmenthaus von 1900 und ist im Stil eines New Yorker Apartments der 1950er gestaltet — Vintage-Möbel, Frühstück im klassischen Salon, viel persönlicher Charme. Eine charmante Alternative zur Kette am Ku'damm.",
+      "Das Henri Hotel am Olivaer Platz steckt in einem Apartmenthaus von 1900 und ist im Stil eines New Yorker Apartments der 1950er gestaltet - Vintage-Möbel, Frühstück im klassischen Salon, viel persönlicher Charme. Eine charmante Alternative zur Kette am Ku'damm.",
       "Boutiquen, Cafés und der Kurfürstendamm liegen direkt vor der Tür; mehrere U-Bahnhöfe verbinden dich schnell mit dem Rest der Stadt. Ideal für Individualreisende mit Sinn fürs Besondere.",
     ],
     en: [
-      "The Henri Hotel at Olivaer Platz occupies a 1900s apartment building and is styled like a 1950s New York apartment — vintage furniture, breakfast in a classic salon, lots of personal charm. A charming alternative to the chains on Ku'damm.",
+      "The Henri Hotel at Olivaer Platz occupies a 1900s apartment building and is styled like a 1950s New York apartment - vintage furniture, breakfast in a classic salon, lots of personal charm. A charming alternative to the chains on Ku'damm.",
       "Boutiques, cafés and the Kurfürstendamm are right outside; several U-Bahn stations connect you quickly to the rest of the city. Ideal for independent travellers with an eye for the special.",
     ],
   },
@@ -217,21 +217,21 @@ export const hotelEditorial: HotelEditorial = {
   // ===== FRIEDRICHSHAIN-KREUZBERG =====
   "michelberger-hotel": {
     de: [
-      "Das inhabergeführte Michelberger gegenüber der Mercedes-Benz Arena ist eine Berliner Design-Ikone — vom alten Industriebau zum unverwechselbaren Haus mit Dach-Sauna und saisonalem Restaurant umgebaut. Es steht für das kreative, ungeschliffene Friedrichshain.",
+      "Das inhabergeführte Michelberger gegenüber der Mercedes-Benz Arena ist eine Berliner Design-Ikone - vom alten Industriebau zum unverwechselbaren Haus mit Dach-Sauna und saisonalem Restaurant umgebaut. Es steht für das kreative, ungeschliffene Friedrichshain.",
       "East Side Gallery, Spreeufer und das Nachtleben rund um die Warschauer Straße sind fußläufig; S- und U-Bahn bringen dich in Minuten nach Mitte. Perfekt für Reisende, die das echte, junge Berlin suchen.",
     ],
     en: [
-      "The owner-run Michelberger opposite Mercedes-Benz Arena is a Berlin design icon — converted from an old industrial building into a distinctive house with a rooftop sauna and seasonal restaurant. It embodies creative, unpolished Friedrichshain.",
+      "The owner-run Michelberger opposite Mercedes-Benz Arena is a Berlin design icon - converted from an old industrial building into a distinctive house with a rooftop sauna and seasonal restaurant. It embodies creative, unpolished Friedrichshain.",
       "The East Side Gallery, the Spree riverside and the nightlife around Warschauer Straße are within walking distance; S- and U-Bahn reach Mitte in minutes. Perfect for travellers seeking the real, young Berlin.",
     ],
   },
   "nhow-berlin": {
     de: [
-      "Das nhow Berlin direkt an der Spree ist Europas erstes Musikhotel — mit zwei hauseigenen, von Gästen mietbaren Tonstudios und einer Innenarchitektur von Karim Rashid. Knallpink, verspielt und mit Glasfassade zur Oberbaumbrücke ein echtes Statement-Haus.",
+      "Das nhow Berlin direkt an der Spree ist Europas erstes Musikhotel - mit zwei hauseigenen, von Gästen mietbaren Tonstudios und einer Innenarchitektur von Karim Rashid. Knallpink, verspielt und mit Glasfassade zur Oberbaumbrücke ein echtes Statement-Haus.",
       "Die Lage an der Grenze von Friedrichshain und Kreuzberg verbindet Spree-Atmosphäre mit kurzem Weg zu Clubs und Galerien. Ein Haus für Kreative, Musikfans und alle, die das Besondere wollen.",
     ],
     en: [
-      "The nhow Berlin right on the Spree is Europe's first music hotel — with two in-house recording studios guests can rent and interiors by Karim Rashid. Hot-pink, playful and with a glass facade facing the Oberbaum Bridge, it is a genuine statement house.",
+      "The nhow Berlin right on the Spree is Europe's first music hotel - with two in-house recording studios guests can rent and interiors by Karim Rashid. Hot-pink, playful and with a glass facade facing the Oberbaum Bridge, it is a genuine statement house.",
       "Its location on the border of Friedrichshain and Kreuzberg blends Spree atmosphere with a short hop to clubs and galleries. A house for creatives, music fans and anyone after something different.",
     ],
   },
@@ -247,11 +247,11 @@ export const hotelEditorial: HotelEditorial = {
   },
   "schulz-hotel": {
     de: [
-      "Das Schulz Hotel liegt direkt an der East Side Gallery zwischen Ostbahnhof und Mercedes-Benz Arena — kaum ein Haus ist näher am längsten erhaltenen Mauerstück. Frische Zimmer, faire Preise und Familienzimmer machen es zur preisbewussten Friedrichshain-Basis.",
+      "Das Schulz Hotel liegt direkt an der East Side Gallery zwischen Ostbahnhof und Mercedes-Benz Arena - kaum ein Haus ist näher am längsten erhaltenen Mauerstück. Frische Zimmer, faire Preise und Familienzimmer machen es zur preisbewussten Friedrichshain-Basis.",
       "Konzerte in der Arena, Clubs an der Warschauer Straße und das Spreeufer sind fußläufig; der Ostbahnhof verbindet dich mit Regional- und S-Bahn. Ideal für junge Reisende und Familien mit kleinem Budget.",
     ],
     en: [
-      "The Schulz Hotel sits right by the East Side Gallery between Ostbahnhof and Mercedes-Benz Arena — few houses are closer to the longest preserved stretch of the Wall. Fresh rooms, fair prices and family rooms make it a budget-savvy Friedrichshain base.",
+      "The Schulz Hotel sits right by the East Side Gallery between Ostbahnhof and Mercedes-Benz Arena - few houses are closer to the longest preserved stretch of the Wall. Fresh rooms, fair prices and family rooms make it a budget-savvy Friedrichshain base.",
       "Concerts at the arena, clubs on Warschauer Straße and the Spree riverside are within walking distance; Ostbahnhof links you to regional and S-Bahn services. Ideal for young travellers and families on a smaller budget.",
     ],
   },
@@ -311,11 +311,11 @@ export const hotelEditorial: HotelEditorial = {
   },
   "huettenpalast": {
     de: [
-      "Der Hüttenpalast in Neukölln ist eines der ungewöhnlichsten Häuser Berlins: In einer ehemaligen Staubsauger-Fabrik übernachtest du in alten Wohnwagen und selbstgebauten Hütten unter einem Hallendach — dazu gibt es klassische Zimmer und ein Café im Hof.",
+      "Der Hüttenpalast in Neukölln ist eines der ungewöhnlichsten Häuser Berlins: In einer ehemaligen Staubsauger-Fabrik übernachtest du in alten Wohnwagen und selbstgebauten Hütten unter einem Hallendach - dazu gibt es klassische Zimmer und ein Café im Hof.",
       "Mitten im lebendigen Neukölln gelegen, sind Maybachufer, Bars und Galerien fußläufig; U7 und U8 verbinden dich mit dem Rest der Stadt. Für neugierige, junge Reisende ein Erlebnis zum fairen Preis.",
     ],
     en: [
-      "The Hüttenpalast in Neukölln is one of Berlin's most unusual houses: in a former vacuum-cleaner factory you sleep in vintage caravans and self-built huts under a covered hall — plus classic rooms and a café in the courtyard.",
+      "The Hüttenpalast in Neukölln is one of Berlin's most unusual houses: in a former vacuum-cleaner factory you sleep in vintage caravans and self-built huts under a covered hall - plus classic rooms and a café in the courtyard.",
       "In the heart of lively Neukölln, the Maybachufer, bars and galleries are within walking distance; U7 and U8 connect you to the rest of the city. For curious, young travellers, an experience at a fair price.",
     ],
   },
@@ -323,11 +323,11 @@ export const hotelEditorial: HotelEditorial = {
   // ===== TEMPELHOF-SCHÖNEBERG =====
   "axel-hotel-berlin": {
     de: [
-      "Das Axel Hotel der spanischen Gruppe liegt mitten im Regenbogen-Kiez um die Motzstraße — Berlins traditionsreichstem queeren Viertel. Als heterofriendly Designhotel mit Dachterrasse, Pool und eigener Bar zieht es viele wiederkehrende Gäste an.",
+      "Das Axel Hotel der spanischen Gruppe liegt mitten im Regenbogen-Kiez um die Motzstraße - Berlins traditionsreichstem queeren Viertel. Als heterofriendly Designhotel mit Dachterrasse, Pool und eigener Bar zieht es viele wiederkehrende Gäste an.",
       "Schöneberg ist zentral und gut angebunden: KaDeWe, Wittenbergplatz und der Ku'damm sind nah, mehrere U-Bahn-Linien verbinden dich mit der ganzen Stadt. Eine stilvolle, lebendige Basis.",
     ],
     en: [
-      "The Axel Hotel by the Spanish group sits in the heart of the rainbow district around Motzstraße — Berlin's most tradition-rich queer quarter. As a heterofriendly design hotel with roof terrace, pool and its own bar, it draws many returning guests.",
+      "The Axel Hotel by the Spanish group sits in the heart of the rainbow district around Motzstraße - Berlin's most tradition-rich queer quarter. As a heterofriendly design hotel with roof terrace, pool and its own bar, it draws many returning guests.",
       "Schöneberg is central and well connected: KaDeWe, Wittenbergplatz and the Ku'damm are nearby, and several U-Bahn lines link you to the whole city. A stylish, lively base.",
     ],
   },
@@ -345,21 +345,21 @@ export const hotelEditorial: HotelEditorial = {
   // ===== STEGLITZ-ZEHLENDORF =====
   "patrick-hellmann-schlosshotel": {
     de: [
-      "Das Patrick Hellmann Schlosshotel im Grunewald residiert im Schloss Pannwitz von 1914 — die Innenräume wurden 1996 von Karl Lagerfeld gestaltet. Sehr diskret, mit Parklage und eigenem Restaurant, ist es die ruhige Luxus-Adresse im grünen Südwesten Berlins.",
+      "Das Patrick Hellmann Schlosshotel im Grunewald residiert im Schloss Pannwitz von 1914 - die Innenräume wurden 1996 von Karl Lagerfeld gestaltet. Sehr diskret, mit Parklage und eigenem Restaurant, ist es die ruhige Luxus-Adresse im grünen Südwesten Berlins.",
       "Wer Erholung über kurze Sightseeing-Wege stellt, findet hier Ruhe zwischen Wald und Villen. Grunewald, Wannsee und Potsdam sind nah; ins Zentrum sind es rund 30 bis 40 Minuten.",
     ],
     en: [
-      "The Patrick Hellmann Schlosshotel in the Grunewald occupies the 1914 Pannwitz Palace — the interiors were designed by Karl Lagerfeld in 1996. Highly discreet, with parkland and its own restaurant, it is the quiet luxury address in Berlin's green south-west.",
+      "The Patrick Hellmann Schlosshotel in the Grunewald occupies the 1914 Pannwitz Palace - the interiors were designed by Karl Lagerfeld in 1996. Highly discreet, with parkland and its own restaurant, it is the quiet luxury address in Berlin's green south-west.",
       "If you value recovery over short sightseeing distances, you will find calm here between woods and villas. The Grunewald, Wannsee and Potsdam are close; the centre is around 30 to 40 minutes away.",
     ],
   },
   "harnack-haus": {
     de: [
-      "Das Harnack-Haus in Dahlem wurde 1929 als Tagungshaus errichtet und ist heute Gäste- und Konferenzhaus der Max-Planck-Gesellschaft — auch für reguläre Reisende offen. Die ruhige, akademisch geprägte Atmosphäre ist ein echter Geheimtipp im grünen Südwesten.",
+      "Das Harnack-Haus in Dahlem wurde 1929 als Tagungshaus errichtet und ist heute Gäste- und Konferenzhaus der Max-Planck-Gesellschaft - auch für reguläre Reisende offen. Die ruhige, akademisch geprägte Atmosphäre ist ein echter Geheimtipp im grünen Südwesten.",
       "Dahlem mit seinen Museen, Villen und dem Botanischen Garten liegt vor der Tür; über die U3 erreichst du die City West in gut 20 Minuten. Ideal für Ruhesuchende und Geschäftsreisende mit Tagungsbezug.",
     ],
     en: [
-      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house — also open to regular travellers. Its quiet, academically minded atmosphere is a genuine insider tip in the green south-west.",
+      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house - also open to regular travellers. Its quiet, academically minded atmosphere is a genuine insider tip in the green south-west.",
       "Dahlem with its museums, villas and the Botanic Garden is on the doorstep; the U3 reaches City West in just over 20 minutes. Ideal for quiet-seekers and business travellers with a conference connection.",
     ],
   },
@@ -367,12 +367,12 @@ export const hotelEditorial: HotelEditorial = {
   // ===== TREPTOW-KÖPENICK =====
   "hotel-mueggelsee-berlin": {
     de: [
-      "Das Hotel Müggelsee liegt mit 174 Zimmern direkt am größten See Berlins — mit eigenem Strandbad, großem Spa und Restaurant mit Seeblick. Es ist der klassische Wellness- und Wochenend-Spot, an dem auch Berliner gern Auszeit nehmen.",
-      "Baden, Paddeln und Spaziergänge starten direkt am Haus; der Müggelturm und die Köpenicker Altstadt sind nah. Ins Zentrum sind es rund 40 Minuten mit S-Bahn und Bus — dafür bekommst du Natur, die kein zentraler Bezirk bietet.",
+      "Das Hotel Müggelsee liegt mit 174 Zimmern direkt am größten See Berlins - mit eigenem Strandbad, großem Spa und Restaurant mit Seeblick. Es ist der klassische Wellness- und Wochenend-Spot, an dem auch Berliner gern Auszeit nehmen.",
+      "Baden, Paddeln und Spaziergänge starten direkt am Haus; der Müggelturm und die Köpenicker Altstadt sind nah. Ins Zentrum sind es rund 40 Minuten mit S-Bahn und Bus - dafür bekommst du Natur, die kein zentraler Bezirk bietet.",
     ],
     en: [
-      "The Hotel Müggelsee sits with 174 rooms right on Berlin's largest lake — with its own lido, a large spa and a restaurant with lake views. It is the classic wellness and weekend spot where even Berliners like to take time out.",
-      "Swimming, paddling and walks start right at the house; the Müggelturm and Köpenick's old town are close. The centre is around 40 minutes by S-Bahn and bus — in return you get nature no central district can offer.",
+      "The Hotel Müggelsee sits with 174 rooms right on Berlin's largest lake - with its own lido, a large spa and a restaurant with lake views. It is the classic wellness and weekend spot where even Berliners like to take time out.",
+      "Swimming, paddling and walks start right at the house; the Müggelturm and Köpenick's old town are close. The centre is around 40 minutes by S-Bahn and bus - in return you get nature no central district can offer.",
     ],
   },
 

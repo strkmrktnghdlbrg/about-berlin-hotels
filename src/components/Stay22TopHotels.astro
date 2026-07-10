@@ -35,8 +35,8 @@ const {
     ? "Aktuell bestbewertete Hotels in Berlin"
     : "Currently top-rated hotels in Berlin",
   lead = locale === "de"
-    ? "Live von Booking.com — aktuelle Bewertungen, Preise und Verfügbarkeiten."
-    : "Live from Booking.com — current ratings, prices and availability.",
+    ? "Live von Booking.com - aktuelle Bewertungen, Preise und Verfügbarkeiten."
+    : "Live from Booking.com - current ratings, prices and availability.",
 } = Astro.props;
 
 let hotels: Stay22Accommodation[] | null = null;
@@ -128,8 +128,8 @@ if (visible.length > 0 && Astro.response) {
 
     <p class="text-[11px] mt-4 text-ink-500 leading-relaxed">
       {locale === "de"
-        ? "* Sponsored — Buchung läuft über Booking.com via Stay22-Affiliate. Stand: "
-        : "* Sponsored — booking via Booking.com through Stay22 affiliate. As of "}
+        ? "* Sponsored - Buchung läuft über Booking.com via Stay22-Affiliate. Stand: "
+        : "* Sponsored - booking via Booking.com through Stay22 affiliate. As of "}
       {buildTime}.{" "}
       {locale === "de"
         ? "Preise und Verfügbarkeit ändern sich täglich."

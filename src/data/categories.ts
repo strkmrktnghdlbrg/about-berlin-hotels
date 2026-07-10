@@ -66,8 +66,8 @@ export const categories: Category[] = [
       en: "Children's beds, family rooms, pool, garden. Pankow and Reinickendorf lead.",
     },
     description: {
-      de: "Familienhotels haben Familienzimmer (4+ Personen), Kinderbetten, oft Pool, Spielecke und kinderfreundliche Frühstücksbuffets. Pankow, Reinickendorf und Treptow-Köpenick haben das größte Angebot — alle gut mit Tierpark, Mauerpark oder Müggelsee verbunden.",
-      en: "Family hotels offer family rooms (4+ people), kids' beds, often pool, play area and child-friendly breakfast buffets. Pankow, Reinickendorf and Treptow-Köpenick have the biggest selection — all well-connected to Tierpark, Mauerpark or Müggelsee.",
+      de: "Familienhotels haben Familienzimmer (4+ Personen), Kinderbetten, oft Pool, Spielecke und kinderfreundliche Frühstücksbuffets. Pankow, Reinickendorf und Treptow-Köpenick haben das größte Angebot - alle gut mit Tierpark, Mauerpark oder Müggelsee verbunden.",
+      en: "Family hotels offer family rooms (4+ people), kids' beds, often pool, play area and child-friendly breakfast buffets. Pankow, Reinickendorf and Treptow-Köpenick have the biggest selection - all well-connected to Tierpark, Mauerpark or Müggelsee.",
     },
     bestDistricts: ["pankow", "reinickendorf", "treptow-koepenick"],
     color: "sky",
@@ -80,8 +80,8 @@ export const categories: Category[] = [
     icon: "€",
     priceHint: { de: "ab 45 €/Nacht", en: "from €45/night" },
     intro: {
-      de: "Sauber, gut angebunden, unter 80 € — Spandau, Marzahn, Neukölln.",
-      en: "Clean, well-connected, under €80 — Spandau, Marzahn, Neukölln.",
+      de: "Sauber, gut angebunden, unter 80 € - Spandau, Marzahn, Neukölln.",
+      en: "Clean, well-connected, under €80 - Spandau, Marzahn, Neukölln.",
     },
     description: {
       de: "Billige Hotels in Berlin müssen nicht heißen: weit draußen. Spandau, Marzahn-Hellersdorf und Teile von Neukölln bieten sehr günstige 3-Sterne-Hotels mit S-/U-Bahn-Anschluss. Wer Budget < 80 € hat, wird hier fündig.",
@@ -152,12 +152,12 @@ export const categories: Category[] = [
     icon: "→",
     priceHint: { de: "ab 100 €/Nacht", en: "from €100/night" },
     intro: {
-      de: "Transfer von/zu BER, Messe oder Bahnhof — ideal für Late-Night-Arrivals.",
-      en: "Transfers to/from BER, trade fair or stations — ideal for late-night arrivals.",
+      de: "Transfer von/zu BER, Messe oder Bahnhof - ideal für Late-Night-Arrivals.",
+      en: "Transfers to/from BER, trade fair or stations - ideal for late-night arrivals.",
     },
     description: {
-      de: "Viele Hotels — vor allem Business- und Mittelklasse-Häuser — bieten einen Shuttle-Service zu BER, zum Messegelände oder zum Hauptbahnhof. Besonders praktisch bei früher An- oder später Abreise.",
-      en: "Many hotels — especially business and mid-range houses — offer a shuttle service to BER, the trade fair grounds or Hauptbahnhof. Particularly useful for early arrivals or late departures.",
+      de: "Viele Hotels - vor allem Business- und Mittelklasse-Häuser - bieten einen Shuttle-Service zu BER, zum Messegelände oder zum Hauptbahnhof. Besonders praktisch bei früher An- oder später Abreise.",
+      en: "Many hotels - especially business and mid-range houses - offer a shuttle service to BER, the trade fair grounds or Hauptbahnhof. Particularly useful for early arrivals or late departures.",
     },
     bestDistricts: ["mitte", "charlottenburg-wilmersdorf", "treptow-koepenick"],
     color: "indigo",
@@ -170,12 +170,12 @@ export const categories: Category[] = [
     icon: "◇",
     priceHint: { de: "ab 160 €/Nacht", en: "from €160/night" },
     intro: {
-      de: "Architektonisch durchkomponierte Häuser — Berlin ist seit den 2000ern eine Design-Hotel-Hauptstadt.",
-      en: "Architecturally composed houses — Berlin has been a design hotel capital since the 2000s.",
+      de: "Architektonisch durchkomponierte Häuser - Berlin ist seit den 2000ern eine Design-Hotel-Hauptstadt.",
+      en: "Architecturally composed houses - Berlin has been a design hotel capital since the 2000s.",
     },
     description: {
-      de: "Designhotels denken jedes Detail mit: Möbel, Licht, Texturen, oft eigene Bar und Restaurant. Mitte und Friedrichshain führen — Häuser wie Michelberger, nhow, Casa Camper, Soho House.",
-      en: "Design hotels consider every detail: furniture, lighting, textures, often their own bar and restaurant. Mitte and Friedrichshain lead — houses like Michelberger, nhow, Casa Camper, Soho House.",
+      de: "Designhotels denken jedes Detail mit: Möbel, Licht, Texturen, oft eigene Bar und Restaurant. Mitte und Friedrichshain führen - Häuser wie Michelberger, nhow, Casa Camper, Soho House.",
+      en: "Design hotels consider every detail: furniture, lighting, textures, often their own bar and restaurant. Mitte and Friedrichshain lead - houses like Michelberger, nhow, Casa Camper, Soho House.",
     },
     bestDistricts: ["mitte", "friedrichshain-kreuzberg"],
     color: "azure",
@@ -188,8 +188,8 @@ export const categories: Category[] = [
     icon: "▢",
     priceHint: { de: "ab 95 €/Nacht", en: "from €95/night" },
     intro: {
-      de: "Mit Küche und Wohnbereich — ideal für längere Aufenthalte und Familien.",
-      en: "With kitchen and living area — ideal for longer stays and families.",
+      de: "Mit Küche und Wohnbereich - ideal für längere Aufenthalte und Familien.",
+      en: "With kitchen and living area - ideal for longer stays and families.",
     },
     description: {
       de: "Apartment Hotels (Adina, Living Hotels, etc.) bieten Hotelservice mit eigener Küchenzeile und Wohnbereich. Ideal ab 4 Nächten oder für Reisende mit Allergien/Diäten. Pankow, Mitte und Charlottenburg führen.",

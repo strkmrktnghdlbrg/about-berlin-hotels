@@ -33,12 +33,12 @@ export const t = {
     hero: {
       eyebrow: { de: "Berlin · Hotelguide", en: "Berlin · Hotel guide" },
       title: {
-        de: "Hotels in Berlin — kuratiert nach Bezirk, Stil und Anlass",
-        en: "Hotels in Berlin — curated by district, style and occasion",
+        de: "Hotels in Berlin - kuratiert nach Bezirk, Stil und Anlass",
+        en: "Hotels in Berlin - curated by district, style and occasion",
       },
       subtitle: {
-        de: "Von Luxushotels in Mitte über Boutique-Häuser in Friedrichshain bis zu familienfreundlichen Hotels in Pankow. Wir zeigen dir, wo du am besten übernachtest — mit echten Karten, ehrlichen Beschreibungen und einem Klick zur Buchung.",
-        en: "From luxury hotels in Mitte through boutique houses in Friedrichshain to family-friendly stays in Pankow. We show you where to stay best — with real maps, honest descriptions and one click to book.",
+        de: "Von Luxushotels in Mitte über Boutique-Häuser in Friedrichshain bis zu familienfreundlichen Hotels in Pankow. Wir zeigen dir, wo du am besten übernachtest - mit echten Karten, ehrlichen Beschreibungen und einem Klick zur Buchung.",
+        en: "From luxury hotels in Mitte through boutique houses in Friedrichshain to family-friendly stays in Pankow. We show you where to stay best - with real maps, honest descriptions and one click to book.",
       },
       ctaPrimary: { de: "Bezirke erkunden", en: "Explore districts" },
       ctaSecondary: { de: "Top-Hotels ansehen", en: "View top hotels" },
@@ -49,8 +49,8 @@ export const t = {
         en: "Find your Berlin hotel",
       },
       body: {
-        de: "Egal ob Wochenend-Trip, Geschäftsreise oder Familienurlaub — entdecke das passende Hotel in jedem Berliner Bezirk.",
-        en: "Whether it's a weekend trip, a business stay or a family holiday — find the right hotel in every Berlin district.",
+        de: "Egal ob Wochenend-Trip, Geschäftsreise oder Familienurlaub - entdecke das passende Hotel in jedem Berliner Bezirk.",
+        en: "Whether it's a weekend trip, a business stay or a family holiday - find the right hotel in every Berlin district.",
       },
     },
   },

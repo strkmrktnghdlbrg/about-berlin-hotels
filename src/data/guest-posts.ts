@@ -34,7 +34,7 @@ export const guestPosts: GuestPost[] = [
     slug: "reisehighlights-in-japan",
     title: "Internationale Reisehighlights in Japan",
     description:
-      "Reisehighlights in Japan: Tokio und Kyoto, japanische Küche, Tempel, Gärten und der effiziente Nahverkehr — ein Überblick für die Reiseplanung.",
+      "Reisehighlights in Japan: Tokio und Kyoto, japanische Küche, Tempel, Gärten und der effiziente Nahverkehr - ein Überblick für die Reiseplanung.",
     datePublished: "2024-11-01",
     dateModified: "2024-11-01",
     image: {
@@ -65,20 +65,20 @@ export const guestPosts: GuestPost[] = [
     slug: "die-ultimative-checkliste-fuer-die-hochzeitsplanung",
     title: "Die ultimative Checkliste für die Hochzeitsplanung",
     description:
-      "Die ultimative Checkliste für die Hochzeitsplanung: Budget festlegen, Gästeliste erstellen, Planer engagieren, Location wählen — Schritt für Schritt zur Traumhochzeit.",
+      "Die ultimative Checkliste für die Hochzeitsplanung: Budget festlegen, Gästeliste erstellen, Planer engagieren, Location wählen - Schritt für Schritt zur Traumhochzeit.",
     datePublished: "2024-03-01",
     dateModified: "2024-03-01",
     blocks: [
       { type: "h2", html: "12 Monate im Voraus" },
       { type: "h3", html: "Budget festlegen" },
-      { type: "p", html: "Now it’s time to do the math and crunch some not-so-fun numbers. Before you can start planning, you need to figure out who’s paying for what and determine the cost of your wedding. Then, break down your budget—what’s a priority? What’s not?—and start allocating funds accordingly. (A little market research goes a long way here.) And since these numbers will change as you plan, it’s a good idea to create a detailed spreadsheet from the start. This way, you can keep track of your expenses and easily adjust the numbers over time." },
+      { type: "p", html: "Now it’s time to do the math and crunch some not-so-fun numbers. Before you can start planning, you need to figure out who’s paying for what and determine the cost of your wedding. Then, break down your budget - what’s a priority? What’s not? - and start allocating funds accordingly. (A little market research goes a long way here.) And since these numbers will change as you plan, it’s a good idea to create a detailed spreadsheet from the start. This way, you can keep track of your expenses and easily adjust the numbers over time." },
       { type: "h3", html: "Gästeliste erstellen" },
       { type: "h3", html: "Hochzeitsplaner engagieren" },
-      { type: "p", html: "Again, it depends on your <a href=\"https://rent-a-pastor.com/kalkulator-online-hochzeits-budgetplaner-geld-kosten-freie-trauung-hochzeit/\">budget</a>. (Fair warning: A lot of it depends.) But if your budget allows—or if your peace of mind depends on it—now is the time to hire your big day manager. This person will be your right-hand man (or woman) and will guide you through every decision, from choosing the venue to monitoring the budget to handling all the logistics." },
+      { type: "p", html: "Again, it depends on your <a href=\"https://rent-a-pastor.com/kalkulator-online-hochzeits-budgetplaner-geld-kosten-freie-trauung-hochzeit/\">budget</a>. (Fair warning: A lot of it depends.) But if your budget allows - or if your peace of mind depends on it - now is the time to hire your big day manager. This person will be your right-hand man (or woman) and will guide you through every decision, from choosing the venue to monitoring the budget to handling all the logistics." },
       { type: "h3", html: "Formalitäten und Gesamtthema festlegen" },
-      { type: "p", html: "Now it’s time to sit down with your partner and have another heart-to-heart talk. After all, the vibe of your wedding needs to be a joint decision between the two guests of honor. To get the conversation started, pour a glass of wine/water/tea and ask yourself: What’s important to you and why? What do you value? Also, consider that your venue—more on that below—will influence all of this." },
+      { type: "p", html: "Now it’s time to sit down with your partner and have another heart-to-heart talk. After all, the vibe of your wedding needs to be a joint decision between the two guests of honor. To get the conversation started, pour a glass of wine/water/tea and ask yourself: What’s important to you and why? What do you value? Also, consider that your venue - more on that below - will influence all of this." },
       { type: "h3", html: "Location auswählen" },
-      { type: "p", html: "Okay, so you know who you’re marrying. Now the only question is, where? Trust us: Choosing a venue is one of the most important decisions you’ll make at this moment. The location influences almost everything else, from the number of guests invited to the type of flowers on the table. Whether you are planning an intimate wedding or a <a href=\"https://www.schlossneuhaus.com/eventlocation-firmenfeier/\">corporate party</a>, the right venue sets the tone for the entire event—so explore your options early and book in good time." },
+      { type: "p", html: "Okay, so you know who you’re marrying. Now the only question is, where? Trust us: Choosing a venue is one of the most important decisions you’ll make at this moment. The location influences almost everything else, from the number of guests invited to the type of flowers on the table. Whether you are planning an intimate wedding or a <a href=\"https://www.schlossneuhaus.com/eventlocation-firmenfeier/\">corporate party</a>, the right venue sets the tone for the entire event - so explore your options early and book in good time." },
     ],
   },
 
@@ -105,7 +105,7 @@ export const guestPosts: GuestPost[] = [
     slug: "probleme-beim-schlafen-10-tipps-die-helfen-koennen",
     title: "Probleme beim Schlafen? 10 Tipps, die helfen können",
     description:
-      "Probleme beim Schlafen? 10 praktische Tipps, die beim Ein- und Durchschlafen helfen können — von Routine und Atmung bis zur entspannenden Schlafumgebung.",
+      "Probleme beim Schlafen? 10 praktische Tipps, die beim Ein- und Durchschlafen helfen können - von Routine und Atmung bis zur entspannenden Schlafumgebung.",
     datePublished: "2024-05-01",
     dateModified: "2024-05-01",
     blocks: [

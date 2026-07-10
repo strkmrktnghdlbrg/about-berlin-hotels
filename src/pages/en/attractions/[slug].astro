@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 }
 
 const { attraction } = Astro.props;
-const title = `${attraction.name.en} — Attraction & Hotels Nearby`;
+const title = `${attraction.name.en} - Attraction & Hotels Nearby`;
 const description = attraction.intro.en.slice(0, 155);
 ---
 

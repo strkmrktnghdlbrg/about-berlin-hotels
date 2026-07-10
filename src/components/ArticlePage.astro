@@ -140,7 +140,7 @@ const faqSchema =
         Unsere Hotel-Empfehlungen
       </h2>
       <p class="text-ink-600 leading-relaxed mb-8">
-        Handverlesene, verifizierte Häuser aus unserer Redaktion — Live-Preise und Verfügbarkeit über die Karte und Booking.com.
+        Handverlesene, verifizierte Häuser aus unserer Redaktion - Live-Preise und Verfügbarkeit über die Karte und Booking.com.
       </p>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {featuredHotels.map((h) => <HotelCard hotel={h!} locale={locale} />)}
@@ -154,7 +154,7 @@ const faqSchema =
       {district ? `Hotels in ${district.name} auf der Karte` : "Hotels in Berlin auf der Karte"}
     </h2>
     <p class="text-ink-600 leading-relaxed mb-6">
-      Verfügbarkeit und Preise live von Booking.com — vergleiche Lagen, bevor du buchst.
+      Verfügbarkeit und Preise live von Booking.com - vergleiche Lagen, bevor du buchst.
     </p>
     <Stay22Map
       embedId={district?.stay22Id}
@@ -203,7 +203,7 @@ const faqSchema =
       numberOfItems={3}
       cmp={`article-${article.slug}`}
       title="Touren & Tickets passend zu deinem Aufenthalt"
-      lead="Beliebte Erlebnisse in Berlin — direkt buchbar über GetYourGuide."
+      lead="Beliebte Erlebnisse in Berlin - direkt buchbar über GetYourGuide."
       locale={locale}
     />
   )}

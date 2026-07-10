@@ -41,8 +41,8 @@ const {
     ? `Hotels in der Nähe von ${near}`
     : `Hotels near ${near}`,
   lead = locale === "de"
-    ? `Im ${Math.round(radius / 100) / 10} km Umkreis — Live-Preise und Bewertungen von Booking.com.`
-    : `Within ${Math.round(radius / 100) / 10} km — live prices and ratings from Booking.com.`,
+    ? `Im ${Math.round(radius / 100) / 10} km Umkreis - Live-Preise und Bewertungen von Booking.com.`
+    : `Within ${Math.round(radius / 100) / 10} km - live prices and ratings from Booking.com.`,
 } = Astro.props;
 
 const campaign = campaignSuffix
@@ -136,8 +136,8 @@ const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
 
       <p class="text-[11px] mt-6 text-ink-500 leading-relaxed text-center">
         {locale === "de"
-          ? "* Sponsored — Buchung läuft über Booking.com via Stay22-Affiliate."
-          : "* Sponsored — booking via Booking.com through Stay22 affiliate."}
+          ? "* Sponsored - Buchung läuft über Booking.com via Stay22-Affiliate."
+          : "* Sponsored - booking via Booking.com through Stay22 affiliate."}
       </p>
     </div>
   </section>
