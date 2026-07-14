@@ -89,7 +89,7 @@ export const attractions: Attraction[] = [
     district: "pankow",
     intro: {
       de: "Auf dem ehemaligen Mauerstreifen - heute Berlins berühmtester Sonntagspark mit Flohmarkt und Karaoke-Sessions im Amphitheater.",
-      en: "On the former wall strip - today Berlin's most famous Sunday park with flea market and karaoke sessions in the amphitheatre.",
+      en: "On the former wall strip - today Berlin's most famous Sunday park with flea market and karaoke sessions in the amphitheater.",
     },
     type: "park",
     geo: { lat: 52.5417, lng: 13.4023 },

@@ -44,7 +44,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Turm steht direkt am Alexanderplatz, wo alle U- und S-Bahn-Linien zusammenlaufen. Museumsinsel, Rotes Rathaus und Hackescher Markt sind von hier aus schnell zu Fuß erreicht.",
     ],
     en: [
-      "At 368 metres the TV Tower is the tallest building in Germany, and from the observation deck and revolving restaurant it offers the widest view over Berlin. On clear days you can see far into the surrounding region - timed tickets save waiting.",
+      "At 368 meters the TV Tower is the tallest building in Germany, and from the observation deck and revolving restaurant it offers the widest view over Berlin. On clear days you can see far into the surrounding region - timed tickets save waiting.",
       "The tower stands right on Alexanderplatz, where every U- and S-Bahn line meets. Museum Island, the Rotes Rathaus and Hackescher Markt are quickly reached on foot from here.",
     ],
   },
@@ -64,7 +64,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Die Galerie liegt in Friedrichshain, direkt am Spreeufer und nahe der Mercedes-Benz Arena. Warschauer Straße und Ostbahnhof (S-Bahn) sind wenige Minuten entfernt.",
     ],
     en: [
-      "The East Side Gallery, at around 1.3 kilometres, is the longest preserved stretch of the Berlin Wall and at the same time a continuous open-air gallery. The murals along the Spree tell the story of the fall of the Wall - a walk from the Oberbaum Bridge to Ostbahnhof is worth it.",
+      "The East Side Gallery, at around 1.3 kilometers, is the longest preserved stretch of the Berlin Wall and at the same time a continuous open-air gallery. The murals along the Spree tell the story of the fall of the Wall - a walk from the Oberbaum Bridge to Ostbahnhof is worth it.",
       "The gallery is in Friedrichshain, right on the Spree riverside and near Mercedes-Benz Arena. Warschauer Straße and Ostbahnhof (S-Bahn) are a few minutes away.",
     ],
   },
@@ -84,7 +84,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Park erstreckt sich zwischen Brandenburger Tor und Bahnhof Zoo; rundum liegen Reichstag, Schloss Bellevue und das Kulturforum. Mehrere S- und U-Bahnhöfe säumen die Ränder.",
     ],
     en: [
-      "The Großer Tiergarten is the green lung in the heart of Berlin - a sprawling park with lakes, meadows and shady avenues, ideal for a break between two sightseeing legs. The Victory Column at its centre offers a fine panorama.",
+      "The Großer Tiergarten is the green lung in the heart of Berlin - a sprawling park with lakes, meadows and shady avenues, ideal for a break between two sightseeing legs. The Victory Column at its center offers a fine panorama.",
       "The park stretches between the Brandenburg Gate and Zoo station; around it lie the Reichstag, Bellevue Palace and the Kulturforum. Several S- and U-Bahn stations line the edges.",
     ],
   },
@@ -94,7 +94,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Mehrere U-Bahnhöfe und der Bahnhof Zoo erschließen den Ku'damm; Hotels aller Klassen liegen direkt an oder nahe der Straße. Ideal für einen entspannten Nachmittag im Westen.",
     ],
     en: [
-      "The Kurfürstendamm is Berlin's tradition-rich shopping and strolling boulevard in City West. From KaDeWe to designer stores, cafés and cinemas, everything lines up along some three and a half kilometres - a stroll almost inevitably leads to the Memorial Church.",
+      "The Kurfürstendamm is Berlin's tradition-rich shopping and strolling boulevard in City West. From KaDeWe to designer stores, cafés and cinemas, everything lines up along some three and a half kilometers - a stroll almost inevitably leads to the Memorial Church.",
       "Several U-Bahn stations and Zoo station serve the Ku'damm; hotels of every class sit on or near the street. Ideal for a relaxed afternoon in the west.",
     ],
   },
@@ -114,7 +114,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Platz ist über den gleichnamigen Regional- und S-Bahnhof bestens angebunden; Tiergarten, Kulturforum und das Mandala-Hotel liegen direkt nebenan. Ideal bei Regen dank überdachter Passagen.",
     ],
     en: [
-      "Potsdamer Platz stands for the new Berlin: completely rebuilt after the fall of the Wall, it brings cinema, theatre, shopping and modern architecture together in one place. Remnants of the Berlin Wall and the red info box recall the divided past.",
+      "Potsdamer Platz stands for the new Berlin: completely rebuilt after the fall of the Wall, it brings cinema, theater, shopping and modern architecture together in one place. Remnants of the Berlin Wall and the red info box recall the divided past.",
       "The square is well served by the regional and S-Bahn station of the same name; the Tiergarten, Kulturforum and the Mandala hotel are right next door. Great in the rain thanks to covered arcades.",
     ],
   },
@@ -124,7 +124,7 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Mahnmal liegt direkt südlich des Brandenburger Tors, fußläufig zum Tiergarten und Potsdamer Platz. Ein respektvoller Umgang ist selbstverständlich - es ist eine Gedenkstätte, kein Fotomotiv.",
     ],
     en: [
-      "The Memorial to the Murdered Jews of Europe consists of 2,711 stelae you walk through - a deliberately quiet, powerful place. The underground Information Centre documents the victims and their stories; admission is free.",
+      "The Memorial to the Murdered Jews of Europe consists of 2,711 stelae you walk through - a deliberately quiet, powerful place. The underground Information Center documents the victims and their stories; admission is free.",
       "The memorial lies just south of the Brandenburg Gate, within walking distance of the Tiergarten and Potsdamer Platz. Respectful conduct goes without saying - it is a place of remembrance, not a photo backdrop.",
     ],
   },
@@ -135,7 +135,7 @@ export const attractionEditorial: AttractionEditorial = {
     ],
     en: [
       "Alexanderplatz is Berlin's big transport and shopping hub in eastern Mitte - defined by the TV Tower, the World Clock and wide open spaces. U-Bahn, S-Bahn, tram and regional trains all meet here, making the Alex a practical starting point.",
-      "Department stores and shopping centres surround the square; Museum Island, the Rotes Rathaus and Hackescher Markt are within walking distance. Ideal as a central base for sightseeing.",
+      "Department stores and shopping centers surround the square; Museum Island, the Rotes Rathaus and Hackescher Markt are within walking distance. Ideal as a central base for sightseeing.",
     ],
   },
   "schloss-charlottenburg": {
@@ -195,7 +195,7 @@ export const attractionEditorial: AttractionEditorial = {
     ],
     en: [
       "The Müggelsee is Berlin's largest lake and the local recreation spot in the city's south-east. Swimming, sailing, stand-up paddling and shoreline walks are all on offer; the Müggelturm gives a fine view over lake and forests.",
-      "The lake lies in Treptow-Köpenick, around 40 minutes from the centre by S-Bahn (S3) and bus. It combines well with Köpenick's historic old town and a boat tour on the Spree and Dahme.",
+      "The lake lies in Treptow-Köpenick, around 40 minutes from the center by S-Bahn (S3) and bus. It combines well with Köpenick's historic old town and a boat tour on the Spree and Dahme.",
     ],
   },
   "wannsee": {
@@ -205,7 +205,7 @@ export const attractionEditorial: AttractionEditorial = {
     ],
     en: [
       "The Wannsee in the green south-west is Berlin's most popular summer spot by the water - the large Wannsee lido in particular draws many Berliners when the sun is out. Around it, the Grunewald, Peacock Island and the Glienicke Bridge invite walks and excursions.",
-      "The Wannsee lies in Steglitz-Zehlendorf and is well served by the S-Bahn (S1/S7); from here Potsdam is quickly reached too. Ideal for a relaxed day of nature and bathing away from the centre.",
+      "The Wannsee lies in Steglitz-Zehlendorf and is well served by the S-Bahn (S1/S7); from here Potsdam is quickly reached too. Ideal for a relaxed day of nature and bathing away from the center.",
     ],
   },
 };

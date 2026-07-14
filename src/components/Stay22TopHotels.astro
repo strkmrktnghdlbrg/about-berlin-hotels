@@ -48,7 +48,7 @@ try {
 }
 
 const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
-const buildTime = new Date().toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", {
+const buildTime = new Date().toLocaleDateString(locale === "de" ? "de-DE" : "en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",

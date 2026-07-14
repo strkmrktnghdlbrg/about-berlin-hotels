@@ -248,7 +248,7 @@ export const guides: Guide[] = [
             title: { de: "Tiergarten-Spaziergang", en: "Tiergarten walk" },
             description: {
               de: "Berlins grüne Mitte, vom Zoologischen Garten Richtung Brandenburger Tor - 4 km, ungefähr 50 Min.",
-              en: "Berlin's green centre, from Zoo Station towards Brandenburg Gate - 4km, around 50 min.",
+              en: "Berlin's green center, from Zoo Station towards Brandenburg Gate - 4km, around 50 min.",
             },
             attractionSlug: "tiergarten",
           },

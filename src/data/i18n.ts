@@ -50,7 +50,7 @@ export const t = {
       },
       body: {
         de: "Egal ob Wochenend-Trip, Geschäftsreise oder Familienurlaub - entdecke das passende Hotel in jedem Berliner Bezirk.",
-        en: "Whether it's a weekend trip, a business stay or a family holiday - find the right hotel in every Berlin district.",
+        en: "Whether it's a weekend trip, a business stay or a family vacation - find the right hotel in every Berlin district.",
       },
     },
   },

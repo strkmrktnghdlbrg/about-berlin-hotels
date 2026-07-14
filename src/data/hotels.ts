@@ -115,7 +115,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "Teil der Berliner AMANO-Gruppe. Klare Linien, hochfrequentierte Dachbar mit Blick auf den Hauptbahnhof, eigenes Restaurant. Sehr zentral, perfekt für ÖPNV-Reisende.",
-      en: "Part of Berlin's AMANO group. Clean lines, busy rooftop bar with views of Hauptbahnhof, in-house restaurant. Very central, perfect for transit travellers.",
+      en: "Part of Berlin's AMANO group. Clean lines, busy rooftop bar with views of Hauptbahnhof, in-house restaurant. Very central, perfect for transit travelers.",
     },
     highlights: {
       de: ["Dachterrasse", "Am Hauptbahnhof", "Bar & Restaurant"],
@@ -334,7 +334,7 @@ export const hotels: Hotel[] = [
     bookingUrl: "https://www.booking.com/hotel/de/waldorf-astoria-berlin.de.html",
     shortDesc: {
       de: "32-stöckiger Glasturm direkt an der Gedächtniskirche - Luxus mit Panoramablick.",
-      en: "32-storey glass tower at the Memorial Church - luxury with panoramic views.",
+      en: "32-story glass tower at the Memorial Church - luxury with panoramic views.",
     },
     description: {
       de: "Berlins höchstes Hotel mit Blick über City West, dem Spa Guerlain auf zwei Etagen, der Bar Lang im 31. Stock und dem Restaurant ROCA. 2013 eröffnet, direkt am Bahnhof Zoo.",
@@ -360,7 +360,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "Teil der niederländischen Sir Hotels-Familie. Individuell eingerichtete Zimmer, hauseigene Cocktail-Bar, gemütliche Lobby. Wenige Minuten vom Savignyplatz und vom Bahnhof Zoo.",
-      en: "Part of the Dutch Sir Hotels family. Individually designed rooms, in-house cocktail bar, cosy lobby. Minutes from Savignyplatz and Zoo station.",
+      en: "Part of the Dutch Sir Hotels family. Individually designed rooms, in-house cocktail bar, cozy lobby. Minutes from Savignyplatz and Zoo station.",
     },
     highlights: {
       de: ["Am Savignyplatz", "Cocktail-Bar", "Designhotel"],
@@ -677,7 +677,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "1.125 Zimmer, das Estrel ist nach eigenen Angaben das größte Convention-, Entertainment- und Hotelzentrum Deutschlands. Eigene Show-Bühne (Stars in Concert), direkter Spreezugang, 15 Tagungsräume.",
-      en: "1,125 rooms - by its own account Germany's largest convention, entertainment and hotel centre. Own show stage (Stars in Concert), direct Spree access, 15 conference rooms.",
+      en: "1,125 rooms - by its own account Germany's largest convention, entertainment and hotel center. Own show stage (Stars in Concert), direct Spree access, 15 conference rooms.",
     },
     highlights: {
       de: ["Stars in Concert", "1.125 Zimmer", "An der Spree"],
@@ -791,7 +791,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "1929 als Tagungshaus der Kaiser-Wilhelm-Gesellschaft errichtet. Heute Gäste- und Konferenzhaus der Max-Planck-Gesellschaft, aber auch für reguläre Reisende offen. Ruhige Lage in Dahlem.",
-      en: "Built in 1929 as a conference house of the Kaiser-Wilhelm-Gesellschaft. Today the Max Planck Society's guest and conference house, also open to regular travellers. Quiet location in Dahlem.",
+      en: "Built in 1929 as a conference house of the Kaiser-Wilhelm-Gesellschaft. Today the Max Planck Society's guest and conference house, also open to regular travelers. Quiet location in Dahlem.",
     },
     highlights: {
       de: ["1929er Bau", "MPG-Tagungshaus", "Sehr ruhig"],
@@ -864,7 +864,7 @@ export const hotels: Hotel[] = [
     },
     description: {
       de: "Funktionale, frisch renovierte Zimmer. Frühstück optional, kostenloses WLAN, U5 in Gehnähe (Station Hellersdorf). Für sehr budgetbewusste Reisende.",
-      en: "Functional, recently renovated rooms. Breakfast optional, free Wi-Fi, U5 within walking distance (Hellersdorf station). For very budget-conscious travellers.",
+      en: "Functional, recently renovated rooms. Breakfast optional, free Wi-Fi, U5 within walking distance (Hellersdorf station). For very budget-conscious travelers.",
     },
     highlights: {
       de: ["Ab €49", "U5-Anschluss", "Frisch renoviert"],

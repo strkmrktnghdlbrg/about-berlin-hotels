@@ -27,7 +27,7 @@ export const hotelEditorial: HotelEditorial = {
       "Der frühere Tresorraum dient heute als Pool, die Dachterrasse bietet Blick auf den Berliner Dom. Über die U-Bahnhöfe Hausvogteiplatz und Französische Straße sowie die nahe Friedrichstraße ist das ganze Stadtgebiet schnell erreichbar.",
     ],
     en: [
-      "Hotel de Rome on Bebelplatz blends banking-house history with quiet elegance. Museum Island, the State Opera and the Humboldt Forum are within walking distance - an ideal base for culture and architecture travellers who want to be central yet away from the biggest crowds.",
+      "Hotel de Rome on Bebelplatz blends banking-house history with quiet elegance. Museum Island, the State Opera and the Humboldt Forum are within walking distance - an ideal base for culture and architecture travelers who want to be central yet away from the biggest crowds.",
       "The former bank vault now serves as the pool, and the rooftop terrace overlooks Berlin Cathedral. The U-Bahn stations Hausvogteiplatz and Französische Straße, plus nearby Friedrichstraße, put the whole city within easy reach.",
     ],
   },
@@ -37,8 +37,8 @@ export const hotelEditorial: HotelEditorial = {
       "Restaurants, Theater und die Friedrichstraße sind zu Fuß erreichbar; über die U2 und U6 ist man in Minuten in Mitte-Ost wie -West. Eine gute Wahl für anspruchsvolle Städtereisende und Geschäftsreisende gleichermaßen.",
     ],
     en: [
-      "The Regent Berlin sits directly on Gendarmenmarkt, for many the city's most beautiful square with its concert hall and twin cathedrals. The classic, understated interiors appeal to travellers who value service and a quiet yet absolutely central location.",
-      "Restaurants, theatres and Friedrichstraße are within walking distance; the U2 and U6 lines reach both eastern and western Mitte in minutes. A strong choice for discerning city and business travellers alike.",
+      "The Regent Berlin sits directly on Gendarmenmarkt, for many the city's most beautiful square with its concert hall and twin cathedrals. The classic, understated interiors appeal to travelers who value service and a quiet yet absolutely central location.",
+      "Restaurants, theaters and Friedrichstraße are within walking distance; the U2 and U6 lines reach both eastern and western Mitte in minutes. A strong choice for discerning city and business travelers alike.",
     ],
   },
   "hotel-amano-grand-central": {
@@ -47,7 +47,7 @@ export const hotelEditorial: HotelEditorial = {
       "Vom Hauptbahnhof aus erreichst du jede Ecke Berlins und den Flughafen BER ohne Umsteigen. Regierungsviertel, Reichstag und der Tiergarten liegen in Gehweite - ideal für kurze, effiziente Aufenthalte.",
     ],
     en: [
-      "The AMANO Grand Central right by Hauptbahnhof is the practical design choice for anyone travelling a lot by train. Clean lines, fair prices and a lively rooftop bar overlooking the tracks make it an easy-going city base.",
+      "The AMANO Grand Central right by Hauptbahnhof is the practical design choice for anyone traveling a lot by train. Clean lines, fair prices and a lively rooftop bar overlooking the tracks make it an easy-going city base.",
       "From Hauptbahnhof you can reach every corner of Berlin and BER airport without changing trains. The government quarter, the Reichstag and the Tiergarten are within walking distance - ideal for short, efficient stays.",
     ],
   },
@@ -58,7 +58,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "Soho House on Torstraße is a members' club and design hotel in a 1928 Bauhaus building. A roof pool, in-house cinema and several restaurants create an atmosphere where you happily spend time even without a fixed plan.",
-      "Its location on the seam between Mitte and Prenzlauer Berg blends sightseeing with creative neighbourhood life; Hackescher Markt, Rosenthaler Platz and the nightlife around Torstraße are all within walking distance.",
+      "Its location on the seam between Mitte and Prenzlauer Berg blends sightseeing with creative neighborhood life; Hackescher Markt, Rosenthaler Platz and the nightlife around Torstraße are all within walking distance.",
     ],
   },
   "the-mandala-hotel": {
@@ -67,8 +67,8 @@ export const hotelEditorial: HotelEditorial = {
       "Der Potsdamer Platz verbindet Kino, Theater und Shopping direkt vor der Tür; über den gleichnamigen Regional- und S-Bahnhof bist du schnell in Mitte, am Hauptbahnhof und am Flughafen BER.",
     ],
     en: [
-      "The Mandala on Potsdamer Platz is a privately run all-suite hotel for travellers who value space and privacy. With the ONO spa and the two-Michelin-star FACIL restaurant, it ranks among the city's quieter luxury addresses.",
-      "Potsdamer Platz puts cinema, theatre and shopping right outside; the regional and S-Bahn station of the same name quickly connects you to Mitte, Hauptbahnhof and BER airport.",
+      "The Mandala on Potsdamer Platz is a privately run all-suite hotel for travelers who value space and privacy. With the ONO spa and the two-Michelin-star FACIL restaurant, it ranks among the city's quieter luxury addresses.",
+      "Potsdamer Platz puts cinema, theater and shopping right outside; the regional and S-Bahn station of the same name quickly connects you to Mitte, Hauptbahnhof and BER airport.",
     ],
   },
   "circus-hotel": {
@@ -78,7 +78,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The owner-run Circus Hotel on Rosenthaler Platz proves that central and affordable need not be a contradiction. Run with plenty of Berlin character for over twenty years, it even gained its own brewery on the block in 2018.",
-      "From Rosenthaler Platz (U8) you can walk to Hackescher Markt, Mitte and the Torstraße nightlife. In-house city tours in German and English make getting started easy - ideal for young and curious travellers.",
+      "From Rosenthaler Platz (U8) you can walk to Hackescher Markt, Mitte and the Torstraße nightlife. In-house city tours in German and English make getting started easy - ideal for young and curious travelers.",
     ],
   },
   "h2-hotel-alexanderplatz": {
@@ -87,7 +87,7 @@ export const hotelEditorial: HotelEditorial = {
       "Am Alex laufen sämtliche U- und S-Bahn-Linien sowie Trams zusammen; Fernsehturm, Museumsinsel und Hackescher Markt sind fußläufig. Wer zentral wohnen, aber das Budget schonen will, ist hier goldrichtig.",
     ],
     en: [
-      "The H2 Hotel right on Alexanderplatz is the no-fuss budget base in the centre. Fresh, simple rooms and a good breakfast buffet are plenty for many city travellers - you save on the room, not the location.",
+      "The H2 Hotel right on Alexanderplatz is the no-fuss budget base in the center. Fresh, simple rooms and a good breakfast buffet are plenty for many city travelers - you save on the room, not the location.",
       "Every U- and S-Bahn line and several trams meet at the Alex; the TV Tower, Museum Island and Hackescher Markt are within walking distance. For staying central while sparing the budget, this is spot on.",
     ],
   },
@@ -149,8 +149,8 @@ export const hotelEditorial: HotelEditorial = {
       "Direkt am Bahnhof Zoo gelegen, sind Ku'damm, KaDeWe und die Gedächtniskirche fußläufig, der Tiergarten gleich nebenan. Eine erstklassige Basis für anspruchsvolle Städte- und Geschäftsreisende.",
     ],
     en: [
-      "At 32 floors, the Waldorf Astoria is Berlin's tallest hotel, offering panoramic views over City West. The two-floor Spa Guerlain and Bar Lang on the 31st floor make it the address for travellers who want luxury with a view.",
-      "Right by Zoo station, the Ku'damm, KaDeWe and the Memorial Church are within walking distance, with the Tiergarten next door. A first-class base for discerning city and business travellers.",
+      "At 32 floors, the Waldorf Astoria is Berlin's tallest hotel, offering panoramic views over City West. The two-floor Spa Guerlain and Bar Lang on the 31st floor make it the address for travelers who want luxury with a view.",
+      "Right by Zoo station, the Ku'damm, KaDeWe and the Memorial Church are within walking distance, with the Tiergarten next door. A first-class base for discerning city and business travelers.",
     ],
   },
   "sir-savigny-hotel": {
@@ -179,8 +179,8 @@ export const hotelEditorial: HotelEditorial = {
       "Die City West ist bestens an Messegelände, Bahnhof Zoo und Innenstadt angebunden. Wer Verlässlichkeit zu fairem Preis sucht und auf Schnörkel verzichten kann, ist hier gut aufgehoben.",
     ],
     en: [
-      "The Hampton by Hilton in City West is the solid 3-star choice with reliable standards: fresh rooms, free hot breakfast and 24/7 fitness. A fair package especially for budget-conscious business and trade-fair travellers.",
-      "City West is well connected to the trade-fair grounds, Zoo station and the centre. If you want reliability at a fair price and can do without frills, this is a good fit.",
+      "The Hampton by Hilton in City West is the solid 3-star choice with reliable standards: fresh rooms, free hot breakfast and 24/7 fitness. A fair package especially for budget-conscious business and trade-fair travelers.",
+      "City West is well connected to the trade-fair grounds, Zoo station and the center. If you want reliability at a fair price and can do without frills, this is a good fit.",
     ],
   },
   "25hours-hotel-bikini": {
@@ -190,7 +190,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The 25hours Hotel Bikini in the restored 1957 Bikinihaus is an experience in itself: the jungle-side rooms look straight into Berlin Zoo, and the rooftop Monkey Bar is one of the city's best-known viewpoints.",
-      "Right by Zoo station, the Ku'damm, KaDeWe and the Tiergarten are within walking distance. A playful, design-strong house for travellers who want Berlin from its creative side.",
+      "Right by Zoo station, the Ku'damm, KaDeWe and the Tiergarten are within walking distance. A playful, design-strong house for travelers who want Berlin from its creative side.",
     ],
   },
   "intercontinental-berlin": {
@@ -200,7 +200,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The InterContinental on Budapester Straße is a large five-star hotel with extensive conference capacity - a leading address for meetings and bigger events. A spa, pool and the two-Michelin-star Hugos on the 14th floor are part of it.",
-      "Set between the Tiergarten and KaDeWe, it combines business-travel infrastructure with proximity to the centre. Zoo station and several U-Bahn lines are within walking distance.",
+      "Set between the Tiergarten and KaDeWe, it combines business-travel infrastructure with proximity to the center. Zoo station and several U-Bahn lines are within walking distance.",
     ],
   },
   "henri-hotel-kurfuerstendamm": {
@@ -210,7 +210,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Henri Hotel at Olivaer Platz occupies a 1900s apartment building and is styled like a 1950s New York apartment - vintage furniture, breakfast in a classic salon, lots of personal charm. A charming alternative to the chains on Ku'damm.",
-      "Boutiques, cafés and the Kurfürstendamm are right outside; several U-Bahn stations connect you quickly to the rest of the city. Ideal for independent travellers with an eye for the special.",
+      "Boutiques, cafés and the Kurfürstendamm are right outside; several U-Bahn stations connect you quickly to the rest of the city. Ideal for independent travelers with an eye for the special.",
     ],
   },
 
@@ -222,7 +222,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The owner-run Michelberger opposite Mercedes-Benz Arena is a Berlin design icon - converted from an old industrial building into a distinctive house with a rooftop sauna and seasonal restaurant. It embodies creative, unpolished Friedrichshain.",
-      "The East Side Gallery, the Spree riverside and the nightlife around Warschauer Straße are within walking distance; S- and U-Bahn reach Mitte in minutes. Perfect for travellers seeking the real, young Berlin.",
+      "The East Side Gallery, the Spree riverside and the nightlife around Warschauer Straße are within walking distance; S- and U-Bahn reach Mitte in minutes. Perfect for travelers seeking the real, young Berlin.",
     ],
   },
   "nhow-berlin": {
@@ -242,7 +242,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Orania.Berlin on Oranienplatz is a restored period building that pairs five-star boutique comfort with live music in its own salon. Its three-continent restaurant and personal service make it one of Kreuzberg's special addresses.",
-      "Set in the heart of lively Kreuzberg, Markthalle Neun, the Landwehrkanal and the nightlife are within walking distance. A choice for connoisseurs who refuse to trade neighbourhood authenticity for comfort.",
+      "Set in the heart of lively Kreuzberg, Markthalle Neun, the Landwehrkanal and the nightlife are within walking distance. A choice for connoisseurs who refuse to trade neighborhood authenticity for comfort.",
     ],
   },
   "schulz-hotel": {
@@ -252,7 +252,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Schulz Hotel sits right by the East Side Gallery between Ostbahnhof and Mercedes-Benz Arena - few houses are closer to the longest preserved stretch of the Wall. Fresh rooms, fair prices and family rooms make it a budget-savvy Friedrichshain base.",
-      "Concerts at the arena, clubs on Warschauer Straße and the Spree riverside are within walking distance; Ostbahnhof links you to regional and S-Bahn services. Ideal for young travellers and families on a smaller budget.",
+      "Concerts at the arena, clubs on Warschauer Straße and the Spree riverside are within walking distance; Ostbahnhof links you to regional and S-Bahn services. Ideal for young travelers and families on a smaller budget.",
     ],
   },
 
@@ -264,7 +264,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Hotel Oderberger in the former 1902 public baths is a real one-off: the historic swimming pool in the original hall is preserved and can be used. Boutique charm, family rooms and a location minutes from Mauerpark make it special.",
-      "In the heart of Prenzlauer Berg, Kollwitzplatz, the Kulturbrauerei and countless cafés are within walking distance; tram and U2 reach Mitte quickly. Ideal for families and travellers seeking character.",
+      "In the heart of Prenzlauer Berg, Kollwitzplatz, the Kulturbrauerei and countless cafés are within walking distance; tram and U2 reach Mitte quickly. Ideal for families and travelers seeking character.",
     ],
   },
   "myers-hotel": {
@@ -284,7 +284,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Living Hotel Weißensee offers fully equipped studios and apartments with kitchenette and its own park grounds by Lake Weißensee in northern Berlin. For longer stays and families it is a quiet, practical and affordable base.",
-      "Lake Weißensee with its lido and walking paths is right outside; tram and bus reach Prenzlauer Berg and the centre. Ideal if you value space, quiet and self-catering.",
+      "Lake Weißensee with its lido and walking paths is right outside; tram and bus reach Prenzlauer Berg and the center. Ideal if you value space, quiet and self-catering.",
     ],
   },
   "ackselhaus-blue-home": {
@@ -294,7 +294,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Ackselhaus & Blue Home is a very personally run boutique hotel with individually designed themed rooms across two restored period buildings. Breakfast in the leafy courtyard and the quiet Belforter Straße make it a genuine insider tip in Prenzlauer Berg.",
-      "Kollwitzplatz, cafés and the Kulturbrauerei are within walking distance; tram and U2 connect you to the centre. A charming choice for couples and independent travellers who appreciate the special.",
+      "Kollwitzplatz, cafés and the Kulturbrauerei are within walking distance; tram and U2 connect you to the center. A charming choice for couples and independent travelers who appreciate the special.",
     ],
   },
 
@@ -305,7 +305,7 @@ export const hotelEditorial: HotelEditorial = {
       "Über die nahe S-Bahn (Sonnenallee) bist du schnell in Kreuzberg und Mitte. Für Messe-, Kongress- und Eventbesucher bietet das Haus viel Kapazität zu fairem Preis.",
     ],
     en: [
-      "The Estrel Berlin on Sonnenallee, with 1,125 rooms, is by its own account Germany's largest convention, entertainment and hotel centre. Its own show stage, 15 conference rooms and direct Spree access make it the address for events and groups.",
+      "The Estrel Berlin on Sonnenallee, with 1,125 rooms, is by its own account Germany's largest convention, entertainment and hotel center. Its own show stage, 15 conference rooms and direct Spree access make it the address for events and groups.",
       "The nearby S-Bahn (Sonnenallee) quickly reaches Kreuzberg and Mitte. For trade-fair, congress and event visitors the house offers ample capacity at a fair price.",
     ],
   },
@@ -316,7 +316,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Hüttenpalast in Neukölln is one of Berlin's most unusual houses: in a former vacuum-cleaner factory you sleep in vintage caravans and self-built huts under a covered hall - plus classic rooms and a café in the courtyard.",
-      "In the heart of lively Neukölln, the Maybachufer, bars and galleries are within walking distance; U7 and U8 connect you to the rest of the city. For curious, young travellers, an experience at a fair price.",
+      "In the heart of lively Neukölln, the Maybachufer, bars and galleries are within walking distance; U7 and U8 connect you to the rest of the city. For curious, young travelers, an experience at a fair price.",
     ],
   },
 
@@ -350,7 +350,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Patrick Hellmann Schlosshotel in the Grunewald occupies the 1914 Pannwitz Palace - the interiors were designed by Karl Lagerfeld in 1996. Highly discreet, with parkland and its own restaurant, it is the quiet luxury address in Berlin's green south-west.",
-      "If you value recovery over short sightseeing distances, you will find calm here between woods and villas. The Grunewald, Wannsee and Potsdam are close; the centre is around 30 to 40 minutes away.",
+      "If you value recovery over short sightseeing distances, you will find calm here between woods and villas. The Grunewald, Wannsee and Potsdam are close; the center is around 30 to 40 minutes away.",
     ],
   },
   "harnack-haus": {
@@ -359,8 +359,8 @@ export const hotelEditorial: HotelEditorial = {
       "Dahlem mit seinen Museen, Villen und dem Botanischen Garten liegt vor der Tür; über die U3 erreichst du die City West in gut 20 Minuten. Ideal für Ruhesuchende und Geschäftsreisende mit Tagungsbezug.",
     ],
     en: [
-      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house - also open to regular travellers. Its quiet, academically minded atmosphere is a genuine insider tip in the green south-west.",
-      "Dahlem with its museums, villas and the Botanic Garden is on the doorstep; the U3 reaches City West in just over 20 minutes. Ideal for quiet-seekers and business travellers with a conference connection.",
+      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house - also open to regular travelers. Its quiet, academically minded atmosphere is a genuine insider tip in the green south-west.",
+      "Dahlem with its museums, villas and the Botanic Garden is on the doorstep; the U3 reaches City West in just over 20 minutes. Ideal for quiet-seekers and business travelers with a conference connection.",
     ],
   },
 
@@ -372,7 +372,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Hotel Müggelsee sits with 174 rooms right on Berlin's largest lake - with its own lido, a large spa and a restaurant with lake views. It is the classic wellness and weekend spot where even Berliners like to take time out.",
-      "Swimming, paddling and walks start right at the house; the Müggelturm and Köpenick's old town are close. The centre is around 40 minutes by S-Bahn and bus - in return you get nature no central district can offer.",
+      "Swimming, paddling and walks start right at the house; the Müggelturm and Köpenick's old town are close. The center is around 40 minutes by S-Bahn and bus - in return you get nature no central district can offer.",
     ],
   },
 
@@ -384,7 +384,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Best Western Hotel am Borsigturm sits in the renovated Borsigwerke area, a historic industrial monument in Berlin's green north. A pool, sauna and conference area make it a family-friendly and business-capable choice with good value for money.",
-      "The U6 (Borsigwerke station) reaches Alexanderplatz in around 25 minutes; Tegeler See and the Tegel forest are close for trips into the greenery. Parking is more relaxed here than in the centre.",
+      "The U6 (Borsigwerke station) reaches Alexanderplatz in around 25 minutes; Tegeler See and the Tegel forest are close for trips into the greenery. Parking is more relaxed here than in the center.",
     ],
   },
 
@@ -396,7 +396,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The ibis budget Berlin Hellersdorf is the honest money-saving option in eastern Berlin: freshly renovated, functional rooms, free Wi-Fi and a U-Bahn link within walking distance. If you mainly want a clean bed and good connections, this is the cheapest way to go.",
-      "The U5 reaches Alexanderplatz in around 30 to 40 minutes; the Gardens of the World are nearby for a day out. Ideal for very budget-conscious travellers and longer stays.",
+      "The U5 reaches Alexanderplatz in around 30 to 40 minutes; the Gardens of the World are nearby for a day out. Ideal for very budget-conscious travelers and longer stays.",
     ],
   },
 };

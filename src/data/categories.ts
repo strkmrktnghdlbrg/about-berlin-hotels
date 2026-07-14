@@ -99,7 +99,7 @@ export const categories: Category[] = [
     priceHint: { de: "ab 120 €/Nacht", en: "from €120/night" },
     intro: {
       de: "Persönlich geführt, mit Geschichte, oft inhabergeführt. Für Reisende, die Charakter wollen.",
-      en: "Personally run, with history, often owner-managed. For travellers who want character.",
+      en: "Personally run, with history, often owner-managed. For travelers who want character.",
     },
     description: {
       de: "Charmante Hotels haben eines gemeinsam: Sie sind keine Kette. Kleine Häuser mit Geschichte, oft seit Generationen inhabergeführt. Charlottenburg, Wilmersdorf und Steglitz-Zehlendorf haben besonders viele dieser Häuser.",
@@ -193,7 +193,7 @@ export const categories: Category[] = [
     },
     description: {
       de: "Apartment Hotels (Adina, Living Hotels, etc.) bieten Hotelservice mit eigener Küchenzeile und Wohnbereich. Ideal ab 4 Nächten oder für Reisende mit Allergien/Diäten. Pankow, Mitte und Charlottenburg führen.",
-      en: "Apartment hotels (Adina, Living Hotels etc.) offer hotel service plus your own kitchenette and living area. Ideal from 4 nights or for travellers with allergies/special diets. Pankow, Mitte and Charlottenburg lead.",
+      en: "Apartment hotels (Adina, Living Hotels etc.) offer hotel service plus your own kitchenette and living area. Ideal from 4 nights or for travelers with allergies/special diets. Pankow, Mitte and Charlottenburg lead.",
     },
     bestDistricts: ["mitte", "pankow", "charlottenburg-wilmersdorf"],
     color: "sky",

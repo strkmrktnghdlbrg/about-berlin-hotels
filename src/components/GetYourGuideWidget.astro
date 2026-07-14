@@ -82,7 +82,7 @@ const frameUrl = `https://widget.getyourguide.com/default/${frameType}.frame`;
 
     <div
       data-gyg-href={frameUrl}
-      data-gyg-locale-code={affiliate.getYourGuide.locale}
+      data-gyg-locale-code={locale === "en" ? "en-US" : affiliate.getYourGuide.locale}
       data-gyg-currency="EUR"
       data-gyg-widget={widgetType}
       data-gyg-partner-id={affiliate.getYourGuide.partnerId}

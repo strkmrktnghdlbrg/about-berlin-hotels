@@ -31,7 +31,7 @@ export const districts: District[] = [
     },
     vibe: {
       de: "Repräsentativ, geschichtsträchtig, urban-elegant. Tagsüber Touristen, abends Theater und gehobene Gastronomie.",
-      en: "Stately, history-rich, urban-elegant. Tourists by day, theatre and fine dining by night.",
+      en: "Stately, history-rich, urban-elegant. Tourists by day, theater and fine dining by night.",
     },
     highlights: {
       de: ["Brandenburger Tor", "Museumsinsel", "Reichstag", "Gendarmenmarkt", "Unter den Linden", "Fernsehturm"],
@@ -39,7 +39,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Erstbesucher", "Luxus-Reisende", "Kultur-Fans", "Kurztrips"],
-      en: ["First-time visitors", "Luxury travellers", "Culture fans", "Short stays"],
+      en: ["First-time visitors", "Luxury travelers", "Culture fans", "Short stays"],
     },
     stay22Id: "690c3ff787d29649e84585e8",
     geo: { lat: 52.52, lng: 13.405, zoom: 14 },
@@ -64,7 +64,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Boutique-Liebhaber", "Nachtschwärmer", "Kreative", "Junge Reisende"],
-      en: ["Boutique lovers", "Night owls", "Creatives", "Young travellers"],
+      en: ["Boutique lovers", "Night owls", "Creatives", "Young travelers"],
     },
     stay22Id: "690c7e1387d29649e845f233",
     geo: { lat: 52.51, lng: 13.45, zoom: 14 },
@@ -89,7 +89,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Anspruchsvolle Reisende", "Shopping-Fans", "Klassik-Fans", "Geschäftsreisende"],
-      en: ["Discerning travellers", "Shopping fans", "Classical music lovers", "Business travellers"],
+      en: ["Discerning travelers", "Shopping fans", "Classical music lovers", "Business travelers"],
     },
     stay22Id: "690c3d3a87d29649e84582fd",
     geo: { lat: 52.505, lng: 13.305, zoom: 13 },
@@ -139,7 +139,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Budget-Reisende", "Foodies", "Junge Reisende", "Berlin-Insider"],
-      en: ["Budget travellers", "Foodies", "Young travellers", "Berlin insiders"],
+      en: ["Budget travelers", "Foodies", "Young travelers", "Berlin insiders"],
     },
     geo: { lat: 52.481, lng: 13.435, zoom: 13 },
   },
@@ -151,11 +151,11 @@ export const districts: District[] = [
     position: "inner",
     intro: {
       de: "Tempelhof-Schöneberg vereint urbanes Leben am Winterfeldtplatz, das legendäre Tempelhofer Feld (ehemaliger Flughafen) und gemütliche Wohnviertel. Mittelpreisige Hotels, charmante Pensionen und ruhige Stadthotels machen den Bezirk aus.",
-      en: "Tempelhof-Schöneberg combines urban life around Winterfeldtplatz, the legendary Tempelhofer Feld (former airport) and cosy residential areas. Mid-priced hotels, charming pensions and quiet city hotels define the district.",
+      en: "Tempelhof-Schöneberg combines urban life around Winterfeldtplatz, the legendary Tempelhofer Feld (former airport) and cozy residential areas. Mid-priced hotels, charming pensions and quiet city hotels define the district.",
     },
     vibe: {
       de: "Urban, gemütlich, gut angebunden. Markt am Winterfeldtplatz, Drachen steigen auf dem Feld, Café-Kultur.",
-      en: "Urban, cosy, well-connected. Winterfeldt market, kite-flying on the field, café culture.",
+      en: "Urban, cozy, well-connected. Winterfeldt market, kite-flying on the field, café culture.",
     },
     highlights: {
       de: ["Tempelhofer Feld", "Winterfeldtplatz", "Rathaus Schöneberg", "Viktoriapark", "Kreuzberg-Süd", "KaDeWe in Nähe"],
@@ -163,7 +163,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Mittelpreis-Reisende", "Familien", "Berlin-Kenner", "Längere Aufenthalte"],
-      en: ["Mid-budget travellers", "Families", "Berlin regulars", "Longer stays"],
+      en: ["Mid-budget travelers", "Families", "Berlin regulars", "Longer stays"],
     },
     geo: { lat: 52.473, lng: 13.385, zoom: 13 },
   },
@@ -187,7 +187,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Ruhesuchende", "Natur-Fans", "Spa-Reisende", "Längere Aufenthalte"],
-      en: ["Quiet seekers", "Nature lovers", "Spa travellers", "Longer stays"],
+      en: ["Quiet seekers", "Nature lovers", "Spa travelers", "Longer stays"],
     },
     geo: { lat: 52.43, lng: 13.27, zoom: 12 },
   },
@@ -199,7 +199,7 @@ export const districts: District[] = [
     position: "outer",
     intro: {
       de: "Spandau hat einen ganz eigenen Charakter - historische Altstadt, Zitadelle, Havelufer. Der Bezirk ist günstig, gut mit der S- und U-Bahn ans Zentrum angebunden und ideal für Budget-Reisende oder Messebesucher.",
-      en: "Spandau has its own distinct character - historic old town, citadel, Havel waterfront. The district is affordable, well-connected to the centre by S- and U-Bahn, and ideal for budget travellers or trade-fair visitors.",
+      en: "Spandau has its own distinct character - historic old town, citadel, Havel waterfront. The district is affordable, well-connected to the center by S- and U-Bahn, and ideal for budget travelers or trade-fair visitors.",
     },
     vibe: {
       de: "Kleinstädtisch, historisch, wassernah. Altstadt-Charme, Festivals an der Zitadelle, Havelfähren.",
@@ -211,7 +211,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Budget-Reisende", "Messebesucher (Funkausstellung)", "Familien", "Kurztrips mit Auto"],
-      en: ["Budget travellers", "Trade-fair visitors", "Families", "Short stays by car"],
+      en: ["Budget travelers", "Trade-fair visitors", "Families", "Short stays by car"],
     },
     geo: { lat: 52.535, lng: 13.2, zoom: 12 },
   },
@@ -235,7 +235,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Wellness-Reisende", "Wassersportler", "Familien", "Erholungssuchende"],
-      en: ["Wellness travellers", "Water sports fans", "Families", "Recovery seekers"],
+      en: ["Wellness travelers", "Water sports fans", "Families", "Recovery seekers"],
     },
     geo: { lat: 52.45, lng: 13.575, zoom: 12 },
   },
@@ -259,7 +259,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Geschäftsreisende", "Familien", "Budget-Reisende"],
-      en: ["Business travellers", "Families", "Budget travellers"],
+      en: ["Business travelers", "Families", "Budget travelers"],
     },
     geo: { lat: 52.515, lng: 13.5, zoom: 13 },
   },
@@ -271,7 +271,7 @@ export const districts: District[] = [
     position: "outer",
     intro: {
       de: 'Marzahn-Hellersdorf ist Berlins Ost-Plattenbau-Bezirk - aber auch Heimat der „Gärten der Welt", einem der schönsten Parks der Stadt. Hotels hier sind sehr preiswert, die Anbindung zur Innenstadt mit S-/U-Bahn solide.',
-      en: 'Marzahn-Hellersdorf is Berlin\'s eastern Plattenbau district - but also home to the „Gardens of the World", one of the city\'s most beautiful parks. Hotels here are very affordable, with solid S-/U-Bahn links to the centre.',
+      en: 'Marzahn-Hellersdorf is Berlin\'s eastern Plattenbau district - but also home to the „Gardens of the World", one of the city\'s most beautiful parks. Hotels here are very affordable, with solid S-/U-Bahn links to the center.',
     },
     vibe: {
       de: "Großstädtisch-funktional, mit grünen Oasen. Plattenbau-Romantik, Internationale Gärten, weite Spielplätze.",
@@ -283,7 +283,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Sehr budgetbewusste Reisende", "Familien mit Garten-Interesse"],
-      en: ["Very budget-conscious travellers", "Families interested in gardens"],
+      en: ["Very budget-conscious travelers", "Families interested in gardens"],
     },
     geo: { lat: 52.541, lng: 13.59, zoom: 12 },
   },
@@ -307,7 +307,7 @@ export const districts: District[] = [
     },
     bestFor: {
       de: ["Familien", "Ruhesuchende", "Reisende mit Auto"],
-      en: ["Families", "Quiet seekers", "Travellers with car"],
+      en: ["Families", "Quiet seekers", "Travelers with car"],
     },
     geo: { lat: 52.59, lng: 13.31, zoom: 12 },
   },
