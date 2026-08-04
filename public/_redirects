@@ -1,7 +1,66 @@
-# Cloudflare Pages _redirects
+# about-berlin-hotels.de - Cloudflare Pages _redirects
+#
+# WICHTIG: Dieses Projekt laeuft auf Cloudflare Pages. Pages liest NUR diese
+# Datei, niemals public/.htaccess. Bis 04.08.2026 stand die Legacy-Liste nur
+# dort und war still wirkungslos - /thema/... lieferte live 404, die
+# Spin-Duplikate nur einen Meta-Refresh-Stub statt eines echten 301.
+#
+# Zusammenspiel: astro.config.mjs baut zu jeder Quelle einen Stub, damit unter
+# dem Pfad ein Asset liegt. Nur dann haengt Pages den Schraegstrich an und
+# diese Datei gewinnt anschliessend mit einem echten 301 gegen den Stub.
+#
+# 410 und Host-Kanonisierung kann _redirects nicht - functions/_middleware.js.
+
 #
 # Affiliate-Links (/r/...) - 302, damit sie nie als kanonische URL gelten.
 # Ausgeschlossen von Crawlern via public/robots.txt (Disallow: /r/).
 # AWIN-Konto 514869, clickref identifiziert die Quell-Domain.
 /r/parken-fliegen       https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302
 /r/parken-fliegen/      https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302
+
+# Legacy-WP-Taxonomie /thema/ -> neue Kategorien/Uebersichten
+/thema/billige-hotels/  /kategorien/billige-hotels/  301
+/thema/charmante-hotels/  /kategorien/charmante-hotels/  301
+/thema/shuttle/  /kategorien/hotels-mit-shuttle/  301
+/thema/stadtteile/  /stadtteile/  301
+/thema/tipps/  /tipps/  301
+/thema/veranstaltungen/  /tipps/  301
+
+# Spin-Duplikate alter WP-Posts -> kanonischer Artikel
+/billige-hotels/  /budget-hotels-berlin/  301
+/budget-luxus-hotels-berlin/  /luxus-hotels-berlin/  301
+/budget-friendly-luxury-berlin/  /luxus-hotels-berlin/  301
+/budget-friendly-luxury-berlin-2/  /luxus-hotels-berlin/  301
+/luxus-boutique-hotels-berlin/  /luxus-hotels-berlin/  301
+/luxus-spa-hotels-berlin/  /wellness-spa-hotels-berlin/  301
+/historische-luxushotels-berlin/  /historische-hotels-berlin/  301
+/historische-charme-hotels-berlin/  /historische-hotels-berlin/  301
+/hotel-mit-geschichte-berlin/  /historische-hotels-berlin/  301
+/wellness-retreats-berlin/  /wellness-spa-hotels-berlin/  301
+/wellness-retreats-berlin-2/  /wellness-spa-hotels-berlin/  301
+/boutique-spa-hotels-berlin/  /wellness-spa-hotels-berlin/  301
+/charming-hotels-einzigartige-unterkuenfte/  /boutique-hotels-berlin-charme/  301
+/innovative-hotels-berlin/  /design-hotels-berlin/  301
+/high-tech-hotels-berlin/  /design-hotels-berlin/  301
+/architektur-wunder-hotels-berlin/  /design-hotels-berlin/  301
+/trendy-hotels-berlin/  /design-hotels-berlin/  301
+/kuenstlerische-hotels-berlin/  /kultur-hotels-berlin/  301
+/kulturelle-hideaways-berlin/  /kultur-hotels-berlin/  301
+/hidden-gems-hotels-berlin/  /geheimtipp-hotels-berlin/  301
+/hidden-gems-hotels-berlin-2/  /geheimtipp-hotels-berlin/  301
+/ungewoehnliche-hotels-berlin/  /geheimtipp-hotels-berlin/  301
+/authentische-berliner-hotels/  /geheimtipp-hotels-berlin/  301
+/pet-friendly-hotels-berlin/  /tierfreundliche-hotels-berlin/  301
+/pet-friendly-hotels-berlin-2/  /tierfreundliche-hotels-berlin/  301
+/familien-spass-hotels-berlin/  /familienfreundliche-hotels-berlin/  301
+/oeko-freundliche-hotels-berlin/  /nachhaltige-hotels-berlin/  301
+/beste-lage-hotels-berlin/  /zentrale-hotels-berlin/  301
+/hotels-near-major-attractions-berlin/  /zentrale-hotels-berlin/  301
+/ruhige-ecken-hotels-berlin/  /steglitz/  301
+/bester-ausblick-hotels-berlin/  /rooftop-bars-hotels-berlin/  301
+/luxuriose-dachterrassen-hotels-berlin/  /rooftop-bars-hotels-berlin/  301
+/hotels-mit-bestem-service-berlin/  /geschaeftsreisen-hotels-berlin/  301
+/hotels-mit-bestem-service-berlin-2/  /geschaeftsreisen-hotels-berlin/  301
+/hotelveranstaltungen-verbessern-gaesteerlebnis/  /geschaeftsreisen-hotels-berlin/  301
+/hotel-shuttleservice/  /kategorien/hotels-mit-shuttle/  301
+/stadtteile-einblicke-vielfalt-leben/  /stadtteile/  301

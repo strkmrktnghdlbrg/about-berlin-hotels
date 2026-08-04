@@ -47,6 +47,15 @@ const legacyRedirects = {
   "/hotelveranstaltungen-verbessern-gaesteerlebnis/": "/geschaeftsreisen-hotels-berlin/",
   "/hotel-shuttleservice/": "/kategorien/hotels-mit-shuttle/",
   "/stadtteile-einblicke-vielfalt-leben/": "/stadtteile/",
+
+  // Legacy-WP-Taxonomie /thema/. Stand bis 04.08.2026 nur in public/.htaccess
+  // und war damit auf Cloudflare Pages wirkungslos - live gemessen 404.
+  "/thema/billige-hotels/": "/kategorien/billige-hotels/",
+  "/thema/charmante-hotels/": "/kategorien/charmante-hotels/",
+  "/thema/shuttle/": "/kategorien/hotels-mit-shuttle/",
+  "/thema/stadtteile/": "/stadtteile/",
+  "/thema/tipps/": "/tipps/",
+  "/thema/veranstaltungen/": "/tipps/",
 };
 
 const redirectSources = Object.keys(legacyRedirects);

@@ -1,0 +1,42 @@
+{
+ "about-berlin-hotels.de": {
+  "rank": 180,
+  "backlinks": 456,
+  "referring_domains": 40,
+  "referring_domains_nofollow": 13,
+  "broken_backlinks": 1,
+  "referring_main_domains": 35
+ },
+ "hotel-in-berlin.org": {
+  "rank": 318,
+  "backlinks": 27432,
+  "referring_domains": 4605,
+  "referring_domains_nofollow": 649,
+  "broken_backlinks": 7,
+  "referring_main_domains": 1119
+ },
+ "atberlinhotels.com": {
+  "rank": 232,
+  "backlinks": 1337,
+  "referring_domains": 320,
+  "referring_domains_nofollow": 71,
+  "broken_backlinks": 0,
+  "referring_main_domains": 290
+ },
+ "hotelinberlin.net": {
+  "rank": 256,
+  "backlinks": 13619,
+  "referring_domains": 283,
+  "referring_domains_nofollow": 41,
+  "broken_backlinks": 0,
+  "referring_main_domains": 276
+ },
+ "hotelsofberlin.net": {
+  "rank": 206,
+  "backlinks": 905,
+  "referring_domains": 298,
+  "referring_domains_nofollow": 56,
+  "broken_backlinks": 41,
+  "referring_main_domains": 257
+ }
+}

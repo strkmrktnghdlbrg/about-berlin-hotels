@@ -1,5 +1,22 @@
 # ============================================================
-# About Berlin Hotels — Apache .htaccess
+# ⚠️ INAKTIV — DIESE DATEI WIRD LIVE NICHT GELESEN. NICHT HIER PFLEGEN.
+# ============================================================
+# about-berlin-hotels.de laeuft auf CLOUDFLARE PAGES (Deploy:
+# wrangler pages deploy dist). Cloudflare Pages ist kein Apache und
+# ignoriert .htaccess komplett.
+#
+# Bis 04.08.2026 stand die komplette Legacy-Liste nur hier. Live gemessen:
+# /thema/billige-hotels/, /thema/stadtteile/ und /thema/tipps/ lieferten 404.
+#
+# Wirksam sind stattdessen:
+#   public/_redirects          -> alle 43 301-Regeln + Affiliate-302
+#   astro.config.mjs           -> Stubs, damit Pages den Schraegstrich anhaengt
+#   functions/_middleware.js   -> Apex/www, 410-Set, Schraegstrich
+#
+# Merksatz: Apache/LiteSpeed liest NUR .htaccess, CF Pages/Netlify NUR
+# _redirects. Die Datei bleibt nur als Historie liegen.
+# ============================================================
+# About Berlin Hotels — Apache .htaccess (historisch)
 # ============================================================
 
 # --- Force HTTPS + non-www → www (Live-Domain) ---
