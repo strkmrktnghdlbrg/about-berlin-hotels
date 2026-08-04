@@ -181,17 +181,23 @@ function pickBest(hotelName: string, candidates: Candidate[]): HotelPhoto | null
 }
 
 /**
- * Gezielte Einzelabfrage für Häuser, die in der Bezirks-Sammelabfrage fehlen.
- * Die Namenssuche liefert das gesuchte Haus meist als ersten Treffer — der
- * strenge Abgleich entscheidet trotzdem, ob es wirklich passt.
+ * Gezielte Einzelabfrage für Häuser, die in der Bezirks-Sammelabfrage fehlen —
+ * über die Hotel-Koordinaten, NICHT über den Namen.
+ *
+ * Warum: `address=<Hotelname>` sucht nicht nach dem Namen, sondern geocodiert
+ * ihn zu einem Ort und liefert die Nachbarschaft. Im Build vom 2026-08-04 gaben
+ * "Waldorf Astoria Berlin", "InterContinental Berlin", "Sir Savigny Hotel" und
+ * "Hotel Q! Berlin" exakt dieselbe Ku'damm-Liste zurück — das gesuchte Haus war
+ * in keiner davon. Ein enger lat/lng-Radius trifft es dagegen zuverlässig.
  */
-async function lookupByName(hotelName: string): Promise<Candidate[]> {
+async function lookupNearby(coordinates: [number, number]): Promise<Candidate[]> {
   const result = await searchAccommodations({
     provider: "booking",
-    // Umlaute werden in searchAccommodations transliteriert (sonst HTTP 400).
-    address: `${hotelName}, Berlin, Germany`,
+    lat: coordinates[0],
+    lng: coordinates[1],
+    radius: 600,
     type: "hotel",
-    limit: 5,
+    limit: 30,
     currency: "EUR",
     lang: "de",
     aid: affiliate.stay22.lmaId,
@@ -210,44 +216,43 @@ async function resolvePhoto(hotel: Hotel): Promise<HotelPhoto | null> {
   if (!candidatesPromise) candidatesPromise = loadCandidates();
   const candidates = await candidatesPromise;
 
-  // 0. Redaktionell gepinnter Name: nur exakte Übereinstimmung, kein Fuzzy.
-  if (hotel.stay22Name) {
+  /** Gepinnter Name schlägt alles — aber nur bei exakter Gleichheit. */
+  const pinned = (pool: Candidate[]): HotelPhoto | null => {
+    if (!hotel.stay22Name) return null;
     const wanted = fold(hotel.stay22Name);
-    const pool = [...candidates, ...(await lookupByName(hotel.stay22Name))];
     const hit = pool.find((c) => fold(c.name) === wanted);
-    if (hit) {
-      console.log(`[hotel-photos] ${hotel.name} -> "${hit.name}" (gepinnt)`);
-      return { src: upscale(hit.image), link: hit.link, matchedName: hit.name };
-    }
-    console.warn(
-      `[hotel-photos] gepinnter Name "${hotel.stay22Name}" fuer ${hotel.name} nicht gefunden - Bezirksbild`,
-    );
-    return null;
-  }
+    return hit
+      ? { src: upscale(hit.image), link: hit.link, matchedName: hit.name }
+      : null;
+  };
 
   // 1. Treffer aus der Bezirks-Sammelabfrage.
-  let best = pickBest(hotel.name, candidates);
-
-  // 2. Sonst gezielt nachfragen — genau EINE Abfrage pro Haus und Build.
-  if (!best && candidates.length > 0) {
-    const direct = await lookupByName(hotel.name);
-    best = pickBest(hotel.name, direct);
-    if (best) {
-      console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}" (Einzelabfrage)`);
-      return best;
-    }
-    // Diagnose: zeigt im Build-Log, WAS die API angeboten hat. Daraus lässt sich
-    // ein exakter Name in `stay22Name` pinnen, statt den Abgleich zu lockern.
-    console.warn(
-      `[hotel-photos] kein Treffer fuer "${hotel.name}" - Bezirksbild. API bot an: ${
-        direct.map((c) => c.name).slice(0, 3).join(" | ") || "(nichts)"
-      }`,
-    );
-    return null;
+  let best = pinned(candidates) ?? pickBest(hotel.name, candidates);
+  if (best) {
+    console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}"`);
+    return best;
   }
 
-  if (best) console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}"`);
-  return best;
+  // 2. Sonst eng um die Hotel-Koordinaten suchen — EINE Abfrage pro Haus/Build.
+  if (candidates.length > 0 && hotel.coordinates) {
+    const nearby = await lookupNearby(hotel.coordinates);
+    best = pinned(nearby) ?? pickBest(hotel.name, nearby);
+    if (best) {
+      console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}" (Umkreis)`);
+      return best;
+    }
+    // Diagnose: zeigt im Build-Log, WAS im Umkreis liegt. Daraus lässt sich ein
+    // exakter Name in `stay22Name` pinnen, statt den Abgleich zu lockern.
+    console.warn(
+      `[hotel-photos] kein Treffer fuer "${hotel.name}" - Bezirksbild. Im Umkreis: ${
+        nearby.map((c) => c.name).slice(0, 4).join(" | ") || "(nichts)"
+      }`,
+    );
+  } else if (candidates.length > 0) {
+    console.warn(`[hotel-photos] "${hotel.name}" ohne coordinates - Bezirksbild`);
+  }
+
+  return null;
 }
 
 /**
