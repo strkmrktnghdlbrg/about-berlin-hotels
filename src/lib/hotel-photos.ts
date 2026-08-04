@@ -210,17 +210,39 @@ async function resolvePhoto(hotel: Hotel): Promise<HotelPhoto | null> {
   if (!candidatesPromise) candidatesPromise = loadCandidates();
   const candidates = await candidatesPromise;
 
+  // 0. Redaktionell gepinnter Name: nur exakte Übereinstimmung, kein Fuzzy.
+  if (hotel.stay22Name) {
+    const wanted = fold(hotel.stay22Name);
+    const pool = [...candidates, ...(await lookupByName(hotel.stay22Name))];
+    const hit = pool.find((c) => fold(c.name) === wanted);
+    if (hit) {
+      console.log(`[hotel-photos] ${hotel.name} -> "${hit.name}" (gepinnt)`);
+      return { src: upscale(hit.image), link: hit.link, matchedName: hit.name };
+    }
+    console.warn(
+      `[hotel-photos] gepinnter Name "${hotel.stay22Name}" fuer ${hotel.name} nicht gefunden - Bezirksbild`,
+    );
+    return null;
+  }
+
   // 1. Treffer aus der Bezirks-Sammelabfrage.
   let best = pickBest(hotel.name, candidates);
 
-  // 2. Sonst gezielt nachfragen — nur einmal pro Haus und Build.
+  // 2. Sonst gezielt nachfragen — genau EINE Abfrage pro Haus und Build.
   if (!best && candidates.length > 0) {
-    best = pickBest(hotel.name, await lookupByName(hotel.name));
+    const direct = await lookupByName(hotel.name);
+    best = pickBest(hotel.name, direct);
     if (best) {
       console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}" (Einzelabfrage)`);
       return best;
     }
-    console.warn(`[hotel-photos] kein Treffer fuer "${hotel.name}" - Bezirksbild`);
+    // Diagnose: zeigt im Build-Log, WAS die API angeboten hat. Daraus lässt sich
+    // ein exakter Name in `stay22Name` pinnen, statt den Abgleich zu lockern.
+    console.warn(
+      `[hotel-photos] kein Treffer fuer "${hotel.name}" - Bezirksbild. API bot an: ${
+        direct.map((c) => c.name).slice(0, 3).join(" | ") || "(nichts)"
+      }`,
+    );
     return null;
   }
 

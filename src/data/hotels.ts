@@ -19,6 +19,13 @@ export type Hotel = {
    * Wenn fehlend: BookingCTA fällt auf `website` zurück.
    */
   bookingUrl?: string;
+  /**
+   * Exakter Name, unter dem Stay22/Booking dieses Haus führt — nur setzen, wenn
+   * er vom redaktionellen `name` abweicht und der automatische Abgleich deshalb
+   * scheitert (das Build-Log nennt unter „API bot an:" die Kandidaten).
+   * Wird gesetzt, zählt NUR noch exakte Übereinstimmung damit — kein Fuzzy.
+   */
+  stay22Name?: string;
   /** Optional: präzise Hotel-Koordinaten. Fallback: district.geo. */
   coordinates?: [number, number];
   featured?: boolean;

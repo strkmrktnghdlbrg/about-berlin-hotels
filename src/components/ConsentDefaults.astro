@@ -1,0 +1,54 @@
+---
+/**
+ * Google Consent Mode v2 — Defaults auf "denied".
+ * ------------------------------------------------
+ * Muss VOR dem GTM-Snippet im <head> stehen: nur dann setzt GA4 keine Cookies,
+ * sondern sendet cookielose Pings (`gcs=G100`). Es wird nichts auf dem Gerät
+ * gespeichert, also gibt es auch nichts einzuwilligen.
+ *
+ * Den eigenen Cookie-Banner gibt es bewusst nicht mehr: Auf AdSense-Seiten
+ * übernimmt Googles CMP (Privacy & messaging) diese Rolle und aktualisiert
+ * genau diese Signale per `consent update` — zwei Banner nebeneinander wären
+ * für Besucher widersprüchlich.
+ *
+ * `is:inline` ist Pflicht: sonst bündelt Astro das Skript als deferred module
+ * und GA4 kann einmal feuern, bevor die Defaults gesetzt sind.
+ */
+---
+
+<script is:inline>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+
+    // Frühere ausdrückliche Einwilligung aus der Banner-Zeit respektieren.
+    var stored = null;
+    try {
+      stored = JSON.parse(localStorage.getItem("abh_consent") || "null");
+    } catch (e) {}
+
+    var defaults = {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      functionality_storage: "granted",
+      security_storage: "granted",
+      wait_for_update: 500,
+    };
+
+    if (stored && stored.timestamp) {
+      defaults.analytics_storage = stored.statistics ? "granted" : "denied";
+      defaults.ad_storage = stored.marketing ? "granted" : "denied";
+      defaults.ad_user_data = stored.marketing ? "granted" : "denied";
+      defaults.ad_personalization = stored.marketing ? "granted" : "denied";
+    }
+
+    gtag("consent", "default", defaults);
+    gtag("set", "ads_data_redaction", true);
+    gtag("set", "url_passthrough", false);
+  })();
+</script>
