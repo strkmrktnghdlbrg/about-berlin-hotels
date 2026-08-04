@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ArticlePage from "../../../components/ArticlePage.astro";
+import { articlesEn } from "../../../data/articles";
+
+export function getStaticPaths() {
+  return articlesEn.map((a) => ({ params: { article: a.slug }, props: { article: a } }));
+}
+
+const { article } = Astro.props;
+const pageTitle = `${article.title} | About Berlin Hotels`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={article.description}
+  locale="en"
+  alternatePath={`/${article.slug}/`}
+>
+  <ArticlePage article={article} locale="en" />
+</BaseLayout>

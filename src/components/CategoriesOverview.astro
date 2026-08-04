@@ -21,6 +21,44 @@ const { locale } = Astro.props;
   }}
 />
 
+<section class="pt-14 sm:pt-16">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 space-y-4 text-lg text-ink-700 leading-relaxed">
+    {locale === "de" ? (
+      <>
+        <p>
+          Die Kategorie entscheidet in Berlin oft mehr über den Aufenthalt als die Sterne-Zahl.
+          Ein Vier-Sterne-Haus am Kurfürstendamm, ein umgebautes Fabrikloft in Kreuzberg und ein
+          Apartment in Prenzlauer Berg können dasselbe kosten und trotzdem völlig unterschiedliche
+          Reisen ergeben - je nachdem, ob Frühstücksbuffet, Nachtleben vor der Tür oder eine eigene
+          Küche zählen.
+        </p>
+        <p>
+          Deshalb sortieren wir nicht nach Sternen, sondern nach Reisezweck: Luxus und Design für
+          Anlässe, Boutique und Charme für Städtereisen mit Anspruch, Business und Shuttle für
+          Termine und frühe Flüge, Familie und Apartment für längere Aufenthalte, Budget für alle,
+          die das Zimmer ohnehin nur zum Schlafen brauchen. Jede Kategorie nennt die Bezirke, in
+          denen sie in Berlin wirklich stark vertreten ist.
+        </p>
+      </>
+    ) : (
+      <>
+        <p>
+          In Berlin the category often shapes your stay more than the star rating does. A four-star
+          house on Kurfürstendamm, a converted factory loft in Kreuzberg and an apartment in
+          Prenzlauer Berg can cost the same and still produce completely different trips - depending
+          on whether a breakfast buffet, nightlife on the doorstep or your own kitchen is what counts.
+        </p>
+        <p>
+          So we sort by purpose rather than stars: luxury and design for occasions, boutique and charm
+          for city breaks with standards, business and shuttle for meetings and early flights, family
+          and apartment for longer stays, budget for everyone who only needs the room to sleep in.
+          Each category names the districts where it is genuinely well represented in Berlin.
+        </p>
+      </>
+    )}
+  </div>
+</section>
+
 <section class="py-14 sm:py-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

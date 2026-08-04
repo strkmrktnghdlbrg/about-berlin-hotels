@@ -2,31 +2,63 @@
 import type { Hotel } from "../data/hotels";
 import type { Locale } from "../data/site";
 import { getDistrict } from "../data/districts";
+import { districtImages } from "../data/images";
+import { getHotelPhoto } from "../lib/hotel-photos";
+import FigureImage from "./FigureImage.astro";
 
 type Props = { hotel: Hotel; locale: Locale };
 const { hotel, locale } = Astro.props;
 const district = getDistrict(hotel.district);
 const base = locale === "de" ? "/hotels" : "/en/hotels";
 const href = `${base}/${hotel.slug}/`;
+
+// 1. Echtes Hotelfoto (Stay22/Booking, Build-Time) — 2. Bezirks-Stimmungsbild
+//    mit ehrlichem Alt-Text — 3. Farbverlauf.
+const photo = await getHotelPhoto(hotel);
+const districtImage = district ? districtImages[district.slug] : undefined;
+const districtAlt = district
+  ? locale === "de"
+    ? `Stadtbild ${district.name} - Umgebung des ${hotel.name}`
+    : `${district.name} street scene near ${hotel.name}`
+  : hotel.name;
 ---
 
 <a
   href={href}
   class="group block rounded-2xl border border-ink-100 bg-white overflow-hidden transition-all hover:border-brand-200 hover:shadow-lg hover:-translate-y-0.5"
 >
-  <div class="relative h-44 bg-gradient-to-br from-brand-700 via-brand-500 to-brand-400 flex items-center justify-center text-white">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="h-14 w-14 opacity-40">
-      <path d="M3 21V10l9-7 9 7v11" />
-      <path d="M9 21V13h6v8" />
-      <path d="M3 21h18" />
-    </svg>
+  <div class="relative h-48 overflow-hidden bg-gradient-to-br from-brand-700 via-brand-500 to-brand-400 flex items-center justify-center text-white">
+    {photo ? (
+      <img
+        src={photo.src}
+        alt={hotel.name}
+        loading="lazy"
+        decoding="async"
+        width="640"
+        height="384"
+        referrerpolicy="no-referrer-when-downgrade"
+        onerror="this.remove()"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    ) : districtImage ? (
+      <FigureImage image={districtImage} alt={districtAlt} variant="card" />
+    ) : (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="h-14 w-14 opacity-40">
+        <path d="M3 21V10l9-7 9 7v11" />
+        <path d="M9 21V13h6v8" />
+        <path d="M3 21h18" />
+      </svg>
+    )}
+
+    <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></span>
+
     <div class="absolute top-3 left-3 flex gap-1.5">
       <span class="inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 text-[10px] font-bold text-brand-700">
         {"★".repeat(hotel.stars)}
       </span>
     </div>
     <div class="absolute bottom-3 left-3 text-white">
-      <span class="block text-[10px] uppercase tracking-widest opacity-80">
+      <span class="block text-[10px] uppercase tracking-widest opacity-90 drop-shadow">
         {district?.name}
       </span>
     </div>

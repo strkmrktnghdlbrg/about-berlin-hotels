@@ -46,12 +46,14 @@ const byDistrict = districts
     </div>
   </section>
 
-  <!-- LIVE TOP-HOTELS via Stay22 -->
-  <section class="py-14 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <Stay22TopHotels limit={8} locale={locale} />
-    </div>
-  </section>
+  <!-- LIVE TOP-HOTELS via Stay22.
+       Container ohne vertikales Padding: die Komponente rendert gar nichts, wenn
+       die API keine Treffer liefert - ein py-Wrapper hinterliesse sonst eine
+       leere Lücke zwischen Hero und Karte. Der Abstand kommt aus `my-12` in der
+       Komponente selbst. -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <Stay22TopHotels limit={8} locale={locale} />
+  </div>
 
   <!-- Berlin-weite Stay22-Karte -->
   <section class="py-14 sm:py-16 surface-soft">

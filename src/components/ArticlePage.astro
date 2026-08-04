@@ -6,6 +6,7 @@
  * und Article/FAQPage/BreadcrumbList-JSON-LD.
  */
 import type { Article } from "../data/articles";
+import type { Locale } from "../data/site";
 import { getHotel } from "../data/hotels";
 import { getDistrict } from "../data/districts";
 import { getCategory } from "../data/categories";
@@ -15,24 +16,54 @@ import Stay22Map from "./Stay22Map.astro";
 import GetYourGuideWidget from "./GetYourGuideWidget.astro";
 import JsonLd from "./JsonLd.astro";
 
-type Props = { article: Article };
-const { article } = Astro.props;
-const locale = "de" as const;
+type Props = { article: Article; locale?: Locale };
+const { article, locale = "de" } = Astro.props;
+const isDe = locale === "de";
+
+/** UI-Beschriftungen. Der Artikelinhalt selbst kommt sprachrein aus den Daten. */
+const L = {
+  home: isDe ? "Start" : "Home",
+  takeaways: isDe ? "Das Wichtigste in Kürze" : "Key points at a glance",
+  recommendations: isDe ? "Unsere Hotel-Empfehlungen" : "Our hotel picks",
+  recommendationsLead: isDe
+    ? "Handverlesene, verifizierte Häuser aus unserer Redaktion - Live-Preise und Verfügbarkeit über die Karte und Booking.com."
+    : "Handpicked, verified properties from our editors - live prices and availability via the map and Booking.com.",
+  mapLead: isDe
+    ? "Verfügbarkeit und Preise live von Booking.com - vergleiche Lagen, bevor du buchst."
+    : "Live availability and pricing from Booking.com - compare locations before you book.",
+  toursTitle: isDe
+    ? "Touren & Tickets passend zu deinem Aufenthalt"
+    : "Tours & tickets to match your stay",
+  toursLead: isDe
+    ? "Beliebte Erlebnisse in Berlin - direkt buchbar über GetYourGuide."
+    : "Popular experiences in Berlin - bookable directly via GetYourGuide.",
+  faq: isDe ? "Häufig gestellte Fragen" : "Frequently asked questions",
+  discoverMore: isDe ? "Mehr entdecken" : "Discover more",
+  related: isDe ? "Passend weiterlesen" : "Related reading",
+  adjacent: isDe ? "Das fragen Reisende als Nächstes" : "What travellers ask next",
+  updated: isDe ? "Zuletzt aktualisiert" : "Last updated",
+  updatedNote: isDe
+    ? "Hotelangaben redaktionell geprüft; Preise & Verfügbarkeit ändern sich täglich."
+    : "Hotel details editorially checked; prices and availability change daily.",
+};
+
+const districtBase = isDe ? "/stadtteile" : "/en/districts";
+const categoryBase = isDe ? "/kategorien" : "/en/categories";
 
 const district = article.districtSlug ? getDistrict(article.districtSlug) : undefined;
 const category = article.categorySlug ? getCategory(article.categorySlug) : undefined;
 const featuredHotels = article.hotels.map(getHotel).filter(Boolean);
-const url = new URL(`/${article.slug}/`, site.baseUrl).toString();
+const url = new URL(isDe ? `/${article.slug}/` : `/en/guides/${article.slug}/`, site.baseUrl).toString();
 
 // Breadcrumb: for theme articles (no district) with a categorySlug, insert category as step 2
 const breadcrumbItems: { position: number; name: string; item: string }[] = [
-  { position: 1, name: "Start", item: site.baseUrl + "/" },
+  { position: 1, name: L.home, item: new URL(isDe ? "/" : "/en/", site.baseUrl).toString() },
 ];
 if (district) {
-  breadcrumbItems.push({ position: 2, name: district.name, item: new URL(`/stadtteile/${district.slug}/`, site.baseUrl).toString() });
+  breadcrumbItems.push({ position: 2, name: district.name, item: new URL(`${districtBase}/${district.slug}/`, site.baseUrl).toString() });
   breadcrumbItems.push({ position: 3, name: article.title, item: url });
 } else if (category) {
-  breadcrumbItems.push({ position: 2, name: category.name.de, item: new URL(`/kategorien/${category.slug}/`, site.baseUrl).toString() });
+  breadcrumbItems.push({ position: 2, name: category.name[locale], item: new URL(`${categoryBase}/${isDe ? category.slug : category.slugEn}/`, site.baseUrl).toString() });
   breadcrumbItems.push({ position: 3, name: article.title, item: url });
 } else {
   breadcrumbItems.push({ position: 2, name: article.title, item: url });
@@ -49,7 +80,7 @@ const articleSchema = {
   "@type": "Article",
   headline: article.title,
   description: article.description,
-  inLanguage: "de-DE",
+  inLanguage: isDe ? "de-DE" : "en-US",
   mainEntityOfPage: url,
   datePublished: article.datePublished,
   dateModified: article.dateModified,
@@ -79,16 +110,16 @@ const faqSchema =
 <section class="relative overflow-hidden surface-soft border-b border-ink-100">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
     <nav class="flex items-center gap-2 text-xs text-ink-500 mb-6">
-      <a href="/" class="hover:text-brand-700">Start</a>
+      <a href={isDe ? "/" : "/en/"} class="hover:text-brand-700">{L.home}</a>
       <span>›</span>
       {district ? (
         <>
-          <a href={`/stadtteile/${district.slug}/`} class="hover:text-brand-700">{district.name}</a>
+          <a href={`${districtBase}/${district.slug}/`} class="hover:text-brand-700">{district.name}</a>
           <span>›</span>
         </>
       ) : category ? (
         <>
-          <a href={`/kategorien/${category.slug}/`} class="hover:text-brand-700">{category.name.de}</a>
+          <a href={`${categoryBase}/${isDe ? category.slug : category.slugEn}/`} class="hover:text-brand-700">{category.name[locale]}</a>
           <span>›</span>
         </>
       ) : null}
@@ -121,7 +152,7 @@ const faqSchema =
   <!-- TAKEAWAYS (TL;DR) -->
   {article.takeaways && article.takeaways.length > 0 && (
     <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-8 mb-12">
-      <h2 class="text-lg font-bold text-ink-900 mb-4">Das Wichtigste in Kürze</h2>
+      <h2 class="text-lg font-bold text-ink-900 mb-4">{L.takeaways}</h2>
       <ul class="space-y-2.5">
         {article.takeaways.map((t) => (
           <li class="flex items-start gap-2.5 text-ink-700">
@@ -137,10 +168,10 @@ const faqSchema =
   {featuredHotels.length > 0 && (
     <section class="mb-14">
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-2">
-        Unsere Hotel-Empfehlungen
+        {L.recommendations}
       </h2>
       <p class="text-ink-600 leading-relaxed mb-8">
-        Handverlesene, verifizierte Häuser aus unserer Redaktion - Live-Preise und Verfügbarkeit über die Karte und Booking.com.
+        {L.recommendationsLead}
       </p>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {featuredHotels.map((h) => <HotelCard hotel={h!} locale={locale} />)}
@@ -151,10 +182,12 @@ const faqSchema =
   <!-- STAY22 MAP — Bezirks-Karte, sonst Berlin-weit -->
   <section class="mb-14">
     <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-2">
-      {district ? `Hotels in ${district.name} auf der Karte` : "Hotels in Berlin auf der Karte"}
+      {district
+        ? isDe ? `Hotels in ${district.name} auf der Karte` : `Hotels in ${district.name} on the map`
+        : isDe ? "Hotels in Berlin auf der Karte" : "Hotels in Berlin on the map"}
     </h2>
     <p class="text-ink-600 leading-relaxed mb-6">
-      Verfügbarkeit und Preise live von Booking.com - vergleiche Lagen, bevor du buchst.
+      {L.mapLead}
     </p>
     <Stay22Map
       embedId={district?.stay22Id}
@@ -202,8 +235,8 @@ const faqSchema =
       q={article.gygQuery}
       numberOfItems={3}
       cmp={`article-${article.slug}`}
-      title="Touren & Tickets passend zu deinem Aufenthalt"
-      lead="Beliebte Erlebnisse in Berlin - direkt buchbar über GetYourGuide."
+      title={L.toursTitle}
+      lead={L.toursLead}
       locale={locale}
     />
   )}
@@ -212,7 +245,7 @@ const faqSchema =
   {article.faq.length > 0 && (
     <section class="mt-14">
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-6">
-        Häufig gestellte Fragen
+        {L.faq}
       </h2>
       <div class="space-y-3">
         {article.faq.map((f) => (
@@ -232,17 +265,17 @@ const faqSchema =
   {category && (
     <div class="mt-14 rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-1 block">Mehr entdecken</span>
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-1 block">{L.discoverMore}</span>
         <p class="text-ink-900 font-semibold text-lg">
-          Alle {category.name.de} in Berlin
+          {isDe ? `Alle ${category.name.de} in Berlin` : `All ${category.name.en.toLowerCase()} in Berlin`}
         </p>
-        <p class="text-ink-600 text-sm mt-1">{category.intro.de}</p>
+        <p class="text-ink-600 text-sm mt-1">{category.intro[locale]}</p>
       </div>
       <a
-        href={`/kategorien/${category.slug}/`}
+        href={`${categoryBase}/${isDe ? category.slug : category.slugEn}/`}
         class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-800 transition-colors"
       >
-        {category.name.de} ansehen →
+        {isDe ? `${category.name.de} ansehen` : `View ${category.name.en.toLowerCase()}`} →
       </a>
     </div>
   )}
@@ -251,7 +284,7 @@ const faqSchema =
   <section class="mt-14 grid gap-8 md:grid-cols-2">
     {article.related.length > 0 && (
       <div class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8">
-        <h2 class="text-lg font-bold text-ink-900 mb-4">Passend weiterlesen</h2>
+        <h2 class="text-lg font-bold text-ink-900 mb-4">{L.related}</h2>
         <ul class="space-y-2.5">
           {article.related.map((l) => (
             <li>
@@ -265,7 +298,7 @@ const faqSchema =
     )}
     {article.adjacent && article.adjacent.length > 0 && (
       <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
-        <h2 class="text-lg font-bold text-ink-900 mb-4">Das fragen Reisende als Nächstes</h2>
+        <h2 class="text-lg font-bold text-ink-900 mb-4">{L.adjacent}</h2>
         <ul class="space-y-2.5">
           {article.adjacent.map((l) => (
             <li>
@@ -280,7 +313,7 @@ const faqSchema =
   </section>
 
   <p class="mt-10 text-xs text-ink-400">
-    Zuletzt aktualisiert: {new Intl.DateTimeFormat("de-DE", { year: "numeric", month: "long" }).format(new Date(article.dateModified))}.
-    Hotelangaben redaktionell geprüft; Preise &amp; Verfügbarkeit ändern sich täglich.
+    {L.updated}: {new Intl.DateTimeFormat(isDe ? "de-DE" : "en-GB", { year: "numeric", month: "long" }).format(new Date(article.dateModified))}.
+    {L.updatedNote}
   </p>
 </article>

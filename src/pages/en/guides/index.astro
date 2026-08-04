@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import OverviewHero from "../../../components/OverviewHero.astro";
+import { articlesEn } from "../../../data/articles";
+import { getDistrict } from "../../../data/districts";
+import { getCategory } from "../../../data/categories";
+
+const locale = "en" as const;
+
+// Bezirks-Guides zuerst (sie haben districtSlug), danach die Themen-Guides.
+const districtGuides = articlesEn.filter((a) => a.districtSlug && a.kicker.startsWith("District"));
+const excursionGuides = articlesEn.filter((a) => a.kicker.startsWith("Excursion"));
+const themeGuides = articlesEn.filter(
+  (a) => !districtGuides.includes(a) && !excursionGuides.includes(a),
+);
+
+const groups = [
+  {
+    title: "District guides",
+    lead: "Where to stay, what it costs and how long it takes into the centre - one guide per Berlin district.",
+    items: [...districtGuides, ...excursionGuides],
+  },
+  {
+    title: "Hotel guides by theme",
+    lead: "Luxury, design, budget, spa, business, accessibility - the long reads behind each hotel category.",
+    items: themeGuides,
+  },
+];
+---
+
+<BaseLayout
+  title="Berlin hotel guides - districts and themes in depth"
+  description="All About Berlin Hotels long-form guides in English: 13 district guides and 19 theme guides on luxury, design, budget, family, spa, business and accessible hotels in Berlin."
+  locale={locale}
+  alternatePath="/stadtteile/"
+>
+  <OverviewHero
+    locale={locale}
+    eyebrow={{ de: "Ratgeber", en: "Guides" }}
+    title={{
+      de: "Berlin-Hotelguides",
+      en: "Berlin hotel guides - districts and themes in depth",
+    }}
+    subtitle={{
+      de: "Alle Langtexte im Überblick.",
+      en: "Our long-form guides: one per Berlin district, one per hotel category. Written for people deciding where to sleep, not for a ranking.",
+    }}
+  />
+
+  {groups.map((group) => (
+    <section class="py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mb-10 max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 mb-3">
+            {group.title}
+          </h2>
+          <p class="text-ink-600 leading-relaxed">{group.lead}</p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {group.items.map((a) => {
+            const district = a.districtSlug ? getDistrict(a.districtSlug) : undefined;
+            const category = a.categorySlug ? getCategory(a.categorySlug) : undefined;
+            return (
+              <a
+                href={`/en/guides/${a.slug}/`}
+                class="group flex h-full flex-col rounded-2xl border border-ink-100 bg-white p-6 transition-all hover:border-brand-200 hover:shadow-md"
+              >
+                <span class="text-[11px] font-bold text-brand-700 uppercase tracking-widest mb-2">
+                  {district?.name ?? category?.name.en ?? "Berlin"}
+                </span>
+                <h3 class="text-lg font-bold text-ink-900 mb-2 group-hover:text-brand-700 transition-colors">
+                  {a.title}
+                </h3>
+                <p class="text-sm text-ink-600 leading-relaxed line-clamp-3">
+                  {a.description}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

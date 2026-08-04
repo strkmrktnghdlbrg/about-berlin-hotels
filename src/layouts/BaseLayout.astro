@@ -21,7 +21,14 @@ type Props = {
 const { title, description, locale, alternatePath, noindex = false, ogImage } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.baseUrl).toString();
 const ogUrl = canonical;
-const ogImageUrl = ogImage ? new URL(ogImage, site.baseUrl).toString() : undefined;
+// Bis 2026-08 hatte KEINE Seite ein og:image - jeder geteilte Link erschien in
+// WhatsApp, Slack & Co. als leere Karte. Fallback ist jetzt die gebrandete
+// Standardkarte (generiert via scripts/og-image.mjs; bewusst kein Wikimedia-Foto,
+// weil sich in einer OG-Karte die CC-BY-SA-Namensnennung nicht anzeigen lässt).
+const ogImageUrl = new URL(
+  ogImage ?? (locale === "de" ? "/og-default.png" : "/og-default-en.png"),
+  site.baseUrl,
+).toString();
 
 // hreflang
 const altLocale = otherLocale(locale);
@@ -44,23 +51,35 @@ const altUrl = alternatePath
       <>
         <link rel="alternate" hreflang={altLocale} href={altUrl} />
         <link rel="alternate" hreflang={locale} href={canonical} />
-        <link rel="alternate" hreflang="x-default" href={canonical} />
+        {/* x-default zeigt immer auf die deutsche Fassung (Default-Locale) -
+            vorher zeigte jede EN-Seite auf sich selbst. */}
+        <link rel="alternate" hreflang="x-default" href={locale === "de" ? canonical : altUrl} />
       </>
     )}
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.brand.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={ogUrl} />
     <meta property="og:locale" content={locale === "de" ? "de_DE" : "en_US"} />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Inter wird selbst gehostet (public/fonts, @font-face in global.css) -
+        kein Request an fonts.googleapis.com/gstatic.com mehr. */}
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="preload"
+      href="/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

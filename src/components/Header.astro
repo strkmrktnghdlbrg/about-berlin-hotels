@@ -45,7 +45,10 @@ const navItems = [
         </span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-1">
+      {/* Desktop-Navigation erst ab lg: bei md (768px) passten Logo + 5 Links +
+          Suche + Sprachumschalter nicht in den Viewport - der DE/EN-Button wurde
+          abgeschnitten. Darunter uebernimmt das Hamburger-Menue. */}
+      <nav class="hidden lg:flex items-center gap-1">
         {navItems.map((item) => (
           <a
             href={locale === "de" ? item.href : item.hrefEn}
@@ -76,17 +79,42 @@ const navItems = [
         >
           {alt === "de" ? "DE" : "EN"}
         </a>
+
+        <button
+          id="nav-toggle"
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-lg border border-ink-200 text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+          aria-label={locale === "de" ? "Menü öffnen" : "Open menu"}
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+        >
+          <svg id="nav-icon-open" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="h-4.5 w-4.5">
+            <path d="M3 5h14M3 10h14M3 15h14" stroke-linecap="round" />
+          </svg>
+          <svg id="nav-icon-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="hidden h-4.5 w-4.5">
+            <path d="M5 5l10 10M15 5L5 15" stroke-linecap="round" />
+          </svg>
+        </button>
       </div>
     </div>
-    <nav class="flex md:hidden -mt-1 pb-2 gap-1 overflow-x-auto">
+
+    {/* Einklappbares Mobil-/Tablet-Menue (ersetzt die frueher dauerhaft
+        sichtbare, horizontal scrollende Pill-Leiste). */}
+    <nav id="mobile-nav" class="lg:hidden hidden border-t border-ink-100 py-2" aria-label={locale === "de" ? "Hauptnavigation" : "Main navigation"}>
       {navItems.map((item) => (
         <a
           href={locale === "de" ? item.href : item.hrefEn}
-          class="whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700"
+          class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"
         >
           {tr(item.label, locale)}
         </a>
       ))}
+      <a
+        href={altHref}
+        class="mt-1 block rounded-lg border-t border-ink-100 px-3 pt-3 pb-1 text-sm font-medium text-ink-500 hover:text-brand-700 transition-colors"
+      >
+        {alt === "de" ? "Auf Deutsch ansehen" : "View in English"}
+      </a>
     </nav>
   </div>
 
@@ -125,6 +153,32 @@ const navItems = [
 </style>
 
 <script is:inline>
+  (function () {
+    var btn = document.getElementById("nav-toggle");
+    var panel = document.getElementById("mobile-nav");
+    var iconOpen = document.getElementById("nav-icon-open");
+    var iconClose = document.getElementById("nav-icon-close");
+    if (!btn || !panel) return;
+
+    function setOpen(open) {
+      panel.classList.toggle("hidden", !open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (iconOpen) iconOpen.classList.toggle("hidden", open);
+      if (iconClose) iconClose.classList.toggle("hidden", !open);
+    }
+
+    btn.addEventListener("click", function () {
+      setOpen(panel.classList.contains("hidden"));
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    // Beim Wechsel auf Desktop-Breite den Panel-State zuruecksetzen.
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 1024) setOpen(false);
+    });
+  })();
+
   (function () {
     var toggle = document.getElementById("search-toggle");
     var modal = document.getElementById("search-modal");

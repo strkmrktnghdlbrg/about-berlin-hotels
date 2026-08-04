@@ -14,12 +14,18 @@
  * leer zurückkommt, rendert die Komponente nichts.
  */
 import type { Locale } from "../data/site";
-import { getTopHotels, type Stay22Accommodation } from "../lib/stay22";
+import { getTopHotelsNear, type Stay22Accommodation } from "../lib/stay22";
 import { affiliate } from "../data/affiliate";
 
 interface Props {
-  /** Volltext-Adresse für Stay22-Geo-Suche. Default: "Berlin, Germany". */
-  address?: string;
+  /**
+   * Suchmittelpunkt. Default: Berlin-Mitte.
+   * Bewusst lat/lng statt Volltext-Adresse — `address: "Berlin, Germany"`
+   * geocodierte auf den Flughafen BER, wodurch hier live vier Airport-Hotels
+   * als "bestbewertete Hotels in Berlin" standen.
+   */
+  lat?: number;
+  lng?: number;
   /** Anzahl Hotels (max 12 sinnvoll für Grid). */
   limit?: number;
   title?: string;
@@ -28,7 +34,8 @@ interface Props {
 }
 
 const {
-  address = "Berlin, Germany",
+  lat = 52.5186,
+  lng = 13.3987,
   limit = 8,
   locale = "de",
   title = locale === "de"
@@ -41,7 +48,7 @@ const {
 
 let hotels: Stay22Accommodation[] | null = null;
 try {
-  hotels = await getTopHotels(address, affiliate.stay22.lmaId, { limit });
+  hotels = await getTopHotelsNear(lat, lng, affiliate.stay22.lmaId, { limit });
 } catch (err) {
   console.error("[Stay22TopHotels] Fetch fehlgeschlagen:", err);
   hotels = null;
@@ -89,7 +96,10 @@ if (visible.length > 0 && Astro.response) {
                 alt={h.name}
                 loading="lazy"
                 decoding="async"
+                width="400"
+                height="300"
                 referrerpolicy="no-referrer-when-downgrade"
+                onerror="this.remove()"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>

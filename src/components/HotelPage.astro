@@ -12,6 +12,7 @@ import JsonLd from "./JsonLd.astro";
 import { districtImages } from "../data/images";
 import { site } from "../data/site";
 import { hotelEditorial } from "../data/hotel-editorial";
+import { getHotelPhoto } from "../lib/hotel-photos";
 
 type Props = { hotel: Hotel; locale: Locale };
 const { hotel, locale } = Astro.props;
@@ -38,6 +39,15 @@ const stars = "★".repeat(hotel.stars);
 const districtBase = locale === "de" ? "/stadtteile" : "/en/districts";
 const districtImage = district ? districtImages[district.slug] : undefined;
 
+// Echtes Hotelfoto (Stay22/Booking, Build-Time). Ohne Treffer bleibt das
+// Bezirks-Stimmungsbild — dann sagt der Alt-Text auch genau das.
+const photo = await getHotelPhoto(hotel);
+const districtAlt = district
+  ? locale === "de"
+    ? `Stadtbild ${district.name} - Umgebung des ${hotel.name}`
+    : `${district.name} street scene near ${hotel.name}`
+  : hotel.name;
+
 // ───── Schema.org JSON-LD ─────────────────────────────────────────────────
 const hotelSchema = {
   "@context": "https://schema.org",
@@ -51,6 +61,7 @@ const hotelSchema = {
     bestRating: 5,
   },
   priceRange: `from EUR ${hotel.priceFrom}`,
+  ...(photo ? { image: photo.src } : {}),
   ...(hotel.website ? { sameAs: [hotel.website] } : {}),
   ...(hotel.coordinates || district
     ? {
@@ -90,10 +101,30 @@ const breadcrumbSchema = {
 <JsonLd data={hotelSchema} />
 <JsonLd data={breadcrumbSchema} />
 
-<!-- HERO (Bezirk-Stimmungsbild, kein erfundenes Hotel-Bild) -->
+<!-- HERO: echtes Hotelfoto, sonst Bezirks-Stimmungsbild (mit ehrlichem Alt-Text).
+     `gradient-spree` liegt als Untergrund unter dem Foto: fällt eine CDN-Bild-URL
+     aus, bleibt die Markenfläche stehen statt eines kaputten Bild-Icons. -->
 <section class="relative overflow-hidden text-white min-h-[460px]">
-  {districtImage ? (
-    <FigureImage image={districtImage} alt={district?.name ?? ""} variant="hero" loading="eager" />
+  {photo ? (
+    <div class="absolute inset-0 gradient-spree">
+      <img
+        src={photo.src}
+        alt={hotel.name}
+        loading="eager"
+        decoding="async"
+        width="1024"
+        height="768"
+        referrerpolicy="no-referrer-when-downgrade"
+        onerror="this.remove()"
+        class="block h-full w-full object-cover"
+      />
+      <span class="absolute inset-0 bg-gradient-to-b from-brand-900/40 via-brand-900/35 to-brand-900/75 pointer-events-none"></span>
+      <div class="absolute bottom-0 right-0 left-0 px-3 py-2 text-[10px] text-white/80 text-right pointer-events-none">
+        {locale === "de" ? "Foto: Booking.com via Stay22" : "Photo: Booking.com via Stay22"}
+      </div>
+    </div>
+  ) : districtImage ? (
+    <FigureImage image={districtImage} alt={districtAlt} variant="hero" loading="eager" />
   ) : (
     <div class="absolute inset-0 gradient-spree"></div>
   )}

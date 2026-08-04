@@ -4,16 +4,19 @@ import type { Locale } from "../data/site";
 import { categories } from "../data/categories";
 import { getHotelsByCategory } from "../data/hotels";
 import { getDistrict, districts } from "../data/districts";
-import { articles } from "../data/articles";
+import { articles, articlesEn } from "../data/articles";
 import HotelCard from "./HotelCard.astro";
 import DistrictCard from "./DistrictCard.astro";
 import CategoryCard from "./CategoryCard.astro";
 import JsonLd from "./JsonLd.astro";
-import { site } from "../data/site";
+import { site, routes } from "../data/site";
+import { categoryEditorial } from "../data/category-editorial";
 
 type Props = { category: Category; locale: Locale };
 const { category, locale } = Astro.props;
+const editorial = categoryEditorial[category.slug];
 const base = locale === "de" ? "" : "/en";
+const r = routes(locale);
 
 const hotelsInCategory = getHotelsByCategory(category.slug);
 const bestDistricts = category.bestDistricts
@@ -22,9 +25,12 @@ const bestDistricts = category.bestDistricts
 
 const otherCategories = categories.filter((c) => c.slug !== category.slug).slice(0, 3);
 
-const relatedArticles = articles
+// Auf der englischen Seite die englischen Fassungen zeigen - sonst standen hier
+// deutsche Titel mit deutschen Links.
+const relatedArticles = (locale === "de" ? articles : articlesEn)
   .filter((a) => a.categorySlug === category.slug)
   .slice(0, 6);
+const articleBase = locale === "de" ? "" : "/en/guides";
 
 const colorMap: Record<Category["color"], string> = {
   navy: "from-brand-800 to-brand-600",
@@ -60,7 +66,7 @@ const categoryBreadcrumb = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: locale === "de" ? "Start" : "Home", item: new URL(`${base}/`, site.baseUrl).toString() },
-    { "@type": "ListItem", position: 2, name: locale === "de" ? "Kategorien" : "Categories", item: new URL(`${base}/kategorien/`, site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: locale === "de" ? "Kategorien" : "Categories", item: new URL(`${r.categories}/`, site.baseUrl).toString() },
     { "@type": "ListItem", position: 3, name: category.name[locale], item: categoryUrl },
   ],
 };
@@ -82,7 +88,7 @@ const categoryBreadcrumb = {
     <nav class="flex items-center gap-2 text-xs text-white/80 mb-6">
       <a href={`${base}/`} class="hover:text-white">{locale === "de" ? "Start" : "Home"}</a>
       <span>›</span>
-      <a href={`${base}/kategorien/`} class="hover:text-white">{locale === "de" ? "Kategorien" : "Categories"}</a>
+      <a href={`${r.categories}/`} class="hover:text-white">{locale === "de" ? "Kategorien" : "Categories"}</a>
       <span>›</span>
       <span class="text-white">{category.name[locale]}</span>
     </nav>
@@ -113,6 +119,19 @@ const categoryBreadcrumb = {
         {category.description[locale]}
       </p>
     </div>
+
+    {editorial && (
+      <div class="mt-8">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-4">
+          {locale === "de"
+            ? `Worauf du bei ${category.name.de} in Berlin achten solltest`
+            : `What to watch for with ${category.name.en.toLowerCase()} in Berlin`}
+        </h2>
+        <div class="space-y-4 text-lg text-ink-700 leading-relaxed">
+          {editorial[locale].map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    )}
   </div>
 </section>
 
@@ -180,7 +199,7 @@ const categoryBreadcrumb = {
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {relatedArticles.map((a) => (
           <a
-            href={`/${a.slug}/`}
+            href={`${articleBase}/${a.slug}/`}
             class="block rounded-2xl border border-ink-100 bg-white p-5 hover:border-brand-300 hover:shadow-md transition-all"
           >
             <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
@@ -189,7 +208,7 @@ const categoryBreadcrumb = {
             <h3 class="text-lg font-bold text-ink-900 mb-2 text-balance">{a.title}</h3>
             <p class="text-sm text-ink-600 leading-relaxed line-clamp-2">{a.description}</p>
             <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800">
-              Weiterlesen →
+              {locale === "de" ? "Weiterlesen" : "Read more"} →
             </span>
           </a>
         ))}

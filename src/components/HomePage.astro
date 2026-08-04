@@ -12,11 +12,12 @@ import AttractionCard from "./AttractionCard.astro";
 import GetYourGuideWidget from "./GetYourGuideWidget.astro";
 import Stay22TopHotels from "./Stay22TopHotels.astro";
 import JsonLd from "./JsonLd.astro";
-import { site } from "../data/site";
+import { site, routes } from "../data/site";
 
 type Props = { locale: Locale };
 const { locale } = Astro.props;
 const base = locale === "de" ? "" : "/en";
+const r = routes(locale);
 
 // Top districts: central/inner first by hotelCount
 const topDistricts = [...districts]
@@ -101,7 +102,7 @@ const organizationSchema = {
       </p>
       <div class="flex flex-wrap gap-3">
         <a
-          href={`${base}/stadtteile/`}
+          href={`${r.districts}/`}
           class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-700 shadow-lg hover:shadow-xl hover:bg-brand-50 transition-all"
         >
           {tr(t.ui.hero.ctaPrimary, locale)}
@@ -110,7 +111,7 @@ const organizationSchema = {
           </svg>
         </a>
         <a
-          href={`${base}/kategorien/`}
+          href={`${r.categories}/`}
           class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-all"
         >
           {tr(t.ui.hero.ctaSecondary, locale)}
@@ -152,7 +153,7 @@ const organizationSchema = {
         </p>
       </div>
       <a
-        href={`${base}/stadtteile/`}
+        href={`${r.districts}/`}
         class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
       >
         {locale === "de" ? "Alle 12 Bezirke" : "All 12 districts"}
@@ -191,7 +192,7 @@ const organizationSchema = {
 
     <div class="text-center mt-10">
       <a
-        href={`${base}/kategorien/`}
+        href={`${r.categories}/`}
         class="inline-flex items-center gap-1 rounded-xl bg-brand-600 hover:bg-brand-700 px-6 py-3 text-sm font-bold text-white shadow-sm transition-colors"
       >
         {locale === "de" ? "Alle Kategorien anzeigen" : "View all categories"}
@@ -244,7 +245,7 @@ const organizationSchema = {
         </p>
       </div>
       <a
-        href={`${base}/sehenswuerdigkeiten/`}
+        href={`${r.attractions}/`}
         class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
       >
         {locale === "de" ? "Alle ansehen" : "View all"}
@@ -338,19 +339,19 @@ const organizationSchema = {
       </p>
       <div class="flex flex-wrap justify-center gap-3">
         <a
-          href={`${base}/stadtteile/mitte/`}
+          href={`${r.districts}/mitte/`}
           class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-700 hover:bg-brand-50 transition-colors"
         >
           {locale === "de" ? "Hotels in Mitte" : "Hotels in Mitte"}
         </a>
         <a
-          href={`${base}/stadtteile/friedrichshain-kreuzberg/`}
+          href={`${r.districts}/friedrichshain-kreuzberg/`}
           class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-colors"
         >
           {locale === "de" ? "Boutique in Friedrichshain" : "Boutique in Friedrichshain"}
         </a>
         <a
-          href={`${base}/stadtteile/charlottenburg-wilmersdorf/`}
+          href={`${r.districts}/charlottenburg-wilmersdorf/`}
           class="inline-flex items-center gap-2 rounded-xl bg-brand-700/40 ring-1 ring-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-brand-700/60 transition-colors"
         >
           {locale === "de" ? "Elegant in Charlottenburg" : "Elegant in Charlottenburg"}

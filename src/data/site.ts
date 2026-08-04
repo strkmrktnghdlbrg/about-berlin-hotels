@@ -26,3 +26,27 @@ export type Locale = (typeof site.locales)[number];
 export const localePrefix = (locale: Locale) => (locale === "de" ? "" : "/en");
 export const otherLocale = (locale: Locale): Locale =>
   locale === "de" ? "en" : "de";
+
+/**
+ * Sektions-Basispfade je Sprache. Die englischen Routen sind übersetzt
+ * (/en/districts/ statt /en/stadtteile/) - `localePrefix(locale) + "/stadtteile"`
+ * ergibt deshalb eine 404-URL und darf NICHT verwendet werden.
+ */
+export const routes = (locale: Locale) =>
+  locale === "de"
+    ? {
+        districts: "/stadtteile",
+        categories: "/kategorien",
+        attractions: "/sehenswuerdigkeiten",
+        itineraries: "/reiseplaner",
+        hotels: "/hotels",
+        tips: "/tipps",
+      }
+    : {
+        districts: "/en/districts",
+        categories: "/en/categories",
+        attractions: "/en/attractions",
+        itineraries: "/en/itineraries",
+        hotels: "/en/hotels",
+        tips: "/en/tips",
+      };

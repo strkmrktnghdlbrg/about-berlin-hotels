@@ -1,0 +1,7 @@
+# Cloudflare Pages _redirects
+#
+# Affiliate-Links (/r/...) - 302, damit sie nie als kanonische URL gelten.
+# Ausgeschlossen von Crawlern via public/robots.txt (Disallow: /r/).
+# AWIN-Konto 514869, clickref identifiziert die Quell-Domain.
+/r/parken-fliegen       https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302
+/r/parken-fliegen/      https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302

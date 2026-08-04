@@ -46,11 +46,12 @@ const byDistrict = districts
     </div>
   </section>
 
-  <section class="py-14 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <Stay22TopHotels limit={8} locale={locale} />
-    </div>
-  </section>
+  <!-- Live top hotels via Stay22. No vertical padding on the wrapper: the
+       component renders nothing when the API returns no results, and a padded
+       wrapper would leave an empty gap between hero and map. -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <Stay22TopHotels limit={8} locale={locale} />
+  </div>
 
   <section class="py-14 sm:py-16 surface-soft">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">

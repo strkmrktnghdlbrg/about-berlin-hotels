@@ -28,6 +28,8 @@ type Props = {
   title?: string;
   /** Affiliate-Disclosure unter der Karte rendern. */
   disclosure?: boolean;
+  /** Anzeigewährung. Fest auf EUR, weil die Geo-Autoerkennung sonst z.B. ₽ ausspielt. */
+  currency?: string;
 };
 
 const {
@@ -38,11 +40,14 @@ const {
   height = "560px",
   title = "Hotels auf der Karte",
   disclosure = true,
+  currency = "EUR",
 } = Astro.props;
 
 let embedUrl: string | undefined;
 if (embedId) {
-  embedUrl = `https://www.stay22.com/embed/${embedId}`;
+  // Auch beim Dashboard-Embed die Währung erzwingen — sonst greift die
+  // IP-Geo-Erkennung von Stay22 und zeigt Besuchern fremde Währungen.
+  embedUrl = `https://www.stay22.com/embed/${embedId}?currency=${encodeURIComponent(currency)}`;
 } else if (stay22Enabled) {
   const params = new URLSearchParams({
     aid: affiliate.stay22.lmaId,
@@ -50,6 +55,7 @@ if (embedId) {
     lng: String(lng),
     zoom: String(zoom),
     maincolor: affiliate.stay22.mainColor,
+    currency,
   });
   embedUrl = `https://www.stay22.com/embed/gm?${params.toString()}`;
 }

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticlePage from "../components/ArticlePage.astro";
-import { articles } from "../data/articles";
+import { articles, hasEnglishVersion } from "../data/articles";
 
 export function getStaticPaths() {
   return articles.map((a) => ({ params: { article: a.slug }, props: { article: a } }));
@@ -9,8 +9,18 @@ export function getStaticPaths() {
 
 const { article } = Astro.props;
 const pageTitle = `${article.title} | About Berlin Hotels`;
+// Die englische Fassung liegt unter /en/guides/<slug>/ - die deutsche URL bleibt
+// der alte WP-Flat-Slug, an dem die Rankings hängen.
+const alternatePath = hasEnglishVersion(article.slug)
+  ? `/en/guides/${article.slug}/`
+  : undefined;
 ---
 
-<BaseLayout title={pageTitle} description={article.description} locale="de">
-  <ArticlePage article={article} />
+<BaseLayout
+  title={pageTitle}
+  description={article.description}
+  locale="de"
+  alternatePath={alternatePath}
+>
+  <ArticlePage article={article} locale="de" />
 </BaseLayout>

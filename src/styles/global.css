@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+/* === Inter (self-hosted, DSGVO-sicher) =====================================
+   Vorher lud das BaseLayout die Schrift von fonts.googleapis.com - dabei geht
+   die IP jedes Besuchers vor jeder Einwilligung an Google (LG München I,
+   3 O 17493/20). Die Variable-Font-Datei deckt 100-900 in EINER Datei ab.
+
+   Beide Familien werden deklariert ("Inter" und "InterVariable"), damit jeder
+   vorhandene Font-Stack lokal auflöst. */
+@font-face {
+  font-family: "InterVariable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "InterVariable";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+}
+
 @theme {
   /* Brand — Berlin Blau (Spree-Blau / Mitternachtsblau) */
   --color-brand-50:  #eef4ff;

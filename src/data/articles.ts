@@ -67,8 +67,22 @@ export type Article = {
 
 import { districtArticles } from "./articles/districts";
 import { themeArticles } from "./articles/themes";
+import { districtArticlesEn } from "./articles/en/districts";
+import { themeArticlesEn } from "./articles/en/themes";
 
 export const articles: Article[] = [...districtArticles, ...themeArticles];
 
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
 export const articleSlugs = () => articles.map((a) => a.slug);
+
+/**
+ * Englische Fassungen derselben Artikel — gleiche Slugs, aber unter
+ * /en/guides/<slug>/ statt unter den alten WP-Flat-Slugs. Die deutschen URLs
+ * bleiben unverändert, weil an ihnen die Rankings hängen.
+ */
+export const articlesEn: Article[] = [...districtArticlesEn, ...themeArticlesEn];
+
+export const getArticleEn = (slug: string) => articlesEn.find((a) => a.slug === slug);
+
+/** Hat dieser Artikel eine englische Fassung? (für hreflang) */
+export const hasEnglishVersion = (slug: string) => articlesEn.some((a) => a.slug === slug);

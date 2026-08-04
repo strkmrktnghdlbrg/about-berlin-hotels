@@ -76,6 +76,11 @@ export interface Stay22SearchOptions {
   adults?: number;
   children?: number;
   rooms?: number;
+  /**
+   * NICHT setzen. `campaign=` zerstört die Deeplinks: Gäste landen auf
+   * Booking-Suchergebnissen statt auf der Hotelseite. Die Provisions-Zuordnung
+   * läuft ohnehin über `aid` (lmaID).
+   */
   campaign?: string;
   /** lmaID — Pflicht für Affiliate-Attribution. */
   aid?: string;
@@ -235,6 +240,11 @@ export async function searchAccommodations(
 /**
  * Top-Hotels nach Adresse + Bewertung.
  * Default-Filter: 8.0+ Gäste-Score, 3+ Sterne — gut für Großstädte wie Berlin.
+ *
+ * ACHTUNG: Die Volltext-Adresssuche geocodiert "Berlin, Germany" auf einen
+ * Punkt, der in der Praxis beim Flughafen BER landet — live standen dadurch
+ * "Premier Inn Berlin Airport" & Co. als bestbewertete Hotels der Stadt auf
+ * der Startseite. Für Stadt-Übersichten deshalb `getTopHotelsNear()` nehmen.
  */
 export async function getTopHotels(
   address: string,
@@ -251,7 +261,34 @@ export async function getTopHotels(
     currency: "EUR",
     lang: "de",
     aid: lmaId,
-    campaign: lmaId,
+    ...opts,
+  });
+}
+
+/**
+ * Top-Hotels rund um einen Punkt statt um einen Ortsnamen — eindeutiger
+ * Suchraum, kein Geocoding-Zufall.
+ */
+export async function getTopHotelsNear(
+  lat: number,
+  lng: number,
+  lmaId: string,
+  opts: Partial<Stay22SearchOptions> = {},
+): Promise<Stay22Accommodation[] | null> {
+  return searchAccommodations({
+    provider: "booking",
+    lat,
+    lng,
+    // 5 km um Mitte decken Mitte, Kreuzberg, Prenzlauer Berg und Teile der
+    // City West ab und schließen den Flughafen (~18 km) sicher aus.
+    radius: 5000,
+    type: "hotel",
+    minguestrating: 8.0,
+    minstarrating: 3,
+    limit: 12,
+    currency: "EUR",
+    lang: "de",
+    aid: lmaId,
     ...opts,
   });
 }
@@ -276,7 +313,6 @@ export async function getNearbyHotels(
     currency: "EUR",
     lang: "de",
     aid: lmaId,
-    campaign: lmaId,
     ...opts,
   });
 }
