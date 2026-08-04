@@ -1,20 +1,22 @@
-# about-berlin-hotels.de - Legacy-301er fuer Cloudflare Pages.
+# about-berlin-hotels.de - Cloudflare Pages _redirects
 #
 # WICHTIG: Dieses Projekt laeuft auf Cloudflare Pages. Pages liest NUR diese
-# Datei, niemals public/.htaccess. Bis 04.08.2026 standen alle Regeln nur dort
-# und waren still wirkungslos - die /thema/-Regeln lieferten live 404, die
+# Datei, niemals public/.htaccess. Bis 04.08.2026 stand die Legacy-Liste nur
+# dort und war still wirkungslos - /thema/... lieferte live 404, die
 # Spin-Duplikate nur einen Meta-Refresh-Stub statt eines echten 301.
 #
 # Zusammenspiel: astro.config.mjs baut zu jeder Quelle einen Stub, damit unter
 # dem Pfad ein Asset liegt. Nur dann haengt Pages den Schraegstrich an und
 # diese Datei gewinnt anschliessend mit einem echten 301 gegen den Stub.
 #
-# 410 und Host-Kanonisierung kann _redirects nicht - siehe
-# functions/_middleware.js.
+# 410 und Host-Kanonisierung kann _redirects nicht - functions/_middleware.js.
 
-# Affiliate: Parken & Fliegen (Awin mid 14793)
-/r/parken-fliegen  https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=www.about-berlin-hotels.de  302
-/r/parken-fliegen/  https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=www.about-berlin-hotels.de  302
+#
+# Affiliate-Links (/r/...) - 302, damit sie nie als kanonische URL gelten.
+# Ausgeschlossen von Crawlern via public/robots.txt (Disallow: /r/).
+# AWIN-Konto 514869, clickref identifiziert die Quell-Domain.
+/r/parken-fliegen       https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302
+/r/parken-fliegen/      https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=about-berlin-hotels.de 302
 
 # Legacy-WP-Taxonomie /thema/ -> neue Kategorien/Uebersichten
 /thema/billige-hotels/  /kategorien/billige-hotels/  301
