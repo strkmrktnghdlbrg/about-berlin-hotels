@@ -57,9 +57,10 @@ function fold(s: string): string {
  */
 const PROPERTY_TYPES = new Set([
   "hostel", "hostels", "hostal", "apartment", "apartments", "aparthotel",
-  "apartmenthaus", "suites", "suite", "residence", "residences", "boardinghouse",
-  "pension", "motel", "guesthouse", "gaestehaus", "resort", "camping",
-  "ferienwohnung", "ferienwohnungen", "bnb", "lofts", "studios",
+  "apartmenthaus", "apartmenthotel", "suites", "suite", "residence", "residences",
+  "boardinghouse", "pension", "motel", "guesthouse", "gaestehaus", "resort",
+  "camping", "ferienwohnung", "ferienwohnungen", "ferienhaus", "ferienhaeuser",
+  "bnb", "lofts", "studios", "villa", "bungalow", "gasthof", "gasthaus", "zimmer",
 ]);
 
 function tokens(name: string): string[] {
@@ -95,6 +96,13 @@ export function matchScore(hotelName: string, candidateName: string): number {
 
   // Ein einzelnes kurzes Token (z.B. "rome") ist zu unspezifisch.
   if (a.length === 1 && a[0].length < 5) return 0;
+
+  // Trägt der Hotelname nur EIN unterscheidendes Token, muss der Treffer damit
+  // beginnen. Sonst matcht "Hotel Müggelsee Berlin" auf "Ferienhaus Rübezahl am
+  // Müggelsee" - ein anderes Haus, das den See nur im Namen führt.
+  // ("Bristol Berlin, Vignette Collection by IHG" bleibt gültig: beginnt mit
+  // dem Token selbst.)
+  if (a.length === 1 && b[0] !== a[0]) return 0;
 
   // Der Treffer darf nicht beliebig viel mehr enthalten — sonst matcht
   // "Circus" auch "Circus Hostel Apartments Berlin Mitte".
