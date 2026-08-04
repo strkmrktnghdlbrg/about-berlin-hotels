@@ -123,7 +123,10 @@ async function loadCandidates(): Promise<Candidate[]> {
         lng: d.geo.lng,
         radius: 3000,
         type: "hotel",
-        limit: 50,
+        // 50 pro Bezirk reichten nicht: im ersten Live-Build fanden nur 7 von
+        // 41 redaktionellen Häusern einen Treffer, weil die großen Namen gar
+        // nicht in der Ergebnisliste auftauchten.
+        limit: 100,
         currency: "EUR",
         lang: "de",
         aid: affiliate.stay22.lmaId,
@@ -155,32 +158,77 @@ async function loadCandidates(): Promise<Candidate[]> {
   return [...byName.values()];
 }
 
-const resolved = new Map<string, HotelPhoto | null>();
-
-/**
- * Foto für ein redaktionell gepflegtes Hotel — oder null, wenn die API nichts
- * liefert oder kein eindeutiger Namenstreffer existiert.
- */
-export async function getHotelPhoto(hotel: Hotel): Promise<HotelPhoto | null> {
-  if (!candidatesPromise) candidatesPromise = loadCandidates();
-  const candidates = await candidatesPromise;
-
-  const cached = resolved.get(hotel.slug);
-  if (cached !== undefined) return cached;
-
+/** Besten Treffer aus einer Kandidatenliste ziehen (0 = kein Match). */
+function pickBest(hotelName: string, candidates: Candidate[]): HotelPhoto | null {
   let best: HotelPhoto | null = null;
   let bestScore = 0;
-
   for (const c of candidates) {
-    const score = matchScore(hotel.name, c.name);
+    const score = matchScore(hotelName, c.name);
     if (score > bestScore) {
       bestScore = score;
       best = { src: upscale(c.image), link: c.link, matchedName: c.name };
     }
   }
+  return best;
+}
+
+/**
+ * Gezielte Einzelabfrage für Häuser, die in der Bezirks-Sammelabfrage fehlen.
+ * Die Namenssuche liefert das gesuchte Haus meist als ersten Treffer — der
+ * strenge Abgleich entscheidet trotzdem, ob es wirklich passt.
+ */
+async function lookupByName(hotelName: string): Promise<Candidate[]> {
+  const result = await searchAccommodations({
+    provider: "booking",
+    // Umlaute werden in searchAccommodations transliteriert (sonst HTTP 400).
+    address: `${hotelName}, Berlin, Germany`,
+    type: "hotel",
+    limit: 5,
+    currency: "EUR",
+    lang: "de",
+    aid: affiliate.stay22.lmaId,
+  }).catch(() => null);
+
+  if (!Array.isArray(result)) return [];
+  return result
+    .filter((c) => c.name && c.image)
+    .map((c) => ({ name: c.name, image: c.image as string, link: c.link }));
+}
+
+/** Promise-Cache: mehrere Karten desselben Hotels lösen nur EINE Abfrage aus. */
+const resolved = new Map<string, Promise<HotelPhoto | null>>();
+
+async function resolvePhoto(hotel: Hotel): Promise<HotelPhoto | null> {
+  if (!candidatesPromise) candidatesPromise = loadCandidates();
+  const candidates = await candidatesPromise;
+
+  // 1. Treffer aus der Bezirks-Sammelabfrage.
+  let best = pickBest(hotel.name, candidates);
+
+  // 2. Sonst gezielt nachfragen — nur einmal pro Haus und Build.
+  if (!best && candidates.length > 0) {
+    best = pickBest(hotel.name, await lookupByName(hotel.name));
+    if (best) {
+      console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}" (Einzelabfrage)`);
+      return best;
+    }
+    console.warn(`[hotel-photos] kein Treffer fuer "${hotel.name}" - Bezirksbild`);
+    return null;
+  }
 
   if (best) console.log(`[hotel-photos] ${hotel.name} -> "${best.matchedName}"`);
-
-  resolved.set(hotel.slug, best);
   return best;
+}
+
+/**
+ * Foto für ein redaktionell gepflegtes Hotel — oder null, wenn die API nichts
+ * liefert oder kein eindeutiger Namenstreffer existiert.
+ */
+export function getHotelPhoto(hotel: Hotel): Promise<HotelPhoto | null> {
+  let pending = resolved.get(hotel.slug);
+  if (!pending) {
+    pending = resolvePhoto(hotel);
+    resolved.set(hotel.slug, pending);
+  }
+  return pending;
 }
