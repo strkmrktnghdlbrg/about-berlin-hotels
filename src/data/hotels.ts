@@ -749,6 +749,8 @@ export const hotels: Hotel[] = [
   {
     slug: "axel-hotel-berlin",
     name: "Axel Hotel Berlin",
+    // Booking/Stay22 fuehren das Haus als "… - Adults Only".
+    stay22Name: "Axel Hotel Berlin - Adults Only",
     district: "tempelhof-schoeneberg",
     coordinates: [52.4988, 13.3391],
     categories: ["boutique-hotels", "designhotels"],

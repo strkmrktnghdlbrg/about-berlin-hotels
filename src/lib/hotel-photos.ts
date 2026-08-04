@@ -191,22 +191,30 @@ function pickBest(hotelName: string, candidates: Candidate[]): HotelPhoto | null
  * in keiner davon. Ein enger lat/lng-Radius trifft es dagegen zuverlässig.
  */
 async function lookupNearby(coordinates: [number, number]): Promise<Candidate[]> {
-  const result = await searchAccommodations({
-    provider: "booking",
-    lat: coordinates[0],
-    lng: coordinates[1],
-    radius: 600,
-    type: "hotel",
-    limit: 30,
-    currency: "EUR",
-    lang: "de",
-    aid: affiliate.stay22.lmaId,
-  }).catch(() => null);
+  const query = async (radius: number) => {
+    const result = await searchAccommodations({
+      provider: "booking",
+      lat: coordinates[0],
+      lng: coordinates[1],
+      radius,
+      type: "hotel",
+      limit: 30,
+      currency: "EUR",
+      lang: "de",
+      aid: affiliate.stay22.lmaId,
+    }).catch(() => null);
 
-  if (!Array.isArray(result)) return [];
-  return result
-    .filter((c) => c.name && c.image)
-    .map((c) => ({ name: c.name, image: c.image as string, link: c.link }));
+    if (!Array.isArray(result)) return [];
+    return result
+      .filter((c) => c.name && c.image)
+      .map((c) => ({ name: c.name, image: c.image as string, link: c.link }));
+  };
+
+  const close = await query(600);
+  // In den Außenbezirken (Estrel, Müggelsee, Borsigturm) kam bei 600 m gar
+  // nichts zurück - dort einmal weiter aufziehen. Nur bei komplett leerem
+  // Ergebnis, damit dichte Innenstadtlagen keine zweite Abfrage auslösen.
+  return close.length > 0 ? close : query(2500);
 }
 
 /** Promise-Cache: mehrere Karten desselben Hotels lösen nur EINE Abfrage aus. */
