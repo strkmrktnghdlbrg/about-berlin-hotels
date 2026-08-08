@@ -17,7 +17,7 @@ const { locale } = Astro.props;
   }}
   subtitle={{
     de: "Welcher Hotel-Stil passt zu deiner Reise? Wir haben 10 Kategorien kuratiert, von 5-Sterne-Luxus über Designhotels bis zu sehr günstigen Budget-Häusern.",
-    en: "Which hotel style suits your trip? We've curated 10 categories, from 5-star luxury through design hotels to very affordable budget houses.",
+    en: "Which hotel style suits your trip? We've curated 10 categories, from 5-star luxury through design hotels to very affordable budget rooms.",
   }}
 />
 
@@ -43,16 +43,18 @@ const { locale } = Astro.props;
     ) : (
       <>
         <p>
-          In Berlin the category often shapes your stay more than the star rating does. A four-star
-          house on Kurfürstendamm, a converted factory loft in Kreuzberg and an apartment in
-          Prenzlauer Berg can cost the same and still produce completely different trips - depending
-          on whether a breakfast buffet, nightlife on the doorstep or your own kitchen is what counts.
+          In Berlin the category shapes your stay more than the star rating does. A four-star hotel
+          on Kurfürstendamm, a converted factory loft in Kreuzberg and an apartment in Prenzlauer
+          Berg can cost the same and still add up to completely different trips, depending on
+          whether what you want is a breakfast buffet, nightlife right outside the door or a
+          kitchen of your own.
         </p>
         <p>
-          So we sort by purpose rather than stars: luxury and design for occasions, boutique and charm
-          for city breaks with standards, business and shuttle for meetings and early flights, family
-          and apartment for longer stays, budget for everyone who only needs the room to sleep in.
-          Each category names the districts where it is genuinely well represented in Berlin.
+          So we sort by purpose rather than stars: luxury and design for special occasions, boutique
+          and charming places for a city trip with some standards, business and shuttle hotels for
+          meetings and early flights, family rooms and apartments for longer stays, budget for
+          anyone who only needs a bed. Each category names the districts where it is genuinely well
+          represented in Berlin.
         </p>
       </>
     )}

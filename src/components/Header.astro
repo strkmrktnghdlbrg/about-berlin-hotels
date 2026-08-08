@@ -13,18 +13,56 @@ const base = localePrefix(locale);
 const alt = otherLocale(locale);
 const altHref = alternatePath ?? `${localePrefix(alt)}/`;
 
-const navItems = [
+type NavItem = {
+  href: string;
+  hrefEn: string;
+  label: { de: string; en: string };
+  enabled: boolean;
+  /** Nur in dieser Sprache ausspielen (fehlt = beide Sprachen). */
+  only?: Locale;
+  /**
+   * Nur im EN-Zweig ins eingeklappte Menue schieben. Haelt die englische
+   * Desktop-Leiste bei sechs Punkten, obwohl EN zwei Pillar-Seiten mehr hat.
+   */
+  mobileOnlyEn?: boolean;
+};
+
+const allNavItems: NavItem[] = [
+  // Money-Page: "hotels in berlin germany". Bis hierher war /hotels/ nur von
+  // der Startseite aus verlinkt.
+  { href: "/hotels/", hrefEn: "/en/hotels/", label: { de: "Hotels", en: "Hotels" }, enabled: true },
+  // EN-only Pillar-Seiten fuer die US-Suchintents "where to stay in berlin"
+  // und "things to do in berlin". Werden von den Paketen A/C angelegt.
+  {
+    href: "/hotels/",
+    hrefEn: "/en/where-to-stay-in-berlin/",
+    label: { de: "Hotels", en: "Where to Stay" },
+    enabled: true,
+    only: "en",
+  },
+  {
+    href: "/sehenswuerdigkeiten/",
+    hrefEn: "/en/things-to-do-in-berlin/",
+    label: { de: "Sehenswürdigkeiten", en: "Things to Do" },
+    enabled: true,
+    only: "en",
+  },
   { href: "/stadtteile/", hrefEn: "/en/districts/", label: t.nav.districts, enabled: true },
-  { href: "/kategorien/", hrefEn: "/en/categories/", label: t.nav.categories, enabled: true },
   { href: "/sehenswuerdigkeiten/", hrefEn: "/en/attractions/", label: t.nav.attractions, enabled: true },
   {
     href: "/reiseplaner/",
     hrefEn: "/en/itineraries/",
-    label: { de: "Reiseplaner", en: "Itineraries" } as const,
+    label: { de: "Reiseplaner", en: "Itineraries" },
     enabled: features.reiseplaner.enabled,
   },
-  { href: "/tipps/", hrefEn: "/en/tips/", label: t.nav.tips, enabled: true },
-].filter((item) => item.enabled);
+  { href: "/kategorien/", hrefEn: "/en/categories/", label: t.nav.categories, enabled: true, mobileOnlyEn: true },
+  { href: "/tipps/", hrefEn: "/en/tips/", label: t.nav.tips, enabled: true, mobileOnlyEn: true },
+];
+
+const navItems = allNavItems.filter((item) => item.enabled && (!item.only || item.only === locale));
+// Desktop: hoechstens sechs Punkte. Im DE-Zweig passen alle sechs, im EN-Zweig
+// rutschen Kategorien und Tipps ins Hamburger-Menue.
+const desktopNavItems = navItems.filter((item) => !(locale === "en" && item.mobileOnlyEn));
 ---
 
 <header class="sticky top-0 z-50 border-b border-ink-100 bg-white/90 backdrop-blur-md">
@@ -45,11 +83,12 @@ const navItems = [
         </span>
       </a>
 
-      {/* Desktop-Navigation erst ab lg: bei md (768px) passten Logo + 5 Links +
+      {/* Desktop-Navigation erst ab lg: bei md (768px) passten Logo + Links +
           Suche + Sprachumschalter nicht in den Viewport - der DE/EN-Button wurde
-          abgeschnitten. Darunter uebernimmt das Hamburger-Menue. */}
+          abgeschnitten. Darunter uebernimmt das Hamburger-Menue, das alle
+          Punkte zeigt (auch die im EN-Zweig ausgeblendeten). */}
       <nav class="hidden lg:flex items-center gap-1">
-        {navItems.map((item) => (
+        {desktopNavItems.map((item) => (
           <a
             href={locale === "de" ? item.href : item.hrefEn}
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"

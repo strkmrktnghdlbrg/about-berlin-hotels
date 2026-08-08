@@ -1,0 +1,420 @@
+---
+/**
+ * EN-only Pillar-Seite: "Things to Do in Berlin" (US-Keyword, 9.900/Mon).
+ * Buendelt die 20 Sights aus attractions.ts, die 3 Reiseplaner aus guides.ts
+ * und die GetYourGuide-City-Einbindung.
+ *
+ * BEWUSST OHNE alternatePath: es gibt kein deutsches Pendant, deshalb setzt
+ * BaseLayout hier korrekt gar keine hreflang-Tags.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AttractionCard from "../../components/AttractionCard.astro";
+import GetYourGuideWidget from "../../components/GetYourGuideWidget.astro";
+import JsonLd from "../../components/JsonLd.astro";
+import FigureImage from "../../components/FigureImage.astro";
+import { attractions } from "../../data/attractions";
+import { guides, guideHrefEn } from "../../data/guides";
+import { districts } from "../../data/districts";
+import { attractionImages, districtImages } from "../../data/images";
+import { site } from "../../data/site";
+
+const locale = "en" as const;
+const pageUrl = new URL("/en/things-to-do-in-berlin/", site.baseUrl).toString();
+
+// ── Gruppierung nach dem vorhandenen Feld `type` ─────────────────────────
+const groups = [
+  {
+    id: "landmarks",
+    type: "landmark" as const,
+    heading: "Landmarks and icons",
+    lead:
+      "These are the buildings and squares that end up on the postcards, and unlike in most capitals they are not clustered in one photogenic old town. Berlin lost its historic center twice, first to bombing and then to the border that ran through it, so the landmarks are spread across the map and stitched together by rail.",
+  },
+  {
+    id: "wall",
+    type: "history" as const,
+    heading: "The Berlin Wall and Cold War Berlin",
+    lead:
+      "From 1961 to 1989 a fortified border ran straight through the middle of this city, and the places below are what is left of it plus the memorial that reckons with what came before. If you only have time for one, make it a real preserved stretch rather than a replica checkpoint.",
+  },
+  {
+    id: "museums",
+    type: "museum" as const,
+    heading: "Museums",
+    lead:
+      "Berlin has more than 150 museums, and the densest concentration of them sits on a single island in the middle of the river. Timed tickets are the norm, and most German museums close one day a week, usually Monday, so check before you build a day around one.",
+  },
+  {
+    id: "views",
+    type: "viewpoint" as const,
+    heading: "Views over the city",
+    lead:
+      "Berlin is flat and low-rise, which means one good vantage point tells you more about how the city is laid out than an afternoon of walking does. Go on a clear day and go early or late; the light in between is unforgiving.",
+  },
+  {
+    id: "parks",
+    type: "park" as const,
+    heading: "Parks, lakes and open space",
+    lead:
+      "About a third of Berlin is green space or water, and locals use it hard. The lakes on the edge of the city are a genuine surprise to most first-time visitors: you can be on a beach, still inside the city limits, 40 minutes after leaving Museum Island.",
+  },
+  {
+    id: "shopping",
+    type: "shopping" as const,
+    heading: "Shopping",
+    lead:
+      "Two things to know before you go: German stores are closed on Sundays by law, and plenty of small shops and bars still prefer cash or a German debit card over a credit card. Bring some euros.",
+  },
+];
+
+const grouped = groups
+  .map((g) => ({ ...g, items: attractions.filter((a) => a.type === g.type) }))
+  .filter((g) => g.items.length > 0);
+
+// ── Bezirke fuer "Where to stay" ─────────────────────────────────────────
+const stayPicks = [
+  {
+    slug: "mitte",
+    line: "Walking distance to the Brandenburg Gate, Museum Island and the Reichstag. The obvious pick for a short first trip, and the most expensive.",
+  },
+  {
+    slug: "friedrichshain-kreuzberg",
+    line: "The East Side Gallery, the club scene and the best casual food in the city. Younger, louder, cheaper than Mitte and one train ride from it.",
+  },
+  {
+    slug: "charlottenburg-wilmersdorf",
+    line: "City West: the Kurfürstendamm, KaDeWe and Charlottenburg Palace. Calm residential streets at night, good value, about 15 minutes into the center.",
+  },
+  {
+    slug: "pankow",
+    line: "Prenzlauer Berg, the Mauerpark and rows of restored 19th-century apartment blocks. The neighborhood most visitors say they wish they had stayed in.",
+  },
+].flatMap((p) => {
+  const district = districts.find((d) => d.slug === p.slug);
+  return district ? [{ ...p, district }] : [];
+});
+
+const heroImage = attractionImages["brandenburger-tor"];
+
+// ── Schema.org ───────────────────────────────────────────────────────────
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Things to do in Berlin",
+  numberOfItems: attractions.length,
+  itemListElement: attractions.map((a, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: a.name.en,
+    url: new URL(`/en/attractions/${a.slug}/`, site.baseUrl).toString(),
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: new URL("/en/", site.baseUrl).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Things to Do in Berlin",
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Things to Do in Berlin: 20 Sights Worth Planning Around"
+  description="An honest guide to things to do in Berlin: the 20 attractions worth planning around, grouped by type, how many days you need, and where to stay near the sights."
+  locale={locale}
+>
+  <JsonLd data={itemListSchema} />
+  <JsonLd data={breadcrumbSchema} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden text-white min-h-[420px] sm:min-h-[500px]">
+    {heroImage ? (
+      <FigureImage
+        image={heroImage}
+        alt="The Brandenburg Gate in Berlin"
+        variant="hero"
+        loading="eager"
+      />
+    ) : (
+      <div class="absolute inset-0 gradient-spree"></div>
+    )}
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+      <nav class="flex items-center gap-2 text-xs text-white/80 mb-6 flex-wrap">
+        <a href="/en/" class="hover:text-white">Home</a>
+        <span>›</span>
+        <span class="text-white">Things to Do in Berlin</span>
+      </nav>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200"></span>
+        The complete guide
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05] drop-shadow-md">
+        Things to Do in Berlin
+      </h1>
+      <p class="text-lg sm:text-xl text-white leading-relaxed max-w-3xl text-balance drop-shadow">
+        Twenty attractions worth your time, grouped so you can build a day
+        around one part of the city instead of crisscrossing it. Plus how many
+        days Berlin actually needs, and which neighborhood to sleep in.
+      </p>
+    </div>
+  </section>
+
+  <!-- ORIENTATION -->
+  <section class="pt-14 sm:pt-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 space-y-4 text-lg text-ink-700 leading-relaxed">
+      <p>
+        The first thing to understand about Berlin is the scale. Inside its own
+        limits the city covers roughly eight times the area of Paris with only
+        about twice the people, so it is spread thin. There is no single downtown
+        where everything happens. There are a dozen centers, and the fastest way
+        to waste a short trip is to plan by ranking instead of by geography.
+      </p>
+      <p>
+        The second thing is that a lot of what makes Berlin worth visiting is not
+        a monument at all. The city was flattened in World War II and then split
+        down the middle for 28 years, so it lacks the intact old town that draws
+        people to Prague or Vienna. What it has instead is the evidence of the
+        20th century sitting out in the open: a painted stretch of the Berlin
+        Wall along the river, a field of concrete stelae where the government
+        quarter meets the shopping district, an abandoned airport that the public
+        voted to keep empty. Those places tend to stay with people longer than the
+        palaces do.
+      </p>
+      <p>
+        Everything below links to a full page with location, transit and the
+        hotels closest to it. Sights are grouped by what they actually are, so
+        you can pick a type of day rather than working down a top-ten list.
+      </p>
+
+      <nav aria-label="Jump to a section" class="not-prose flex flex-wrap gap-2 pt-2">
+        {grouped.map((g) => (
+          <a
+            href={`#${g.id}`}
+            class="inline-flex items-center rounded-full border border-ink-200 bg-white px-4 py-1.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+          >
+            {g.heading}
+          </a>
+        ))}
+        <a
+          href="#how-many-days"
+          class="inline-flex items-center rounded-full border border-ink-200 bg-white px-4 py-1.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          How many days?
+        </a>
+        <a
+          href="#where-to-stay"
+          class="inline-flex items-center rounded-full border border-ink-200 bg-white px-4 py-1.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          Where to stay
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- SIGHT GROUPS -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 space-y-16">
+      {grouped.map((g) => (
+        <div id={g.id} class="scroll-mt-24">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-3">
+            {g.heading}
+          </h2>
+          <p class="text-ink-600 leading-relaxed max-w-3xl mb-8">{g.lead}</p>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {g.items.map((a) => (
+              <AttractionCard attraction={a} locale={locale} />
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="rounded-2xl border border-ink-100 bg-white p-6 sm:p-7 max-w-3xl">
+        <h2 class="text-xl font-bold text-ink-900 mb-3">Getting between them</h2>
+        <p class="text-ink-700 leading-relaxed mb-3">
+          Berlin runs two rail systems that Americans tend to confuse. The U-Bahn
+          is the subway, mostly underground and mostly inside the inner city. The
+          S-Bahn is the commuter rail, mostly above ground, and it reaches the
+          lakes, the airport and the outer districts. One ticket is valid on both,
+          plus the trams and buses, and you buy it before you board rather than
+          from a driver.
+        </p>
+        <p class="text-ink-700 leading-relaxed">
+          There are no ticket gates and nobody checks on the way in. Inspectors
+          board at random instead, and the fine for riding without a valid ticket
+          is real. Validate a paper ticket in the small stamping machine on the
+          platform before you get on.
+        </p>
+        <a
+          href="/en/tips/"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-brand-700 hover:text-brand-800"
+        >
+          More Berlin travel basics →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW MANY DAYS -->
+  <section id="how-many-days" class="py-14 sm:py-16 surface-soft scroll-mt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Trip length
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-4">
+          How many days do you need in Berlin?
+        </h2>
+        <p class="text-ink-700 leading-relaxed mb-3">
+          Three days is the honest minimum for a first visit. That gets you the
+          Mitte landmarks on one day, the Berlin Wall sites and Kreuzberg on
+          another, and City West plus the Tiergarten on a third, with each day
+          staying inside one part of the map. Two days means cutting a whole
+          theme. Four or five lets you add a lake, a museum you actually sit down
+          in, and an evening that is not scheduled.
+        </p>
+        <p class="text-ink-700 leading-relaxed">
+          Each plan below is written hour by hour, with realistic time windows,
+          transit notes and a place to eat between stops.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {guides.map((g) => {
+          const image =
+            g.imageKey?.folder === "sights"
+              ? attractionImages[g.imageKey.slug]
+              : g.imageKey?.folder === "districts"
+                ? districtImages[g.imageKey.slug]
+                : undefined;
+          return (
+            <a
+              href={guideHrefEn(g)}
+              class="group block overflow-hidden rounded-2xl border border-ink-100 bg-white hover:border-brand-300 hover:shadow-md transition-all"
+            >
+              <div class="relative h-48">
+                {image ? (
+                  <FigureImage image={image} alt={g.title.en} variant="card" />
+                ) : (
+                  <div class="absolute inset-0 gradient-spree"></div>
+                )}
+              </div>
+              <div class="p-5">
+                <div class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2">
+                  {g.duration} {g.duration === 1 ? "Day" : "Days"} · {g.audience.en}
+                </div>
+                <h3 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-brand-700">
+                  {g.title.en}
+                </h3>
+                <p class="text-sm text-ink-600 leading-relaxed line-clamp-3">
+                  {g.description.en}
+                </p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <div class="mt-8">
+        <a
+          href="/en/itineraries/"
+          class="inline-flex items-center gap-1.5 rounded-xl border border-brand-200 bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors"
+        >
+          All Berlin itineraries →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO STAY -->
+  <section id="where-to-stay" class="py-14 sm:py-16 scroll-mt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Base yourself well
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-4">
+          Where to stay near the sights
+        </h2>
+        <p class="text-ink-700 leading-relaxed">
+          In a city this spread out, the neighborhood you book matters more than
+          the hotel itself. A room 25 minutes from the nearest station will cost
+          you an hour a day. Berlin has 12 official districts, but only a handful
+          make sense for a first visit, and the difference between them is
+          character as much as distance.
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {stayPicks.map(({ district, line }) => (
+          <a
+            href={`/en/districts/${district.slug}/`}
+            class="group block rounded-2xl border border-ink-100 bg-white p-6 hover:border-brand-300 hover:shadow-md transition-all"
+          >
+            <h3 class="text-lg font-bold text-ink-900 mb-2 group-hover:text-brand-700">
+              {district.name}
+            </h3>
+            <p class="text-sm text-ink-600 leading-relaxed">{line}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/en/where-to-stay-in-berlin/"
+          class="inline-flex items-center gap-1.5 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-800 transition-colors"
+        >
+          Where to stay in Berlin: the full breakdown →
+        </a>
+        <a
+          href="/en/districts/"
+          class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          All 12 neighborhoods
+        </a>
+        <a
+          href="/en/hotels/"
+          class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          Browse hotels in Berlin
+        </a>
+        <a
+          href="/en/categories/"
+          class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700 transition-colors"
+        >
+          Hotels by style
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOURS & TICKETS -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <GetYourGuideWidget
+        mode="city"
+        cityQuery="Berlin"
+        numberOfItems={4}
+        cmp="things-to-do-in-berlin"
+        locale={locale}
+        title="Tours and tickets in Berlin"
+        lead="Guided walks, museum entry and skip-the-line tickets for the sights above."
+        framed={false}
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -8,8 +8,8 @@ export async function getStaticPaths() {
 }
 
 const { hotel } = Astro.props;
-const title = `${hotel.name} - Hotel in Berlin · About Berlin Hotels`;
-const description = hotel.shortDesc.en;
+const title = `${hotel.name}: Hotel in Berlin, Germany | About Berlin Hotels`;
+const description = `${hotel.shortDesc.en} Rooms from €${hotel.priceFrom} a night, with map, highlights and what the neighborhood is actually like.`;
 ---
 
 <BaseLayout

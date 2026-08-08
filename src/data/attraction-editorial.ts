@@ -14,8 +14,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Am schönsten ist das Tor früh am Morgen oder abends, wenn es beleuchtet ist und die Tagesbusse weg sind. Der S- und U-Bahnhof Brandenburger Tor liegt direkt darunter; ringsum reihen sich Botschaften, das Adlon und Cafés.",
     ],
     en: [
-      "The Brandenburg Gate is Berlin's central meeting point and the natural starting point for any city walk. From Pariser Platz you reach the Reichstag, the Holocaust Memorial and Unter den Linden within minutes - a compact bundle of sights on the shortest of routes.",
-      "The gate is at its best early in the morning or in the evening when it is lit and the day-trip buses have gone. The Brandenburger Tor S- and U-Bahn station sits right beneath it; embassies, the Adlon and cafés line the square.",
+      "The Brandenburg Gate is Berlin's central meeting point and the natural place to start a first walk through the city. From Pariser Platz, the square directly in front of it, you reach the Reichstag, the Holocaust Memorial and the boulevard Unter den Linden within a few minutes on foot. Not many European capitals put this many headline sights inside such a short stretch.",
+      "The gate itself was finished in the 1790s as a city gate. After 1961 it stood inside the death strip between East and West Berlin, unreachable from either side, and in 1989 it became the backdrop for reunification. That is why Germans treat it as a national symbol rather than a photo stop, and why it shows up on the two-euro coin.",
+      "Come early in the morning or after dark, when the gate is floodlit and the tour buses have gone. Midday in summer means crowds, costumed performers and very little room to stand back for a picture.",
+      "Getting here is simple: Brandenburger Tor station sits directly underneath and serves both the U-Bahn, Berlin's subway, and the S-Bahn, the mostly above-ground commuter rail that covers the wider region. One ticket is valid on both, plus trams and buses. Around the square you will find embassies, the Hotel Adlon and a handful of cafés, and the district around it, Mitte, has the densest concentration of hotels in the city.",
     ],
   },
   "reichstag": {
@@ -24,8 +26,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Rundherum liegen das Bundeskanzleramt, der Tiergarten und das Brandenburger Tor in Gehweite. Der nahe Hauptbahnhof und der S-Bahnhof Brandenburger Tor machen die Anreise unkompliziert.",
     ],
     en: [
-      "The Reichstag is the seat of the German Bundestag and, thanks to the Norman Foster glass dome, also a viewpoint with panoramas over the government quarter. Visiting the dome is free but requires advance registration - best planned well before your trip.",
-      "The Chancellery, the Tiergarten and the Brandenburg Gate are all within walking distance. The nearby Hauptbahnhof and Brandenburger Tor S-Bahn station make getting there easy.",
+      "The Reichstag is the seat of the Bundestag, the German federal parliament, which makes it Berlin's rough equivalent of the US Capitol. What most visitors come for is the glass dome that Norman Foster added during the 1990s rebuild: a spiral ramp winds up the inside, and from the top you look out over the government quarter and, through the glass floor, down into the plenary chamber.",
+      "Visiting the dome is free, but you have to register online in advance and bring the same photo ID you registered with. Slots go fast in summer, so book this before you book anything else. The building itself dates from 1894, burned in 1933, sat as a shell through the division of the city, and only became the parliament again after reunification.",
+      "The Reichstag anchors the government quarter, a cluster of modern federal buildings along a bend in the Spree river. The Bundeskanzleramt, the chancellor's office, is a short walk west, and the eastern edge of the Tiergarten park starts right across the street.",
+      "For transit, Berlin Hauptbahnhof, the main train station, is roughly a 10-minute walk, and Brandenburger Tor station, served by both S-Bahn and U-Bahn, is closer still. Honestly, you will not need a train here: the gate, the memorial and Unter den Linden are all walkable from the front lawn.",
     ],
   },
   "museumsinsel": {
@@ -34,8 +38,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Die Insel liegt zwischen Lustgarten und Berliner Dom, fußläufig zu Unter den Linden und Hackescher Markt. S-Bahn (Hackescher Markt) und Tram bringen dich direkt hin.",
     ],
     en: [
-      "Museum Island gathers five world-class houses in a tight space and is a UNESCO World Heritage site. It pays to pick one or two museums in advance - seeing everything in a day is barely possible. Timed tickets help avoid queues.",
-      "The island lies between the Lustgarten and Berlin Cathedral, within walking distance of Unter den Linden and Hackescher Markt. S-Bahn (Hackescher Markt) and tram take you right there.",
+      "Museum Island is a UNESCO World Heritage site and puts five separate museums on one island in the Spree river: the Pergamonmuseum, the Neues Museum, the Altes Museum, the Alte Nationalgalerie and the Bode-Museum. Between them they cover ancient Egypt, classical antiquity, Byzantine art and 19th-century European painting. The complex was laid out in the 1800s as a deliberate answer to the Louvre and the British Museum.",
+      "Do not try to do all five in a day. Pick one or two, buy timed tickets online, and let the rest be a reason to come back. For a first visit the easiest choice is the Neues Museum, home of the Nefertiti bust, plus the Alte Nationalgalerie. Large parts of the Pergamonmuseum are closed for a long-running renovation, so check what is actually open before you plan around it.",
+      "One practical note that catches Americans out: most German museums close one day a week, usually Monday, and several stay open late one evening. Check the day you plan to go rather than assuming.",
+      "The island sits between the Lustgarten square and Berlin Cathedral, a few minutes on foot from Unter den Linden, the Humboldt Forum and the Hackescher Markt courtyards. The S-Bahn stops at Hackescher Markt and several tram lines run past the northern end, both about a five-minute walk from the entrances.",
     ],
   },
   "fernsehturm": {
@@ -44,8 +50,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Turm steht direkt am Alexanderplatz, wo alle U- und S-Bahn-Linien zusammenlaufen. Museumsinsel, Rotes Rathaus und Hackescher Markt sind von hier aus schnell zu Fuß erreicht.",
     ],
     en: [
-      "At 368 meters the TV Tower is the tallest building in Germany, and from the observation deck and revolving restaurant it offers the widest view over Berlin. On clear days you can see far into the surrounding region - timed tickets save waiting.",
-      "The tower stands right on Alexanderplatz, where every U- and S-Bahn line meets. Museum Island, the Rotes Rathaus and Hackescher Markt are quickly reached on foot from here.",
+      "At 1,207 feet (368 meters), the Fernsehturm, the TV Tower, is the tallest structure in Germany and the quickest way to make sense of how Berlin is put together. From the observation deck, and from the revolving restaurant one level above, you can see that the city has no single downtown: it is flat, wide and made of districts running off in every direction.",
+      "The tower went up in the late 1960s as a prestige project of East Germany, which is why it stands in what used to be East Berlin. Locals nicknamed the cross-shaped reflection that appears on the sphere in sunlight the Pope's Revenge. On a clear day the view runs well past the city limits into the surrounding state of Brandenburg.",
+      "Book a timed ticket if you can. Lines at the base build through the afternoon and the sunset slots sell out first. The elevator ride to the deck takes about 40 seconds.",
+      "The tower rises straight out of Alexanderplatz, where U-Bahn, S-Bahn, tram and regional trains all converge, so it is one of the easiest points in Berlin to reach. Museum Island, the Rotes Rathaus, the red-brick city hall that gives Berlin's government its nickname, and Hackescher Markt are each a 10- to 15-minute walk away.",
     ],
   },
   "checkpoint-charlie": {
@@ -54,8 +62,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Ort liegt zentral in Mitte, nahe der Friedrichstraße; die gleichnamigen U-Bahnhöfe (U6) sind wenige Schritte entfernt. Gut kombinierbar mit Gendarmenmarkt und Unter den Linden.",
     ],
     en: [
-      "Checkpoint Charlie was the best-known Cold War border crossing and today is an open-air exhibition in the middle of the city. To go deeper, the Mauermuseum is right next door and Wall documentation sites are nearby.",
-      "The site is central in Mitte, near Friedrichstraße; the U6 stations are a few steps away. It combines well with Gendarmenmarkt and Unter den Linden.",
+      "Checkpoint Charlie was the crossing point between the American and Soviet sectors of divided Berlin, and the one that foreign visitors, diplomats and Allied personnel were required to use. In October 1961, American and Soviet tanks stood muzzle to muzzle here for several days, the closest the Cold War came to shooting in Berlin. The name comes from the NATO phonetic alphabet: it was simply the third Allied checkpoint, after Alpha and Bravo.",
+      "Be clear about what you are looking at today. The guard house is a replica, the surroundings are commercial, and the men in uniform posing for photos have nothing to do with the historical site. The substance is in the exhibits: the Mauermuseum next door tells the escape stories in detail, and the open-air panels along the sidewalk lay out the timeline for free.",
+      "If you want the real thing rather than the replica, ride a few stops north to the Berlin Wall Memorial on Bernauer Straße, where an original section of the border strip, watchtower and all, has been preserved with the death strip intact. Many visitors do both in one afternoon.",
+      "The site is central in Mitte, on Friedrichstraße at the corner of Zimmerstraße. Kochstraße/Checkpoint Charlie station on the U6 subway line is a few steps away, and Gendarmenmarkt and Unter den Linden are both about a 10-minute walk north.",
     ],
   },
   "east-side-gallery": {
@@ -64,8 +74,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Die Galerie liegt in Friedrichshain, direkt am Spreeufer und nahe der Mercedes-Benz Arena. Warschauer Straße und Ostbahnhof (S-Bahn) sind wenige Minuten entfernt.",
     ],
     en: [
-      "The East Side Gallery, at around 1.3 kilometers, is the longest preserved stretch of the Berlin Wall and at the same time a continuous open-air gallery. The murals along the Spree tell the story of the fall of the Wall - a walk from the Oberbaum Bridge to Ostbahnhof is worth it.",
-      "The gallery is in Friedrichshain, right on the Spree riverside and near Mercedes-Benz Arena. Warschauer Straße and Ostbahnhof (S-Bahn) are a few minutes away.",
+      "The East Side Gallery is the longest surviving piece of the Berlin Wall, about 0.8 miles (1.3 km) of it, still standing along the Spree river in Friedrichshain. This is not a reconstruction or a memorial fence: it is the actual inner wall that ran along the eastern bank of the river. In 1990, months after the border opened, artists from more than 20 countries painted 105 murals on the eastern face, the side ordinary East Germans had never been allowed to approach.",
+      "The best-known images are all here, including Dmitri Vrubel's painting of the East German and Soviet leaders kissing and Birgit Kinder's Trabant car bursting through the concrete. Several murals have been repainted by their original artists after decades of weather, graffiti and souvenir chipping.",
+      "Walk it in one direction instead of doubling back. The stretch runs between the Oberbaumbrücke, the double-decker brick bridge that was itself a border crossing, and Ostbahnhof station. Mornings are the calmest; by afternoon the sidewalk fills up and it becomes hard to see the panels without other people in front of them.",
+      "The gallery sits next to the Mercedes-Benz Arena and a short walk from Warschauer Straße and Ostbahnhof, both on the S-Bahn. The neighborhood around it, especially the former RAW railway yards, is the center of Berlin's club scene, so the area stays busy long after dark and the hotels here skew young and design-led.",
     ],
   },
   "mauerpark": {
@@ -74,8 +86,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Park liegt an der Grenze von Prenzlauer Berg und Wedding; Tram (M10) und U-Bahn (U8 Bernauer Straße) bringen dich hin. Gut kombinierbar mit der Gedenkstätte Berliner Mauer an der Bernauer Straße.",
     ],
     en: [
-      "Mauerpark is Prenzlauer Berg's weekend living room: on Sundays it hosts a flea market, street music and the legendary Bearpit karaoke. People picnic, barbecue and play on the big meadow - very Berlin, and free.",
-      "The park sits on the border of Prenzlauer Berg and Wedding; tram (M10) and U-Bahn (U8 Bernauer Straße) take you there. It combines well with the Berlin Wall Memorial on Bernauer Straße.",
+      "Mauerpark means wall park, and the name is literal: the ground under it was the no-man's-land the Berlin Wall ran through until 1989. A painted section of the wall still stands along the western edge, now one of the few surfaces in the city where graffiti is legal, so it changes week to week.",
+      "On Sundays the park turns into the best free show in Berlin. A large flea market takes over one end, buskers spread across the lawn, and in the afternoon the Bearpit Karaoke session fills the stone amphitheater with a crowd in the thousands. Anyone can sign up to sing, and a good share of the audience is local rather than visiting.",
+      "The rest of the week it is an ordinary neighborhood park: barbecues, basketball, dogs and a slope that catches the evening sun. There are only a handful of food stands, so bring what you want to eat. Grilling is allowed only in the marked areas, a rule Berlin actually enforces.",
+      "The park straddles the border between Prenzlauer Berg and Wedding. Tram line M10 stops at the edge and Bernauer Straße station on the U8 subway line is a few minutes away, which also puts you at the Berlin Wall Memorial, the single best place in the city to understand how the border physically worked.",
     ],
   },
   "tiergarten": {
@@ -84,8 +98,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Park erstreckt sich zwischen Brandenburger Tor und Bahnhof Zoo; rundum liegen Reichstag, Schloss Bellevue und das Kulturforum. Mehrere S- und U-Bahnhöfe säumen die Ränder.",
     ],
     en: [
-      "The Großer Tiergarten is the green lung in the heart of Berlin - a sprawling park with lakes, meadows and shady avenues, ideal for a break between two sightseeing legs. The Victory Column at its center offers a fine panorama.",
-      "The park stretches between the Brandenburg Gate and Zoo station; around it lie the Reichstag, Bellevue Palace and the Kulturforum. Several S- and U-Bahn stations line the edges.",
+      "The Großer Tiergarten is Berlin's answer to Central Park: 520 acres (210 hectares) of woodland, meadows and small lakes right in the middle of the city. It began as a royal hunting ground, which is why the paths radiate out from a few grand intersections instead of following a grid, and it was replanted almost from scratch after Berliners cut the trees down for firewood in the winters right after World War II.",
+      "The Siegessäule, the Victory Column, stands at the center on a traffic circle, and you can climb the stairs inside for a view straight down four avenues at once. Elsewhere in the park are the Englischer Garten, a cluster of memorials, and the Café am Neuen See, a lakeside beer garden with rowboats for rent that is one of the most pleasant hours you can spend in Berlin on a warm afternoon.",
+      "The Tiergarten is the connective tissue of the center. It runs from the Brandenburg Gate in the east to Zoologischer Garten station in the west, with the Reichstag, Schloss Bellevue, the German president's residence, and the Kulturforum museum complex around its edges. Walking the full length takes roughly 50 minutes at an easy pace.",
+      "S-Bahn and U-Bahn stations line every side, so you can cut in or out wherever it suits your route. On summer weekends the lawns fill with families grilling, and the park is a genuinely useful way to break up a heavy sightseeing day rather than a destination you need to schedule.",
     ],
   },
   "kurfuerstendamm": {
@@ -94,8 +110,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Mehrere U-Bahnhöfe und der Bahnhof Zoo erschließen den Ku'damm; Hotels aller Klassen liegen direkt an oder nahe der Straße. Ideal für einen entspannten Nachmittag im Westen.",
     ],
     en: [
-      "The Kurfürstendamm is Berlin's tradition-rich shopping and strolling boulevard in City West. From KaDeWe to designer stores, cafés and cinemas, everything lines up along some three and a half kilometers - a stroll almost inevitably leads to the Memorial Church.",
-      "Several U-Bahn stations and Zoo station serve the Ku'damm; hotels of every class sit on or near the street. Ideal for a relaxed afternoon in the west.",
+      "The Kurfürstendamm, Ku'damm for short, is the main boulevard of what West Berliners simply call City West. Through the decades of division this was the commercial heart of the western half of the city, the shopping street that West Berlin built to prove a point, and it kept the role after 1989 as a calmer, more established counterweight to Mitte.",
+      "It runs about 2.2 miles (3.5 kilometers) and changes character along the way: international chains and department stores at the eastern end, designer boutiques, galleries and quieter cafés as you head west. The side streets, Fasanenstraße in particular, hold most of the small shops worth stopping for.",
+      "At the eastern end stands the Kaiser-Wilhelm-Gedächtniskirche, the Kaiser Wilhelm Memorial Church, whose bombed-out tower was deliberately left standing as a ruin after World War II and is still known locally as the hollow tooth. The KaDeWe department store is a couple of blocks further on, along Tauentzienstraße, which is the continuation of the same shopping axis.",
+      "Several U-Bahn stations serve the boulevard, and Zoologischer Garten handles S-Bahn and regional trains as well. Hotels at every price level sit on or just off the street, which makes City West a practical base if you want a residential neighborhood at night and a direct 15-minute ride into Mitte during the day.",
     ],
   },
   "gendarmenmarkt": {
@@ -104,8 +122,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Platz liegt zentral in Mitte, fußläufig zu Friedrichstraße, Unter den Linden und Checkpoint Charlie. Die U-Bahnhöfe Französische Straße, Hausvogteiplatz und Stadtmitte (U2/U6) sind nah.",
     ],
     en: [
-      "Gendarmenmarkt is considered by many the most beautiful square in Berlin: the concert hall and the German and French cathedrals form a harmonious ensemble. In Advent it turns into one of the city's most atmospheric Christmas markets.",
-      "The square is central in Mitte, within walking distance of Friedrichstraße, Unter den Linden and Checkpoint Charlie. The U-Bahn stations Französische Straße, Hausvogteiplatz and Stadtmitte (U2/U6) are close.",
+      "Plenty of Berliners will tell you Gendarmenmarkt is the most beautiful square in the city, and it is hard to argue. Three buildings frame it: the Konzerthaus concert hall in the middle, with the Deutscher Dom and the Französischer Dom facing each other across the open space. The proportions are the point, and the square works best simply as somewhere to sit for half an hour.",
+      "Despite the name, the two Dom buildings are not cathedrals. The French one was built for Berlin's Huguenot community, Protestant refugees from France who arrived in the late 1600s and made up a sizeable share of the city's population at the time. The matching domed towers were added later, purely so the square would be symmetrical.",
+      "There are classical concerts most evenings at the Konzerthaus, and restaurants and cafés on the surrounding streets. In December the square traditionally hosts one of the most atmospheric Christmas markets in Berlin, with roasted almonds, mulled wine and a lot of people packed between the two domes.",
+      "Gendarmenmarkt sits in central Mitte, a short walk from Friedrichstraße, Unter den Linden and Checkpoint Charlie. The nearest subway stations are Französische Straße, Hausvogteiplatz and Stadtmitte on the U2 and U6 lines. It is one of the easiest places in the center to fold into a walking day without adding a train ride.",
     ],
   },
   "potsdamer-platz": {
@@ -114,8 +134,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Platz ist über den gleichnamigen Regional- und S-Bahnhof bestens angebunden; Tiergarten, Kulturforum und das Mandala-Hotel liegen direkt nebenan. Ideal bei Regen dank überdachter Passagen.",
     ],
     en: [
-      "Potsdamer Platz stands for the new Berlin: completely rebuilt after the fall of the Wall, it brings cinema, theater, shopping and modern architecture together in one place. Remnants of the Berlin Wall and the red info box recall the divided past.",
-      "The square is well served by the regional and S-Bahn station of the same name; the Tiergarten, Kulturforum and the Mandala hotel are right next door. Great in the rain thanks to covered arcades.",
+      "Before World War II, Potsdamer Platz was one of the busiest intersections in Europe, the place where Berlin installed what is often called the continent's first traffic light. The war flattened it, and the Berlin Wall then ran straight through the empty space for 28 years. Almost everything you see today was built in the 1990s on what was, for a while, the largest construction site on the continent.",
+      "That history explains why the square looks the way it does: corporate, glassy and unapologetically new. The Sony Center sits under a tented roof, with towers by Renzo Piano and Helmut Jahn around it, plus cinemas, a shopping arcade and the theater that hosts the Berlinale, Berlin's international film festival, every February.",
+      "A few original segments of the Wall stand on the square itself, and the line of the border is marked in the pavement by a double row of cobblestones that runs for miles across the inner city. Following that line for a few blocks gives you a better sense of the division than any single monument does.",
+      "The station of the same name serves S-Bahn, U-Bahn and regional trains, making this one of the simplest points in Berlin to reach. The Tiergarten starts across the street, and the Kulturforum, with the Gemäldegalerie and the Berliner Philharmonie, is next door. The covered arcades also make Potsdamer Platz a dependable fallback on a rainy afternoon.",
     ],
   },
   "holocaust-mahnmal": {
@@ -124,8 +146,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Mahnmal liegt direkt südlich des Brandenburger Tors, fußläufig zum Tiergarten und Potsdamer Platz. Ein respektvoller Umgang ist selbstverständlich - es ist eine Gedenkstätte, kein Fotomotiv.",
     ],
     en: [
-      "The Memorial to the Murdered Jews of Europe consists of 2,711 stelae you walk through - a deliberately quiet, powerful place. The underground Information Center documents the victims and their stories; admission is free.",
-      "The memorial lies just south of the Brandenburg Gate, within walking distance of the Tiergarten and Potsdamer Platz. Respectful conduct goes without saying - it is a place of remembrance, not a photo backdrop.",
+      "The Memorial to the Murdered Jews of Europe, designed by the American architect Peter Eisenman and opened in 2005, covers a full city block with 2,711 concrete stelae of varying height. There is no set route and no explanatory sign on the field itself. You walk in, the ground drops away, the blocks rise over your head, and the traffic noise falls off. What it means is deliberately left to you.",
+      "Underneath the field is the Ort der Information, the Information Center, which supplies what the stelae withhold: family histories, last letters, and a room where the names of the victims are read aloud. Admission is free. Allow an hour, and expect it to be quiet.",
+      "This is a place of remembrance, not a photo backdrop. The foundation that runs the site asks visitors not to climb, jump between or picnic on the stelae, and staff will say so if you do. Berlin has a long-running debate about how people behave here; the simple version is to treat it the way you would a cemetery.",
+      "The memorial lies just south of the Brandenburg Gate, between the Tiergarten and Potsdamer Platz, so it sits naturally in the standard first-day walk through Mitte. Brandenburger Tor and Potsdamer Platz stations are both within about five minutes on foot.",
     ],
   },
   "alexanderplatz": {
@@ -134,8 +158,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Rund um den Platz gibt es Kaufhäuser und Shopping-Center; Museumsinsel, Rotes Rathaus und Hackescher Markt sind fußläufig. Ideal als zentrale Basis für Sightseeing.",
     ],
     en: [
-      "Alexanderplatz is Berlin's big transport and shopping hub in eastern Mitte - defined by the TV Tower, the World Clock and wide open spaces. U-Bahn, S-Bahn, tram and regional trains all meet here, making the Alex a practical starting point.",
-      "Department stores and shopping centers surround the square; Museum Island, the Rotes Rathaus and Hackescher Markt are within walking distance. Ideal as a central base for sightseeing.",
+      "Alexanderplatz, the Alex to locals, is not pretty and is not trying to be. It is the transit and shopping center of eastern Berlin, a wide socialist-era plaza that East Germany rebuilt in the 1960s and 70s around the base of the TV Tower. If your mental image of Berlin is the historic one, this square will surprise you; it is worth seeing precisely because it is the other Berlin.",
+      "Two things on the square are worth a look in their own right. The Weltzeituhr, the World Clock, is a rotating aluminum column showing the time in cities around the globe and the classic Berlin meeting spot, and the Brunnen der Völkerfreundschaft fountain stands next to it. Both date from the late 1960s and both are still in daily use as places to wait for someone.",
+      "For a visitor the real value here is connectivity. U-Bahn, S-Bahn, tram and regional trains all meet at Alexanderplatz, which means a hotel in this corner of Mitte puts nearly anything in the city within one ride. Department stores and a shopping mall sit directly on the square, and the airport express trains run from here as well.",
+      "On foot you are 10 to 15 minutes from Museum Island, the Rotes Rathaus and the courtyards at Hackescher Markt. The Nikolaiviertel, the small reconstructed quarter around Berlin's oldest church, is closer still, and it is the fastest way to get from concrete plaza to cobblestones in this city.",
     ],
   },
   "schloss-charlottenburg": {
@@ -144,8 +170,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Schloss liegt im Westen Charlottenburgs, erreichbar über U-Bahn und Bus; Ku'damm und KaDeWe sind ein kurzes Stück entfernt. Schön für einen ruhigeren Tag abseits der Mitte-Hektik.",
     ],
     en: [
-      "Charlottenburg Palace is Berlin's largest palace complex and a piece of Prussian history in the heart of City West. State rooms, the orangery and above all the sprawling baroque and landscape garden are worth half a day - the park is free to enter.",
-      "The palace sits in western Charlottenburg, reachable by U-Bahn and bus; the Ku'damm and KaDeWe are a short distance away. Lovely for a quieter day away from the bustle of Mitte.",
+      "Schloss Charlottenburg, Charlottenburg Palace, is the largest surviving royal palace in Berlin and the best place in the city to see how the Prussian court actually lived. It was begun in the 1690s as a summer residence for Sophie Charlotte, wife of the first king in Prussia, and kept expanding for the next hundred years as each ruler added a wing.",
+      "Inside, the highlights are the baroque state apartments in the old palace and the rococo rooms in the New Wing, including the Golden Gallery and the porcelain cabinet lined floor to ceiling with Chinese and Japanese pieces. The palace was badly damaged in World War II, so a lot of what you see is careful reconstruction, a point the audio guide makes openly.",
+      "The garden behind the palace is reason enough to come even if you skip the interiors. It was laid out as a formal French garden, later reworked in the English landscape style, and it is free to enter. The Belvedere teahouse and the mausoleum of Queen Luise stand among the trees, and in summer locals treat the lawns as a park rather than a monument.",
+      "The palace sits in the western part of Charlottenburg, reached by U-Bahn and bus, with the Ku'damm and KaDeWe a short ride away. Combined with the museum buildings directly across the street it makes a comfortable half day away from the crowds in Mitte, and it works well on a day when the weather is uncertain.",
     ],
   },
   "tempelhofer-feld": {
@@ -154,8 +182,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Feld liegt zwischen Neukölln, Kreuzberg und Tempelhof; mehrere U- und S-Bahnhöfe säumen die Ränder. Am schönsten zum Sonnenuntergang über der weiten Fläche.",
     ],
     en: [
-      "Tempelhofer Feld is the former Tempelhof airport, today a vast public open space. People cycle, skate and fly kites on the old runways; there are community gardens and plenty of room to breathe - one of Berlin's most unusual experiences, and free.",
-      "The field lies between Neukölln, Kreuzberg and Tempelhof; several U- and S-Bahn stations line the edges. At its best at sunset over the wide expanse.",
+      "Tempelhofer Feld is the former Tempelhof airport, shut down in 2008 and handed to the public as a park. Nothing was landscaped: the two runways, the taxiways and the painted markings are all still there. In a 2014 referendum Berliners voted to keep it that way and block construction on the field, which tells you something about how the city feels about open space.",
+      "The scale is what surprises people. At roughly 1.5 square miles (about 4 km²) it is larger than Central Park, and from the middle you can see a flat horizon in every direction, something that almost never happens inside a European city. People cycle, skate, run the runways, fly kites and land-sail across the old aprons. There are community gardens along one edge and a designated barbecue area.",
+      "This was the airport of the Berlin Airlift. In 1948 and 1949, after the Soviet Union cut off road and rail access to West Berlin, American and British aircraft landed here around the clock for nearly a year to keep the western half of the city supplied. The enormous curved terminal building along the western edge dates from the 1930s and can be seen on a guided tour.",
+      "The field has several entrances, each next to a station: Tempelhof and Paradestraße on the U6, Boddinstraße, Leinestraße and Hermannstraße on the U8, plus the S-Bahn ring at Tempelhof and Hermannstraße. It borders Neukölln, Kreuzberg and Tempelhof, so it adds easily to a day in any of those neighborhoods. Sunset over the runways is the standard local recommendation, and admission is free.",
     ],
   },
   "olympiastadion": {
@@ -164,8 +194,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Stadion liegt im Westen Charlottenburgs und ist über die U2 und S-Bahn (Olympiastadion) direkt angebunden. Gut kombinierbar mit einem Ausflug ins grüne West-Berlin.",
     ],
     en: [
-      "The 1936 Olympic Stadium is an impressive venue and today home to Hertha BSC as well as a stage for concerts and the German Cup final. Outside events, tours are available that combine architecture and history.",
-      "The stadium sits in western Charlottenburg and is directly served by the U2 and S-Bahn (Olympiastadion). It combines well with a trip into green West Berlin.",
+      "The Olympiastadion was built for the 1936 Summer Olympics, the games the Nazi regime staged as a propaganda showcase and the games where the American sprinter Jesse Owens won four gold medals. The stadium came through the war largely intact and was thoroughly modernized before the 2006 soccer World Cup, but the monumental stone exterior is original.",
+      "That combination makes a visit unusual. It is a working modern arena wrapped in a 1930s structure that the city chose to keep and explain rather than demolish. Guided tours cover both sides of that, including the locker rooms, the marathon gate and the bell tower with its view over the grounds and the Grunewald forest beyond.",
+      "It is the home ground of the soccer club Hertha BSC, hosts the German Cup final every year and doubles as a stadium concert venue. On match days the whole area is packed and the trains run full; outside events it is quiet and you can walk the grounds at your own pace.",
+      "The stadium has its own stations on the U2 subway line and on the S-Bahn, both called Olympiastadion, roughly 25 minutes from the center. It sits in far western Charlottenburg near the Grunewald and the Havel river, so it pairs naturally with a day out in green West Berlin rather than with the sights in Mitte.",
     ],
   },
   "berliner-dom": {
@@ -174,8 +206,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Dom liegt direkt gegenüber dem Humboldt Forum, fußläufig zu Museumsinsel, Unter den Linden und Alexanderplatz. S-Bahn (Hackescher Markt) und Tram halten in der Nähe.",
     ],
     en: [
-      "Berlin Cathedral on the Lustgarten is the city's largest church and a landmark of Museum Island. Climbing the dome rewards you with a panorama over Mitte and the Spree; inside, the Hohenzollern crypt and the great organ impress.",
-      "The cathedral faces the Humboldt Forum, within walking distance of Museum Island, Unter den Linden and Alexanderplatz. S-Bahn (Hackescher Markt) and tram stop nearby.",
+      "The Berliner Dom, Berlin Cathedral, is the largest church in the city, although the name oversells it: it has never been the seat of a bishop. It was built between 1894 and 1905 as the court church of the Hohenzollerns, the dynasty that ruled Prussia and then the German Empire, and the sheer bulk of it was meant to make exactly that point.",
+      "Inside, the Sauer organ with its more than 7,000 pipes fills the end of the nave, and the Hohenzollern crypt below holds around 90 sarcophagi of the family, one of the most important dynastic burial collections in Europe. The building was gutted by bombing in 1944 and took decades to restore, with the last work finishing well after reunification.",
+      "The climb to the dome walkway runs about 270 steps and gives you the best close-range view in Berlin: Museum Island directly below, the Spree, the Humboldt Forum and the TV Tower lined up in one direction. There is an admission charge for the interior, and services are open to anyone.",
+      "The cathedral stands on the Lustgarten, a large open lawn that doubles as a place for people to sit in summer, facing the Humboldt Forum, the rebuilt Berlin Palace that now houses museums. Museum Island, Unter den Linden and Alexanderplatz are all within a 10-minute walk, and the S-Bahn at Hackescher Markt plus several tram lines stop nearby.",
     ],
   },
   "kadewe": {
@@ -184,8 +218,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Das Haus liegt direkt am U-Bahnhof Wittenbergplatz (U1/U2/U3), wenige Minuten vom Ku'damm. Ideal für einen Shopping-Nachmittag oder eine Pause in der obersten Etage mit Blick über die City West.",
     ],
     en: [
-      "KaDeWe on Wittenbergplatz is the largest department store in continental Europe and an institution of City West. Most famous is the gourmet floor with its huge food and delicatessen selection - an experience even without buying anything.",
-      "The store sits right by Wittenbergplatz U-Bahn station (U1/U2/U3), minutes from the Ku'damm. Ideal for a shopping afternoon or a break on the top floor with views over City West.",
+      "KaDeWe is short for Kaufhaus des Westens, department store of the West. It opened in 1907, and during the division of the city it became the showcase store of the western half, the place East Berliners headed for first when the Wall opened in November 1989. It is still the largest department store in continental Europe.",
+      "The sixth floor is the reason to come even if you buy nothing at all. The gourmet floor is built around counters rather than aisles: oysters, charcuterie, cheese, a sushi bar, a champagne bar, and stands where you eat standing up next to whoever else stopped in. It is a food hall on a scale most American visitors will not have seen at home.",
+      "Above it, a glass-roofed top floor looks out over City West and works as a break in a shopping afternoon. The building has been renovating floor by floor for several years, so the exact layout shifts, but the food hall stays put.",
+      "The store sits directly at Wittenbergplatz station on the U1, U2 and U3 subway lines, a few minutes' walk from the Kurfürstendamm and the Memorial Church. One thing to plan around: German stores, KaDeWe included, are closed on Sundays. That is a national rule, not a decision by the shop, and it catches a lot of visitors out on a weekend trip.",
     ],
   },
   "muggelsee": {
@@ -194,8 +230,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der See liegt in Treptow-Köpenick, rund 40 Minuten mit S-Bahn (S3) und Bus vom Zentrum. Gut kombinierbar mit der historischen Köpenicker Altstadt und einer Schiffstour auf Spree und Dahme.",
     ],
     en: [
-      "The Müggelsee is Berlin's largest lake and the local recreation spot in the city's south-east. Swimming, sailing, stand-up paddling and shoreline walks are all on offer; the Müggelturm gives a fine view over lake and forests.",
-      "The lake lies in Treptow-Köpenick, around 40 minutes from the center by S-Bahn (S3) and bus. It combines well with Köpenick's historic old town and a boat tour on the Spree and Dahme.",
+      "The Müggelsee is the largest lake inside Berlin's city limits, roughly 3 square miles (about 7.4 km²) of open water in the far southeast. This is not a pond in a park. It is a proper lake with sailboats, passenger ferries, forest along the southern shore and public swimming beaches, and standing on the shore you would never guess you are still inside a capital city.",
+      "In summer Berliners come out here to swim, sail and paddle. There are Strandbäder, which is the German term for a supervised lake beach with changing rooms and a small entrance fee, along with free stretches of shoreline where people simply walk in. Shaded trails run around much of the water for anyone who would rather hike than swim.",
+      "On the hill above the southern shore stands the Müggelturm, a lookout tower from the early 1960s. The climb is short, and the view takes in the lake, the wooded Müggelberge hills and, on a clear day, the TV Tower back in the center of the city.",
+      "Getting here takes about 40 minutes from the center, S-Bahn line S3 plus a tram or bus. Combine it with the old town of Köpenick, a small historic center with a baroque palace on its own island, or with one of the boat tours that run on the Spree and Dahme rivers. It is a full day trip, not a stop you squeeze between two museums.",
     ],
   },
   "wannsee": {
@@ -204,8 +242,10 @@ export const attractionEditorial: AttractionEditorial = {
       "Der Wannsee liegt in Steglitz-Zehlendorf und ist über die S-Bahn (S1/S7) gut angebunden; von hier ist auch Potsdam schnell erreicht. Ideal für einen entspannten Natur- und Badetag abseits der Innenstadt.",
     ],
     en: [
-      "The Wannsee in the green south-west is Berlin's most popular summer spot by the water - the large Wannsee lido in particular draws many Berliners when the sun is out. Around it, the Grunewald, Peacock Island and the Glienicke Bridge invite walks and excursions.",
-      "The Wannsee lies in Steglitz-Zehlendorf and is well served by the S-Bahn (S1/S7); from here Potsdam is quickly reached too. Ideal for a relaxed day of nature and bathing away from the center.",
+      "Wannsee is Berlin's summer address, a broad bay of the Havel river in the leafy southwest of the city. The Strandbad Wannsee, a lakeside beach with its Bauhaus-era buildings from around 1930, has close to a mile of sand and counts as one of the largest inland beaches in Europe. On a hot weekend a noticeable share of Berlin is out there.",
+      "The area around it is green in every direction: the Grunewald forest to the north, the Pfaueninsel, Peacock Island, with its folly of a castle and free-roaming peacocks, and the Glienicker Brücke, the Glienicke Bridge, where the Cold War superpowers exchanged captured spies. The bridge is also the boundary with Potsdam, which is a different federal state entirely.",
+      "Ferries and tour boats leave from the Wannsee dock, including the route across the water to Potsdam and its Prussian palaces. That makes an easy half day from here rather than a trip back through the center first. Rowboats and stand-up paddleboards can be rented along the shore.",
+      "Wannsee station is on the S1 and S7 lines, roughly 30 to 40 minutes from Mitte, with buses onward to the beach and the island. The surrounding district, Steglitz-Zehlendorf, is quiet and residential, and it is worth an overnight only if a genuinely calm base matters more to you than a short walk to the sights.",
     ],
   },
 };

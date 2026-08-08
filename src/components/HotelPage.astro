@@ -263,6 +263,15 @@ const breadcrumbSchema = {
           </span>
           <h3 class="text-lg font-bold text-ink-900 mb-2">{district.name}</h3>
           <p class="text-sm text-ink-700 leading-relaxed mb-3">{district.vibe[locale]}</p>
+          {/* Kurze Einordnung fuer US-Leser: U-Bahn/S-Bahn tauchen in allen
+              Hoteltexten auf und werden dort nicht erklaert. */}
+          {locale === "en" && (
+            <p class="text-sm text-ink-600 leading-relaxed mb-3">
+              Getting around: the U-Bahn is Berlin's subway, the S-Bahn its
+              above-ground commuter rail. Both run on one ticket, and BER
+              airport is on the same network.
+            </p>
+          )}
           <a
             href={`${districtBase}/${district.slug}/`}
             class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:text-brand-800"

@@ -18,7 +18,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "Few addresses embody Berlin like the Adlon on Pariser Platz. The Brandenburg Gate, the Reichstag and Unter den Linden are right outside - sightseeing literally starts at the lobby door. If it is your first time in the capital and you want maximum centrality paired with grand-hotel service, this is the place.",
-      "The house has a spa with pool and the Lorenz Adlon Esszimmer, one of the city's most decorated restaurants. Transport is excellent: Brandenburger Tor S-Bahn station and Friedrichstraße station are a few minutes' walk, and BER airport is a direct S-Bahn ride away.",
+      "The property has a spa with pool and the Lorenz Adlon Esszimmer, one of the city's most decorated restaurants. Transport is excellent: Brandenburger Tor S-Bahn station and Friedrichstraße station are a few minutes' walk, and BER airport is a direct S-Bahn ride away.",
     ],
   },
   "hotel-de-rome": {
@@ -117,7 +117,7 @@ export const hotelEditorial: HotelEditorial = {
       "Vom Quartier am Alex erreichst du alle großen Sehenswürdigkeiten in Mitte zu Fuß oder in wenigen ÖPNV-Minuten. Restaurants und Nachtleben rund um den Hackeschen Markt sind nah.",
     ],
     en: [
-      "Hotel Indigo at Alexanderplatz is a boutique design hotel by IHG with locally inspired interiors - wall references and Berlin artists run through the house. A good pick for stylish city weekends.",
+      "Hotel Indigo at Alexanderplatz is a boutique design hotel by IHG with locally inspired interiors - wall references and Berlin artists run through the property. A good pick for stylish city weekends.",
       "From the quarter around the Alex you can reach all the major Mitte sights on foot or within a few minutes by public transport. Restaurants and nightlife around Hackescher Markt are close by.",
     ],
   },
@@ -130,7 +130,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Hotel Bristol on Kurfürstendamm is one of West Berlin's most tradition-rich grand hotels, welcoming guests since 1952. If you want Berlin's elegant, slightly quieter side - with Ku'damm shopping and classical culture - this is classic and central at once.",
-      "A pool, spa and the Bristol Bar are part of the house. Nearby Zoo station and several U-Bahn lines connect the whole city quickly; KaDeWe and the Memorial Church are within walking distance.",
+      "A pool, spa and the Bristol Bar are part of the hotel. Nearby Zoo station and several U-Bahn lines connect the whole city quickly; KaDeWe and the Memorial Church are within walking distance.",
     ],
   },
   "hotel-zoo-berlin": {
@@ -140,7 +140,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "Hotel Zoo on Kurfürstendamm pairs a restored 1891 period building with modern design and the stylish Grace rooftop bar. It is the design-led, photogenic address of City West - popular with couples and the style-conscious.",
-      "Its location between Olivaer and Adenauerplatz puts boutiques, cafés and the Ku'damm at your doorstep; Zoo station and several U-Bahn stops are close. A house with character rather than chain standard.",
+      "Its location between Olivaer and Adenauerplatz puts boutiques, cafés and the Ku'damm at your doorstep; Zoo station and several U-Bahn stops are close. A hotel with character rather than chain standard.",
     ],
   },
   "waldorf-astoria-berlin": {
@@ -170,7 +170,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "Designed by Berlin firm GRAFT, Hotel Q! is one of the city's most original design hotels: curved walls, bed and bath as a built unit, lots of oak. If you want architecture as part of the experience, this is exactly right.",
-      "Its location near the Ku'damm combines shopping and dining with good transit links. A spa is part of the house - a small, design-strong retreat in the heart of City West.",
+      "Its location near the Ku'damm combines shopping and dining with good transit links. A spa is part of the hotel - a small, design-strong retreat in the heart of City West.",
     ],
   },
   "hampton-by-hilton-city-west": {
@@ -190,7 +190,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The 25hours Hotel Bikini in the restored 1957 Bikinihaus is an experience in itself: the jungle-side rooms look straight into Berlin Zoo, and the rooftop Monkey Bar is one of the city's best-known viewpoints.",
-      "Right by Zoo station, the Ku'damm, KaDeWe and the Tiergarten are within walking distance. A playful, design-strong house for travelers who want Berlin from its creative side.",
+      "Right by Zoo station, the Ku'damm, KaDeWe and the Tiergarten are within walking distance. A playful, design-strong hotel for travelers who want Berlin from its creative side.",
     ],
   },
   "intercontinental-berlin": {
@@ -221,7 +221,7 @@ export const hotelEditorial: HotelEditorial = {
       "East Side Gallery, Spreeufer und das Nachtleben rund um die Warschauer Straße sind fußläufig; S- und U-Bahn bringen dich in Minuten nach Mitte. Perfekt für Reisende, die das echte, junge Berlin suchen.",
     ],
     en: [
-      "The owner-run Michelberger opposite Mercedes-Benz Arena is a Berlin design icon - converted from an old industrial building into a distinctive house with a rooftop sauna and seasonal restaurant. It embodies creative, unpolished Friedrichshain.",
+      "The owner-run Michelberger opposite Mercedes-Benz Arena is a Berlin design icon - converted from an old industrial building into a distinctive hotel with a rooftop sauna and seasonal restaurant. It embodies creative, unpolished Friedrichshain.",
       "The East Side Gallery, the Spree riverside and the nightlife around Warschauer Straße are within walking distance; S- and U-Bahn reach Mitte in minutes. Perfect for travelers seeking the real, young Berlin.",
     ],
   },
@@ -231,8 +231,8 @@ export const hotelEditorial: HotelEditorial = {
       "Die Lage an der Grenze von Friedrichshain und Kreuzberg verbindet Spree-Atmosphäre mit kurzem Weg zu Clubs und Galerien. Ein Haus für Kreative, Musikfans und alle, die das Besondere wollen.",
     ],
     en: [
-      "The nhow Berlin right on the Spree is Europe's first music hotel - with two in-house recording studios guests can rent and interiors by Karim Rashid. Hot-pink, playful and with a glass facade facing the Oberbaum Bridge, it is a genuine statement house.",
-      "Its location on the border of Friedrichshain and Kreuzberg blends Spree atmosphere with a short hop to clubs and galleries. A house for creatives, music fans and anyone after something different.",
+      "The nhow Berlin right on the Spree is Europe's first music hotel - with two in-house recording studios guests can rent and interiors by Karim Rashid. Hot-pink, playful and with a glass facade facing the Oberbaum Bridge, it is a genuine statement hotel.",
+      "Its location on the border of Friedrichshain and Kreuzberg blends Spree atmosphere with a short hop to clubs and galleries. A hotel for creatives, music fans and anyone after something different.",
     ],
   },
   "orania-berlin": {
@@ -251,7 +251,7 @@ export const hotelEditorial: HotelEditorial = {
       "Konzerte in der Arena, Clubs an der Warschauer Straße und das Spreeufer sind fußläufig; der Ostbahnhof verbindet dich mit Regional- und S-Bahn. Ideal für junge Reisende und Familien mit kleinem Budget.",
     ],
     en: [
-      "The Schulz Hotel sits right by the East Side Gallery between Ostbahnhof and Mercedes-Benz Arena - few houses are closer to the longest preserved stretch of the Wall. Fresh rooms, fair prices and family rooms make it a budget-savvy Friedrichshain base.",
+      "The Schulz Hotel sits right by the East Side Gallery between Ostbahnhof and Mercedes-Benz Arena - few properties are closer to the longest preserved stretch of the Wall. Fresh rooms, fair prices and family rooms make it a budget-savvy Friedrichshain base.",
       "Concerts at the arena, clubs on Warschauer Straße and the Spree riverside are within walking distance; Ostbahnhof links you to regional and S-Bahn services. Ideal for young travelers and families on a smaller budget.",
     ],
   },
@@ -284,7 +284,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Living Hotel Weißensee offers fully equipped studios and apartments with kitchenette and its own park grounds by Lake Weißensee in northern Berlin. For longer stays and families it is a quiet, practical and affordable base.",
-      "Lake Weißensee with its lido and walking paths is right outside; tram and bus reach Prenzlauer Berg and the center. Ideal if you value space, quiet and self-catering.",
+      "Lake Weißensee with its swim beach and walking paths is right outside; tram and bus reach Prenzlauer Berg and the center. Ideal if you value space, quiet and self-catering.",
     ],
   },
   "ackselhaus-blue-home": {
@@ -306,7 +306,7 @@ export const hotelEditorial: HotelEditorial = {
     ],
     en: [
       "The Estrel Berlin on Sonnenallee, with 1,125 rooms, is by its own account Germany's largest convention, entertainment and hotel center. Its own show stage, 15 conference rooms and direct Spree access make it the address for events and groups.",
-      "The nearby S-Bahn (Sonnenallee) quickly reaches Kreuzberg and Mitte. For trade-fair, congress and event visitors the house offers ample capacity at a fair price.",
+      "The nearby S-Bahn (Sonnenallee) quickly reaches Kreuzberg and Mitte. For trade-fair, congress and event visitors the hotel offers ample capacity at a fair price.",
     ],
   },
   "huettenpalast": {
@@ -315,7 +315,7 @@ export const hotelEditorial: HotelEditorial = {
       "Mitten im lebendigen Neukölln gelegen, sind Maybachufer, Bars und Galerien fußläufig; U7 und U8 verbinden dich mit dem Rest der Stadt. Für neugierige, junge Reisende ein Erlebnis zum fairen Preis.",
     ],
     en: [
-      "The Hüttenpalast in Neukölln is one of Berlin's most unusual houses: in a former vacuum-cleaner factory you sleep in vintage caravans and self-built huts under a covered hall - plus classic rooms and a café in the courtyard.",
+      "The Hüttenpalast in Neukölln is one of Berlin's most unusual hotels: in a former vacuum-cleaner factory you sleep in vintage travel trailers and self-built cabins under a covered hall - plus classic rooms and a café in the courtyard.",
       "In the heart of lively Neukölln, the Maybachufer, bars and galleries are within walking distance; U7 and U8 connect you to the rest of the city. For curious, young travelers, an experience at a fair price.",
     ],
   },
@@ -349,7 +349,7 @@ export const hotelEditorial: HotelEditorial = {
       "Wer Erholung über kurze Sightseeing-Wege stellt, findet hier Ruhe zwischen Wald und Villen. Grunewald, Wannsee und Potsdam sind nah; ins Zentrum sind es rund 30 bis 40 Minuten.",
     ],
     en: [
-      "The Patrick Hellmann Schlosshotel in the Grunewald occupies the 1914 Pannwitz Palace - the interiors were designed by Karl Lagerfeld in 1996. Highly discreet, with parkland and its own restaurant, it is the quiet luxury address in Berlin's green south-west.",
+      "The Patrick Hellmann Schlosshotel in the Grunewald occupies the 1914 Pannwitz Palace - the interiors were designed by Karl Lagerfeld in 1996. Highly discreet, with parkland and its own restaurant, it is the quiet luxury address in Berlin's green southwest.",
       "If you value recovery over short sightseeing distances, you will find calm here between woods and villas. The Grunewald, Wannsee and Potsdam are close; the center is around 30 to 40 minutes away.",
     ],
   },
@@ -359,7 +359,7 @@ export const hotelEditorial: HotelEditorial = {
       "Dahlem mit seinen Museen, Villen und dem Botanischen Garten liegt vor der Tür; über die U3 erreichst du die City West in gut 20 Minuten. Ideal für Ruhesuchende und Geschäftsreisende mit Tagungsbezug.",
     ],
     en: [
-      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house - also open to regular travelers. Its quiet, academically minded atmosphere is a genuine insider tip in the green south-west.",
+      "The Harnack-Haus in Dahlem was built in 1929 as a conference house and today serves as the Max Planck Society's guest and conference house - also open to regular travelers. Its quiet, academically minded atmosphere is a genuine insider tip in the green southwest.",
       "Dahlem with its museums, villas and the Botanic Garden is on the doorstep; the U3 reaches City West in just over 20 minutes. Ideal for quiet-seekers and business travelers with a conference connection.",
     ],
   },
@@ -371,8 +371,8 @@ export const hotelEditorial: HotelEditorial = {
       "Baden, Paddeln und Spaziergänge starten direkt am Haus; der Müggelturm und die Köpenicker Altstadt sind nah. Ins Zentrum sind es rund 40 Minuten mit S-Bahn und Bus - dafür bekommst du Natur, die kein zentraler Bezirk bietet.",
     ],
     en: [
-      "The Hotel Müggelsee sits with 174 rooms right on Berlin's largest lake - with its own lido, a large spa and a restaurant with lake views. It is the classic wellness and weekend spot where even Berliners like to take time out.",
-      "Swimming, paddling and walks start right at the house; the Müggelturm and Köpenick's old town are close. The center is around 40 minutes by S-Bahn and bus - in return you get nature no central district can offer.",
+      "The Hotel Müggelsee sits with 174 rooms right on Berlin's largest lake - with its own lake beach, a large spa and a restaurant with lake views. It is the classic wellness and weekend spot where even Berliners like to take time out.",
+      "Swimming, paddling and walks start right at the hotel; the Müggelturm and Köpenick's old town are close. The center is around 40 minutes by S-Bahn and bus - in return you get nature no central district can offer.",
     ],
   },
 

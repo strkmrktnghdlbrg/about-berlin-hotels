@@ -1,0 +1,581 @@
+---
+/**
+ * EN-only Pillar-Seite fuer den US-Suchintent "where to stay in berlin" (880/Mon).
+ * ------------------------------------------------------------------------------
+ * Kein DE-Pendant -> BaseLayout bewusst OHNE `alternatePath`, damit gar keine
+ * hreflang-Tags gesetzt werden.
+ *
+ * Alle Fakten stammen ausschliesslich aus den vorhandenen Datenquellen:
+ *   - Lage/Charakter/Zielgruppe: src/data/districts.ts (intro.en, vibe.en, bestFor.en, highlights.en, position, region)
+ *   - Anbindung/Preisniveau:     src/data/district-editorial.ts (en)
+ *   - Preis-Anker:               src/data/hotels.ts (priceFrom) + src/data/categories.ts (priceHint.en)
+ * Keine erfundenen Preise, Fahrzeiten, Entfernungen oder Bewertungen.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import JsonLd from "../../components/JsonLd.astro";
+import Stay22Map from "../../components/Stay22Map.astro";
+import DistrictCard from "../../components/DistrictCard.astro";
+import { districts, getDistrict } from "../../data/districts";
+import { districtEditorial } from "../../data/district-editorial";
+import { getHotelsByDistrict } from "../../data/hotels";
+import { categories } from "../../data/categories";
+import { districtArticlesEn } from "../../data/articles/en/districts";
+import { site } from "../../data/site";
+
+const locale = "en" as const;
+
+const title = "Where to Stay in Berlin: Best Neighborhoods by Traveler | About Berlin Hotels";
+const description =
+  "Where to stay in Berlin: all 12 districts compared for first-timers, nightlife, families, budget and business trips, with transit links and what a room costs.";
+
+// --- Ableitungen aus den Datenquellen (nur lesen) ---------------------------
+type Row = {
+  slug: string;
+  name: string;
+  position: string;
+  region: string;
+  bestFor: string;
+  hotelCount: number;
+  cheapest: number | null;
+};
+
+const positionLabel: Record<string, string> = {
+  central: "Dead center",
+  inner: "Inner city",
+  outer: "Outer city",
+};
+const regionLabel: Record<string, string> = {
+  mitte: "Center",
+  west: "West",
+  ost: "East",
+  nord: "North",
+  süd: "South",
+};
+const positionOrder: Record<string, number> = { central: 0, inner: 1, outer: 2 };
+
+const ordered = [...districts].sort(
+  (a, b) => positionOrder[a.position] - positionOrder[b.position],
+);
+
+const rows: Row[] = ordered.map((d) => {
+  const hs = getHotelsByDistrict(d.slug);
+  return {
+    slug: d.slug,
+    name: d.name,
+    position: positionLabel[d.position],
+    region: regionLabel[d.region],
+    bestFor: d.bestFor.en.slice(0, 3).join(", "),
+    hotelCount: hs.length,
+    cheapest: hs.length ? Math.min(...hs.map((h) => h.priceFrom)) : null,
+  };
+});
+
+/** Slug des passenden EN-Langtextes unter /en/guides/<slug>/ (falls vorhanden). */
+const guideSlug = (districtSlug: string) =>
+  districtArticlesEn.find((a) => a.districtSlug === districtSlug)?.slug ?? null;
+
+/** Kurzantworten oben. Die Bezirkszuordnung folgt bestFor/bestDistricts aus den Daten. */
+const picks: { label: string; slugs: string[]; why: string }[] = [
+  {
+    label: "First time in Berlin",
+    slugs: ["mitte"],
+    why: "The Brandenburger Tor, Museumsinsel, the Reichstag and Unter den Linden are all walkable from one hotel. You spend your days sightseeing instead of commuting.",
+  },
+  {
+    label: "Nightlife and bars",
+    slugs: ["friedrichshain-kreuzberg", "neukoelln"],
+    why: "Clubs, riverside bars and street food are at street level, not a cab ride away. Ask for a courtyard-facing room if you plan on sleeping.",
+  },
+  {
+    label: "Traveling with kids",
+    slugs: ["pankow", "reinickendorf"],
+    why: "Playgrounds, parks and apartment-style rooms with a kitchen. Both are calm, green and still connected to the center by subway.",
+  },
+  {
+    label: "Tight budget",
+    slugs: ["marzahn-hellersdorf", "spandau", "neukoelln"],
+    why: "The lowest nightly rates in the city, in exchange for a longer ride into Mitte. Berlin's transit network makes that trade workable.",
+  },
+  {
+    label: "Business and conventions",
+    slugs: ["charlottenburg-wilmersdorf", "mitte", "lichtenberg"],
+    why: "The ExpoCenter City convention grounds sit in Charlottenburg, and Mitte holds the meeting-ready houses. Lichtenberg is the value play.",
+  },
+  {
+    label: "Quiet, green and slow",
+    slugs: ["steglitz-zehlendorf", "treptow-koepenick"],
+    why: "Forest, lakes and spa hotels instead of club nights. Best if you have more than a long weekend.",
+  },
+];
+
+// --- Structured data -------------------------------------------------------
+const pageUrl = new URL(Astro.url.pathname, site.baseUrl).toString();
+
+const faq = [
+  {
+    q: "Where should I stay in Berlin for a first visit?",
+    a: "Mitte. It is the historic and geographic center, and the Brandenburger Tor, Museumsinsel, the Reichstag, Unter den Linden and Gendarmenmarkt can all be covered on foot in a single day. It also has the highest hotel density in the city, so there is something at almost every price point.",
+  },
+  {
+    q: "What is the difference between a Berlin district and a Berlin neighborhood?",
+    a: "Berlin has 12 official districts, called Bezirke, and they are large. The names most visitors know are smaller quarters inside them: Prenzlauer Berg is part of Pankow, and Kreuzberg is one half of the district Friedrichshain-Kreuzberg. Hotels are listed by district, so start there and narrow down from the district page.",
+  },
+  {
+    q: "Which Berlin district is cheapest?",
+    a: "Marzahn-Hellersdorf sits at the bottom end of the Berlin scale, with rooms in our selection starting around 49 euros a night. Spandau and Neukölln are the other budget-friendly picks, both consistently below the inner-city average.",
+  },
+  {
+    q: "Is it a problem to stay outside the center?",
+    a: "Only if your trip is short. Tempelhof-Schöneberg reaches the center in 10 to 15 minutes and Charlottenburg in about 15, so those barely count as outside. Steglitz-Zehlendorf runs 25 to 35 minutes, Marzahn-Hellersdorf around 30, and Treptow-Köpenick can reach 40 minutes to Mitte. That is reasonable for a longer stay and awkward for two nights with a packed schedule.",
+  },
+  {
+    q: "Which Berlin neighborhood is best with kids?",
+    a: "Pankow, especially the Prenzlauer Berg quarter, is the most family-friendly area inside Berlin's inner ring, with playgrounds, weekly markets and aparthotels with kitchens. Reinickendorf and Treptow-Köpenick are the other strong options, both green and near water.",
+  },
+  {
+    q: "Do I need a rental car in Berlin?",
+    a: "No. Every district in this guide is reachable on the S-Bahn commuter rail and the U-Bahn subway, and the central districts are walkable on top of that. A car mainly pays off in the outer districts, where parking is far easier than downtown.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: "en-US",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/en/", site.baseUrl).toString() },
+    { "@type": "ListItem", position: 2, name: "Where to Stay in Berlin", item: pageUrl },
+  ],
+};
+
+const districtListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Berlin neighborhoods to stay in",
+  inLanguage: "en-US",
+  itemListElement: ordered.map((d, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: d.name,
+    url: new URL(`/en/districts/${d.slug}/`, site.baseUrl).toString(),
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <JsonLd data={faqSchema} />
+  <JsonLd data={breadcrumbSchema} />
+  <JsonLd data={districtListSchema} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden gradient-spree text-white">
+    <div class="absolute inset-0 opacity-10" aria-hidden="true">
+      <svg class="absolute -right-20 -top-20 h-96 w-96" viewBox="0 0 200 200">
+        <pattern id="grid-wts" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" stroke-width="0.5"/>
+        </pattern>
+        <rect width="200" height="200" fill="url(#grid-wts)"/>
+      </svg>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
+      <nav class="flex items-center gap-2 text-xs text-white/80 mb-6">
+        <a href="/en/" class="hover:text-white">Home</a>
+        <span>›</span>
+        <span class="text-white">Where to Stay in Berlin</span>
+      </nav>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold text-white uppercase tracking-widest mb-5">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-200"></span>
+        Neighborhood guide · 12 districts
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-5 leading-[1.05] max-w-4xl">
+        Where to Stay in Berlin
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-3xl text-balance">
+        Berlin is spread out, and the district you book decides how much of your trip you spend
+        on a train. This guide compares all 12 official districts by location, character, transit
+        and price, so you can pick one in about five minutes.
+      </p>
+
+      <div class="mt-8 rounded-2xl bg-white/12 backdrop-blur-sm border border-white/25 p-5 sm:p-6 max-w-3xl">
+        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-100 block mb-2">
+          The short answer
+        </span>
+        <p class="text-lg sm:text-xl font-semibold leading-relaxed">
+          First time in Berlin? Stay in Mitte. Everything on the standard sightseeing list is
+          walkable from there, and it has more hotels than any other district.
+        </p>
+        <p class="text-sm text-white/90 leading-relaxed mt-3">
+          Want nightlife instead of monuments, or a lower nightly rate? Keep reading. The next
+          section sorts the other 11 districts by what kind of trip you are taking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK PICKS -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Pick by trip type
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          The best Berlin neighborhood for the trip you are taking
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          There is no single best area in Berlin, only the right one for your itinerary. Six
+          common cases, with the districts that fit them.
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {picks.map((p) => (
+          <div class="rounded-2xl border border-ink-100 bg-white p-6 flex flex-col">
+            <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-3 block">
+              {p.label}
+            </span>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {p.slugs.map((s) => {
+                const d = getDistrict(s);
+                return d ? (
+                  <a
+                    href={`/en/districts/${d.slug}/`}
+                    class="inline-block rounded-lg bg-brand-50 border border-brand-100 px-3 py-1 text-sm font-semibold text-brand-700 hover:border-brand-300"
+                  >
+                    {d.name}
+                  </a>
+                ) : null;
+              })}
+            </div>
+            <p class="text-ink-700 leading-relaxed text-sm">{p.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          All 12 side by side
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          Berlin districts compared
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          Sorted from the center outward. The price column shows the lowest nightly rate among
+          the hotels we list in that district, not a city-wide average.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-ink-100 bg-white">
+        <table class="w-full min-w-[42rem] text-left text-sm">
+          <thead class="bg-ink-50 text-ink-700">
+            <tr>
+              <th scope="col" class="px-4 py-3 font-bold">Neighborhood</th>
+              <th scope="col" class="px-4 py-3 font-bold">Where it sits</th>
+              <th scope="col" class="px-4 py-3 font-bold">Best for</th>
+              <th scope="col" class="px-4 py-3 font-bold whitespace-nowrap">Hotels listed</th>
+              <th scope="col" class="px-4 py-3 font-bold whitespace-nowrap">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr class="border-t border-ink-100 align-top">
+                <th scope="row" class="px-4 py-3 font-semibold text-ink-900 whitespace-nowrap">
+                  <a href={`/en/districts/${r.slug}/`} class="hover:text-brand-700">{r.name}</a>
+                </th>
+                <td class="px-4 py-3 text-ink-600 whitespace-nowrap">{r.position} · {r.region}</td>
+                <td class="px-4 py-3 text-ink-700">{r.bestFor}</td>
+                <td class="px-4 py-3 text-ink-600">{r.hotelCount > 0 ? r.hotelCount : "none yet"}</td>
+                <td class="px-4 py-3 font-semibold text-ink-900 whitespace-nowrap">
+                  {r.cheapest !== null ? `€${r.cheapest}` : "n/a"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-xs text-ink-500 mt-4 max-w-3xl leading-relaxed">
+        Rates are the starting prices of the properties in our editorial selection and move with
+        season, weekday and events. Live availability is in the map and on each hotel page.
+      </p>
+    </div>
+  </section>
+
+  <!-- DISTRICT BY DISTRICT -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          District by district
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          What each Berlin neighborhood is actually like
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          Same order as the table: the central districts first, then the inner ring, then the
+          outer ones. Each entry covers the feel of the area, how you get downtown and roughly
+          what it costs.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        {ordered.map((d) => {
+          const hs = getHotelsByDistrict(d.slug);
+          const cheapest = hs.length ? Math.min(...hs.map((h) => h.priceFrom)) : null;
+          const editorial = districtEditorial[d.slug];
+          const gs = guideSlug(d.slug);
+          return (
+            <article class="border-b border-ink-100 pb-12 last:border-0 last:pb-0">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-100 px-2.5 py-0.5 text-[10px] font-bold text-brand-700 uppercase tracking-wider">
+                  <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+                  {positionLabel[d.position]} · {regionLabel[d.region]}
+                </span>
+                {cheapest !== null && (
+                  <span class="text-xs text-ink-500 font-medium">
+                    Our picks from €{cheapest} a night
+                  </span>
+                )}
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 mb-4">
+                {d.name}
+              </h3>
+
+              <div class="space-y-4 text-lg text-ink-700 leading-relaxed">
+                <p>{d.intro.en}</p>
+                {editorial && editorial.en.map((para) => <p>{para}</p>)}
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                {d.highlights.en.slice(0, 5).map((h) => (
+                  <span class="inline-block rounded-md bg-ink-50 px-2.5 py-1 text-xs font-medium text-ink-600">
+                    {h}
+                  </span>
+                ))}
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={`/en/districts/${d.slug}/`}
+                  class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700"
+                >
+                  Hotels in {d.name}
+                </a>
+                {gs && (
+                  <a
+                    href={`/en/guides/${gs}/`}
+                    class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700"
+                  >
+                    Full {d.name} guide
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE ORIENTATION -->
+  <section class="py-14 sm:py-16 bg-ink-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Budget check
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          What a Berlin hotel costs by style
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          Prices are in euros per night for two people, the way European hotels quote them. Use
+          them as a floor, not a promise: trade shows, the Berlinale and summer weekends push
+          rates up, and the districts named below are where each style is thickest on the ground.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-ink-100 bg-white">
+        <table class="w-full min-w-[38rem] text-left text-sm">
+          <thead class="bg-ink-50 text-ink-700">
+            <tr>
+              <th scope="col" class="px-4 py-3 font-bold">Hotel style</th>
+              <th scope="col" class="px-4 py-3 font-bold whitespace-nowrap">Starting at</th>
+              <th scope="col" class="px-4 py-3 font-bold">Strongest in these neighborhoods</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories.map((c) => (
+              <tr class="border-t border-ink-100 align-top">
+                <th scope="row" class="px-4 py-3 font-semibold text-ink-900 whitespace-nowrap">
+                  <a href={`/en/categories/${c.slugEn}/`} class="hover:text-brand-700">
+                    {c.name.en}
+                  </a>
+                </th>
+                <td class="px-4 py-3 font-semibold text-ink-900 whitespace-nowrap">
+                  {c.priceHint.en}
+                </td>
+                <td class="px-4 py-3 text-ink-700">
+                  {c.bestDistricts
+                    .map((s) => getDistrict(s)?.name)
+                    .filter(Boolean)
+                    .join(", ")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Interactive map
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          Compare Berlin neighborhoods on the map
+        </h2>
+        <p class="text-ink-600 leading-relaxed mt-3">
+          Pan across the city to see how the districts line up against each other, with live
+          availability and pricing from Booking.com.
+        </p>
+      </div>
+      <Stay22Map
+        lat={52.52}
+        lng={13.405}
+        zoom={12}
+        height="620px"
+        title="Hotels across Berlin on the map"
+      />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-8">
+        Where to stay in Berlin: common questions
+      </h2>
+      <div class="space-y-4">
+        {faq.map((f) => (
+          <details class="group rounded-2xl border border-ink-100 bg-white p-5 sm:p-6">
+            <summary class="cursor-pointer list-none font-bold text-ink-900 flex items-start justify-between gap-4">
+              <span>{f.q}</span>
+              <span class="mt-1 shrink-0 text-brand-600 transition-transform group-open:rotate-180">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-ink-700 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Keep planning
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
+          Next steps for your Berlin trip
+        </h2>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <a
+          href="/en/hotels/"
+          class="rounded-2xl border border-ink-100 bg-white p-6 hover:border-brand-200 hover:shadow-lg transition-all"
+        >
+          <h3 class="text-lg font-bold text-ink-900 mb-2">Hotels in Berlin</h3>
+          <p class="text-sm text-ink-600 leading-relaxed">
+            Every property in our selection, from the grand houses on Pariser Platz to budget
+            rooms in the east.
+          </p>
+        </a>
+        <a
+          href="/en/districts/"
+          class="rounded-2xl border border-ink-100 bg-white p-6 hover:border-brand-200 hover:shadow-lg transition-all"
+        >
+          <h3 class="text-lg font-bold text-ink-900 mb-2">All 12 neighborhoods</h3>
+          <p class="text-sm text-ink-600 leading-relaxed">
+            The district overview, grouped by where each one sits in the city.
+          </p>
+        </a>
+        <a
+          href="/en/things-to-do-in-berlin/"
+          class="rounded-2xl border border-ink-100 bg-white p-6 hover:border-brand-200 hover:shadow-lg transition-all"
+        >
+          <h3 class="text-lg font-bold text-ink-900 mb-2">Things to do in Berlin</h3>
+          <p class="text-sm text-ink-600 leading-relaxed">
+            The landmarks, museums and parks worth building your days around.
+          </p>
+        </a>
+        <a
+          href="/en/itineraries/3-days-in-berlin/"
+          class="rounded-2xl border border-ink-100 bg-white p-6 hover:border-brand-200 hover:shadow-lg transition-all"
+        >
+          <h3 class="text-lg font-bold text-ink-900 mb-2">3 days in Berlin</h3>
+          <p class="text-sm text-ink-600 leading-relaxed">
+            A day-by-day plan that assumes you booked one of the central districts.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRICT CARDS -->
+  <section class="py-14 sm:py-16 surface-soft">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+            Start browsing
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+            The four most central districts
+          </h2>
+        </div>
+        <a
+          href="/en/districts/"
+          class="inline-flex items-center gap-1 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-700 hover:border-brand-300 hover:text-brand-700"
+        >
+          All 12 neighborhoods
+          <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {ordered.slice(0, 4).map((d) => <DistrictCard district={d} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

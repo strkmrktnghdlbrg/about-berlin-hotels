@@ -8,8 +8,9 @@ export async function getStaticPaths() {
 }
 
 const { category } = Astro.props;
-const title = `${category.name.en} in Berlin - About Berlin Hotels`;
-const description = category.intro.en.slice(0, 155);
+const title = `${category.name.en} in Berlin, Germany | About Berlin Hotels`;
+// Intro plus Preisanker: das Preisband kommt aus categories.ts, nichts geraten.
+const description = `${category.intro.en} ${category.priceHint.en}.`.slice(0, 158);
 ---
 
 <BaseLayout

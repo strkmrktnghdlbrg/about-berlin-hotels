@@ -49,7 +49,7 @@ export const categories: Category[] = [
     },
     description: {
       de: "Boutique Hotels sind das Gegenstück zur Kette: 20–80 Zimmer, alle individuell, oft in Altbauten oder umgebauten Industriegebäuden. Friedrichshain-Kreuzberg ist das Boutique-Mekka, aber auch Mitte und Prenzlauer Berg haben hervorragende Häuser.",
-      en: "Boutique hotels are the chain antidote: 20–80 rooms, all individual, often in period buildings or converted industrial spaces. Friedrichshain-Kreuzberg is the boutique mecca, but Mitte and Prenzlauer Berg also have outstanding houses.",
+      en: "Boutique hotels are the chain antidote: 20–80 rooms, all individual, often in period buildings or converted industrial spaces. Friedrichshain-Kreuzberg is the boutique mecca, but Mitte and Prenzlauer Berg also have outstanding hotels.",
     },
     bestDistricts: ["friedrichshain-kreuzberg", "mitte", "pankow"],
     color: "indigo",
@@ -103,7 +103,7 @@ export const categories: Category[] = [
     },
     description: {
       de: "Charmante Hotels haben eines gemeinsam: Sie sind keine Kette. Kleine Häuser mit Geschichte, oft seit Generationen inhabergeführt. Charlottenburg, Wilmersdorf und Steglitz-Zehlendorf haben besonders viele dieser Häuser.",
-      en: "Charming hotels share one thing: they are not chains. Small houses with history, often run by the same family for generations. Charlottenburg, Wilmersdorf and Steglitz-Zehlendorf have especially many of these.",
+      en: "Charming hotels share one thing: they are not chains. Small hotels with history, often run by the same family for generations. Charlottenburg, Wilmersdorf and Steglitz-Zehlendorf have especially many of these.",
     },
     bestDistricts: ["charlottenburg-wilmersdorf", "steglitz-zehlendorf", "pankow"],
     color: "azure",
@@ -157,7 +157,7 @@ export const categories: Category[] = [
     },
     description: {
       de: "Viele Hotels - vor allem Business- und Mittelklasse-Häuser - bieten einen Shuttle-Service zu BER, zum Messegelände oder zum Hauptbahnhof. Besonders praktisch bei früher An- oder später Abreise.",
-      en: "Many hotels - especially business and mid-range houses - offer a shuttle service to BER, the trade fair grounds or Hauptbahnhof. Particularly useful for early arrivals or late departures.",
+      en: "Many hotels - especially business and mid-range properties - offer a shuttle service to BER, the trade fair grounds or Hauptbahnhof. Particularly useful for early arrivals or late departures.",
     },
     bestDistricts: ["mitte", "charlottenburg-wilmersdorf", "treptow-koepenick"],
     color: "indigo",
@@ -171,11 +171,11 @@ export const categories: Category[] = [
     priceHint: { de: "ab 160 €/Nacht", en: "from €160/night" },
     intro: {
       de: "Architektonisch durchkomponierte Häuser - Berlin ist seit den 2000ern eine Design-Hotel-Hauptstadt.",
-      en: "Architecturally composed houses - Berlin has been a design hotel capital since the 2000s.",
+      en: "Architecturally composed properties - Berlin has been a design hotel capital since the 2000s.",
     },
     description: {
       de: "Designhotels denken jedes Detail mit: Möbel, Licht, Texturen, oft eigene Bar und Restaurant. Mitte und Friedrichshain führen - Häuser wie Michelberger, nhow, Casa Camper, Soho House.",
-      en: "Design hotels consider every detail: furniture, lighting, textures, often their own bar and restaurant. Mitte and Friedrichshain lead - houses like Michelberger, nhow, Casa Camper, Soho House.",
+      en: "Design hotels consider every detail: furniture, lighting, textures, often their own bar and restaurant. Mitte and Friedrichshain lead - hotels like Michelberger, nhow, Casa Camper, Soho House.",
     },
     bestDistricts: ["mitte", "friedrichshain-kreuzberg"],
     color: "azure",

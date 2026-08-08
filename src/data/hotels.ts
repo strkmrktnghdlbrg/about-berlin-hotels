@@ -566,7 +566,7 @@ export const hotels: Hotel[] = [
     bookingUrl: "https://www.booking.com/hotel/de/orania-berlin.de.html",
     shortDesc: {
       de: "5-Sterne Boutique-Haus am Oranienplatz mit Live-Konzerten.",
-      en: "Five-star boutique house on Oranienplatz with live concerts.",
+      en: "Five-star boutique hotel on Oranienplatz with live concerts.",
     },
     description: {
       de: "Restauriertes Gründerzeit-Gebäude in Kreuzberg. Restaurant Orania mit drei-Kontinente-Küche, Live-Musik im Salon-Kreuzberg, persönlicher Concierge-Service.",
@@ -638,7 +638,7 @@ export const hotels: Hotel[] = [
     bookingUrl: "https://www.booking.com/hotel/de/myers-berlin.de.html",
     shortDesc: {
       de: "Gründerzeit-Boutique-Haus nahe Kollwitzplatz mit eigenem Garten.",
-      en: "Period boutique house near Kollwitzplatz with its own garden.",
+      en: "Period boutique hotel near Kollwitzplatz with its own garden.",
     },
     description: {
       de: "Restauriertes Gründerzeit-Gebäude im Herzen von Prenzlauer Berg, inhabergeführt. Frühstücksraum, kleiner Garten, ruhige Wohnstraße.",
@@ -732,11 +732,11 @@ export const hotels: Hotel[] = [
     bookingUrl: "https://www.booking.com/hotel/de/huttenpalast.de.html",
     shortDesc: {
       de: "Übernachten im Wohnwagen - in einer alten Fabrikhalle in Neukölln.",
-      en: "Sleep in a vintage caravan - inside a former Neukölln factory.",
+      en: "Sleep in a vintage travel trailer, parked inside a former Neukölln factory.",
     },
     description: {
       de: "In einer ehemaligen Staubsauger-Fabrik in der Hobrechtstraße. Alte Wohnwagen und selbstgebaute Hütten dienen als Zimmer in einer überdachten Halle. Klassische Hotelzimmer ebenfalls vorhanden, Café im Hof.",
-      en: "In a former vacuum-cleaner factory on Hobrechtstraße. Vintage caravans and self-built huts serve as rooms inside a covered hall. Classic hotel rooms also available, café in the courtyard.",
+      en: "In a former vacuum-cleaner factory on Hobrechtstraße. Vintage travel trailers and self-built cabins serve as rooms inside a covered hall. Classic hotel rooms also available, café in the courtyard.",
     },
     highlights: {
       de: ["Wohnwagen-Zimmer", "Café im Hof", "Einzigartiges Konzept"],
@@ -855,15 +855,15 @@ export const hotels: Hotel[] = [
     bookingUrl: "https://www.booking.com/hotel/de/dolceberlinmuggelsee.de.html",
     shortDesc: {
       de: "Großes Seehotel direkt am Müggelsee mit Spa und eigenem Strandbad.",
-      en: "Large lakeside hotel right on Lake Müggelsee with spa and own lido.",
+      en: "Large lakeside hotel right on Lake Müggelsee with a spa and its own lake beach.",
     },
     description: {
       de: "Mit 174 Zimmern direkt am Berliner Müggelsee. Eigenes Strandbad, großer Spa-Bereich, Restaurant mit Seeblick. Beliebter Wochenend-Wellness-Spot der Berliner.",
-      en: "With 174 rooms right on Berlin's Müggelsee. Own lido, large spa, restaurant with lake view. A popular weekend wellness spot for Berliners.",
+      en: "With 174 rooms right on Berlin's Müggelsee. Own lake beach, large spa, restaurant with lake view. A popular weekend wellness spot for Berliners.",
     },
     highlights: {
       de: ["Eigenes Strandbad", "Großer Spa", "Seeblick"],
-      en: ["Own lido", "Large spa", "Lake view"],
+      en: ["Own lake beach", "Large spa", "Lake view"],
     },
     featured: true,
   },

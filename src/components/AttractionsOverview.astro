@@ -23,16 +23,43 @@ const typeLabel = {
 
 <OverviewHero
   locale={locale}
-  eyebrow={{ de: "Was sehen in Berlin?", en: "What to see in Berlin?" }}
+  eyebrow={{ de: "Was sehen in Berlin?", en: "Things to do in Berlin" }}
   title={{
     de: "Die wichtigsten Berliner Sehenswürdigkeiten",
-    en: "Berlin's most important attractions",
+    en: "Berlin Attractions: the 20 Sights Worth Your Time",
   }}
   subtitle={{
     de: "Plane deine Berlin-Reise rund um die Top-Sehenswürdigkeiten - und finde Hotels in direkter Nähe.",
-    en: "Plan your Berlin trip around the top sights - and find hotels right nearby.",
+    en: "Every Berlin attraction here is grouped by what it actually is, so you can build a day around one part of the city instead of crisscrossing it. Each one links to the hotels nearby.",
   }}
 />
+
+{locale === "en" && (
+  <section class="pt-12 sm:pt-14">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-7">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Start here
+        </span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-900 mb-3">
+          First trip to Berlin? Read the full guide to things to do in Berlin
+        </h2>
+        <p class="text-ink-700 leading-relaxed mb-4">
+          The list below is the complete inventory. If you would rather have the sights sorted
+          into a plan, with an honest read on which ones deserve a morning and which take
+          15 minutes, the pillar guide walks you through it and tells you how many days Berlin
+          really needs.
+        </p>
+        <a
+          href="/en/things-to-do-in-berlin/"
+          class="inline-flex items-center gap-1.5 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-800 transition-colors"
+        >
+          Things to Do in Berlin: the full guide →
+        </a>
+      </div>
+    </div>
+  </section>
+)}
 
 <section class="py-14 sm:py-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">

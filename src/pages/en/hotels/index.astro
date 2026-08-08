@@ -15,11 +15,25 @@ const byDistrict = districts
     items: hotels.filter((h) => h.district === d.slug),
   }))
   .filter((g) => g.items.length > 0);
+
+// Preisbaender direkt aus den Daten, damit im Text nichts erfunden wird.
+const prices = hotels.map((h) => h.priceFrom);
+const priceMin = Math.min(...prices);
+const priceMax = Math.max(...prices);
+
+// Preisbaender fuer die US-Orientierung: Zaehlungen kommen aus priceFrom,
+// es wird nichts geschaetzt und nichts in Dollar umgerechnet.
+const priceBands = [
+  { label: "Under €100", count: prices.filter((p) => p < 100).length, note: "budget chains, hostels with private rooms and simple properties out along the U-Bahn" },
+  { label: "€100 to €180", count: prices.filter((p) => p >= 100 && p < 180).length, note: "the broad middle: three- and four-star properties, aparthotels, most boutique addresses" },
+  { label: "€180 to €300", count: prices.filter((p) => p >= 180 && p < 300).length, note: "upscale design hotels and the softer end of the five-star bracket" },
+  { label: "€300 and up", count: prices.filter((p) => p >= 300).length, note: "the grand hotels: Adlon, Hotel de Rome, Waldorf Astoria, Regent" },
+].filter((b) => b.count > 0);
 ---
 
 <BaseLayout
-  title="Hotels in Berlin - curated picks across 12 districts"
-  description="Over 35 editorially curated hotels in Berlin: luxury in Mitte, boutique in Friedrichshain-Kreuzberg, design hotels in Charlottenburg. With live prices and maps per district."
+  title="Hotels in Berlin, Germany: Where to Stay by District and Style"
+  description={`${hotels.length} hotels in Berlin, Germany, picked by hand and sorted by district and style. Rooms from €${priceMin} to €${priceMax} a night, with maps and honest write-ups.`}
   locale={locale}
   alternatePath="/hotels/"
 >
@@ -33,16 +47,83 @@ const byDistrict = districts
 
       <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-5">
         <span class="h-1.5 w-1.5 rounded-full bg-brand-200 animate-pulse"></span>
-        {hotels.length} hotels · 12 districts
+        {hotels.length} hotels · {districts.length} districts
       </span>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6 leading-[1.05]">
-        Hotels in Berlin - by district and style
+        Hotels in Berlin, Germany
       </h1>
       <p class="text-lg sm:text-xl text-brand-50/95 leading-relaxed max-w-3xl text-balance">
-        From the Adlon at Brandenburg Gate to boutique houses in
-        Friedrichshain - editorially curated, with maps, ratings and
-        honest descriptions per district.
+        Berlin is split into twelve very different districts, called Bezirke,
+        and the one you book in shapes the whole trip. Here are {hotels.length} hotels in
+        Berlin, Germany, sorted by district and by style: grand old names on
+        Pariser Platz, converted factories in Friedrichshain, family
+        apartments in Prenzlauer Berg, plain and cheap rooms out on the
+        U-Bahn lines.
       </p>
+    </div>
+  </section>
+
+  <!-- US-Orientierung: was ein amerikanischer Leser vor der Buchung wissen
+       will und in den deutschen Daten nicht erklaert wird. Nur Angaben, die
+       durch hotels.ts / category-editorial.ts gedeckt sind. -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance mb-6">
+        Booking a Berlin hotel from the US: what to know first
+      </h2>
+      <div class="space-y-4 text-lg text-ink-700 leading-relaxed">
+        <p>
+          Berlin is not laid out like an American city. There is no single
+          downtown. The government quarter, the big museums and the grand
+          hotels sit in Mitte, but the restaurants, bars and galleries most
+          visitors come for are spread across Friedrichshain-Kreuzberg,
+          Prenzlauer Berg, Neukölln and Schöneberg, all of them a short ride
+          apart. Almost every address on this page is within a few minutes
+          of a U-Bahn stop (the subway) or an S-Bahn stop (the above-ground
+          commuter rail), and both run on the same ticket.
+        </p>
+        <p>
+          Every rate on this site is the lowest nightly starting price we
+          track for that property, quoted in euros. We do not convert them to
+          dollars, because any figure we printed would be stale by the time
+          you booked. Use your card's rate on the day, and expect the amount
+          on your statement to land a little off the number on the booking
+          page.
+        </p>
+      </div>
+
+      <dl class="mt-8 grid gap-4 sm:grid-cols-2">
+        {priceBands.map((band) => (
+          <div class="rounded-2xl border border-ink-100 bg-white p-5">
+            <dt class="flex items-baseline justify-between gap-3 mb-1">
+              <span class="text-base font-bold text-ink-900">{band.label}</span>
+              <span class="text-xs font-semibold text-brand-700 whitespace-nowrap">
+                {band.count} {band.count === 1 ? "hotel" : "hotels"}
+              </span>
+            </dt>
+            <dd class="text-sm text-ink-600 leading-relaxed">{band.note}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 space-y-4 text-lg text-ink-700 leading-relaxed">
+        <p>
+          Two line items trip up most first-time visitors. Breakfast is usually a separate
+          charge in Berlin rather than something the rate includes, and it is
+          rarely worth it: there is a good bakery or café on nearly every
+          block, and it costs less. Berlin also levies a city tax on
+          overnight stays, calculated as a share of the room rate, so the
+          total at checkout can sit slightly above the rate you booked.
+          Guests traveling on business can be exempt under certain
+          conditions, so check the current rules if that applies to you.
+        </p>
+        <p>
+          The rest is a question of neighborhood. Pick the district first and
+          the hotel second: our {byDistrict.length} district sections below
+          run through every property we cover, and each district page
+          explains who that part of Berlin actually suits.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -60,7 +141,7 @@ const byDistrict = districts
           Interactive map
         </span>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 text-balance">
-          All Berlin hotels on the map
+          Every hotel in Berlin, Germany, on one map
         </h2>
       </div>
       <Stay22Map lat={52.52} lng={13.405} zoom={12} height="620px" title="Hotels in Berlin" />
@@ -92,7 +173,7 @@ const byDistrict = districts
           By district
         </span>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
-          All hotels by Berlin district
+          Hotels in Berlin, Germany, district by district
         </h2>
       </div>
 

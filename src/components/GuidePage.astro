@@ -173,7 +173,9 @@ const breadcrumbSchema = {
                 <div class="text-xs font-bold text-brand-700 uppercase tracking-widest">
                   {meta[locale]}
                 </div>
-                <div class="text-sm font-semibold text-ink-900 mt-1">{slot.time}</div>
+                <div class="text-sm font-semibold text-ink-900 mt-1">
+                  {locale === "en" && slot.timeEn ? slot.timeEn : slot.time}
+                </div>
               </div>
 
               <div>

@@ -17,7 +17,7 @@ export const categoryEditorial: CategoryEditorial = {
       "Preislich ist Berlin im europäischen Vergleich immer noch moderat, aber saisonabhängig: Messewochen, Berlinale und die Wochen vor Weihnachten heben die Raten deutlich an. Wochenenden im Januar und Februar sind traditionell die günstigsten Termine für ein Haus der Spitzenklasse.",
     ],
     en: [
-      "Berlin's luxury hotels differ from one another more than in most capitals: the houses on Pariser Platz and Gendarmenmarkt play the classic grand-hotel card, while City West properties lean towards design and understatement. If spa, pool and an in-house restaurant matter to you, check before booking - not every five-star house in Berlin has all three.",
+      "Berlin's luxury hotels differ from one another more than in most capitals: the properties on Pariser Platz and Gendarmenmarkt play the classic grand-hotel card, while City West properties lean toward design and understatement. If spa, pool and an in-house restaurant matter to you, check before booking - not every five-star hotel in Berlin has all three.",
       "By European standards Berlin is still moderately priced, but strongly seasonal: fair weeks, the Berlinale and the run-up to Christmas lift rates sharply. Weekends in January and February are traditionally the cheapest dates for a top-tier property.",
     ],
   },
@@ -27,8 +27,8 @@ export const categoryEditorial: CategoryEditorial = {
       "Bei kleinen Häusern lohnt sich der Blick auf die Details, die Ketten standardisiert liefern: Rezeption rund um die Uhr, Aufzug, Klimaanlage und Frühstückszeiten am Wochenende. Wer damit leben kann, bekommt in Friedrichshain-Kreuzberg, Mitte und Prenzlauer Berg deutlich mehr Charakter für den gleichen Preis.",
     ],
     en: [
-      "Boutique hotels in Berlin are rarely new builds - the interesting ones sit in period buildings, former factories, substations or breweries. That is exactly the appeal and the catch: room sizes and layouts can differ considerably within the same house.",
-      "With small properties it pays to check the details chains standardise: 24-hour reception, lift, air conditioning and weekend breakfast times. If you can live with that, Friedrichshain-Kreuzberg, Mitte and Prenzlauer Berg give you noticeably more character for the same money.",
+      "Boutique hotels in Berlin are rarely new builds - the interesting ones sit in period buildings, former factories, substations or breweries. That is exactly the appeal and the catch: room sizes and layouts can differ considerably within the same hotel.",
+      "With small properties it pays to check the details chains standardize: 24-hour reception, elevator, air conditioning and weekend breakfast times. If you can live with that, Friedrichshain-Kreuzberg, Mitte and Prenzlauer Berg give you noticeably more character for the same money.",
     ],
   },
   familienhotels: {
@@ -37,7 +37,7 @@ export const categoryEditorial: CategoryEditorial = {
       "Praktisch sind Bezirke mit Parks und Spielplätzen in Gehweite - Prenzlauer Berg, Tempelhof-Schöneberg und Charlottenburg-Wilmersdorf sind hier stark. Bei mehr als drei Nächten lohnt der Vergleich mit einem Apartment: Küche und Waschmaschine sparen im Berliner Alltag mehr, als der Aufpreis kostet.",
     ],
     en: [
-      "Family-friendly in Berlin mostly means enough space and a quiet address with a short transit connection. Family rooms and extra beds are most reliably available in chain hotels; smaller boutique houses often have only one or two suitable rooms per floor.",
+      "Family-friendly in Berlin mostly means enough space and a quiet address with a short transit connection. Family rooms and extra beds are most reliably available in chain hotels; smaller boutique hotels often have only one or two suitable rooms per floor.",
       "Districts with parks and playgrounds within walking distance help - Prenzlauer Berg, Tempelhof-Schöneberg and Charlottenburg-Wilmersdorf are strong here. Beyond three nights it is worth comparing with an apartment: a kitchen and washing machine usually save more than the price difference costs.",
     ],
   },
@@ -47,8 +47,8 @@ export const categoryEditorial: CategoryEditorial = {
       "Vor der Buchung lohnt sich der Blick auf zwei Posten, die den Preis nachträglich verschieben: das Frühstück und die Stadtverträglichkeitsabgabe (City Tax). Wer ohne Frühstück bucht, fährt in Berlin fast immer besser - Cafés gibt es in jedem Kiez, oft günstiger und deutlich besser.",
     ],
     en: [
-      "Cheap in Berlin works three ways: budget chains on the main traffic axes, hostels with private rooms, and properties in the outer districts. All three are tightly costed - the difference is almost always travel time to the centre, not room quality.",
-      "Before booking, check the two items that shift the price afterwards: breakfast and the city tax. Skipping hotel breakfast is almost always the better deal in Berlin - there are cafés in every neighbourhood, usually cheaper and considerably better.",
+      "Cheap in Berlin works three ways: budget chains on the main traffic axes, hostels with private rooms, and properties in the outer districts. All three are tightly costed - the difference is almost always travel time to the center, not room quality.",
+      "Before booking, check the two items that move the price after the fact: breakfast and the city tax. Skipping hotel breakfast is almost always the better deal in Berlin - there are cafés in every neighborhood, usually cheaper and considerably better.",
     ],
   },
   "charmante-hotels": {
@@ -57,8 +57,8 @@ export const categoryEditorial: CategoryEditorial = {
       "Wer hier bucht, sollte Erwartungen an Standardisierung zurückschrauben: Die Rezeption ist nachts nicht immer besetzt, der Aufzug fehlt manchmal ganz. Dafür sind die Zimmer selten austauschbar und das Personal kennt die Nachbarschaft besser als jede App.",
     ],
     en: [
-      "Charm is hard to measure but easy to bound: small houses with their own signature, often family-run, frequently in period buildings with stucco, a courtyard or a garden. In Berlin such addresses sit mostly off the main axes - in the side streets of Prenzlauer Berg, Schöneberg and Charlottenburg.",
-      "Book here with lower expectations of standardisation: reception is not always staffed at night, and sometimes there is no lift at all. In exchange the rooms are rarely interchangeable and the staff know the neighbourhood better than any app.",
+      "Charm is hard to measure but easy to bound: small hotels with their own signature, often family-run, frequently in period buildings with stucco, a courtyard or a garden. In Berlin such addresses sit mostly off the main axes - in the side streets of Prenzlauer Berg, Schöneberg and Charlottenburg.",
+      "Book here with lower expectations of standardization: reception is not always staffed at night, and sometimes there is no elevator at all. In exchange the rooms are rarely interchangeable and the staff know the neighborhood better than any app.",
     ],
   },
   "business-hotels": {
@@ -67,7 +67,7 @@ export const categoryEditorial: CategoryEditorial = {
       "Während der großen Messen (ITB, IFA, Fruit Logistica, Grüne Woche) verdoppeln sich die Raten in Messenähe regelmäßig. Wer früh bucht oder auf Häuser an der U7 in Spandau und Tempelhof-Schöneberg ausweicht, zahlt bei kaum längerer Fahrzeit deutlich weniger.",
     ],
     en: [
-      "For business travel in Berlin the connection matters more than the address. The Messe is in Charlottenburg, the government quarter in Mitte, and the large tech and startup offices spread across Mitte, Kreuzberg and Friedrichshain - a house with a direct U-Bahn link almost always beats the more central but poorly connected alternative.",
+      "For business travel in Berlin the connection matters more than the address. The Messe is in Charlottenburg, the government quarter in Mitte, and the large tech and startup offices spread across Mitte, Kreuzberg and Friedrichshain - a hotel with a direct U-Bahn link almost always beats the more central but poorly connected alternative.",
       "During the big fairs (ITB, IFA, Fruit Logistica, Grüne Woche) rates near the fairground routinely double. Booking early or moving to properties on the U7 in Spandau and Tempelhof-Schöneberg costs noticeably less for barely more travel time.",
     ],
   },
@@ -78,7 +78,7 @@ export const categoryEditorial: CategoryEditorial = {
     ],
     en: [
       "Berlin is not a wellness destination in the Alpine sense - spa areas here usually belong to city hotels and are correspondingly compact. If you expect a pool and sauna, read the description carefully: in the city, \"wellness area\" often means sauna plus gym, not a swimming pool.",
-      "The houses with a full spa cluster in Mitte and City West. It is also worth looking beyond the hotel: the large public thermal baths and the lakes in the south-west are the better alternative to a hotel pool for many guests.",
+      "The hotels with a full spa cluster in Mitte and City West. It is also worth looking beyond the hotel: the large public thermal baths and the lakes in the southwest are the better alternative to a hotel pool for many guests.",
     ],
   },
   "hotels-mit-shuttle": {
@@ -87,7 +87,7 @@ export const categoryEditorial: CategoryEditorial = {
       "Wichtig ist die Rückfrage vor der Buchung: Viele Häuser bieten den Shuttle nur zu festen Zeiten, gegen Aufpreis oder mit Voranmeldung am Vorabend. Als Alternative fährt der Flughafenexpress FEX vom Hauptbahnhof in rund 30 Minuten zum Terminal - für die meisten Gäste die zuverlässigere Variante.",
     ],
     en: [
-      "A hotel shuttle in Berlin matters mainly for early departures from BER. The airport sits in the south of the city and the drive from the centre takes 40 to 60 minutes depending on traffic - for flights before 8am, a house with a transfer or near the airport is the lower-stress option.",
+      "A hotel shuttle in Berlin matters mainly for early departures from BER. The airport sits in the south of the city and the drive from the center takes 40 to 60 minutes depending on traffic - for flights before 8am, a hotel with a transfer or near the airport is the lower-stress option.",
       "Ask before booking: many properties run the shuttle only at fixed times, for a surcharge, or with sign-up the evening before. As an alternative, the FEX airport express runs from Hauptbahnhof to the terminal in around 30 minutes - the more reliable choice for most guests.",
     ],
   },

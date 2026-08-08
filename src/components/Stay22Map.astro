@@ -12,8 +12,11 @@
  * Maincolor aus affiliate.ts (Brand-Hex ohne #).
  */
 import { affiliate, stay22Enabled } from "../data/affiliate";
+import type { Locale } from "../data/site";
 
 type Props = {
+  /** Sprache der Umgebungsseite. Ohne Angabe aus dem Pfad abgeleitet (/en/ → en). */
+  locale?: Locale;
   /** Optional: vorkonfiguriertes Embed aus dem Stay22-Dashboard. Vorrang vor Parameter-URL. */
   embedId?: string;
   /** Karten-Zentrum lat. Default: Berlin-Mitte 52.52. */
@@ -38,10 +41,15 @@ const {
   lng = 13.405,
   zoom = 13,
   height = "560px",
-  title = "Hotels auf der Karte",
   disclosure = true,
   currency = "EUR",
 } = Astro.props;
+
+// Ohne explizites locale-Prop aus der URL ableiten: die Karte wird aus DE- wie
+// EN-Seiten heraus gerendert, sonst laeuft die deutsche Disclosure in /en/ mit.
+const locale: Locale = Astro.props.locale ?? (Astro.url.pathname.startsWith("/en/") ? "en" : "de");
+const isDe = locale === "de";
+const { title = isDe ? "Hotels auf der Karte" : "Hotels on the map" } = Astro.props;
 
 let embedUrl: string | undefined;
 if (embedId) {
@@ -86,7 +94,9 @@ const osmStaticUrl = `https://staticmap.openstreetmap.de/staticmap.php?center=${
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white text-xs">
-        Statische Übersichtskarte. Live-Hotelpreise erscheinen, sobald Stay22 konfiguriert ist.
+        {isDe
+          ? "Statische Übersichtskarte. Live-Hotelpreise erscheinen, sobald Stay22 konfiguriert ist."
+          : "Static overview map. Live hotel prices appear as soon as Stay22 is configured."}
       </div>
     </div>
   )}
@@ -94,6 +104,8 @@ const osmStaticUrl = `https://staticmap.openstreetmap.de/staticmap.php?center=${
 
 {disclosure && (
   <p class="mt-3 text-xs text-ink-500 leading-relaxed">
-    * Sponsored - Buchung läuft über Booking.com via Stay22-Affiliate. Du zahlst keinen Cent extra.
+    {isDe
+      ? "* Sponsored - Buchung läuft über Booking.com via Stay22-Affiliate. Du zahlst keinen Cent extra."
+      : "* Sponsored - bookings run through Booking.com via the Stay22 affiliate programme. You don't pay a cent extra."}
   </p>
 )}

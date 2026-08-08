@@ -16,20 +16,20 @@ export const themeArticlesEn: Article[] = [
   // ───────────────────────── LUXURY ─────────────────────────
   {
     slug: "luxus-hotels-berlin",
-    title: "The best luxury hotels in Berlin: five-star houses at a glance",
+    title: "The best luxury hotels in Berlin: five-star stays at a glance",
     description:
-      "Luxury hotels in Berlin: the best five-star houses with spa, concierge and a starred restaurant - from the Adlon by the Brandenburg Gate to the Waldorf Astoria.",
+      "Luxury hotels in Berlin: the best five-star properties with spa, concierge and a starred restaurant - from the Adlon by the Brandenburg Gate to the Waldorf Astoria.",
     kicker: "Hotel category · Luxury",
     intro: [
       "Berlin plays in the top league of luxury hotels: the Adlon, Waldorf Astoria, Hotel de Rome and the Mandala offer five-star comfort, spas, round-the-clock concierge and in some cases starred kitchens. Most sit by the Brandenburg Gate, on Gendarmenmarkt or on Kurfürstendamm.",
-      "Here are the city's verified luxury houses - with what really sets them apart: location, history and the extras that make a stay memorable.",
+      "Here are the city's verified luxury hotels - with what really sets them apart: location, history and the extras that make a stay memorable.",
     ],
     takeaways: [
       "The greatest concentration of luxury is in Mitte and City West (Charlottenburg).",
-      "Top houses combine a spa, an in-house restaurant and 24/7 concierge.",
+      "Top hotels combine a spa, an in-house restaurant and 24/7 concierge.",
       "Five-star rooms in Berlin mostly start at around €290–480 per night.",
     ],
-    bestFor: ["Luxury travellers", "Special occasions", "Couples", "Connoisseurs"],
+    bestFor: ["Luxury travelers", "Special occasions", "Couples", "Connoisseurs"],
     categorySlug: "luxushotels",
     hotels: [
       "hotel-adlon-kempinski",
@@ -43,12 +43,12 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Which is the best luxury hotel in Berlin?",
         body: [
-          "The most symbolic address is the Hotel Adlon Kempinski right by the Brandenburg Gate - the city's grande dame with spa, pool and the Lorenz Adlon Esszimmer (two Michelin stars). If you want modern luxury with height, book the Waldorf Astoria in the 32-storey glass tower by the Gedächtniskirche.",
+          "The most symbolic address is the Hotel Adlon Kempinski right by the Brandenburg Gate - the city's grande dame with spa, pool and the Lorenz Adlon Esszimmer (two Michelin stars). If you want modern luxury with height, book the Waldorf Astoria in the 32-story glass tower by the Gedächtniskirche.",
           "For design-led luxury with history there is the Hotel de Rome on Bebelplatz, in a former bank - with a pool in the old vault and a roof terrace facing Berlin Cathedral.",
         ],
       },
       {
-        heading: "What defines a real five-star house in Berlin?",
+        heading: "What defines a real five-star hotel in Berlin?",
         body: [
           "More than stars on the door: continuous concierge service, generous rooms and suites, a serious spa and usually a top in-house restaurant. The Mandala at Potsdamer Platz, for instance, has suites only and the two-star FACIL; at the InterContinental, Hugos also cooks at two stars.",
         ],
@@ -67,14 +67,14 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "What does a luxury hotel in Berlin cost?", a: "Five-star houses start at around €290 per night depending on season; top suites in houses like the Adlon sit far higher. Midweek and off-season prices are the most attractive." },
-      { q: "Which luxury hotel has the best restaurant?", a: "Several Berlin luxury houses run starred restaurants: Lorenz Adlon Esszimmer (2 stars), FACIL at the Mandala (2 stars) and Hugos at the InterContinental (2 stars). More in the gourmet guide." },
+      { q: "What does a luxury hotel in Berlin cost?", a: "Five-star hotels start at around €290 per night depending on season; top suites in hotels like the Adlon sit far higher. Midweek and off-season prices are the most attractive." },
+      { q: "Which luxury hotel has the best restaurant?", a: "Several Berlin luxury hotels run starred restaurants: Lorenz Adlon Esszimmer (2 stars), FACIL at the Mandala (2 stars) and Hugos at the InterContinental (2 stars). More in the gourmet guide." },
       { q: "Which luxury hotels have a spa?", a: "The Adlon, Waldorf Astoria (Spa Guerlain), InterContinental, de Rome and Mandala (ONO Spa) all have large spa areas. Details in the wellness guide." },
       { q: "Where should a first-time visitor stay in luxury?", a: "In Mitte around Pariser Platz and Gendarmenmarkt - from there you reach the major sights on foot." },
     ],
     gygQuery: "Berlin Highlights Tour",
     related: [
-      { label: "Luxury hotels - all houses & districts", href: "/en/categories/luxury-hotels/" },
+      { label: "Luxury hotels - all properties & districts", href: "/en/categories/luxury-hotels/" },
       { label: "Hotels with gourmet kitchens", href: "/en/guides/gourmet-hotels-berlin/" },
       { label: "Wellness & spa hotels", href: "/en/guides/wellness-spa-hotels-berlin/" },
       { label: "Hotels in Berlin-Mitte", href: "/en/guides/mitte/" },
@@ -91,20 +91,20 @@ export const themeArticlesEn: Article[] = [
   // ───────────────────────── BOUTIQUE ─────────────────────────
   {
     slug: "boutique-hotels-berlin-charme",
-    title: "Boutique hotels in Berlin: charming houses with character",
+    title: "Boutique hotels in Berlin: small, charming places with character",
     description:
-      "Boutique hotels in Berlin: small, individual houses with design and character - from the Michelberger in Friedrichshain to the Hotel Oderberger in Prenzlauer Berg.",
+      "Boutique hotels in Berlin: small, individual properties with design and character - from the Michelberger in Friedrichshain to the Hotel Oderberger in Prenzlauer Berg.",
     kicker: "Hotel category · Boutique",
     intro: [
       "Boutique hotels are the chain antidote: 20 to 80 rooms, all individual, often in period buildings or converted industrial spaces. Berlin has one of Europe's densest boutique hotel scenes.",
-      "Friedrichshain-Kreuzberg and Prenzlauer Berg are the boutique strongholds, but Mitte and City West have outstanding houses too. Here are the most charming - verified and presented one by one.",
+      "Friedrichshain-Kreuzberg and Prenzlauer Berg are the boutique strongholds, but Mitte and City West have outstanding properties too. Here are the most charming - verified and presented one by one.",
     ],
     takeaways: [
       "Boutique hotels score on individuality, design and personal service.",
       "The densest selection sits in Friedrichshain-Kreuzberg, Prenzlauer Berg and Mitte.",
       "Prices mostly start at around €140 per night.",
     ],
-    bestFor: ["Design fans", "Couples", "Independent travellers", "Berlin regulars"],
+    bestFor: ["Design fans", "Couples", "Independent travelers", "Berlin regulars"],
     categorySlug: "boutique-hotels",
     hotels: [
       "michelberger-hotel",
@@ -119,7 +119,7 @@ export const themeArticlesEn: Article[] = [
         heading: "What makes a good boutique hotel?",
         body: [
           "Character instead of a template: individually designed rooms, a clear design signature, often owner-run and with their own bar or restaurant. You notice immediately that someone with a point of view stands behind it.",
-          "The Michelberger Hotel in Friedrichshain is a prime example - from industrial building to design house with a rooftop sauna and a seasonal restaurant.",
+          "The Michelberger Hotel in Friedrichshain is a prime example - from industrial building to design hotel with a rooftop sauna and a seasonal restaurant.",
         ],
       },
       {
@@ -137,14 +137,14 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "What does a boutique hotel in Berlin cost?", a: "Most houses sit between €140 and €200 per night; upmarket five-star boutique hotels go above that." },
-      { q: "Boutique hotel or chain - which is better?", a: "Boutique houses offer more character and personal service, chains more standardisation and reliability. For an authentic Berlin experience, boutique hotels are usually the more interesting choice." },
-      { q: "Are boutique hotels suitable for families?", a: "Some are (the Hotel Oderberger has family rooms), others are aimed more at couples and independent travellers. A dedicated family selection is in the family guide." },
+      { q: "What does a boutique hotel in Berlin cost?", a: "Most hotels sit between €140 and €200 per night; upscale five-star boutique hotels go above that." },
+      { q: "Boutique hotel or chain - which is better?", a: "Boutique hotels offer more character and personal service, chains more standardization and reliability. For an authentic Berlin experience, boutique hotels are usually the more interesting choice." },
+      { q: "Are boutique hotels suitable for families?", a: "Some are (the Hotel Oderberger has family rooms), others are aimed more at couples and independent travelers. A dedicated family selection is in the family guide." },
       { q: "Which district is the most charming to stay in?", a: "Prenzlauer Berg and Friedrichshain-Kreuzberg for creative charm, City West for classical elegance." },
     ],
     gygQuery: "Berlin Kieztour",
     related: [
-      { label: "Boutique hotels - all houses & districts", href: "/en/categories/boutique-hotels/" },
+      { label: "Boutique hotels - all properties & districts", href: "/en/categories/boutique-hotels/" },
       { label: "Design hotels in Berlin", href: "/en/guides/design-hotels-berlin/" },
       { label: "Boutique hotels in Friedrichshain-Kreuzberg", href: "/en/guides/friedrichshain/" },
       { label: "Charming hotels in Berlin", href: "/en/categories/charming-hotels/" },
@@ -163,11 +163,11 @@ export const themeArticlesEn: Article[] = [
     slug: "design-hotels-berlin",
     title: "Design hotels in Berlin: architecture and style to sleep in",
     description:
-      "Design hotels in Berlin: architecturally composed houses with a clear signature - from the 25hours in the Bikinihaus to the nhow on the Spree.",
+      "Design hotels in Berlin: architecturally composed properties with a clear signature - from the 25hours in the Bikinihaus to the nhow on the Spree.",
     kicker: "Hotel category · Design",
     intro: [
       "Berlin has been a design-hotel capital since the 2000s. Design hotels think every detail through: furniture, light, textures, often their own bar and restaurant - and architecture that becomes an attraction in itself.",
-      "Mitte and Friedrichshain lead the field, but City West has strong houses too. Here are the city's most interesting design hotels - verified and presented one by one.",
+      "Mitte and Friedrichshain lead the field, but City West has strong hotels too. Here are the city's most interesting design hotels - verified and presented one by one.",
     ],
     takeaways: [
       "Design hotels turn architecture and interiors into the actual experience.",
@@ -205,14 +205,14 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "What is the difference between a design hotel and a boutique hotel?", a: "The terms overlap. Design hotels put the design and architectural idea at the centre; boutique hotels emphasise individuality and personal service. Many houses are both." },
-      { q: "What does a design hotel in Berlin cost?", a: "Usually €145–190 per night, with design-led five-star houses accordingly higher." },
+      { q: "What is the difference between a design hotel and a boutique hotel?", a: "The terms overlap. Design hotels put the design and architectural idea at the center; boutique hotels emphasize individuality and personal service. Many hotels are both." },
+      { q: "What does a design hotel in Berlin cost?", a: "Usually €145–190 per night, with design-led five-star hotels accordingly higher." },
       { q: "Which design hotel has the best view?", a: "The 25hours Bikini with the Monkey Bar over the Tiergarten and the zoo - see also our rooftop bar guide." },
       { q: "Are design hotels well connected?", a: "Yes, most sit very centrally in Mitte, along the Spree or on the Ku'damm with direct U-Bahn or S-Bahn links." },
     ],
     gygQuery: "Berlin Architektur Tour",
     related: [
-      { label: "Design hotels - all houses & districts", href: "/en/categories/design-hotels/" },
+      { label: "Design hotels - all properties & districts", href: "/en/categories/design-hotels/" },
       { label: "Boutique hotels in Berlin", href: "/en/guides/boutique-hotels-berlin-charme/" },
       { label: "Hotels with a rooftop bar", href: "/en/guides/rooftop-bars-hotels-berlin/" },
       { label: "Hotels in Friedrichshain-Kreuzberg", href: "/en/guides/friedrichshain/" },
@@ -231,18 +231,18 @@ export const themeArticlesEn: Article[] = [
     slug: "familienfreundliche-hotels-berlin",
     title: "Family-friendly hotels in Berlin: child-friendly places to stay",
     description:
-      "Family-friendly hotels in Berlin: family rooms, pools, apartments with kitchens and child-friendly locations - the best houses for a family holiday.",
+      "Family-friendly hotels in Berlin: family rooms, pools, apartments with kitchens and child-friendly locations - the best hotels for a family trip.",
     kicker: "Hotel category · Family",
     intro: [
       "Family-friendly hotels in Berlin offer family rooms for four or more, often a pool, sauna or apartments with a kitchenette - and sit conveniently for the Tierpark, Mauerpark, Müggelsee or Museum Island.",
-      "Pankow, Reinickendorf and Treptow-Köpenick have the widest choice, but central aparthotels work superbly too. Here are the verified houses for a family holiday.",
+      "Pankow, Reinickendorf and Treptow-Köpenick have the widest choice, but central aparthotels work superbly too. Here are the verified hotels for a family trip.",
     ],
     takeaways: [
       "Family rooms, apartments with kitchens and pools are the key family features.",
       "Apartments with a kitchenette pay off especially from three to four nights.",
       "Pankow (Prenzlauer Berg) is the most family-friendly inner-city quarter.",
     ],
-    bestFor: ["Families", "Longer stays", "Travellers with toddlers", "Large families"],
+    bestFor: ["Families", "Longer stays", "Travelers with toddlers", "Large families"],
     categorySlug: "familienhotels",
     hotels: [
       "adina-apartment-hotel-mitte",
@@ -262,7 +262,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Which hotels are particularly child-friendly?",
         body: [
-          "The Hotel Müggelsee by the lake offers a spa, a lido and plenty of space; the Park Inn at Alexanderplatz scores with a central location and family rooms; the Best Western am Borsigturm in the north has a pool and sauna. Charming and central: the Hotel Oderberger with its historic pool near Mauerpark.",
+          "The Hotel Müggelsee by the lake offers a spa, a lake beach and plenty of space; the Park Inn at Alexanderplatz scores with a central location and family rooms; the Best Western am Borsigturm in the north has a pool and sauna. Charming and central: the Hotel Oderberger with its historic pool near Mauerpark.",
         ],
       },
       {
@@ -273,14 +273,14 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "Which hotels in Berlin have family rooms?", a: "Many larger houses (Park Inn, Estrel, Hotel Berlin Berlin) as well as family-oriented boutique houses (Hotel Oderberger, Schulz Hotel). Apartments with a kitchen add space and flexibility." },
+      { q: "Which hotels in Berlin have family rooms?", a: "Many larger properties (Park Inn, Estrel, Hotel Berlin Berlin) as well as family-oriented boutique properties (Hotel Oderberger, Schulz Hotel). Apartments with a kitchen add space and flexibility." },
       { q: "What does a family hotel in Berlin cost?", a: "Family rooms and apartments mostly sit between €110 and €165 per night; from three nights, apartments with a kitchen are especially worthwhile." },
       { q: "Which district is the most family-friendly?", a: "Pankow with Prenzlauer Berg counts as the most family-friendly inner-city district; Reinickendorf and Treptow-Köpenick score with greenery and water." },
-      { q: "Are Berlin hotels set up for children?", a: "Family-oriented houses provide cots, family rooms and often a pool. Dedicated childcare is rare in city hotels - ask in advance about the specific offer." },
+      { q: "Are Berlin hotels set up for children?", a: "Family-oriented hotels provide cribs, family rooms and often a pool. Dedicated childcare is rare in city hotels - ask in advance about the specific offer." },
     ],
     gygQuery: "Berlin mit Kindern",
     related: [
-      { label: "Family hotels - all houses & districts", href: "/en/categories/family-hotels/" },
+      { label: "Family hotels - all properties & districts", href: "/en/categories/family-hotels/" },
       { label: "Berlin with kids - itinerary", href: "/en/itineraries/berlin-with-kids/" },
       { label: "Family hotels in Pankow", href: "/en/guides/pankow/" },
       { label: "Lakeside hotels in Treptow-Köpenick", href: "/en/guides/treptow/" },
@@ -297,20 +297,20 @@ export const themeArticlesEn: Article[] = [
   // ───────────────────────── PET-FRIENDLY ─────────────────────────
   {
     slug: "tierfreundliche-hotels-berlin",
-    title: "Pet-friendly hotels in Berlin: travelling with a dog",
+    title: "Pet-friendly hotels in Berlin: traveling with a dog",
     description:
-      "Pet-friendly hotels in Berlin: houses that welcome dogs and pets - with tips on fees, rules and the best locations for walks.",
+      "Pet-friendly hotels in Berlin: properties that welcome dogs and pets - with tips on fees, rules and the best locations for walks.",
     kicker: "Hotel category · Pets",
     intro: [
       "Bringing your dog to Berlin? Many hotels accept dogs and small pets - often for a fee and with advance notice. What matters is clarifying the exact rules (size, number, surcharge) directly with the property before booking.",
-      "Here are houses that lend themselves to a trip with a dog, and what to watch for - from a location near parks to the service on site.",
+      "Here are hotels that lend themselves to a trip with a dog, and what to watch for - from a location near parks to the service on site.",
     ],
     takeaways: [
       "Many Berlin hotels accept pets on request - have the terms confirmed in advance.",
       "Check the fee, permitted size and number, and the rules (leaving the dog alone, restaurant areas).",
       "Locations near the Tiergarten, Mauerpark or the lakes make walks easier.",
     ],
-    bestFor: ["Travellers with dogs", "Pet owners", "Road trippers", "Nature lovers"],
+    bestFor: ["Travelers with dogs", "Pet owners", "Road trippers", "Nature lovers"],
     hotels: [
       "hotel-zoo-berlin",
       "the-mandala-hotel",
@@ -323,27 +323,27 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "What should you check for a hotel with a dog?",
         body: [
-          "Clarify bindingly before booking: is the pet accepted, what fee applies, are size or number limited, and may the dog stay alone in the room? Many houses allow dogs only in certain room categories and not in restaurant or spa areas.",
-          "Ground-floor locations, apartments with their own entrance and proximity to green space all help. The Adina at Hackescher Markt with apartments and kitchens, for instance, makes travelling with an animal easier.",
+          "Clarify bindingly before booking: is the pet accepted, what fee applies, are size or number limited, and may the dog stay alone in the room? Many hotels allow dogs only in certain room categories and not in restaurant or spa areas.",
+          "Ground-floor locations, apartments with their own entrance and proximity to green space all help. The Adina at Hackescher Markt with apartments and kitchens, for instance, makes traveling with an animal easier.",
         ],
       },
       {
-        heading: "Which locations suit travelling with a dog?",
+        heading: "Which locations suit traveling with a dog?",
         body: [
-          "Houses near the Tiergarten (City West), Mauerpark (Prenzlauer Berg) or the Müggelsee offer short walks into the green. The Hotel Müggelsee has the lake and a lido on the doorstep; central houses by the Tiergarten combine city proximity with space to run.",
+          "Hotels near the Tiergarten (City West), Mauerpark (Prenzlauer Berg) or the Müggelsee offer short walks into the green. The Hotel Müggelsee has the lake and a lake beach right outside; central hotels by the Tiergarten combine city proximity with space to run.",
         ],
       },
       {
         heading: "What does bringing a dog cost?",
         body: [
-          "€15–30 per night as a cleaning or pet fee is common; some houses take dogs free of charge, others not at all. Because terms change, the rule is: always ask the hotel directly and get it confirmed in writing.",
+          "€15–30 per night as a cleaning or pet fee is common; some hotels take dogs free of charge, others not at all. Because terms change, the rule is: always ask the hotel directly and get it confirmed in writing.",
         ],
       },
     ],
     faq: [
-      { q: "Which hotels in Berlin allow dogs?", a: "Many houses across all categories accept dogs on request. Always clarify the specific permission, fee and size limit directly with the hotel in advance, as policies can change." },
-      { q: "What does a dog cost in a hotel?", a: "Usually €15–30 per night; a few houses charge nothing or allow no animals at all. Get it confirmed in advance." },
-      { q: "May the dog stay alone in the hotel room?", a: "Houses handle this differently; many forbid it or require the dog to stay in a crate. Clarify before booking." },
+      { q: "Which hotels in Berlin allow dogs?", a: "Many hotels across all categories accept dogs on request. Always clarify the specific permission, fee and size limit directly with the hotel in advance, as policies can change." },
+      { q: "What does a dog cost in a hotel?", a: "Usually €15–30 per night; a few hotels charge nothing or allow no animals at all. Get it confirmed in advance." },
+      { q: "May the dog stay alone in the hotel room?", a: "Hotels handle this differently; many forbid it or require the dog to stay in a crate. Clarify before booking." },
       { q: "Where can I walk a dog in Berlin?", a: "The Tiergarten, Mauerpark, Tempelhofer Feld, the Grunewald and the shore paths along the Müggelsee and the Havel are particularly good." },
     ],
     gygQuery: "Berlin Stadtpark Spaziergang",
@@ -367,18 +367,18 @@ export const themeArticlesEn: Article[] = [
     slug: "wellness-spa-hotels-berlin",
     title: "Wellness and spa hotels in Berlin: unwinding in the capital",
     description:
-      "Wellness and spa hotels in Berlin: houses with a pool, sauna and spa - from luxury spas in Mitte to the lakeside hotel on the Müggelsee with its own lido.",
+      "Wellness and spa hotels in Berlin: properties with a pool, sauna and spa - from luxury spas in Mitte to the lakeside hotel on the Müggelsee with its own lake beach.",
     kicker: "Hotel category · Wellness",
     intro: [
-      "Wellness and spa hotels with a large bathing and sauna area are found in Berlin mainly in the upmarket segment in Mitte and in the green south and south-east by the water. Pools, sauna landscapes and massages are standard here.",
-      "Here are the houses with a genuine spa offer - from the city spa in a luxury hotel to the lakeside house with a lido.",
+      "Wellness and spa hotels with a large bathing and sauna area are found in Berlin mainly in the upscale segment in Mitte and in Berlin's green south and southeast by the water. Pools, sauna landscapes and massages are standard here.",
+      "Here are the properties with a genuine spa offer - from the city spa in a luxury hotel to the lakeside hotel with its own lake beach.",
     ],
     takeaways: [
-      "The best city spas sit in the luxury houses in Mitte and City West.",
+      "The best city spas sit in the luxury hotels in Mitte and City West.",
       "For wellness with a link to nature, the green south and the Müggelsee work best.",
-      "Check for a pool, sauna landscape and massage offer - not every house has all three.",
+      "Check for a pool, sauna landscape and massage offer - not every property has all three.",
     ],
-    bestFor: ["Rest seekers", "Couples", "Spa lovers", "Weekend travellers"],
+    bestFor: ["Rest seekers", "Couples", "Spa lovers", "Weekend travelers"],
     categorySlug: "wellness-hotels",
     hotels: [
       "the-mandala-hotel",
@@ -392,13 +392,13 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Which hotels in Berlin have the best spa?",
         body: [
-          "In the luxury segment the leaders are the Waldorf Astoria (two-floor Spa Guerlain), the Mandala (ONO Spa, pool in the glass atrium setting), the InterContinental, the Adlon and the Hotel de Rome (pool in the former vault). These houses combine spa, pool and upmarket dining under one roof.",
+          "In the luxury segment the leaders are the Waldorf Astoria (two-floor Spa Guerlain), the Mandala (ONO Spa, pool in the glass atrium setting), the InterContinental, the Adlon and the Hotel de Rome (pool in the former vault). These hotels combine spa, pool and upscale dining under one roof.",
         ],
       },
       {
         heading: "Where is wellness with a link to nature?",
         body: [
-          "On the water in the south-east: the Hotel Müggelsee offers a large spa area and its own lido right on the city's biggest lake - ideal for combining a sauna with a swim in the lake. Berlin's green south-west (Grunewald, Wannsee) also suits quiet wellness stays.",
+          "On the water in the southeast: the Hotel Müggelsee offers a large spa area and its own lake beach right on the city's biggest lake - ideal for combining a sauna with a swim in the lake. Berlin's green southwest (Grunewald, Wannsee) also suits quiet wellness stays.",
         ],
       },
       {
@@ -409,14 +409,14 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "Which Berlin hotels have a pool?", a: "Among others the Adlon, de Rome (pool in the vault), Mandala, Waldorf Astoria, InterContinental, Soho House (roof pool) and apartment houses such as the Adina. The Hotel Müggelsee additionally offers a lido on the lake." },
+      { q: "Which Berlin hotels have a pool?", a: "Among others the Adlon, de Rome (pool in the vault), Mandala, Waldorf Astoria, InterContinental, Soho House (roof pool) and apartment hotels such as the Adina. The Hotel Müggelsee additionally has a lake beach of its own." },
       { q: "What does a wellness hotel in Berlin cost?", a: "City spas in the luxury segment start at around €240–290 per night; the lakeside Hotel Müggelsee at roughly €135." },
-      { q: "Where is there wellness by a lake?", a: "On the Müggelsee (Treptow-Köpenick) and in the green south-west around Wannsee and the Grunewald." },
-      { q: "Can you use the spa areas without staying overnight?", a: "Some houses offer day-spa packages; this varies a great deal - best to ask the hotel directly." },
+      { q: "Where is there wellness by a lake?", a: "On the Müggelsee (Treptow-Köpenick) and in the green southwest around Wannsee and the Grunewald." },
+      { q: "Can you use the spa areas without staying overnight?", a: "Some hotels offer day-spa packages; this varies a great deal - best to ask the hotel directly." },
     ],
     gygQuery: "Berlin Spa Wellness",
     related: [
-      { label: "Wellness hotels - all houses & districts", href: "/en/categories/wellness-hotels/" },
+      { label: "Wellness hotels - all properties & districts", href: "/en/categories/wellness-hotels/" },
       { label: "Lakeside hotels in Treptow-Köpenick", href: "/en/guides/treptow/" },
       { label: "Quiet hotels in Steglitz-Zehlendorf", href: "/en/guides/steglitz/" },
       { label: "Luxury hotels in Berlin", href: "/en/guides/luxus-hotels-berlin/" },
@@ -435,18 +435,18 @@ export const themeArticlesEn: Article[] = [
     slug: "budget-hotels-berlin",
     title: "Cheap hotels in Berlin: affordable stays without compromises",
     description:
-      "Cheap hotels in Berlin: clean, well-connected houses under €100 - from central three-star hotels to creative budget stays in the trend quarters.",
+      "Cheap hotels in Berlin: clean, well-connected properties under €100 - from central three-star hotels to creative budget stays in the trendier neighborhoods.",
     kicker: "Hotel category · Budget",
     intro: [
-      "Staying cheaply in Berlin does not automatically mean staying far out. Central three-star houses, creative budget concepts and apartments with kitchens deliver clean rooms with good connections - often under €100 per night.",
-      "Here are verified budget houses across the city, plus when and where you save the most.",
+      "Staying cheaply in Berlin does not automatically mean staying far out. Central three-star hotels, creative budget concepts and apartments with kitchens deliver clean rooms with good connections - often under €100 per night.",
+      "Here are verified budget properties across the city, plus when and where you save the most.",
     ],
     takeaways: [
       "Clean, central budget hotels in Berlin often start at €65–95 per night.",
       "Cheap districts: Spandau, Marzahn-Hellersdorf, Neukölln and parts of Friedrichshain.",
       "You save most midweek and in the off season.",
     ],
-    bestFor: ["Budget travellers", "Young travellers", "Short breaks", "Bargain hunters"],
+    bestFor: ["Budget travelers", "Young travelers", "Short breaks", "Bargain hunters"],
     categorySlug: "billige-hotels",
     hotels: [
       "h2-hotel-alexanderplatz",
@@ -466,7 +466,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Which affordable places to stay stand out?",
         body: [
-          "The Hüttenpalast in Neukölln lets you sleep in vintage caravans and cabins inside a factory hall - an experience at a small price. For the absolute minimum, the ibis budget in Hellersdorf starts at around €49 with a U-Bahn connection.",
+          "The Hüttenpalast in Neukölln lets you sleep in a vintage travel trailer or a cabin parked inside a factory hall - an experience at a small price. For the absolute minimum, the ibis budget in Hellersdorf starts at around €49 with a U-Bahn connection.",
         ],
       },
       {
@@ -482,10 +482,10 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "What does a cheap hotel in Berlin cost?", a: "Solid three-star houses start at around €65–95 per night, budget houses on the edge of the city from about €49." },
+      { q: "What does a cheap hotel in Berlin cost?", a: "Solid three-star hotels start at around €65–95 per night, budget properties on the edge of the city from about €49." },
       { q: "Which districts have the cheapest hotels?", a: "Spandau, Marzahn-Hellersdorf and Neukölln are the most affordable, plus parts of Friedrichshain and Lichtenberg." },
-      { q: "Cheap hotel in the centre or on the outskirts?", a: "If you plan a lot of sightseeing, a central location saves time and travel costs. On the outskirts you pay less for the room but more in travel time." },
-      { q: "Are cheap hotels in Berlin clean and safe?", a: "Yes - the houses named here have been checked. With very cheap offers, look at recent guest reviews and the exact location." },
+      { q: "Cheap hotel in the center or on the outskirts?", a: "If you plan a lot of sightseeing, a central location saves time and travel costs. On the outskirts you pay less for the room but more in travel time." },
+      { q: "Are cheap hotels in Berlin clean and safe?", a: "Yes - the hotels named here have been checked. With very cheap offers, look at recent guest reviews and the exact location." },
     ],
     gygQuery: "Berlin Free Walking Tour",
     related: [
@@ -506,17 +506,17 @@ export const themeArticlesEn: Article[] = [
   // ───────────────────────── ROMANTIC ─────────────────────────
   {
     slug: "romantische-hotels-berlin",
-    title: "Romantic hotels in Berlin: the finest houses for couples",
+    title: "Romantic hotels in Berlin: the finest stays for couples",
     description:
-      "Romantic hotels in Berlin for couples: stylish suites, a spa for two and intimate boutique houses - the loveliest addresses for a break together.",
+      "Romantic hotels in Berlin for couples: stylish suites, a spa for two and intimate boutique hotels - the loveliest addresses for a break together.",
     kicker: "Hotel category · Romance",
     intro: [
-      "Berlin has plenty to offer for a break for two: stylish suites with city views, intimate boutique houses, spas for two and hotels with live music or a roof terrace. Romance here works classically elegant just as well as creative.",
-      "Here are the loveliest houses for couples - from the palace hotel in the green to the boutique house with personal service.",
+      "Berlin has plenty to offer for a break for two: stylish suites with city views, intimate boutique properties, spas for two and hotels with live music or a roof terrace. Romance here works classically elegant just as well as creative.",
+      "Here are the loveliest properties for couples - from the palace hotel in the green to the boutique property with personal service.",
     ],
     takeaways: [
       "For romance, atmosphere, intimate size and special extras (spa, suite, view) matter most.",
-      "Boutique and palace hotels often offer more charm than large houses.",
+      "Boutique and palace hotels often offer more charm than large properties.",
       "A spa area or roof terrace noticeably lifts a weekend for two.",
     ],
     bestFor: ["Couples", "Honeymoons", "Anniversaries", "Romantic short breaks"],
@@ -538,21 +538,21 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "What makes a hotel romantic?",
         body: [
-          "Atmosphere over size: a personally run house, a lovely suite, a quiet garden or a roof terrace with a view, ideally a spa. Small houses often score more here than the very large hotels.",
+          "Atmosphere over size: a personally run hotel, a lovely suite, a quiet garden or a roof terrace with a view, ideally a spa. Small properties often score more here than the very large hotels.",
         ],
       },
       {
         heading: "Where do couples spend a weekend in Berlin?",
         body: [
-          "Prenzlauer Berg for relaxed charm and good cafés, City West for classical elegance, the green south-west for quiet and nature. Combined with a spa visit and dinner, that makes a well-rounded weekend for two.",
+          "Prenzlauer Berg for relaxed charm and good cafés, City West for classical elegance, the green southwest for quiet and nature. Combined with a spa visit and dinner, that makes a well-rounded weekend for two.",
         ],
       },
     ],
     faq: [
-      { q: "Which hotel suits a marriage proposal?", a: "Houses with a view or a special atmosphere - the Hotel Zoo with its roof bar, the Patrick Hellmann Schlosshotel in the green or a luxury house with a suite and spa." },
-      { q: "Are there hotels with a spa for two?", a: "Yes - the large luxury houses (Waldorf Astoria, Mandala, InterContinental) offer couples' treatments. More in the wellness guide." },
-      { q: "What does a romantic weekend in Berlin cost?", a: "Depending on standards: boutique houses from around €160, palace and luxury hotels from around €280–290 per night." },
-      { q: "Which district is the most romantic?", a: "Prenzlauer Berg for charm, City West for elegance and the green south-west for quiet and nature." },
+      { q: "Which hotel suits a marriage proposal?", a: "Properties with a view or a special atmosphere - the Hotel Zoo with its roof bar, the Patrick Hellmann Schlosshotel in the green or a luxury property with a suite and spa." },
+      { q: "Are there hotels with a spa for two?", a: "Yes - the large luxury hotels (Waldorf Astoria, Mandala, InterContinental) offer couples' treatments. More in the wellness guide." },
+      { q: "What does a romantic weekend in Berlin cost?", a: "Depending on standards: boutique properties from around €160, palace and luxury hotels from around €280–290 per night." },
+      { q: "Which district is the most romantic?", a: "Prenzlauer Berg for charm, City West for elegance and the green southwest for quiet and nature." },
     ],
     gygQuery: "Berlin Spree Bootsfahrt",
     related: [
@@ -575,18 +575,18 @@ export const themeArticlesEn: Article[] = [
     slug: "geschaeftsreisen-hotels-berlin",
     title: "Business travel hotels in Berlin: the best corporate addresses",
     description:
-      "Business hotels in Berlin: meeting rooms, fast Wi-Fi, express check-in and the best transport links - the best hotels for business travellers.",
+      "Business hotels in Berlin: meeting rooms, fast Wi-Fi, express check-in and the best transport links - the best hotels for business travelers.",
     kicker: "Hotel category · Business",
     intro: [
       "Business hotels in Berlin mostly sit in Mitte (Hauptbahnhof, Potsdamer Platz) or around the exhibition grounds in City West. Conference technology, express check-in, fast Wi-Fi and 24-hour service are standard.",
-      "Here are the best addresses for business travellers - from the representative luxury address to the efficient house with good connections.",
+      "Here are the best addresses for business travelers - from the representative luxury address to the efficient hotel with good connections.",
     ],
     takeaways: [
       "Top business locations: Mitte (Hauptbahnhof/Potsdamer Platz) and City West near the fairground.",
       "What matters: meeting rooms, fast Wi-Fi, express check-in and proximity to transport.",
-      "Representative meetings? Then a luxury house with a conference area.",
+      "Representative meetings? Then a luxury hotel with a conference area.",
     ],
-    bestFor: ["Business travellers", "Conferences & congresses", "Trade-fair visitors", "Frequent travellers"],
+    bestFor: ["Business travelers", "Conferences & congresses", "Trade-fair visitors", "Frequent travelers"],
     categorySlug: "business-hotels",
     hotels: [
       "hotel-adlon-kempinski",
@@ -617,8 +617,8 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "Which hotels have meeting rooms in Berlin?", a: "Large houses such as the InterContinental, Adlon, Regent and the Estrel (Germany's largest convention hotel) offer extensive conference and congress capacity." },
-      { q: "What does a business hotel in Berlin cost?", a: "Solid business houses sit at €110–160 per night, representative luxury houses from around €240." },
+      { q: "Which hotels have meeting rooms in Berlin?", a: "Large properties such as the InterContinental, Adlon, Regent and the Estrel (Germany's largest convention hotel) offer extensive conference and congress capacity." },
+      { q: "What does a business hotel in Berlin cost?", a: "Solid business hotels sit at €110–160 per night, representative luxury properties from around €240." },
       { q: "Which location is best for business trips?", a: "Mitte (Hauptbahnhof, Potsdamer Platz) for central meetings, City West for the trade fair, Lichtenberg for cheap, well-connected options." },
       { q: "Are there apartments for longer business stays?", a: "Yes - aparthotels such as the Adina or the Living Hotels offer a kitchen and living area, ideal from several nights on." },
     ],
@@ -643,10 +643,10 @@ export const themeArticlesEn: Article[] = [
     slug: "historische-hotels-berlin",
     title: "Historic hotels in Berlin: staying with history",
     description:
-      "Historic hotels in Berlin: houses with a past - from the Adlon by the Brandenburg Gate through the Hotel de Rome in an old bank to the Hotel Oderberger in a public bath.",
+      "Historic hotels in Berlin: hotels with a past - from the Adlon by the Brandenburg Gate through the Hotel de Rome in an old bank to the Hotel Oderberger in a public bath.",
     kicker: "Hotel category · History",
     intro: [
-      "Berlin's history can also be experienced from a hotel bed: grand hotels with more than a century of tradition, converted banks, former public baths and palaces. These houses tell the story of the city - and are worth seeing in themselves.",
+      "Berlin's history can also be experienced from a hotel bed: grand hotels with more than a century of tradition, converted banks, former public baths and palaces. These properties tell the story of the city - and are worth seeing in themselves.",
       "Here are Berlin's most fascinating historic hotels, with the facts behind the walls.",
     ],
     takeaways: [
@@ -654,7 +654,7 @@ export const themeArticlesEn: Article[] = [
       "Many combine original fabric with modern comfort.",
       "The supply is densest in Mitte and City West.",
     ],
-    bestFor: ["History enthusiasts", "Architecture fans", "Culture travellers", "Special occasions"],
+    bestFor: ["History enthusiasts", "Architecture fans", "Culture travelers", "Special occasions"],
     hotels: [
       "hotel-adlon-kempinski",
       "hotel-de-rome",
@@ -671,7 +671,7 @@ export const themeArticlesEn: Article[] = [
         ],
       },
       {
-        heading: "Which houses occupy special buildings?",
+        heading: "Which hotels occupy special buildings?",
         body: [
           "The Hotel Oderberger in Prenzlauer Berg sits in the public bath of 1902 - with the pool preserved in the original hall. The Soho House uses a Bauhaus department store of 1928, the Patrick Hellmann Schlosshotel occupies Schloss Pannwitz of 1914. Staying here becomes a small journey through time.",
         ],
@@ -684,9 +684,9 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "Which is Berlin's oldest hotel?", a: "Among the most tradition-rich is the Adlon (originally 1907). Many historic houses occupy even older buildings, such as the Hotel de Rome in a bank of 1889 or the Hotel Oderberger in the public bath of 1902." },
-      { q: "Are historic hotels fitted out to modern standards?", a: "Yes - the houses named here combine original fabric with modern comfort, a spa and in some cases starred dining." },
-      { q: "What does a historic hotel in Berlin cost?", a: "Depending on the house, between around €165 (Hotel Oderberger) and €480 (top suites at the Adlon)." },
+      { q: "Which is Berlin's oldest hotel?", a: "Among the most tradition-rich is the Adlon (originally 1907). Many historic properties occupy even older buildings, such as the Hotel de Rome in a bank of 1889 or the Hotel Oderberger in the public bath of 1902." },
+      { q: "Are historic hotels fitted out to modern standards?", a: "Yes - the hotels named here combine original fabric with modern comfort, a spa and in some cases starred dining." },
+      { q: "What does a historic hotel in Berlin cost?", a: "Depending on the property, between around €165 (Hotel Oderberger) and €480 (top suites at the Adlon)." },
       { q: "Can you visit the historic hotels without staying?", a: "The lobby, bar or restaurant is usually open to the public - a coffee in the Adlon lobby or a drink in the Bristol bar works without a room." },
     ],
     gygQuery: "Berlin Geschichte Tour",
@@ -710,18 +710,18 @@ export const themeArticlesEn: Article[] = [
     slug: "geheimtipp-hotels-berlin",
     title: "Hidden-gem hotels in Berlin: staying away from the crowds",
     description:
-      "Hidden-gem hotels in Berlin: special houses off the tourist trail - from the caravan hotel in Neukölln to the scientific guest house in Dahlem.",
+      "Hidden-gem hotels in Berlin: special properties off the tourist trail - from the trailer-in-a-factory hotel in Neukölln to the scientific guest house in Dahlem.",
     kicker: "Hotel category · Hidden gems",
     intro: [
-      "Away from the well-known addresses, Berlin hides genuine hotel gems: a caravan hotel in a factory hall, a guest house of the Max Planck Society, individually designed boutique houses in quiet neighbourhoods. If you are looking for unusual Berlin, you will find it here.",
-      "Here are verified hidden gems - houses with character you will not find on every list.",
+      "Away from the well-known addresses, Berlin hides genuine hotel gems: a hotel of vintage travel trailers parked in a factory hall, a guest house of the Max Planck Society, individually designed boutique properties in quiet neighborhoods. If you are looking for unusual Berlin, you will find it here.",
+      "Here are verified hidden gems - hotels with character you will not find on every list.",
     ],
     takeaways: [
       "Hidden gems score with unusual concepts and quiet locations.",
       "Often owner-run, with themed rooms or unusual architecture.",
       "Ideal for Berlin regulars who already know the obvious.",
     ],
-    bestFor: ["Berlin regulars", "Independent travellers", "Creatives", "The curious"],
+    bestFor: ["Berlin regulars", "Independent travelers", "Creatives", "The curious"],
     hotels: [
       "huettenpalast",
       "ackselhaus-blue-home",
@@ -734,7 +734,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Which unusual hotels does Berlin have?",
         body: [
-          "The Hüttenpalast in Neukölln lets you sleep in vintage caravans and self-built cabins inside a former factory hall. The Harnack-Haus in Dahlem, built in 1929 as a conference house and today the guest house of the Max Planck Society, is a quiet, academically flavoured address - hardly any conventional tourist knows either.",
+          "The Hüttenpalast in Neukölln lets you sleep in vintage travel trailers and self-built cabins parked inside a former factory hall. The Harnack-Haus in Dahlem, built in 1929 as a conference house and today the guest house of the Max Planck Society, is a quiet, academically flavoured address - hardly any conventional tourist knows either.",
         ],
       },
       {
@@ -746,15 +746,15 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Where do you find the quiet gems?",
         body: [
-          "In the residential quarters away from the hotspots: Prenzlauer Berg (Pankow), Dahlem (Steglitz-Zehlendorf), the residential streets of Neukölln and Schöneberg. You stay more quietly and more authentically there than in the tourist centres.",
+          "In the residential quarters away from the hotspots: Prenzlauer Berg (Pankow), Dahlem (Steglitz-Zehlendorf), the residential streets of Neukölln and Schöneberg. You stay more quietly and more authentically there than in the tourist centers.",
         ],
       },
     ],
     faq: [
-      { q: "What is Berlin's most unusual hotel?", a: "The Hüttenpalast in Neukölln, with rooms in caravans and cabins inside a factory hall, is among the city's most original concepts." },
+      { q: "What is Berlin's most unusual hotel?", a: "The Hüttenpalast in Neukölln, with rooms in travel trailers and cabins inside a factory hall, is among the city's most original concepts." },
       { q: "Where do you stay away from the tourists?", a: "In the residential quarters of Prenzlauer Berg, Dahlem, Neukölln and Schöneberg - quieter, more personal and often cheaper than Mitte." },
-      { q: "Are hidden-gem hotels more expensive?", a: "Not necessarily - the range runs from the affordable Hüttenpalast to upmarket boutique houses. Character exists in every price bracket." },
-      { q: "Are hidden gems worth it on a first visit to Berlin?", a: "If you want to stay centrally and conventionally, Mitte suits you better. Hidden gems pay off for returning and independent travellers." },
+      { q: "Are hidden-gem hotels more expensive?", a: "Not necessarily - the range runs from the affordable Hüttenpalast to upscale boutique hotels. Character exists in every price bracket." },
+      { q: "Are hidden gems worth it on a first visit to Berlin?", a: "If you want to stay centrally and conventionally, Mitte suits you better. Hidden gems pay off for returning and independent travelers." },
     ],
     gygQuery: "Berlin Geheimtipps Tour",
     related: [
@@ -781,7 +781,7 @@ export const themeArticlesEn: Article[] = [
     kicker: "Hotel category · Rooftop",
     intro: [
       "Berlin from above: several hotels have roof bars with panoramic views over the Tiergarten, City West or Berlin Cathedral. Some are for hotel guests only, but many are open to the public - ideal for a sundowner.",
-      "Here are the houses with the best rooftop bars and roof terraces - all with verified rooftop highlights.",
+      "Here are the properties with the best rooftop bars and roof terraces - all with verified rooftop highlights.",
     ],
     takeaways: [
       "The most spectacular roof bars: the Monkey Bar (25hours) and Bar Lang on the 31st floor (Waldorf Astoria).",
@@ -813,7 +813,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Are the rooftop bars open to the public?",
         body: [
-          "Many are - the Monkey Bar, the Grace and the AMANO roof bar can be visited without staying (at weekends sometimes with queues or a reservation). Some roof terraces are reserved for hotel guests; when in doubt, ask the property in advance.",
+          "Many are - the Monkey Bar, the Grace and the AMANO roof bar can be visited without staying (on weekends sometimes with a line or a reservation). Some roof terraces are reserved for hotel guests; when in doubt, ask the property in advance.",
         ],
       },
     ],
@@ -842,20 +842,20 @@ export const themeArticlesEn: Article[] = [
   // ───────────────────────── SUSTAINABLE ─────────────────────────
   {
     slug: "nachhaltige-hotels-berlin",
-    title: "Sustainable hotels in Berlin: travelling greener in the capital",
+    title: "Sustainable hotels in Berlin: traveling greener in the capital",
     description:
-      "Sustainable hotels in Berlin: what to look for in green places to stay - certificates, energy, regional cuisine - and which houses are credible.",
+      "Sustainable hotels in Berlin: what to look for in green places to stay - certificates, energy, regional cuisine - and which properties are credible.",
     kicker: "Hotel category · Sustainability",
     intro: [
-      "Travelling greener matters in Berlin too. Sustainable hotels rely on green electricity, water saving, regional and organic cuisine, waste separation and fair working conditions - ideally backed by an independent certificate.",
-      "Here is how to recognise a credibly sustainable house, plus Berlin hotels with traceable green approaches.",
+      "Traveling greener matters in Berlin too. Sustainable hotels rely on green electricity, water saving, regional and organic cuisine, waste separation and fair working conditions - ideally backed by an independent certificate.",
+      "Here is how to recognize a credibly sustainable property, plus Berlin hotels with traceable green approaches.",
     ],
     takeaways: [
       "Credible sustainability shows in independent certificates, not marketing phrases.",
       "Look for green electricity, water-saving fittings, regional cuisine and waste separation.",
       "When in doubt, ask directly about specific measures and evidence.",
     ],
-    bestFor: ["Environmentally aware travellers", "Slow-travel fans", "Families", "Long-stay guests"],
+    bestFor: ["Environmentally aware travelers", "Slow-travel fans", "Families", "Long-stay guests"],
     hotels: [
       "hotel-amano-grand-central",
       "25hours-hotel-bikini",
@@ -864,15 +864,15 @@ export const themeArticlesEn: Article[] = [
     ],
     sections: [
       {
-        heading: "How do you recognise a genuinely sustainable hotel?",
+        heading: "How do you recognize a genuinely sustainable hotel?",
         body: [
-          "By traceable facts rather than green phrases: independent certificates (e.g. GreenSign, Green Key, EU Ecolabel), green electricity, water-saving fittings, consistent waste separation, regional and seasonal cuisine and fair working conditions. Do ask specifically - serious houses answer openly.",
+          "By traceable facts rather than green phrases: independent certificates (e.g. GreenSign, Green Key, EU Ecolabel), green electricity, water-saving fittings, consistent waste separation, regional and seasonal cuisine and fair working conditions. Do ask specifically - serious hotels answer openly.",
         ],
       },
       {
         heading: "Which Berlin hotels pursue green approaches?",
         body: [
-          "Several owner-run and concept-driven houses take resource use seriously - the Circus Hotel (its own brewery, short supply chains, local partners) or design houses such as the AMANO and the 25hours with a focus on regional dining. Since standards and certificates change, it is worth checking the property's current statements before booking.",
+          "Several owner-run and concept-driven properties take resource use seriously - the Circus Hotel (its own brewery, short supply chains, local partners) or design properties such as the AMANO and the 25hours with a focus on regional dining. Since standards and certificates change, it is worth checking the property's current statements before booking.",
         ],
       },
       {
@@ -890,7 +890,7 @@ export const themeArticlesEn: Article[] = [
     faq: [
       { q: "Which sustainability certificates are credible?", a: "Recognised ones include GreenSign, Green Key, the EU Ecolabel and Viabono. They assess energy, water, waste and management against fixed criteria." },
       { q: "Are sustainable hotels more expensive?", a: "Not necessarily - many green measures lower operating costs. Prices mostly sit within the normal range for their category." },
-      { q: "How do I spot greenwashing?", a: "By vague claims without evidence (a towel notice and nothing else). Serious houses name specific measures and independent certificates." },
+      { q: "How do I spot greenwashing?", a: "By vague claims without evidence (a towel notice and nothing else). Serious hotels name specific measures and independent certificates." },
       { q: "What is the most environmentally friendly way to reach Berlin?", a: "By train rather than plane, and on the ground consistently by public transport and rental bike. Berlin is well set up for it." },
     ],
     gygQuery: "Berlin Fahrradtour",
@@ -902,7 +902,7 @@ export const themeArticlesEn: Article[] = [
     ],
     adjacent: [
       { label: "Which hotels are especially central?", href: "/en/guides/zentrale-hotels-berlin/" },
-      { label: "Where do I find charming, owner-run houses?", href: "/en/guides/boutique-hotels-berlin-charme/" },
+      { label: "Where do I find charming, owner-run hotels?", href: "/en/guides/boutique-hotels-berlin-charme/" },
       { label: "Family-friendly hotels in Berlin", href: "/en/guides/familienfreundliche-hotels-berlin/" },
     ],
     datePublished: PUB,
@@ -914,18 +914,18 @@ export const themeArticlesEn: Article[] = [
     slug: "zentrale-hotels-berlin",
     title: "Central hotels in Berlin: staying in the heart of the city",
     description:
-      "Central hotels in Berlin: the best houses within walking distance of the Brandenburg Gate, Museum Island and Alexanderplatz - for every budget.",
+      "Central hotels in Berlin: the best places to stay within walking distance of the Brandenburg Gate, Museum Island and Alexanderplatz - for every budget.",
     kicker: "Hotel category · Central location",
     intro: [
       "If you are visiting Berlin for the first time or have little time, stay centrally: from Mitte you reach the Brandenburg Gate, Museum Island, the Reichstag and Alexanderplatz on foot or with a few minutes on the U-Bahn.",
-      "Central does not automatically mean expensive - the range runs from the luxury house on Pariser Platz to the affordable three-star house at the Alex. Here are the best central addresses.",
+      "Central does not automatically mean expensive - the range runs from the luxury hotel on Pariser Platz to the affordable three-star property at the Alex. Here are the best central addresses.",
     ],
     takeaways: [
       "The most central location is Mitte - around Pariser Platz, Gendarmenmarkt and Alexanderplatz.",
       "Staying centrally saves travel time and cost when sightseeing intensively.",
-      "There are central houses for every budget - from €65 to €480 per night.",
+      "There are central hotels for every budget - from €65 to €480 per night.",
     ],
-    bestFor: ["First-time visitors", "Short breaks", "Sightseeing fans", "Travellers without a car"],
+    bestFor: ["First-time visitors", "Short breaks", "Sightseeing fans", "Travelers without a car"],
     hotels: [
       "hotel-adlon-kempinski",
       "regent-berlin",
@@ -938,7 +938,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Where is the most central location in Berlin?",
         body: [
-          "In Mitte: around Pariser Platz, Gendarmenmarkt and Unter den Linden you are in the middle of the historic centre, and at Alexanderplatz in the transport hub with every U-Bahn and S-Bahn line. From both points you reach almost all the major sights within minutes.",
+          "In Mitte: around Pariser Platz, Gendarmenmarkt and Unter den Linden you are in the middle of the historic center, and at Alexanderplatz in the transport hub with every U-Bahn and S-Bahn line. From both points you reach almost all the major sights within minutes.",
         ],
       },
       {
@@ -950,15 +950,15 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Is a central location really worth it?",
         body: [
-          "If you want to see a lot: yes. You save travel time every day and can comfortably return to the hotel at midday. If you are travelling by train anyway or looking for quiet, staying slightly further out and saving money also works.",
+          "If you want to see a lot: yes. You save travel time every day and can comfortably return to the hotel at midday. If you are traveling by train anyway or looking for quiet, staying slightly further out and saving money also works.",
         ],
       },
     ],
     faq: [
       { q: "Which district is the most central?", a: "Mitte - it holds most of the sights and the key transport hubs (Hauptbahnhof, Alexanderplatz, Friedrichstraße)." },
-      { q: "What does a central hotel in Berlin cost?", a: "From around €65 for three-star houses at Alexanderplatz to €480 for top suites by the Brandenburg Gate." },
+      { q: "What does a central hotel in Berlin cost?", a: "From around €65 for three-star hotels at Alexanderplatz to €480 for top suites by the Brandenburg Gate." },
       { q: "Is Alexanderplatz noisy?", a: "The Alex is a busy transport hub and rowdier at night than the quieter corners around Gendarmenmarkt. In return the connections are unbeatable and prices more moderate." },
-      { q: "Stay centrally or more cheaply on the outskirts?", a: "For short breaks with a full programme, central pays off; for longer, relaxed stays a slightly cheaper outer district with good transport can make sense." },
+      { q: "Stay centrally or more cheaply on the outskirts?", a: "For short breaks with a full program, central pays off; for longer, relaxed stays a slightly cheaper outer district with good transport can make sense." },
     ],
     gygQuery: "Berlin Highlights Tour",
     related: [
@@ -981,16 +981,16 @@ export const themeArticlesEn: Article[] = [
     slug: "kultur-hotels-berlin",
     title: "Culture hotels in Berlin: staying for art and culture fans",
     description:
-      "Culture hotels in Berlin: houses with art, music and culture built into the concept - near Museum Island, galleries and theatres, from Mitte to Friedrichshain.",
+      "Culture hotels in Berlin: properties with art, music and culture built into the concept - near Museum Island, galleries and theaters, from Mitte to Friedrichshain.",
     kicker: "Hotel category · Culture",
     intro: [
-      "Berlin is a capital of culture - and some hotels make art and culture part of the experience: with their own gallery, recording studio, cinema, live music or a location right by the major museums and theatres.",
-      "Here are the houses that suit art and culture fans particularly well - close to Museum Island, galleries and stages.",
+      "Berlin is a capital of culture - and some hotels make art and culture part of the experience: with their own gallery, recording studio, cinema, live music or a location right by the major museums and theaters.",
+      "Here are the hotels that suit art and culture fans particularly well - close to Museum Island, galleries and stages.",
     ],
     takeaways: [
       "Culture hotels tie art, music or history into the stay.",
-      "Best locations: Mitte (Museum Island, theatres) and Friedrichshain (galleries, music).",
-      "Many houses work with local artists or show their own collections.",
+      "Best locations: Mitte (Museum Island, theaters) and Friedrichshain (galleries, music).",
+      "Many hotels work with local artists or show their own collections.",
     ],
     bestFor: ["Art fans", "Museum visitors", "Music lovers", "Theatregoers"],
     hotels: [
@@ -1003,13 +1003,13 @@ export const themeArticlesEn: Article[] = [
     ],
     sections: [
       {
-        heading: "Which hotels suit culture travellers?",
+        heading: "Which hotels suit culture travelers?",
         body: [
           "For museum proximity the Hotel de Rome on Bebelplatz is ideal - Museum Island, the Staatsoper and the Humboldt Forum are all on foot. If you love music, book the nhow on the Spree with its own recording studios or the Orania with live concerts in the salon. The Soho House brings its own note with an in-house cinema and members' culture.",
         ],
       },
       {
-        heading: "Which houses put art at the centre themselves?",
+        heading: "Which hotels put art at the center themselves?",
         body: [
           "Several Berlin hotels work with local artists or show art in-house - from the Berlin-themed design at the Hotel Indigo to the creative, curated atmosphere at the Michelberger. The Hotel Zoo combines restored period architecture with modern design.",
         ],
@@ -1022,10 +1022,10 @@ export const themeArticlesEn: Article[] = [
       },
     ],
     faq: [
-      { q: "Which hotel is closest to Museum Island?", a: "Houses in Mitte around Bebelplatz and Unter den Linden - such as the Hotel de Rome - are within walking distance of Museum Island." },
-      { q: "Are there hotels with their own art collection?", a: "Some Berlin houses show art in-house or work with local artists. Ask the hotel about current exhibitions or tours." },
+      { q: "Which hotel is closest to Museum Island?", a: "Properties in Mitte around Bebelplatz and Unter den Linden - such as the Hotel de Rome - are within walking distance of Museum Island." },
+      { q: "Are there hotels with their own art collection?", a: "Some Berlin hotels show art in-house or work with local artists. Ask the hotel about current exhibitions or tours." },
       { q: "Which hotel suits music fans?", a: "The nhow Berlin with recording studios you can rent, and the Orania with live music in the salon." },
-      { q: "Where do you stay for theatre and opera?", a: "In Mitte near Gendarmenmarkt (Konzerthaus), Bebelplatz (Staatsoper) and Friedrichstraße - all within walking distance." },
+      { q: "Where do you stay for theater and opera?", a: "In Mitte near Gendarmenmarkt (Konzerthaus), Bebelplatz (Staatsoper) and Friedrichstraße - all within walking distance." },
     ],
     gygQuery: "Berlin Museumsinsel Tickets",
     related: [
@@ -1048,10 +1048,10 @@ export const themeArticlesEn: Article[] = [
     slug: "gourmet-hotels-berlin",
     title: "Gourmet hotels in Berlin: staying with starred cuisine",
     description:
-      "Gourmet hotels in Berlin: houses with a starred restaurant - from the Lorenz Adlon Esszimmer through FACIL at the Mandala to Hugos at the InterContinental.",
+      "Gourmet hotels in Berlin: properties with a starred restaurant - from the Lorenz Adlon Esszimmer through FACIL at the Mandala to Hugos at the InterContinental.",
     kicker: "Hotel category · Gourmet",
     intro: [
-      "Berlin has a surprisingly dense starred restaurant scene - and some of the best sit inside hotels. If you travel for food, stay where the Michelin stars belong to the house.",
+      "Berlin has a surprisingly dense starred restaurant scene - and some of the best sit inside hotels. If you travel for food, stay where the Michelin stars belong to the property.",
       "Here are the Berlin hotels with top kitchens of their own, naming the restaurants and their verified accolades.",
     ],
     takeaways: [
@@ -1059,7 +1059,7 @@ export const themeArticlesEn: Article[] = [
       "Top addresses: Lorenz Adlon Esszimmer, FACIL (Mandala), Hugos (InterContinental).",
       "Most gourmet hotels sit in Mitte and City West.",
     ],
-    bestFor: ["Food lovers", "Couples", "Special occasions", "Culinary travellers"],
+    bestFor: ["Food lovers", "Couples", "Special occasions", "Culinary travelers"],
     hotels: [
       "hotel-adlon-kempinski",
       "the-mandala-hotel",
@@ -1084,14 +1084,14 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Do you have to stay at the hotel to eat there?",
         body: [
-          "No - hotel restaurants are generally open to outside guests too. For the starred addresses, book well in advance, especially at weekends.",
+          "No - hotel restaurants are generally open to outside guests too. For the starred addresses, book well in advance, especially on weekends.",
         ],
       },
     ],
     faq: [
       { q: "Which hotel restaurant in Berlin has the most stars?", a: "Several hotel restaurants hold two Michelin stars, among them the Lorenz Adlon Esszimmer, FACIL at the Mandala and Hugos at the InterContinental." },
       { q: "Can outside guests eat in the hotel restaurant?", a: "Yes, hotel restaurants are generally open to the public. For starred restaurants a reservation is strongly recommended." },
-      { q: "What does a gourmet hotel in Berlin cost?", a: "The houses in question sit in the luxury segment from around €240–290 per night; the tasting menu is charged separately." },
+      { q: "What does a gourmet hotel in Berlin cost?", a: "The hotels in question sit in the luxury segment from around €240–290 per night; the tasting menu is charged separately." },
       { q: "Where are the gourmet hotels?", a: "Predominantly in Mitte (Pariser Platz, Potsdamer Platz, Gendarmenmarkt) and City West (Tiergarten/Budapester Straße)." },
     ],
     gygQuery: "Berlin Food Tour",
@@ -1115,18 +1115,18 @@ export const themeArticlesEn: Article[] = [
     slug: "barrierefreie-hotels-berlin",
     title: "Accessible hotels in Berlin: staying without barriers",
     description:
-      "Accessible hotels in Berlin: what to check for wheelchair-accessible rooms and which houses are suitable - plus tips on booking and getting around.",
+      "Accessible hotels in Berlin: what to check for wheelchair-accessible rooms and which properties are suitable - plus tips on booking and getting around.",
     kicker: "Hotel category · Accessibility",
     intro: [
-      "Accessible travel needs good planning. Many Berlin hotels offer wheelchair-accessible or low-barrier rooms - but the actual fittings (door widths, level-access shower, emergency call, lift) vary a great deal and should be clarified bindingly before booking.",
-      "Here is what matters, plus houses that lend themselves to an accessible stay through their size, location and fittings.",
+      "Accessible travel needs good planning. Many Berlin hotels offer wheelchair-accessible or low-barrier rooms - but the actual fittings (door widths, level-access shower, emergency call, elevator) vary a great deal and should be clarified bindingly before booking.",
+      "Here is what matters, plus properties that lend themselves to an accessible stay through their size, location and fittings.",
     ],
     takeaways: [
       "Accessibility is not a uniform standard - always check the actual fittings in advance.",
-      "Key points: door widths, level-access shower, lift, emergency call and step-free entry.",
-      "Large, modern houses more often have certified accessible rooms.",
+      "Key points: door widths, level-access shower, elevator, emergency call and step-free entry.",
+      "Large, modern hotels more often have certified accessible rooms.",
     ],
-    bestFor: ["Travellers with reduced mobility", "Senior travellers", "Wheelchair users", "Groups with specific needs"],
+    bestFor: ["Travelers with reduced mobility", "Senior travelers", "Wheelchair users", "Groups with specific needs"],
     hotels: [
       "adina-apartment-hotel-mitte",
       "park-inn-alexanderplatz",
@@ -1138,26 +1138,26 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "What should you check in an accessible hotel?",
         body: [
-          "The concrete details: step-free entry, sufficiently wide doors, a spacious bathroom with a level-access shower and grab rails, a reachable lift and an emergency call system. Because terms like \"accessible\" are interpreted differently, have the fittings of the specific room confirmed in writing before booking.",
+          "The concrete details: step-free entry, sufficiently wide doors, a spacious bathroom with a level-access shower and grab rails, a usable elevator and an emergency call system. Because terms like \"accessible\" are interpreted differently, have the fittings of the specific room confirmed in writing before booking.",
         ],
       },
       {
         heading: "Which hotels suit accessible travel?",
         body: [
-          "Large, modern houses more often have certified wheelchair-accessible rooms - for instance the Park Inn and the Estrel (very large houses with low-barrier rooms), the long-established Hotel Berlin, Berlin or the InterContinental. Aparthotels such as the Adina offer space and level-access bathrooms, which can make travelling with aids easier. Please confirm exact suitability directly with the property.",
+          "Large, modern properties more often have certified wheelchair-accessible rooms - for instance the Park Inn and the Estrel (very large properties with low-barrier rooms), the long-established Hotel Berlin, Berlin or the InterContinental. Aparthotels such as the Adina offer space and level-access bathrooms, which can make traveling with aids easier. Please confirm exact suitability directly with the property.",
         ],
       },
       {
         heading: "How accessible is Berlin overall?",
         body: [
-          "Public transport is largely equipped: many U-Bahn and S-Bahn stations have lifts and buses are low-floor. The BVG provides a current overview of accessible stations. Still plan the routes between hotel and sights in advance, since not every station is step-free.",
+          "Public transport is largely equipped: many U-Bahn and S-Bahn stations have elevators and buses are low-floor. The BVG provides a current overview of accessible stations. Still plan the routes between hotel and sights in advance, since not every station is step-free.",
         ],
       },
     ],
     faq: [
-      { q: "Which hotels in Berlin have wheelchair-accessible rooms?", a: "Above all large, modern houses (e.g. Park Inn, Estrel, InterContinental) and many chain hotels. The actual fittings vary - always clarify door widths, bathroom and access with the hotel before booking." },
-      { q: "What exactly does accessible mean?", a: "There is no uniform standard. Look for concrete features such as step-free entry, wide doors, a level-access shower, grab rails, a lift and an emergency call - and have them confirmed." },
-      { q: "Is Berlin's public transport accessible?", a: "Largely yes: many stations have lifts and buses are low-floor. The BVG offers an overview of accessible stations. Some stations are not yet step-free." },
+      { q: "Which hotels in Berlin have wheelchair-accessible rooms?", a: "Above all large, modern hotels (e.g. Park Inn, Estrel, InterContinental) and many chain hotels. The actual fittings vary - always clarify door widths, bathroom and access with the hotel before booking." },
+      { q: "What exactly does accessible mean?", a: "There is no uniform standard. Look for concrete features such as step-free entry, wide doors, a level-access shower, grab rails, an elevator and an emergency call - and have them confirmed." },
+      { q: "Is Berlin's public transport accessible?", a: "Largely yes: many stations have elevators and buses are low-floor. The BVG offers an overview of accessible stations. Some stations are not yet step-free." },
       { q: "Is an aparthotel worth it for accessible travel?", a: "Often yes - apartments offer more space and sometimes level-access bathrooms. Still check the fittings of the specific room." },
     ],
     gygQuery: "Berlin barrierefreie Stadtrundfahrt",
@@ -1181,7 +1181,7 @@ export const themeArticlesEn: Article[] = [
     slug: "berliner-nachtleben-hotels",
     title: "Hotels near Berlin's nightlife: staying where the party is",
     description:
-      "Hotels near Berlin's nightlife: houses by the clubs, bars and corner shops of Friedrichshain, Kreuzberg and City West - plus tips for night owls.",
+      "Hotels near Berlin's nightlife: properties by the clubs, bars and Spätis (Berlin's late-night corner stores) of Friedrichshain, Kreuzberg and City West - plus tips for night owls.",
     kicker: "Hotel category · Nightlife",
     intro: [
       "Berlin is a world capital of the night. If you want to experience the clubs, bars and legendary party culture, stay where the nightlife pulses - above all in Friedrichshain and Kreuzberg, with a short walk home.",
@@ -1190,9 +1190,9 @@ export const themeArticlesEn: Article[] = [
     takeaways: [
       "Nightlife concentrates in Friedrichshain, Kreuzberg and Neukölln.",
       "Hotels with their own bar or roof terrace extend the evening comfortably.",
-      "If you want to party and still sleep, pick a house slightly off the loudest streets.",
+      "If you want to party and still sleep, pick a property slightly off the loudest streets.",
     ],
-    bestFor: ["Night owls", "Clubbers", "Young travellers", "Groups"],
+    bestFor: ["Night owls", "Clubbers", "Young travelers", "Groups"],
     hotels: [
       "michelberger-hotel",
       "nhow-berlin",
@@ -1205,7 +1205,7 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Where do you stay near Berlin's nightlife?",
         body: [
-          "At the centre of the scene: Friedrichshain around Warschauer Straße and the RAW grounds, and Kreuzberg. The Michelberger Hotel opposite the Mercedes-Benz Arena and the nhow on the Spree sit right in it; the Schulz Hotel on the East Side Gallery is affordable and central for clubbing. The Orania offers live music in its own salon.",
+          "At the center of the scene: Friedrichshain around Warschauer Straße and the RAW grounds, and Kreuzberg. The Michelberger Hotel opposite the Mercedes-Benz Arena and the nhow on the Spree sit right in it; the Schulz Hotel on the East Side Gallery is affordable and central for clubbing. The Orania offers live music in its own salon.",
         ],
       },
       {
@@ -1217,15 +1217,15 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "How do you party in Berlin comfortably with a hotel?",
         body: [
-          "Pick a house within walking distance of the clubs but not on the loudest junction, so you can sleep too. Berlin's transit runs through the night at weekends (night S-Bahn and U-Bahn), and taxis and ride-sharing are available as well - so you always get back safely.",
+          "Pick a hotel within walking distance of the clubs but not on the loudest intersection, so you can sleep too. Berlin's transit runs through the night on weekends (night S-Bahn and U-Bahn), and taxis and ride-sharing are available as well - so you always get back safely.",
         ],
       },
     ],
     faq: [
       { q: "Which district has the strongest nightlife in Berlin?", a: "Friedrichshain (Warschauer Straße, RAW grounds) and Kreuzberg, plus parts of Neukölln and Mitte. Most clubs and bars sit there." },
-      { q: "Which hotels are closest to the clubs?", a: "Houses in Friedrichshain such as the Michelberger and the nhow, plus the Schulz Hotel on the East Side Gallery, are ideal for night owls." },
+      { q: "Which hotels are closest to the clubs?", a: "Properties in Friedrichshain such as the Michelberger and the nhow, plus the Schulz Hotel on the East Side Gallery, are ideal for night owls." },
       { q: "Does Berlin transit run at night?", a: "At weekends the U-Bahn and S-Bahn run through; midweek night buses take over. Taxis and ride-sharing are available around the clock." },
-      { q: "Can you party and still sleep well?", a: "Yes - pick a house within walking distance of the scene but on a quieter side street, and look for soundproofed rooms." },
+      { q: "Can you party and still sleep well?", a: "Yes - pick a hotel within walking distance of the scene but on a quieter side street, and look for soundproofed rooms." },
     ],
     gygQuery: "Berlin Pub Crawl",
     related: [
@@ -1259,7 +1259,7 @@ export const themeArticlesEn: Article[] = [
       "Trade fairs and major events push prices up - check the dates and book early.",
       "Look beyond the price at location, transport links and cancellation terms.",
     ],
-    bestFor: ["Price-conscious travellers", "First-time visitors", "Planners", "Flexible travellers"],
+    bestFor: ["Price-conscious travelers", "First-time visitors", "Planners", "Flexible travelers"],
     hotels: [],
     sections: [
       {
@@ -1288,13 +1288,13 @@ export const themeArticlesEn: Article[] = [
       {
         heading: "Is it better to book through a platform or directly?",
         body: [
-          "Comparison portals give you a quick overview of prices and availability. Our maps show live Booking.com prices per district. When booking direct, some houses grant small extras (an upgrade, late check-out) - a quick comparison is worth it.",
+          "Comparison portals give you a quick overview of prices and availability. Our maps show live Booking.com prices per district. When booking direct, some hotels grant small extras (an upgrade, late check-out) - a quick comparison is worth it.",
         ],
       },
     ],
     faq: [
       { q: "How far in advance should you book a hotel in Berlin?", a: "For normal periods a few weeks is often enough. Around trade fairs, holidays and in high summer, book several months ahead to secure choice and good prices." },
-      { q: "Is there an overnight tax in Berlin?", a: "Yes, Berlin levies a city tax on overnight stays (a percentage of the room rate). Business travellers may be exempt under certain conditions - check the current rules." },
+      { q: "Is there an overnight tax in Berlin?", a: "Yes, Berlin levies a city tax on overnight stays (a percentage of the room rate). Business travelers may be exempt under certain conditions - check the current rules." },
       { q: "Book breakfast or eat out?", a: "In central locations there are often cheaper and better breakfast cafés nearby. In outer districts, or with an early start, hotel breakfast can be more convenient." },
       { q: "Flexible or non-refundable?", a: "Non-refundable rates are cheaper but risky if plans are uncertain. If your trip is still moving, the flexible rate is usually worth the small premium." },
     ],

@@ -19,16 +19,67 @@ const regionLabel = {
 
 <OverviewHero
   locale={locale}
-  eyebrow={{ de: "12 Bezirke Berlins", en: "12 Berlin districts" }}
+  eyebrow={{ de: "12 Bezirke Berlins", en: "Berlin neighborhoods" }}
   title={{
     de: "Berlin nach Bezirk - wo du am besten übernachtest",
-    en: "Berlin by district - where to stay best",
+    en: "Berlin Neighborhoods: All 12 Districts Explained",
   }}
   subtitle={{
     de: "Jeder Bezirk hat seine eigene Persönlichkeit. Wir führen dich durch alle 12 - von Mitte mit den Wahrzeichen bis Treptow-Köpenick mit den Seen.",
-    en: "Each district has its own personality. We guide you through all 12 - from Mitte with the landmarks to Treptow-Köpenick with the lakes.",
+    en: "Every Berlin neighborhood reads differently, and the 12 official districts are the map locals actually use. Here is what each one feels like, who it suits and what a room costs, from landmark-lined Mitte to the lakes of Treptow-Köpenick.",
   }}
 />
+
+{locale === "en" && (
+  <section class="py-12 sm:py-14 border-b border-ink-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+      <div class="max-w-3xl space-y-4 text-lg text-ink-700 leading-relaxed">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+          District or neighborhood? In Berlin it is both
+        </h2>
+        <p>
+          Berlin is split into 12 <strong>Bezirke</strong>, the administrative districts you see
+          on every city map and in every hotel address. Each one is bigger than what an American
+          would call a neighborhood: Pankow alone runs from the cafés of Prenzlauer Berg to
+          farmland in the north.
+        </p>
+        <p>
+          The names most visitors arrive knowing are not districts at all. Prenzlauer Berg is a
+          quarter inside Pankow. Kreuzberg is one half of the district Friedrichshain-Kreuzberg,
+          Friedrichshain the other. Berliners call these smaller pockets <em>Kieze</em>, and that
+          is the level at which the city actually changes character, sometimes from one subway
+          stop to the next.
+        </p>
+        <p>
+          So book by district to get the location and the price right, then read the district page
+          to find the right corner of it. All 12 are below, grouped by where they sit in the city.
+        </p>
+      </div>
+
+      <aside class="rounded-2xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
+        <span class="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 block">
+          Start here
+        </span>
+        <h2 class="text-xl font-bold text-ink-900 mb-3">
+          Not sure which one is yours?
+        </h2>
+        <p class="text-ink-700 leading-relaxed mb-5">
+          Our decision guide compares all 12 side by side: first-timers, nightlife, families,
+          budget and business trips, with the transit lines and price levels that go with each.
+        </p>
+        <a
+          href="/en/where-to-stay-in-berlin/"
+          class="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 transition-colors"
+        >
+          Where to stay in Berlin
+          <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+      </aside>
+    </div>
+  </section>
+)}
 
 <section class="py-14 sm:py-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 space-y-14">
